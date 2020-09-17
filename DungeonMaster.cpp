@@ -6,7 +6,7 @@ void DungeonMaster::Fight(Unit *atk, Unit *def)
     std::cout << units[1]->ToString();
     std::cout << atk->GetName() << " -> " << def->GetName() << std::endl;
 
-    def->Defend(atk->Attack());
+    def->Defend(*atk);
 
     if (def->IsDead())
     {
@@ -32,6 +32,9 @@ DungeonMaster::~DungeonMaster()
         delete units[i];
     }
     units.clear();
+
+    if (instance)
+        delete instance;
 }
 
 DungeonMaster *DungeonMaster::GetInstance()

@@ -8,16 +8,15 @@ class Unit
 private:
     const std::string name;
     int hp;
-    int dmg;
+    const int dmg;
 
 public:
     Unit(std::string name, int hp, int dmg);
-    ~Unit();
 
-    const bool IsDead();
-    const int Attack();
-    void Defend(int dmg);
-    const std::string GetName();
-    const int GetHp();
-    const std::string ToString();
+    bool IsDead() const;
+    int GetDmg() const;
+    void Defend(Unit atkUnit);
+    std::string GetName() const;
+    int GetHp() const;
+    std::string ToString() const;
 };
