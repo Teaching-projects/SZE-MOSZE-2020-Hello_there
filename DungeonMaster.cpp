@@ -32,15 +32,11 @@ DungeonMaster::~DungeonMaster()
         delete units[i];
     }
     units.clear();
-
-    if (instance)
-        delete instance;
 }
 
-DungeonMaster *DungeonMaster::GetInstance()
+DungeonMaster &DungeonMaster::GetInstance()
 {
-    if (!instance)
-        instance = new DungeonMaster;
+    static DungeonMaster instance;
     return instance;
 }
 
@@ -62,5 +58,3 @@ void DungeonMaster::Init(char *argv[])
 
     Fight(units[0], units[1]);
 }
-
-DungeonMaster *DungeonMaster::instance = nullptr;

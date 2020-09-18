@@ -7,16 +7,14 @@
 class DungeonMaster
 {
 private:
-    static DungeonMaster *instance;
     std::vector<Unit *> units;
 
     DungeonMaster();
 
 public:
-    static DungeonMaster *GetInstance();
+    static DungeonMaster &GetInstance();
     void Init(char *argv[]);
     ~DungeonMaster();
 
     void Fight(Unit *atk, Unit *def);
 };
-
