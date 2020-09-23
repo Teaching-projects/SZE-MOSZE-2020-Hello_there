@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
-      run: g++ -Wall *.cpp
+      - uses: actions/checkout@v2
+      - run: g++ -Wall *.cpp
 
 
