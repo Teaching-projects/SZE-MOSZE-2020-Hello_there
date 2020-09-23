@@ -13,5 +13,5 @@ unitPairs = ['luke.json palpatine.json',
 with open('output.txt', 'w') as output_f:
     for pair in unitPairs:
         #os.system('.\main.exe ' + pair + ' >output.txt')
-        subprocess.Popen('.\main.exe ' + pair,
+        subprocess.Popen('./main.exe ' + pair,
                          stdout=output_f, stderr=output_f)
