@@ -1,0 +1,13 @@
+name: Basic Workflow
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    step:
+      uses: actions/checkout@2
+      run: g++ -Wall *.cpp
+
+
