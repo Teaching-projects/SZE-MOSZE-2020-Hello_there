@@ -9,5 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: g++ -Wall *.cpp
-      - run: python run_tests.py
+      - run: .\run_tests.ps1
       
