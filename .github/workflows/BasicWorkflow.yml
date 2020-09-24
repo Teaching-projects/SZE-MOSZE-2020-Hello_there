@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2
-      - run: g++ -Wall *.cpp
+      - run: g++ -Wall main.cpp
       - name: setup python
         uses: actions/setup-python@v2
         with:
