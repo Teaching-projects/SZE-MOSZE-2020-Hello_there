@@ -14,5 +14,5 @@ f.close()
 
 with open('output.txt', 'w') as output_f:
     for pair in unitPairs:
-        p = subprocess.Popen('./main.out ' + pair,
+        p = subprocess.Popen('./main.exe palpatine.json vader.json',
                              stdout=output_f, stderr=output_f)
