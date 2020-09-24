@@ -1,6 +1,9 @@
 import subprocess
 import os
+import sys
 
+exe = './' + sys.argv[1] + '.exe'
+output = sys.argv[2]
 
 unitPairs = [['luke.json', 'palpatine.json'],
              ['luke.json', 'vader.json'],
@@ -9,11 +12,9 @@ unitPairs = [['luke.json', 'palpatine.json'],
              ['vader.json', 'luke.json'],
              ['vader.json', 'palpatine.json']]
 
-f = open('output.txt', 'w')
-f.close()
 
-with open('output.txt', 'w') as output_f:
+with open(output, 'w') as output_f:
     for pair in unitPairs:
-        args = ["./a.out", pair[0], pair[1]]
+        args = [exe, pair[0], pair[1]]
         subprocess.call(args,
                         stdout=output_f, stderr=output_f)

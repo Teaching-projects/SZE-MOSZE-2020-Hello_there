@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2
-      - run: g++ -Wall *.cpp
+      - run: g++ -Wall *.cpp -o main
       - name: list dir
         run: ls
       - name: setup python
@@ -18,7 +18,7 @@ jobs:
           python-version: 3.6
       - name: execute python script
         run: |
-          python run_tests.py
+          python run_tests.py main output.txt
       - name: check difference
         run: diff output.txt good_output.txt
       
