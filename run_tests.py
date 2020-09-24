@@ -9,8 +9,10 @@ unitPairs = ['luke.json palpatine.json',
              'vader.json luke.json',
              'vader.json palpatine.json']
 
+f = open('output.txt', 'w')
+f.close()
 
-with open('output.txt', 'w+') as output_f:
+with open('output.txt', 'w') as output_f:
     for pair in unitPairs:
         p = subprocess.Popen('./main.exe ' + pair,
                              stdout=output_f, stderr=output_f)
