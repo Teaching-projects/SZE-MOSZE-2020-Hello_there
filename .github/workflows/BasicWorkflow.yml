@@ -19,4 +19,7 @@ jobs:
       - name: execute python script
         run: |
           python run_tests.py
+      - name: check difference
+        run: diff output.txt good_output.txt
+      
       
