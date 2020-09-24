@@ -10,16 +10,14 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2
       - run: g++ -Wall *.cpp -o main
-      - name: list dir
-        run: ls
       - name: setup python
         uses: actions/setup-python@v2
         with:
           python-version: 3.6
-      - name: execute python script
+      - name: generate output
         run: |
           python run_tests.py main output.txt
-      - name: check difference
+      - name: check output
         run: diff output.txt good_output.txt
       
       

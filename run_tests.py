@@ -2,7 +2,7 @@ import subprocess
 import os
 import sys
 
-exe = './' + sys.argv[1] + '.exe'
+exe = './' + sys.argv[1]
 output = sys.argv[2]
 
 unitPairs = [['luke.json', 'palpatine.json'],
