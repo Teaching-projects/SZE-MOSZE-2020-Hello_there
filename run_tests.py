@@ -14,6 +14,6 @@ f.close()
 
 with open('output.txt', 'w') as output_f:
     for pair in unitPairs:
-        args = ["./main.exe", pair[0], pair[1]]
+        args = ["./main.out", pair[0], pair[1]]
         subprocess.call(args,
                         stdout=output_f, stderr=output_f)
