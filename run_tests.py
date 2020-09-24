@@ -14,5 +14,5 @@ f.close()
 
 with open('output.txt', 'w') as output_f:
     for pair in unitPairs:
-        p = subprocess.Popen('./main.exe ' + pair,
+        p = subprocess.Popen('./main.out ' + pair,
                              stdout=output_f, stderr=output_f)
