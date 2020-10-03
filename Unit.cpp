@@ -3,48 +3,46 @@
 #include <algorithm>
 
 Unit::Unit(std::string name, int hp, int dmg)
-    : name(name), hp(hp), dmg(dmg)
+	: name(name), hp(hp), dmg(dmg)
 {
 }
 
 bool Unit::IsDead() const
 {
-    return !hp;
+	return !hp;
 }
 
 int Unit::GetDmg() const
 {
-    return dmg;
+	return dmg;
 }
 
-void Unit::Defend(const Unit atkUnit)
+void Unit::Defend(const Unit &atkUnit)
 {
-    //std::cout << atkUnit.GetName() << " -> " << this->GetName() << std::endl;
+	int dmgInflected = atkUnit.GetDmg();
 
-    int dmgInflected = atkUnit.GetDmg();
-
-    if (dmgInflected > hp)
-        hp = 0;
-    else
-        hp -= dmgInflected;
+	if (dmgInflected > hp)
+		hp = 0;
+	else
+		hp -= dmgInflected;
 }
 
 std::string Unit::GetName() const
 {
-    return name;
+	return name;
 }
 
 int Unit::GetHp() const
 {
-    return hp;
+	return hp;
 }
 
 std::string Unit::ToString() const
 {
-    std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
-    return s;
+	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
+	return s;
 }
-Unit Unit::parseUnit(std::string fileName)
+Unit Unit::parseUnit(std::string &fileName)
 {
 	std::ifstream input_file("units/" + fileName);
 	if (input_file.is_open())
@@ -77,7 +75,6 @@ Unit Unit::parseUnit(std::string fileName)
 		int dmg = std::stoi(temp_dmg);
 		return Unit(name, hp, dmg);
 	}
-	else throw fileName;
-
-
+	else
+		throw fileName;
 }
