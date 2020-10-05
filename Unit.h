@@ -15,8 +15,9 @@ public:
 
     bool IsDead() const;
     int GetDmg() const;
-    void Defend(const Unit atkUnit);
+    void Defend(const Unit &atkUnit);
     std::string GetName() const;
     int GetHp() const;
     std::string ToString() const;
+    static Unit parseUnit(std::string &fileName);
 };
