@@ -9,15 +9,17 @@ private:
     const std::string name;
     int hp;
     const int dmg;
+    const float atkCooldown; // [secundum / attack]
 
 public:
-    Unit(std::string name, int hp, int dmg);
+    Unit(std::string name, int hp, int dmg, float atkCooldown);
 
     bool IsDead() const;
     int GetDmg() const;
-    void Defend(const Unit &atkUnit);
     std::string GetName() const;
     int GetHp() const;
+
     std::string ToString() const;
     static Unit parseUnit(std::string &fileName);
+    void TakeDamage(const Unit &atkUnit);
 };

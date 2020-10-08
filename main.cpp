@@ -12,9 +12,9 @@ int main(int argc, char *argv[])
     for (int turn = 0; !u1.IsDead() && !u2.IsDead(); turn++)
     {
         if (turn % 2 == 0)
-            u1.Defend(u2);
+            u1.TakeDamage(u2);
         else
-            u2.Defend(u1);
+            u2.TakeDamage(u1);
     }
 
     if (u1.IsDead())
