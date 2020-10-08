@@ -9,13 +9,7 @@ int main(int argc, char *argv[])
     Unit u1 = Unit::parseUnit(fName1);
     Unit u2 = Unit::parseUnit(fName2);
 
-    for (int turn = 0; !u1.IsDead() && !u2.IsDead(); turn++)
-    {
-        if (turn % 2 == 0)
-            u1.TakeDamage(u2);
-        else
-            u2.TakeDamage(u1);
-    }
+    u1.Attack(u2);
 
     if (u1.IsDead())
         std::cout << u2.GetName() << " wins. Remaining HP: " << u2.GetHp() << std::endl;

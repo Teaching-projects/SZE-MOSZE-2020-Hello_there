@@ -21,5 +21,8 @@ public:
 
     std::string ToString() const;
     static Unit parseUnit(std::string &fileName);
+    void Attack(Unit &targetUnit);
+
+private:
     void TakeDamage(const Unit &atkUnit);
 };

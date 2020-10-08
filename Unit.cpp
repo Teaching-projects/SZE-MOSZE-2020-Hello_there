@@ -88,3 +88,49 @@ Unit Unit::parseUnit(std::string &fileName)
 	else
 		throw fileName;
 }
+
+void Unit::Attack(Unit &targetUnit)
+{
+	float fasterAtkCoold;
+	Unit *slowerUnit;
+	Unit *fasterUnit;
+
+	if (atkCooldown < targetUnit.atkCooldown)
+	{
+		fasterAtkCoold = atkCooldown;
+		fasterUnit = this;
+		slowerUnit = &targetUnit;
+	}
+	else
+	{
+		fasterAtkCoold = targetUnit.atkCooldown;
+		fasterUnit = &targetUnit;
+		slowerUnit = this;
+	}
+
+	targetUnit.TakeDamage(*this);
+	TakeDamage(targetUnit);
+	float slowerUnitTimer = 0.0;
+
+	for (slowerUnitTimer += fasterAtkCoold; !IsDead() && !targetUnit.IsDead(); slowerUnitTimer += fasterAtkCoold)
+	{
+		if (slowerUnitTimer > slowerUnit->atkCooldown)
+		{
+			fasterUnit->TakeDamage(*slowerUnit);
+			if (!fasterUnit->IsDead())
+				slowerUnit->TakeDamage(*fasterUnit);
+			slowerUnitTimer -= slowerUnit->atkCooldown;
+		}
+		else if (slowerUnitTimer == slowerUnit->atkCooldown)
+		{
+			targetUnit.TakeDamage(*this);
+			if (!targetUnit.IsDead())
+				TakeDamage(targetUnit);
+			slowerUnitTimer = 0.0;
+		}
+		else
+		{
+			slowerUnit->TakeDamage(*fasterUnit);
+		}
+	}
+}
