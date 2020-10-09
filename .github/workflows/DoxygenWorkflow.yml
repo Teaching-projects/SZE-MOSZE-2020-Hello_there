@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout repo content
-      uses: actions/checkout@fix_workflows
+      uses: actions/checkout@v2
+      with:
+        ref: fix_workflows
 
     - run: sudo apt-get install doxygen
     - run: sudo apt-get install graphviz
