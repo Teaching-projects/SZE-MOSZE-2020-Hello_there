@@ -12,7 +12,7 @@ jobs:
       - run: g++ -Wall *.cpp -o main
 
       - name: cat unit json files
-      - run: cat ./units/*.json
+        run: cat ./units/*.json
 
       - name: setup python
         uses: actions/setup-python@v2
@@ -22,7 +22,7 @@ jobs:
       - name: generate output
         run: |
           python run_tests.py main output.txt
-          
+
       - name: check output
         run: diff output.txt good_output.txt
       
