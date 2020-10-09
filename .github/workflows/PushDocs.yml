@@ -8,18 +8,18 @@ jobs:
     name: Deploy to github pages
     runs-on: ubuntu-latest
     steps:
-    - uses: action/checkout@v2
+    - name: checkout repo content
+      uses: action/checkout@fix_workflows
 
     - run: sudo apt-get install doxygen
     - run: sudo apt-get install graphviz
     - run: doxygen doxconf
 
     - name: Push git subdir as branch
-
-    - uses: s0/git-publish-subdir-action@v2.4.0
+      uses: s0/git-publish-subdir-action@v2.4.0
 
     env:
       REPO: self
-      BRANCH: gh-pages
+      BRANCH: fix_workflows
       FOLDER: DOCS/html
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
