@@ -1,7 +1,9 @@
 name: Basic Workflow
 
 on:
-  push
+  push:
+    branches:
+      - attackspeed
 
 jobs:
   build:
@@ -9,12 +11,8 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2
-        with:
-          ref: attackspeed
+        
       - run: g++ -std=c++17 -Wall *.cpp -o main
-
-      - name: cat unit cpp
-        run: cat Unit.cpp
 
       - name: setup python
         uses: actions/setup-python@v2
