@@ -9,8 +9,7 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2
-        with:
-          ref: fix_workflows
+
       - run: g++ -Wall *.cpp -o main
 
       - name: cat unit cpp
