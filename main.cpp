@@ -5,7 +5,6 @@
 
 int main(int argc, char *argv[])
 {
-	/*NEM JÓ A NEVEM TESZT*/
     std::string fName1 = argv[1];
     std::string fName2 = argv[2];
 	Unit* u1;
