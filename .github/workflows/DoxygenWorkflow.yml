@@ -13,7 +13,7 @@ jobs:
     - name: checkout repo content
       uses: actions/checkout@v2
       with:
-        ref: fix_workflows
+        ref: gh-pages
 
     - run: sudo apt-get install doxygen
     - run: sudo apt-get install graphviz
@@ -24,6 +24,6 @@ jobs:
 
     env:
       REPO: self
-      BRANCH: fix_workflows
+      BRANCH: gh-pages
       FOLDER: DOCS/html
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
