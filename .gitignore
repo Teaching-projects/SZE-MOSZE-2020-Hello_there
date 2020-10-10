@@ -1,3 +1,5 @@
 *.exe
 .vscode
 output.txt
+DOCS
+input.txt
