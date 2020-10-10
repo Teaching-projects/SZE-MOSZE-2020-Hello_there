@@ -13,7 +13,7 @@ unitPairs = [['luke.json', 'palpatine.json'],
              ['palpatine.json', 'player.json'],
              ['vader.json', 'luke.json'],
              ['vader.json', 'palpatine.json'],
-             ['vader.json', 'player.json']
+             ['vader.json', 'player.json'],
              ['player.json', 'luke.json'],
              ['player.json', 'palpatine.json'],
              ['player.json', 'vader.json']]
