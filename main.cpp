@@ -7,22 +7,34 @@ int main(int argc, char *argv[])
 {
     std::string fName1 = argv[1];
     std::string fName2 = argv[2];
-	Player p(Unit::parseUnit(fName1));
-    Unit u2 = Unit::parseUnit(fName2);
+	Unit* u1;
+	Unit* u2;
+	if (argv[1] == "Player.json") {
+		u1 = new Player(Unit::parseUnit(fName1));
+		u2 = new Unit(Unit::parseUnit(fName2));
+	}
+	else if (argv[2]=="Player.json") {
+		u1 = new Unit(Unit::parseUnit(fName1));
+		u2 = new Player(Unit::parseUnit(fName2));
+	}
+	else {
+		u1 = new Unit(Unit::parseUnit(fName1));
+		u2 = new Unit(Unit::parseUnit(fName2));
+	}
+	
 
-    for (int turn = 0; !p.IsDead() && !u2.IsDead(); turn++)
+    for (int turn = 0; !u1->IsDead() && !u2->IsDead(); turn++)
     {
 		if (turn % 2 == 0)
-			p.Defend(u2);
-		else {
-			p.addXp(u2.Defend(p));
-			p.LvlUp();
-		}
+			u2->Attack(*u1);
+		else
+			u1->Attack(*u2);
+		
     }
 
-    if (p.IsDead())
-        std::cout << u2.GetName() << " wins. Remaining HP: " << u2.GetHp() << std::endl;
+    if (u1->IsDead())
+        std::cout << u2->GetName() << " wins. Remaining HP: " << u2->GetHp() << std::endl;
     else
-        std::cout << p.GetName() << " wins. Remaining HP: " << p.GetHp() << std::endl;
+        std::cout << u1->GetName() << " wins. Remaining HP: " << u1->GetHp() << std::endl;
     return 0;
 }

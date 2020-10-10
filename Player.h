@@ -9,10 +9,11 @@ private:
 
 public:
 	Player(std::string name, int hp, int dmg);
-	Player(Unit u);
+	Player(Unit& u);
 	std::string ToString();
 	void LvlUp();
 	void addXp(int number);
 	int getXp() { return xp; };
+	void Attack(Unit&);
 
 };

@@ -7,6 +7,8 @@ Unit::Unit(std::string name, int hp, int dmg)
 {
 }
 
+
+
 bool Unit::IsDead() const
 {
 	return !hp;
@@ -17,17 +19,19 @@ int Unit::GetDmg() const
 	return dmg;
 }
 
-int Unit::Defend(const Unit &atkUnit)
+int Unit::Defend(int dmgInflected)
 {
-	std::cout << atkUnit.GetName()<<" Hp:"<<atkUnit.GetHp()<<" Dmg:"<<atkUnit.GetDmg() << "->" << GetName()<<" HP:"<<GetHp()<<" Dmg:"<<GetDmg() << std::endl;
-	
-	int dmgInflected = atkUnit.GetDmg();
-
-	if (dmgInflected > hp)
+	if (dmgInflected > hp) {
+		hp -= dmgInflected;
+		dmgInflected += hp;
 		hp = 0;
+	}
 	else
 		hp -= dmgInflected;
 	return dmgInflected;
+}
+void Unit::Attack(Unit &attackedUnit) {
+	attackedUnit.Defend(this->GetDmg());
 }
 
 std::string Unit::GetName() const

@@ -13,10 +13,10 @@ protected:
 
 public:
     Unit(std::string name, int hp, int dmg);
-
     bool IsDead() const;
     int GetDmg() const;
-    int Defend(const Unit &atkUnit);
+    int Defend(int );
+	virtual void Attack(Unit& attackedUnit);
     std::string GetName() const;
     int GetHp() const;
     std::string ToString() const;
