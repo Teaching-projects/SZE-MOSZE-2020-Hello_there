@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: attackspeed
-      - run: g++ -Wall *.cpp -o main
+      - run: g++ -std=c++17 -Wall *.cpp -o main
 
       - name: cat unit cpp
         run: cat Unit.cpp
