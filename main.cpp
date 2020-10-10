@@ -36,5 +36,7 @@ int main(int argc, char *argv[])
         std::cout << u2->GetName() << " wins. Remaining HP: " << u2->GetHp() << std::endl;
     else
         std::cout << u1->GetName() << " wins. Remaining HP: " << u1->GetHp() << std::endl;
+	delete u1;
+	delete u2;
     return 0;
 }
