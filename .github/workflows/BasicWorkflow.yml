@@ -9,7 +9,8 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2
-
+        with:
+          ref: attackspeed
       - run: g++ -Wall *.cpp -o main
 
       - name: cat unit cpp
