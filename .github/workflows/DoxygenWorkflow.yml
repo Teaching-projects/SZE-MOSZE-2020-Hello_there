@@ -1,7 +1,9 @@
 name: Doxygen Workflow
 
 on:
-  push
+  push:
+    branches:
+      - gh-pages
 
 jobs:
   deploy:
