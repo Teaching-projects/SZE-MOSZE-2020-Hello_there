@@ -10,14 +10,28 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2
 
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+
+      - name: install libgtest-dev and cmake
+        run: sudo apt install libgtest-dev
+        run: sudo apt install cmake
+      
+      - name: compile gtest source code
+        run: cd /usr/src/gtest
+        run: sudo make CMakeLists.txt
+        run: sudo make
+
       - name: compile JsonParser.cpp
-      - run: g++ -std=c++17 -Wall JsonParser.cpp -c
+        run: g++ -std=c++17 -Wall JsonParser.cpp -c
 
       - name: compile UnitTests.cpp
-      - run: g++ -std=c++17 -Wall UnitTests.cpp -c
+        run: g++ -std=c++17 -Wall UnitTests.cpp -c
 
       - name: create test exe
-      - run: g++ JsonParser.o UnitTests.o -lgtest -lgtest_main -lpthread -o test
+        run: g++ JsonParser.o UnitTests.o -lgtest -lgtest_main -lpthread -o test
 
       - name: run test exe
-      - run: ./test
+        run: ./test
