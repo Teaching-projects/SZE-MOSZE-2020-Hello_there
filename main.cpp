@@ -6,8 +6,8 @@ int main(int argc, char *argv[])
 {
     std::string fName1 = argv[1];
     std::string fName2 = argv[2];
-    Unit u1 = Unit::parseUnit(fName1);
-    Unit u2 = Unit::parseUnit(fName2);
+    Unit u1 = Unit::ParseUnit(fName1);
+    Unit u2 = Unit::ParseUnit(fName2);
 
     for (int turn = 0; !u1.IsDead() && !u2.IsDead(); turn++)
     {
