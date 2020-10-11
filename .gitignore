@@ -3,3 +3,4 @@
 output.txt
 DOCS
 input.txt
+*.o
