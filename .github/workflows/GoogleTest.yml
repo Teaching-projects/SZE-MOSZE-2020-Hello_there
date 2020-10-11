@@ -23,8 +23,8 @@ jobs:
       - name: change directory
         run: cd /usr/src/gtest
 
-      - name: make CMakeLists.txt
-        run: sudo make CMakeLists.txt
+      - name: sudo cmake CMakeLists.txt
+        run: sudo cmake CMakeLists.txt
       - name: sudo make
         run: sudo make
 
