@@ -3,8 +3,10 @@
 
 std::map<std::string, std::string> JsonParser::Parse(const char *fileName)
 {
-    std::map<std::string, std::string> myMap;
-    return myMap;
+    std::string fName(fileName);
+    std::ifstream fstream("units/" + fName);
+
+    return JsonParser::Parse(fstream);
 }
 
 std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
@@ -33,8 +35,8 @@ std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
     return myMap;
 }
 
-std::map<std::string, std::string> JsonParser::Parse(std::string fileContent)
+std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
 {
-    std::map<std::string, std::string> myMap;
-    return myMap;
+    std::ifstream fstream("units/" + fileName);
+    return JsonParser::Parse(fstream);
 }
