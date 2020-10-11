@@ -19,6 +19,6 @@ public:
 	virtual void Attack(Unit& attackedUnit);
     std::string GetName() const;
     int GetHp() const;
-    std::string ToString() const;
+	virtual std::string ToString() const;
     static Unit parseUnit(std::string &fileName);
 };

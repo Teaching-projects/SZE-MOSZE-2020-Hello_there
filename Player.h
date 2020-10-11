@@ -4,8 +4,8 @@
 class Player :public Unit {
 private:
 	int maxHP;
-	int xp;
-	int lvl;
+	int xp=0;
+	int lvl=1;
 
 public:
 	Player(std::string name, int hp, int dmg);
@@ -15,5 +15,6 @@ public:
 	void addXp(int number);
 	int getXp() { return xp; };
 	void Attack(Unit&);
+	int getLvl() { return lvl; }
 
 };
