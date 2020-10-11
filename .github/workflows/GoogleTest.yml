@@ -15,23 +15,17 @@ jobs:
         with:
           python-version: 3.6
 
-      - name: install libgtest-dev
-        run: sudo apt install libgtest-dev
-      - name: install cmake
-        run: sudo apt install cmake
+      - name: install libgtest-dev and cmake
+        run: sudo apt install libgtest-dev && sudo apt install cmake
       
       - name: change directory
         run: cd /usr/src/gtest
 
-      - name: sudo cmake CMakeLists.txt
-        run: sudo cmake CMakeLists.txt
-      - name: sudo make
-        run: sudo make
+      - name: cmake and make
+        run: sudo cmake . && sudo make
 
       - name: compile JsonParser.cpp
-        run: g++ -std=c++17 -Wall JsonParser.cpp -c
-      - name: compile UnitTests.cpp
-        run: g++ -std=c++17 -Wall UnitTests.cpp -c
+        run: g++ -std=c++17 -Wall JsonParser.cpp -c && g++ -std=c++17 -Wall UnitTests.cpp -c
 
       - name: create test exe
         run: g++ JsonParser.o UnitTests.o -lgtest -lgtest_main -lpthread -o test
