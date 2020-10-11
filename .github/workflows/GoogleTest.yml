@@ -1,0 +1,23 @@
+name: Google Unit Tests
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
+      - name: compile JsonParser.cpp
+      - run: g++ -std=c++17 -Wall JsonParser.cpp -c
+
+      - name: compile UnitTests.cpp
+      - run: g++ -std=c++17 -Wall UnitTests.cpp -c
+
+      - name: create test exe
+      - run: g++ JsonParser.o UnitTests.o -lgtest -lgtest_main -lpthread -o test
+
+      - name: run test exe
+      - run: ./test
