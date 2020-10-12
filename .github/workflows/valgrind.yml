@@ -11,5 +11,7 @@ jobs:
           run: sudo apt-get install valgrind
         - name: Set permission
           run: chmod a+x ./valgrind.sh
+        - name: build
+          run: g++ -Wall -o a.out *.cpp
         - name: Checking memory leak
           run: ./valgrind.sh
