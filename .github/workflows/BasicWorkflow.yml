@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2
-      - run: g++ -std=c++17 -Wall main.cpp Unit.cpp JsonParser.cpp -o main
+      - run: g++ -std=c++17 -Wall *.cpp -o main
       - name: setup python
         uses: actions/setup-python@v2
         with:
