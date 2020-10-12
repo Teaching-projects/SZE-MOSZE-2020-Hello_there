@@ -1,0 +1,13 @@
+name: cppcheck
+
+on:
+  push
+jobs:
+  memory_leak_test:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - name: Installing Valgrind
+          run: sudo apt-get install valgrind
+        - name: Checking memory leak
+          run: ./valgrind.sh
