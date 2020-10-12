@@ -80,7 +80,7 @@ Unit Unit::parseUnit(std::string &fileName)
 		input_file.close();
 		int hp = std::stoi(temp_hp);
 		int dmg = std::stoi(temp_dmg);
-	
+		input_file.close();
 		return Unit(name, hp, dmg);
 	}
 	else
