@@ -39,15 +39,17 @@ public:
     /// \return std::string
     std::string GetName() const;
 
-    /// \return integer
+    /// \return int
     int GetHp() const;
 
     /// returns an std::string that contains the unit's name, hp and dmg
     std::string ToString() const;
 
-    /// given a json file, this static function creates a unit and returns it
-    /// \return Unit
-    /// \throw std::string&
+    /** 
+     * \brief given a json file, this static function creates a unit and returns it
+     * \return Unit
+     * \throw std::string&
+    */
     static Unit parseUnit(std::string &fileName /** [in] the json file name*/);
 
     /// attack the other unit and fight until one of them is dead
