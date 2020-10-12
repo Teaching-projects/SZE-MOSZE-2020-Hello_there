@@ -26,7 +26,7 @@ jobs:
         - name: Installing cppcheck
           run: sudo apt-get install cppcheck
         - uses: actions/checkout@v2
-        - name: Code analysis
+          name: Code analysis
           run: ./cppcheck.sh
           name: Artifact performance
         - uses: actions/upload-artifact@v2
