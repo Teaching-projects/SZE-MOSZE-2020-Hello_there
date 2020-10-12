@@ -9,17 +9,23 @@ int main(int argc, char *argv[])
     std::string fName2 = argv[2];
 	Unit* u1;
 	Unit* u2;
-	if (std::string(argv[1]) == "player.json") {
-		u1 = new Player(Unit::parseUnit(fName1));
-		u2 = new Unit(Unit::parseUnit(fName2));
+	try {
+		if (std::string(argv[1]) == "player.json") {
+			u1 = new Player(Unit::parseUnit(fName1));
+			u2 = new Unit(Unit::parseUnit(fName2));
+		}
+		else if (std::string(argv[2]) == "player.json") {
+			u1 = new Unit(Unit::parseUnit(fName1));
+			u2 = new Player(Unit::parseUnit(fName2));
+		}
+		else {
+			u1 = new Unit(Unit::parseUnit(fName1));
+			u2 = new Unit(Unit::parseUnit(fName2));
+		}
 	}
-	else if (std::string(argv[2])=="player.json") {
-		u1 = new Unit(Unit::parseUnit(fName1));
-		u2 = new Player(Unit::parseUnit(fName2));
-	}
-	else {
-		u1 = new Unit(Unit::parseUnit(fName1));
-		u2 = new Unit(Unit::parseUnit(fName2));
+	catch (const std::string s) {
+		std::cout << "File \"" << s << "\" not found!" << std::endl;
+		return 404;
 	}
 
     for (int turn = 0; !u1->IsDead() && !u2->IsDead(); turn++)
