@@ -21,7 +21,7 @@ jobs:
         run: diff output.txt good_output.txt
       
   code_check:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     steps:
         - name: Installing cppcheck
           run: sudo apt-get install cppcheck
