@@ -34,8 +34,8 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             path: ./performance_warnings.txt
-          name: Artifact style
-        - uses: actions/upload-artifact@v2
+        - name: Artifact style
+          uses: actions/upload-artifact@v2
           with:
             path: ./style_warnings.txt
       
