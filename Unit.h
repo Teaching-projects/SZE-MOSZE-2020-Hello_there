@@ -13,6 +13,7 @@ protected:
 
 public:
     Unit(std::string name, int hp, int dmg);
+	virtual ~Unit(){}
     bool IsDead() const;
     int GetDmg() const;
     int Defend(int );
