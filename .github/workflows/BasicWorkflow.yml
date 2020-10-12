@@ -23,6 +23,7 @@ jobs:
   code_check:
     runs-on: ubuntu_latest
     steps:
+        - uses: actions/checkout@v2
         - name: Installing cppcheck
           run: sudo apt-get install cppcheck
         - uses: actions/checkout@v2
