@@ -5,7 +5,7 @@ Player::Player(std::string &name,int hp,int dmg)
 	: Unit(name, hp, dmg ),maxHP(hp)
 {
 }
-Player::Player(Unit &u)
+Player::Player(Unit u)
 	: Unit(u.GetName(), u.GetHp(), u.GetDmg()),maxHP(u.GetHp())
 {
 }
