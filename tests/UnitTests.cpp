@@ -3,9 +3,9 @@
 
 TEST(ParserTest, CheckReturnedMapSize)
 {
-    EXPECT_EQ(3, JsonParser::Parse("vader.json").size());
-    EXPECT_EQ(3, JsonParser::Parse("luke.json").size());
-    EXPECT_EQ(3, JsonParser::Parse("palpatine.json").size());
+    EXPECT_EQ(3, JsonParser::Parse("../units/vader.json").size());
+    EXPECT_EQ(3, JsonParser::Parse("../units/luke.json").size());
+    EXPECT_EQ(3, JsonParser::Parse("../units/palpatine.json").size());
 }
 
 int main(int argc, char **argv)
