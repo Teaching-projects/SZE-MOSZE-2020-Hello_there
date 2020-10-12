@@ -26,6 +26,8 @@ jobs:
         - name: Installing cppcheck
           run: sudo apt-get install cppcheck
         - uses: actions/checkout@v2
+        - name: Set permission
+          run: chmod a+x ./cppcheck.sh
           name: Code analysis
         - run: ./cppcheck.sh
           name: Artifact performance
@@ -35,5 +37,5 @@ jobs:
           name: Artifact style
         - uses: actions/upload-artifact@v2
           with:
-            path: ./style_warnings.txt.txt
+            path: ./style_warnings.txt
       
