@@ -20,5 +20,5 @@ jobs:
       - name: cmake
         run: cd tests && cmake . && make
       - name: Run Tests
-        run: cd tests && ./runTests
+        run: cd tests && ./UnitTests
       
