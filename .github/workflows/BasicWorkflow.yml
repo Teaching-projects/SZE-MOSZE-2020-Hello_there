@@ -23,15 +23,15 @@ jobs:
   code_check:
     runs-on: ubuntu-latest
     steps:
-        - name: Installing cppcheck
-          run: sudo apt-get install cppcheck
         - uses: actions/checkout@v2
-          name: Set permission
-        - run: chmod a+x ./cppcheck.sh
-          name: Code analysis
-        - run: ./cppcheck.sh
-          name: Artifact performance
-        - uses: actions/upload-artifact@v2
+        - name: Installing cppcheck
+          run: sudo apt-get install cppcheck 
+        - name: Set permission
+          run: chmod a+x ./cppcheck.sh
+        - name: Code analysis
+          run: ./cppcheck.sh
+        - name: Artifact performance
+          uses: actions/upload-artifact@v2
           with:
             path: ./performance_warnings.txt
           name: Artifact style
