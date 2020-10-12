@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.17)
 project(hello_there_gtests)
 
 find_package(GTest REQUIRED)
