@@ -7,28 +7,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo content
-        uses: actions/checkout@v2
-
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.6
-
-      - name: install libgtest-dev and cmake
-        run: sudo apt install libgtest-dev && sudo apt install cmake
+      - uses: actions/checkout@v2
+      - name: Install gtest and cmake
+        run: sudo apt install libgtest-dev && sudo apt install cmake 
       
-      - name: change directory
-        run: cd /usr/src/gtest
+      - name: gtest cmake
+        run: cd /usr/src/gtest && sudo cmake . && sudo make  && sudo cp *.a /usr/lib
 
-      - name: cmake and make
-        run: sudo cmake . && sudo make
-
-      - name: compile JsonParser.cpp
-        run: g++ -std=c++17 -Wall JsonParser.cpp -c && g++ -std=c++17 -Wall UnitTests.cpp -c
-
-      - name: create test exe
-        run: g++ JsonParser.o UnitTests.o -lgtest -lgtest_main -lpthread -o test
-
-      - name: run test exe
-        run: ./test
+      - name: create symbolic links
+        run: sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a 
+      
+      - name: cmake
+        run: cd tests && cmake . && make
+      - name: Run Tests
+        run: cd tests && ./runTests
+      
