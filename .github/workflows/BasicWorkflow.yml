@@ -19,4 +19,3 @@ jobs:
           python run_tests.py main output.txt
       - name: check output
         run: diff output.txt good_output.txt
-      
