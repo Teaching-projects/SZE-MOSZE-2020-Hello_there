@@ -42,7 +42,7 @@ std::string Unit::ToString() const
 	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
 	return s;
 }
-Unit Unit::parseUnit(std::string &fileName)
+Unit Unit::ParseUnit(std::string &fileName)
 {
 	std::ifstream input_file("units/" + fileName);
 	if (input_file.is_open())
@@ -91,19 +91,16 @@ Unit Unit::parseUnit(std::string &fileName)
 
 void Unit::Attack(Unit &targetUnit)
 {
-	float fasterAtkCoold;
 	Unit *slowerUnit;
 	Unit *fasterUnit;
 
 	if (atkCooldown < targetUnit.atkCooldown)
 	{
-		fasterAtkCoold = atkCooldown;
 		fasterUnit = this;
 		slowerUnit = &targetUnit;
 	}
 	else
 	{
-		fasterAtkCoold = targetUnit.atkCooldown;
 		fasterUnit = &targetUnit;
 		slowerUnit = this;
 	}
@@ -112,7 +109,7 @@ void Unit::Attack(Unit &targetUnit)
 	TakeDamage(targetUnit);
 	float slowerUnitTimer = 0.0;
 
-	for (slowerUnitTimer += fasterAtkCoold; !IsDead() && !targetUnit.IsDead(); slowerUnitTimer += fasterAtkCoold)
+	for (slowerUnitTimer += fasterUnit->atkCooldown; !IsDead() && !targetUnit.IsDead(); slowerUnitTimer += fasterUnit->atkCooldown)
 	{
 		if (slowerUnitTimer > slowerUnit->atkCooldown)
 		{

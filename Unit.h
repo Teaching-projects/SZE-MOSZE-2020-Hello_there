@@ -50,7 +50,7 @@ public:
      * \return Unit
      * \throw std::string&
     */
-    static Unit parseUnit(std::string &fileName /** [in] the json file name*/);
+    static Unit ParseUnit(std::string &fileName /** [in] the json file name*/);
 
     /// attack the other unit and fight until one of them is dead
     void Attack(Unit &targetUnit /** [in]*/);
