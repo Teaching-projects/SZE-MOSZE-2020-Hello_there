@@ -21,11 +21,11 @@ std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
             for (fileStream.get(c); c != '\"'; fileStream.get(c))
                 key += c;
 
-            for (fileStream.get(c); c != '\"'; fileStream.get(c))
+            for (fileStream.get(c); c == ':' || c == ' ' || c == '\"'; fileStream.get(c)) // skip until val starts
                 ;
 
             std::string val = "";
-            for (fileStream.get(c); c != '\"'; fileStream.get(c))
+            for (; c != '\"' && c != '\n' && c != ','; fileStream.get(c))
                 val += c;
 
             myMap[key] = val;
