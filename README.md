@@ -1,9 +1,12 @@
 # SZE-MOSZE-2020-Hello_there
 
-A program egy RPG j·tÈkot valÛsÌt meg. Az indÌt·sn·l kÈt bemenetet v·r. 
+A program egy RPG j√°t√©kot val√≥s√≠t meg. Az ind√≠t√°sn√°l k√©t bemenetet v√°r. 
 
-PÈlda fut·sra:
+P√©lda fut√°sra:
 ```
 ./main.exe palpatine.json vader.json
 Palpatine wins. Remaining HP: 10
 ```
+
+A dokument√°ci√≥ az al√°bbi linken √©rhet≈ë el:
+https://teaching-projects.github.io/SZE-MOSZE-2020-Hello_there/

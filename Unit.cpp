@@ -2,8 +2,8 @@
 #include <fstream>
 #include <algorithm>
 
-Unit::Unit(std::string name, int hp, int dmg)
-	: name(name), hp(hp), dmg(dmg)
+Unit::Unit(std::string name, int hp, int dmg, float atkCooldown)
+	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
 {
 }
 
@@ -17,7 +17,7 @@ int Unit::GetDmg() const
 	return dmg;
 }
 
-void Unit::Defend(const Unit &atkUnit)
+void Unit::TakeDamage(const Unit &atkUnit)
 {
 	int dmgInflected = atkUnit.GetDmg();
 
@@ -42,14 +42,16 @@ std::string Unit::ToString() const
 	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
 	return s;
 }
-Unit Unit::parseUnit(std::string &fileName)
+Unit Unit::ParseUnit(std::string &fileName)
 {
 	std::ifstream input_file("units/" + fileName);
 	if (input_file.is_open())
 	{
+
 		std::string name;
 		std::string temp_hp;
 		std::string temp_dmg;
+		std::string temp_atkSpd;
 
 		input_file.ignore(1, '{');
 		input_file.ignore(1, '\n');
@@ -57,24 +59,75 @@ Unit Unit::parseUnit(std::string &fileName)
 
 		std::getline(input_file, name, ',');
 		name.erase(std::remove(name.begin(), name.end(), '\"'), name.end());
-		name.erase(0, 7);
+		name.erase(0, 6);
 
 		input_file.ignore(1, '\n');
 		input_file.ignore(1, '\t');
 		std::getline(input_file, temp_hp, ',');
 		temp_hp.erase(std::remove(temp_hp.begin(), temp_hp.end(), '\"'), temp_hp.end());
-		temp_hp.erase(0, 5);
+		temp_hp.erase(0, 4);
 
 		input_file.ignore(1, '\n');
 		input_file.ignore(1, '\t');
-		std::getline(input_file, temp_dmg);
+		std::getline(input_file, temp_dmg, ',');
 		temp_dmg.erase(std::remove(temp_dmg.begin(), temp_dmg.end(), '\"'), temp_dmg.end());
-		temp_dmg.erase(0, 6);
+		temp_dmg.erase(0, 5);
+
+		input_file.ignore(1, '\n');
+		input_file.ignore(1, '\t');
+		std::getline(input_file, temp_atkSpd);
+		temp_atkSpd.erase(std::remove(temp_atkSpd.begin(), temp_atkSpd.end(), '\"'), temp_atkSpd.end());
+		temp_atkSpd.erase(0, 16);
+
 		input_file.close();
 		int hp = std::stoi(temp_hp);
 		int dmg = std::stoi(temp_dmg);
-		return Unit(name, hp, dmg);
+		float atkSpd = std::stof(temp_atkSpd);
+		return Unit(name, hp, dmg, atkSpd);
 	}
 	else
 		throw fileName;
+}
+
+void Unit::Attack(Unit &targetUnit)
+{
+	Unit *slowerUnit;
+	Unit *fasterUnit;
+
+	if (atkCooldown < targetUnit.atkCooldown)
+	{
+		fasterUnit = this;
+		slowerUnit = &targetUnit;
+	}
+	else
+	{
+		fasterUnit = &targetUnit;
+		slowerUnit = this;
+	}
+
+	targetUnit.TakeDamage(*this);
+	TakeDamage(targetUnit);
+	float slowerUnitTimer = 0.0;
+
+	for (slowerUnitTimer += fasterUnit->atkCooldown; !IsDead() && !targetUnit.IsDead(); slowerUnitTimer += fasterUnit->atkCooldown)
+	{
+		if (slowerUnitTimer > slowerUnit->atkCooldown)
+		{
+			fasterUnit->TakeDamage(*slowerUnit);
+			if (!fasterUnit->IsDead())
+				slowerUnit->TakeDamage(*fasterUnit);
+			slowerUnitTimer -= slowerUnit->atkCooldown;
+		}
+		else if (slowerUnitTimer == slowerUnit->atkCooldown)
+		{
+			targetUnit.TakeDamage(*this);
+			if (!targetUnit.IsDead())
+				TakeDamage(targetUnit);
+			slowerUnitTimer = 0.0;
+		}
+		else
+		{
+			slowerUnit->TakeDamage(*fasterUnit);
+		}
+	}
 }

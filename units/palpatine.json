@@ -1,5 +1,6 @@
 {
-	"name" : "Palpatine",
-	"hp" : 150,
-	"dmg" : 15
+	"name": "Palpatine",
+	"hp": 111,
+	"dmg": 21,
+	"attackcooldown": 2.5
 }

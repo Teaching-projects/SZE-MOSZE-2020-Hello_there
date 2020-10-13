@@ -1,6 +1,6 @@
-Palpatine wins. Remaining HP: 20
-Vader wins. Remaining HP: 20
-Palpatine wins. Remaining HP: 10
-Palpatine wins. Remaining HP: 10
-Vader wins. Remaining HP: 10
-Palpatine wins. Remaining HP: 17
+Palpatine wins. Remaining HP: 11
+Vader wins. Remaining HP: 541
+Palpatine wins. Remaining HP: 11
+Vader wins. Remaining HP: 540
+Vader wins. Remaining HP: 541
+Vader wins. Remaining HP: 540
