@@ -16,7 +16,7 @@ public:
 	virtual ~Unit(){}
     bool IsDead() const;
     int GetDmg() const;
-    int Defend(int );
+    int Defend(Unit& );
 	virtual void Attack(Unit& attackedUnit);
     std::string GetName() const;
     int GetHp() const;

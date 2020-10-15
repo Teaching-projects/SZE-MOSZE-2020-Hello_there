@@ -19,8 +19,9 @@ int Unit::GetDmg() const
 	return dmg;
 }
 
-int Unit::Defend(int dmgInflected)
+int Unit::Defend(Unit& attackingUnit)
 {
+	int dmgInflected = attackingUnit.GetDmg();
 	if (dmgInflected > hp) {
 		hp -= dmgInflected;
 		dmgInflected += hp;
@@ -31,7 +32,7 @@ int Unit::Defend(int dmgInflected)
 	return dmgInflected;
 }
 void Unit::Attack(Unit &attackedUnit) {
-	attackedUnit.Defend(this->GetDmg());
+	attackedUnit.Defend(*this);
 }
 
 std::string Unit::GetName() const

@@ -1,11 +1,11 @@
 #include "Player.h"
 #include <math.h>
 
-Player::Player(std::string &name,int hp,int dmg) 
+Player::Player(const std::string &name,int hp,int dmg) 
 	: Unit(name, hp, dmg ),maxHP(hp)
 {
 }
-Player::Player(Unit u)
+Player::Player(const Unit &u)
 	: Unit(u.GetName(), u.GetHp(), u.GetDmg()),maxHP(u.GetHp())
 {
 }
@@ -13,6 +13,11 @@ Player::Player(Unit u)
 std::string Player::ToString() const
 {
 	return Unit::ToString() + "LVL: " + std::to_string(lvl) + " Xp: " + std::to_string(xp) + "\n";
+}
+
+int Player::getXp() const
+{
+	return xp;
 }
 
 void Player::LvlUp()
@@ -30,6 +35,11 @@ void Player::addXp(int number) {
 	xp += number;
 }
 void Player::Attack(Unit& attackedUnit) {
-	addXp(attackedUnit.Defend(this->GetDmg()));
+	addXp(attackedUnit.Defend(*this));
 	LvlUp();
+}
+
+int Player::getLvl() const
+{
+	return lvl;
 }
