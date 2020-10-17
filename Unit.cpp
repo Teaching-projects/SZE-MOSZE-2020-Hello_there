@@ -7,8 +7,6 @@ Unit::Unit(std::string name, int hp, int dmg, float atkCooldown)
 {
 }
 
-
-
 bool Unit::IsDead() const
 {
 	return !hp;
@@ -19,21 +17,24 @@ int Unit::GetDmg() const
 	return dmg;
 }
 
+float Unit::GetAtkCoolDown() const
+{
+	return atkCooldown;
+}
+
 int Unit::TakeDamage(const Unit &atkUnit)
 {
 	int dmgInflected = atkUnit.GetDmg();
-	if (dmgInflected > hp) {
+	if (dmgInflected > hp)
+	{
 		hp -= dmgInflected;
 		dmgInflected += hp;
 		hp = 0;
 	}
 	else
 		hp -= dmgInflected;
-  
+
 	return dmgInflected;
-}
-void Unit::Attack(Unit &attackedUnit) {
-	attackedUnit.Defend(*this);
 }
 
 std::string Unit::GetName() const
@@ -92,7 +93,7 @@ Unit Unit::ParseUnit(std::string &fileName)
 		int hp = std::stoi(temp_hp);
 		int dmg = std::stoi(temp_dmg);
 		float atkSpd = std::stof(temp_atkSpd);
-    
+
 		return Unit(name, hp, dmg, atkSpd);
 	}
 	else
@@ -101,43 +102,5 @@ Unit Unit::ParseUnit(std::string &fileName)
 
 void Unit::Attack(Unit &targetUnit)
 {
-	Unit *slowerUnit;
-	Unit *fasterUnit;
-
-	if (atkCooldown < targetUnit.atkCooldown)
-	{
-		fasterUnit = this;
-		slowerUnit = &targetUnit;
-	}
-	else
-	{
-		fasterUnit = &targetUnit;
-		slowerUnit = this;
-	}
-
 	targetUnit.TakeDamage(*this);
-	TakeDamage(targetUnit);
-	float slowerUnitTimer = 0.0;
-
-	for (slowerUnitTimer += fasterUnit->atkCooldown; !IsDead() && !targetUnit.IsDead(); slowerUnitTimer += fasterUnit->atkCooldown)
-	{
-		if (slowerUnitTimer > slowerUnit->atkCooldown)
-		{
-			fasterUnit->TakeDamage(*slowerUnit);
-			if (!fasterUnit->IsDead())
-				slowerUnit->TakeDamage(*fasterUnit);
-			slowerUnitTimer -= slowerUnit->atkCooldown;
-		}
-		else if (slowerUnitTimer == slowerUnit->atkCooldown)
-		{
-			targetUnit.TakeDamage(*this);
-			if (!targetUnit.IsDead())
-				TakeDamage(targetUnit);
-			slowerUnitTimer = 0.0;
-		}
-		else
-		{
-			slowerUnit->TakeDamage(*fasterUnit);
-		}
-	}
 }

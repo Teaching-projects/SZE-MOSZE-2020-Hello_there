@@ -1,20 +1,19 @@
 #pragma once
 #include "Unit.h"
 #include <string>
-class Player :public Unit {
+class Player : public Unit
+{
 private:
 	int maxHP;
-	int xp=0;
-	int lvl=1;
+	int xp = 0;
+	int lvl = 1;
 	void LvlUp();
 	void addXp(int number);
 
 public:
-	Player(const std::string &name, int hp, int dmg);
 	Player(const Unit &u);
 	std::string ToString() const override;
 	int getXp() const;
-	void Attack(Unit&) override;
-	int getLvl()const;
-
+	void Attack(Unit &) override;
+	int getLvl() const;
 };

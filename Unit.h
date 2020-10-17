@@ -16,11 +16,17 @@ class Unit
 {
 private:
     const std::string name;
+    const float atkCooldown; ///< time it takes for the unit to be able to hit again
+
+    friend class Player;
+
 protected:
     int hp;
     int dmg;
-    const float atkCooldown; ///< time it takes for the unit to be able to hit again  
-  
+
+    /// suffer the damage
+    int TakeDamage(const Unit &atkUnit /** [in] attacking Unit that causes this Unit some damage*/);
+
 public:
     /**
      * \brief Unit constructor
@@ -30,7 +36,7 @@ public:
      * \param atkCooldown attack cooldown
     */
     Unit(std::string name, int hp, int dmg, float atkCooldown);
-    virtual ~Unit(){}
+    virtual ~Unit() {}
 
     /// \return boolean
     bool IsDead() const;
@@ -44,6 +50,9 @@ public:
     /// \return int
     int GetHp() const;
 
+    /// \return float
+    float GetAtkCoolDown() const;
+
     /// returns an std::string that contains the unit's name, hp and dmg
     virtual std::string ToString() const;
 
@@ -56,8 +65,4 @@ public:
 
     /// attack the other unit and fight until one of them is dead
     virtual void Attack(Unit &targetUnit /** [in]*/);
-
-private:
-    /// suffer the damage
-    void TakeDamage(const Unit &atkUnit /** [in] attacking Unit that causes this Unit some damage*/);
 };
