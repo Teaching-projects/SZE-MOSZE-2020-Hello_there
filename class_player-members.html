@@ -59,22 +59,26 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Unit Member List</div>  </div>
+<div class="title">Player Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="class_unit.html">Unit</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="class_player.html">Player</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="class_unit.html#a18af74db3bf30745ea49525f717024c6">atkCooldown</a></td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_unit.html#af8d1a6d9273049907222baf8260d9bc2">Attack</a>(Unit &amp;targetUnit)</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_player.html#aa01db86b1f961d67403bae044d136f63">Attack</a>(Unit &amp;) override</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>dmg</b> (defined in <a class="el" href="class_unit.html">Unit</a>)</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_unit.html#a17ebec030fc63b246c6e3f96326eb49f">GetDmg</a>() const</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_unit.html#a33da6752c748ad80309f17ac07287a61">GetHp</a>() const</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_unit.html#a9ddebd39e011bae985c78ba777374fb2">GetName</a>() const</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getLvl</b>() const (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_unit.html#a9ddebd39e011bae985c78ba777374fb2">GetName</a>() const</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getXp</b>() const (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>hp</b> (defined in <a class="el" href="class_unit.html">Unit</a>)</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_unit.html#a82ab342b3d9aef32e6fe61405eff82f3">IsDead</a>() const</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_unit.html#a6ca9d5c5f22a9fedc5215fae2f0954af">ParseUnit</a>(std::string &amp;fileName)</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_unit.html#a42f50c3186b1cc0d53eacfd3fcc65706">ToString</a>() const</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Player</b>(const std::string &amp;name, int hp, int dmg) (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Player</b>(const Unit &amp;u) (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_player.html#a835892eb68ceddea11147bb5f3631dc5">ToString</a>() const override</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_unit.html#adbfa2f5ce4fc446de5a59e84ba2a8f96">Unit</a>(std::string name, int hp, int dmg, float atkCooldown)</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>~Unit</b>() (defined in <a class="el" href="class_unit.html">Unit</a>)</td><td class="entry"><a class="el" href="class_unit.html">Unit</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
