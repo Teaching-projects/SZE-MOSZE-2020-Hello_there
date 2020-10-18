@@ -20,6 +20,9 @@ std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
                   std::istreambuf_iterator<char>());
     JsonParser::CheckJsonIntegrity(s);
 
+    fileStream.clear();
+    fileStream.seekg(0);
+
     std::map<std::string, std::string> myMap;
     char c;
     while (fileStream.get(c))
@@ -51,6 +54,9 @@ std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
     std::string s((std::istreambuf_iterator<char>(fstream)),
                   std::istreambuf_iterator<char>());
     JsonParser::CheckJsonIntegrity(s);
+
+    fstream.clear();
+    fstream.seekg(0);
 
     std::map<std::string, std::string> myMap;
     for (std::string::size_type i = 0; i < s.size(); i++)
@@ -91,6 +97,8 @@ void JsonParser::CheckJsonIntegrity(std::string jsonStr)
 
     for (std::string::size_type i = 0; i < jsonStr.size(); i++)
     {
+        //symbolCount[jsonStr[i]]++;
+
         if (symbolCount.count(jsonStr[i]))
             symbolCount[jsonStr[i]]++;
     }
@@ -98,7 +106,13 @@ void JsonParser::CheckJsonIntegrity(std::string jsonStr)
     for (int i = 0; i < numOfSymbols; i++)
     {
         char symbol = symbols[i];
-        if (symbolCount[symbol] != expectedCount[symbol])
-            throw symbolCount[symbol] + " '" + std::to_string(symbol) + "' instead of " + std::to_string(expectedCount[i]);
+        int actCount = symbolCount[symbol];
+        int expCount = expectedCount[i];
+        //std::cout << symbolCount[symbol] << " " << expectedCount[i] << std::endl;
+        if (actCount != expCount)
+        {
+            throw "json be like";
+        }
+        // symbolCount[symbol] + " '" + std::to_string(symbol) + "' instead of " + std::to_string(expectedCount[i]);
     }
 }
