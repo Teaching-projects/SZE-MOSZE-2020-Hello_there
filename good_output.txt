@@ -1,6 +1,12 @@
-Palpatine wins. Remaining HP: 11
-Vader wins. Remaining HP: 541
-Palpatine wins. Remaining HP: 11
-Vader wins. Remaining HP: 540
-Vader wins. Remaining HP: 541
-Vader wins. Remaining HP: 540
+Luke wins. Remaining HP: 16
+Vader wins. Remaining HP: 641
+Galen Marek wins. Remaining HP: 220
+Luke wins. Remaining HP: 16
+Vader wins. Remaining HP: 645
+Galen Marek wins. Remaining HP: 199
+Vader wins. Remaining HP: 641
+Vader wins. Remaining HP: 645
+Vader wins. Remaining HP: 621
+Galen Marek wins. Remaining HP: 220
+Galen Marek wins. Remaining HP: 199
+Vader wins. Remaining HP: 621

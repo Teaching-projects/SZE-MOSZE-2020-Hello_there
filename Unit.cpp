@@ -17,14 +17,24 @@ int Unit::GetDmg() const
 	return dmg;
 }
 
-void Unit::TakeDamage(const Unit &atkUnit)
+float Unit::GetAtkCoolDown() const
+{
+	return atkCooldown;
+}
+
+int Unit::TakeDamage(const Unit &atkUnit)
 {
 	int dmgInflected = atkUnit.GetDmg();
-
 	if (dmgInflected > hp)
+	{
+		hp -= dmgInflected;
+		dmgInflected += hp;
 		hp = 0;
+	}
 	else
 		hp -= dmgInflected;
+
+	return dmgInflected;
 }
 
 std::string Unit::GetName() const
@@ -83,6 +93,7 @@ Unit Unit::ParseUnit(std::string &fileName)
 		int hp = std::stoi(temp_hp);
 		int dmg = std::stoi(temp_dmg);
 		float atkSpd = std::stof(temp_atkSpd);
+
 		return Unit(name, hp, dmg, atkSpd);
 	}
 	else
@@ -91,43 +102,53 @@ Unit Unit::ParseUnit(std::string &fileName)
 
 void Unit::Attack(Unit &targetUnit)
 {
-	Unit *slowerUnit;
-	Unit *fasterUnit;
+	targetUnit.TakeDamage(*this);
+}
 
-	if (atkCooldown < targetUnit.atkCooldown)
+void Unit::Fight(Unit& first, Unit& second)
+{
+	Unit* slowerUnit;
+	Unit* fasterUnit;
+
+	if (first.GetAtkCoolDown() < second.GetAtkCoolDown())
 	{
-		fasterUnit = this;
-		slowerUnit = &targetUnit;
+		fasterUnit = &first;
+		slowerUnit = &second;
 	}
 	else
 	{
-		fasterUnit = &targetUnit;
-		slowerUnit = this;
+		fasterUnit = &second;
+		slowerUnit = &first;
 	}
 
-	targetUnit.TakeDamage(*this);
-	TakeDamage(targetUnit);
+	first.Attack(second);
+	second.Attack(first);
 	float slowerUnitTimer = 0.0;
 
-	for (slowerUnitTimer += fasterUnit->atkCooldown; !IsDead() && !targetUnit.IsDead(); slowerUnitTimer += fasterUnit->atkCooldown)
+	for (slowerUnitTimer += fasterUnit->GetAtkCoolDown(); !fasterUnit->IsDead() && !slowerUnit->IsDead(); slowerUnitTimer += fasterUnit->GetAtkCoolDown())
 	{
-		if (slowerUnitTimer > slowerUnit->atkCooldown)
+		if (slowerUnitTimer > slowerUnit->GetAtkCoolDown())
 		{
-			fasterUnit->TakeDamage(*slowerUnit);
+			fasterUnit->Attack(*slowerUnit);
 			if (!fasterUnit->IsDead())
-				slowerUnit->TakeDamage(*fasterUnit);
-			slowerUnitTimer -= slowerUnit->atkCooldown;
+				slowerUnit->Attack(*fasterUnit);
+			slowerUnitTimer -= slowerUnit->GetAtkCoolDown();
 		}
-		else if (slowerUnitTimer == slowerUnit->atkCooldown)
+		else if (slowerUnitTimer == slowerUnit->GetAtkCoolDown())
 		{
-			targetUnit.TakeDamage(*this);
-			if (!targetUnit.IsDead())
-				TakeDamage(targetUnit);
+			slowerUnit->Attack(*fasterUnit);
+			if (!slowerUnit->IsDead())
+				fasterUnit->Attack(*slowerUnit);
 			slowerUnitTimer = 0.0;
 		}
 		else
 		{
-			slowerUnit->TakeDamage(*fasterUnit);
+			slowerUnit->Attack(*fasterUnit);
 		}
 	}
+
+	if (fasterUnit->IsDead())
+		std::cout << slowerUnit->GetName() << " wins. Remaining HP: " << slowerUnit->GetHp() << std::endl;
+	else
+		std::cout << fasterUnit->GetName() << " wins. Remaining HP: " << fasterUnit->GetHp() << std::endl;
 }

@@ -25,5 +25,3 @@ jobs:
 
       - name: check output
         run: diff output.txt good_output.txt
-      
-      

@@ -1,18 +1,33 @@
 #include <iostream>
 #include <vector>
 #include "Unit.h"
+#include "Player.h"
 
 int main(int argc, char *argv[])
 {
     std::string fName1 = argv[1];
     std::string fName2 = argv[2];
+
     Unit *u1;
     Unit *u2;
 
     try
     {
-        u1 = new Unit(Unit::ParseUnit(fName1));
-        u2 = new Unit(Unit::ParseUnit(fName2));
+        if (std::string(argv[1]) == "player.json")
+        {
+            u1 = new Player(Unit::ParseUnit(fName1));
+            u2 = new Unit(Unit::ParseUnit(fName2));
+        }
+        else if (std::string(argv[2]) == "player.json")
+        {
+            u1 = new Unit(Unit::ParseUnit(fName1));
+            u2 = new Player(Unit::ParseUnit(fName2));
+        }
+        else
+        {
+            u1 = new Unit(Unit::ParseUnit(fName1));
+            u2 = new Unit(Unit::ParseUnit(fName2));
+        }
     }
     catch (const std::string s)
     {
@@ -21,12 +36,7 @@ int main(int argc, char *argv[])
         return 404;
     }
 
-    u1->Attack(*u2);
-
-    if (u1->IsDead())
-        std::cout << u2->GetName() << " wins. Remaining HP: " << u2->GetHp() << std::endl;
-    else
-        std::cout << u1->GetName() << " wins. Remaining HP: " << u1->GetHp() << std::endl;
+	Unit::Fight(*u1, *u2);
 
     delete u1;
     delete u2;
