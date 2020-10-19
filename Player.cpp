@@ -1,5 +1,5 @@
 #include "Player.h"
-#include <math.h>
+#include <cmath>
 
 Player::Player(const Unit &u)
 	: Unit(u.GetName(), u.GetHp(), u.GetDmg(), u.GetAtkCoolDown()), maxHP(u.GetHp())

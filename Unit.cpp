@@ -104,3 +104,51 @@ void Unit::Attack(Unit &targetUnit)
 {
 	targetUnit.TakeDamage(*this);
 }
+
+void Unit::Fight(Unit& first, Unit& second)
+{
+	Unit* slowerUnit;
+	Unit* fasterUnit;
+
+	if (first.GetAtkCoolDown() < second.GetAtkCoolDown())
+	{
+		fasterUnit = &first;
+		slowerUnit = &second;
+	}
+	else
+	{
+		fasterUnit = &second;
+		slowerUnit = &first;
+	}
+
+	first.Attack(second);
+	second.Attack(first);
+	float slowerUnitTimer = 0.0;
+
+	for (slowerUnitTimer += fasterUnit->GetAtkCoolDown(); !fasterUnit->IsDead() && !slowerUnit->IsDead(); slowerUnitTimer += fasterUnit->GetAtkCoolDown())
+	{
+		if (slowerUnitTimer > slowerUnit->GetAtkCoolDown())
+		{
+			fasterUnit->Attack(*slowerUnit);
+			if (!fasterUnit->IsDead())
+				slowerUnit->Attack(*fasterUnit);
+			slowerUnitTimer -= slowerUnit->GetAtkCoolDown();
+		}
+		else if (slowerUnitTimer == slowerUnit->GetAtkCoolDown())
+		{
+			slowerUnit->Attack(*fasterUnit);
+			if (!slowerUnit->IsDead())
+				fasterUnit->Attack(*slowerUnit);
+			slowerUnitTimer = 0.0;
+		}
+		else
+		{
+			slowerUnit->Attack(*fasterUnit);
+		}
+	}
+
+	if (fasterUnit->IsDead())
+		std::cout << slowerUnit->GetName() << " wins. Remaining HP: " << slowerUnit->GetHp() << std::endl;
+	else
+		std::cout << fasterUnit->GetName() << " wins. Remaining HP: " << fasterUnit->GetHp() << std::endl;
+}
