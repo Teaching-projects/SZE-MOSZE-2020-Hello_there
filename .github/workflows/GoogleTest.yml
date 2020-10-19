@@ -12,7 +12,7 @@ jobs:
         run: sudo apt install libgtest-dev && sudo apt install cmake 
       
       - name: create test env
-        run: cd /usr/src/gtest && sudo cmake . && sudo make
+        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
 
       - name: create symbolic link 1
         run: sudo ln -s /usr/lib/ /usr/local/lib/libgtest.a
