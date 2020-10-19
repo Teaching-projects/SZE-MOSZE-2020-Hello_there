@@ -11,14 +11,23 @@ jobs:
       - name: Install gtest and cmake
         run: sudo apt install libgtest-dev && sudo apt install cmake 
       
-      - name: gtest cmake
+      - name: create test env
         run: cd /usr/src/gtest && sudo cmake . && sudo make
 
       - name: create symbolic link 1
-        run: sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a
+        run: sudo ln -s /usr/lib/ /usr/local/lib/libgtest.a
       - name: create symbolic link 2
-        run: sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a 
+        run: sudo ln -s /usr/lib/ /usr/local/lib/libgtest_main.a 
 
-      - name: Run tests
-        run: cd tests && cmake CMakeLists.txt && make ./UnitTests
+      - name: compile
+        run: g++ -std=c++17 *.cpp
+
+      - name: cmake CMakeLists
+        run: cmake tests/CMakeLists.txt
+
+      - name: build test
+        run: cd tests && make
+        
+      - name: run test
+        run: tests/unit_tests
       
