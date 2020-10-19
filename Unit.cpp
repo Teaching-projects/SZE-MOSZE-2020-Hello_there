@@ -1,5 +1,6 @@
 #include "Unit.h"
 #include <algorithm>
+#include <iostream>
 
 Unit::Unit(std::string name, int hp, int dmg)
 	: name(name), hp(hp), dmg(dmg)
@@ -41,7 +42,7 @@ std::string Unit::ToString() const
 	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
 	return s;
 }
-Unit Unit::ParseUnit(const std::string &fileName)
+Unit *Unit::ParseUnit(const std::string &fileName)
 {
 	std::ifstream inputFile("units/" + fileName);
 	if (inputFile.is_open())
@@ -52,7 +53,7 @@ Unit Unit::ParseUnit(const std::string &fileName)
 		std::string name = unitValues["name"];
 		int hp = std::stoi(unitValues["hp"]);
 		int dmg = std::stoi(unitValues["dmg"]);
-		return Unit(name, hp, dmg);
+		return new Unit(name, hp, dmg);
 	}
 	else
 		throw fileName;

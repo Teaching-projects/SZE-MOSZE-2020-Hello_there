@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
 
     try
     {
-        u1 = new Unit(Unit::ParseUnit(fName1));
-        u2 = new Unit(Unit::ParseUnit(fName2));
+        u1 = Unit::ParseUnit(fName1);
+        u2 = Unit::ParseUnit(fName2);
     }
     catch (const std::string s)
     {

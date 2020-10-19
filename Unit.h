@@ -18,5 +18,5 @@ public:
     std::string GetName() const;
     int GetHp() const;
     std::string ToString() const;
-    static Unit ParseUnit(const std::string &fileName);
+    static Unit *ParseUnit(const std::string &fileName);
 };

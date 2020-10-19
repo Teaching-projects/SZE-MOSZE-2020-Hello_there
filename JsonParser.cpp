@@ -4,25 +4,24 @@
 
 std::map<std::string, std::string> JsonParser::Parse(const char *fileName)
 {
-    std::string fName(fileName);
-    std::ifstream fstream("units/" + fName);
-
-    std::string s((std::istreambuf_iterator<char>(fstream)),
-                  std::istreambuf_iterator<char>());
-    JsonParser::CheckJsonIntegrity(s);
+    std::string fName = "units/" + std::string(fileName);
+    std::ifstream fstream(fName);
+    if (!fstream.good())
+        throw "problem with file stream";
 
     return JsonParser::Parse(fstream);
 }
 
 std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
 {
-    std::string s((std::istreambuf_iterator<char>(fileStream)),
-                  std::istreambuf_iterator<char>());
+    if (!fileStream.good())
+        throw "problem with file stream";
+
+    std::string s((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
     JsonParser::CheckJsonIntegrity(s);
 
     fileStream.clear();
     fileStream.seekg(0);
-
     std::map<std::string, std::string> myMap;
     char c;
     while (fileStream.get(c))
@@ -50,6 +49,8 @@ std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
 std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
 {
     std::ifstream fstream("units/" + fileName);
+    if (!fstream.good())
+        throw "problem with file stream";
 
     std::string s((std::istreambuf_iterator<char>(fstream)),
                   std::istreambuf_iterator<char>());
@@ -97,10 +98,11 @@ void JsonParser::CheckJsonIntegrity(std::string jsonStr)
 
     for (std::string::size_type i = 0; i < jsonStr.size(); i++)
     {
-        //symbolCount[jsonStr[i]]++;
-
         if (symbolCount.count(jsonStr[i]))
-            symbolCount[jsonStr[i]]++;
+        {
+
+            symbolCount[jsonStr[i]] += 1;
+        }
     }
 
     for (int i = 0; i < numOfSymbols; i++)
@@ -108,11 +110,9 @@ void JsonParser::CheckJsonIntegrity(std::string jsonStr)
         char symbol = symbols[i];
         int actCount = symbolCount[symbol];
         int expCount = expectedCount[i];
-        //std::cout << symbolCount[symbol] << " " << expectedCount[i] << std::endl;
         if (actCount != expCount)
         {
-            throw "json be like";
+            throw "invalid json file";
         }
-        // symbolCount[symbol] + " '" + std::to_string(symbol) + "' instead of " + std::to_string(expectedCount[i]);
     }
 }
