@@ -84,8 +84,7 @@ std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
 
 void JsonParser::CheckJsonIntegrity(std::string jsonStr)
 {
-    int numOfSymbols = 5;
-    char symbols[numOfSymbols] = {'{', '}', '\"', ':', ','};
+    char symbols[5] = {'{', '}', '\"', ':', ','};
 
     std::map<char, int> symbolCount;
     symbolCount['{'] = 0;
@@ -94,25 +93,33 @@ void JsonParser::CheckJsonIntegrity(std::string jsonStr)
     symbolCount[':'] = 0;
     symbolCount[','] = 0;
 
-    int expectedCount[numOfSymbols] = {1, 1, 8, 3, 2};
-
     for (std::string::size_type i = 0; i < jsonStr.size(); i++)
     {
-        if (symbolCount.count(jsonStr[i]))
-        {
-
-            symbolCount[jsonStr[i]] += 1;
-        }
+        if (symbolCount.find(jsonStr[i]) != symbolCount.end())
+            symbolCount[jsonStr[i]]++;
     }
 
-    for (int i = 0; i < numOfSymbols; i++)
+    for (int i = 0; i < sizeof(symbols) - 1; i++)
     {
-        char symbol = symbols[i];
-        int actCount = symbolCount[symbol];
-        int expCount = expectedCount[i];
-        if (actCount != expCount)
+        char count = symbolCount[symbols[i]];
+        switch (symbols[i])
         {
-            throw "invalid json file";
+        case '{':
+            if (count != 1)
+                throw "invalid json file";
+            break;
+        case '}':
+            if (count != 1)
+                throw "invalid json file";
+            break;
+        case '\"':
+            if (count % 2 != 0)
+                throw "invalid json file";
+            break;
+        case ':':
+            if (count != symbolCount[','] + 1)
+                throw "invalid json file";
+            break;
         }
     }
 }
