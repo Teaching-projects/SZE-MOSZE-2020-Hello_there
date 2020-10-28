@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parseunit',['ParseUnit',['../class_unit.html#a6ca9d5c5f22a9fedc5215fae2f0954af',1,'Unit']]],
-  ['player',['Player',['../class_player.html',1,'']]]
+  ['jsonparser',['JsonParser',['../class_json_parser.html',1,'']]]
 ];

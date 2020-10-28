@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2dhello_5fthere',['SZE-MOSZE-2020-Hello_there',['../autotoc_md0.html',1,'']]]
+  ['parseunit',['ParseUnit',['../class_unit.html#a6ca9d5c5f22a9fedc5215fae2f0954af',1,'Unit']]],
+  ['player',['Player',['../class_player.html',1,'']]]
 ];
