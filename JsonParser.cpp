@@ -105,9 +105,6 @@ void JsonParser::CheckJsonIntegrity(std::string jsonStr)
         switch (symbols[i])
         {
         case '{':
-            if (count != 1)
-                throw "invalid json file";
-            break;
         case '}':
             if (count != 1)
                 throw "invalid json file";

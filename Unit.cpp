@@ -64,7 +64,8 @@ Unit Unit::ParseUnit(std::string &fileName)
 		std::string name = unitValues["name"];
 		int hp = std::stoi(unitValues["hp"]);
 		int dmg = std::stoi(unitValues["dmg"]);
-		return Unit(name, hp, dmg);
+		float atkCooldown = std::stof(unitValues["attackcooldown"]);
+		return Unit(name, hp, dmg, atkCooldown);
 	}
 	else
 		throw fileName;
@@ -75,10 +76,10 @@ void Unit::Attack(Unit &targetUnit)
 	targetUnit.TakeDamage(*this);
 }
 
-void Unit::Fight(Unit& first, Unit& second)
+void Unit::Fight(Unit &first, Unit &second)
 {
-	Unit* slowerUnit;
-	Unit* fasterUnit;
+	Unit *slowerUnit;
+	Unit *fasterUnit;
 
 	if (first.GetAtkCoolDown() < second.GetAtkCoolDown())
 	{
