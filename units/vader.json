@@ -1,5 +1,6 @@
 {
 	"name": "Vader",
-	"hp": 300,
-	"dmg": 7
+	"hp": 666,
+	"dmg": 42,
+	"attackcooldown": 6.9
 }
