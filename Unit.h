@@ -9,8 +9,7 @@
 
 #pragma once
 
-#include <string>
-#include <iostream>
+#include "JsonParser.h"
 
 class Unit
 {
@@ -65,5 +64,5 @@ public:
 
     /// attack the other unit and fight until one of them is dead
     virtual void Attack(Unit &targetUnit /** [in]*/);
-	static void Fight(Unit& first, Unit& second);
+	  static void Fight(Unit& first, Unit& second);
 };
