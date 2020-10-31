@@ -3,18 +3,6 @@
 #include "../Unit.h"
 #include "../Player.h"
 
-bool CompareMaps(std::map<std::string, std::string> m1, std::map<std::string, std::string> m2)
-{
-    std::string keys[4] = {"name", "hp", "dmg", "attackcooldown"};
-
-    for (int i = 0; i < sizeof(keys); i++)
-    {
-        if (m1[keys[i]] != m2[keys[i]])
-            return false;
-    }
-    return true;
-}
-
 TEST(ParserTest, CheckMapContent)
 {
     std::ifstream vaderFile("units/vader.json");
@@ -145,25 +133,25 @@ TEST(ParserTest, IndifferentToKeyOrder)
     std::map<std::string, std::string> vaderMap = JsonParser::Parse(vaderFile);
     std::ifstream vaderFileLookalike("units/vader_lookalike2.json");
     std::map<std::string, std::string> vaderMapLookalike = JsonParser::Parse(vaderFileLookalike);
-    ASSERT_TRUE(CompareMaps(vaderMap, vaderMapLookalike));
+    ASSERT_TRUE(JsonParser::CompareMaps(vaderMap, vaderMapLookalike));
 
     std::ifstream lukeFile("units/luke.json");
     std::map<std::string, std::string> lukeMap = JsonParser::Parse(lukeFile);
     std::ifstream lukeFileLookalike("units/luke_lookalike2.json");
     std::map<std::string, std::string> lukeMapLookalike = JsonParser::Parse(lukeFileLookalike);
-    ASSERT_TRUE(CompareMaps(lukeMap, lukeMapLookalike));
+    ASSERT_TRUE(JsonParser::CompareMaps(lukeMap, lukeMapLookalike));
 
     std::ifstream palpatineFile("units/palpatine.json");
     std::map<std::string, std::string> palpatineMap = JsonParser::Parse(palpatineFile);
     std::ifstream palpatineFileLookalike("units/palpatine_lookalike2.json");
     std::map<std::string, std::string> palpatineMapLookalike = JsonParser::Parse(palpatineFileLookalike);
-    ASSERT_TRUE(CompareMaps(palpatineMap, palpatineMapLookalike));
+    ASSERT_TRUE(JsonParser::CompareMaps(palpatineMap, palpatineMapLookalike));
 
     std::ifstream playerFile("units/player.json");
     std::map<std::string, std::string> playerMap = JsonParser::Parse(playerFile);
     std::ifstream playerFileLookalike("units/player_lookalike2.json");
     std::map<std::string, std::string> playerMapLookalike = JsonParser::Parse(playerFileLookalike);
-    ASSERT_TRUE(CompareMaps(playerMap, playerMapLookalike));
+    ASSERT_TRUE(JsonParser::CompareMaps(playerMap, playerMapLookalike));
 }
 
 int main(int argc, char **argv)
