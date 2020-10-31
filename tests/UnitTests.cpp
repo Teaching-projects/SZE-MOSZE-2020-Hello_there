@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "../JsonParser.h"
+#include "../Unit.h"
+#include "../Player.h"
 
 TEST(ParserTest, CheckMapContent)
 {
@@ -48,6 +50,80 @@ TEST(ParserTest, ExpectNoExceptions)
     std::string palpatineFile = "palpatine.json";
     EXPECT_NO_THROW(JsonParser::Parse(palpatineFile));
 }
+
+TEST(UnitClassTest, SuccessfulConstruction)
+{
+    std::string vaderFile = "vader.json";
+    EXPECT_NO_THROW(Unit::ParseUnit(vaderFile));
+
+    std::string palpatineFile = "palpatine.json";
+    EXPECT_NO_THROW(Unit::ParseUnit(palpatineFile));
+
+    std::string lukeFile = "luke.json";
+    EXPECT_NO_THROW(Unit::ParseUnit(lukeFile));
+}
+
+TEST(PlayerClassTest, SuccessfulConstruction)
+{
+    std::string playerFile = "player.json";
+    EXPECT_NO_THROW(Player(Unit::ParseUnit(playerFile)));
+}
+
+TEST(UnitClassTest, NoCrazyValues)
+{
+    std::string vaderFile = "vader.json";
+    Unit vader = Unit::ParseUnit(vaderFile);
+
+    ASSERT_TRUE(vader.GetDmg() > 0);
+    ASSERT_TRUE(vader.GetAtkCoolDown() > 0);
+    ASSERT_TRUE(vader.GetHp() > 0);
+
+    std::string palpatineFile = "palpatine.json";
+    Unit palpatine = Unit::ParseUnit(palpatineFile);
+
+    ASSERT_TRUE(palpatine.GetDmg() > 0);
+    ASSERT_TRUE(palpatine.GetAtkCoolDown() > 0);
+    ASSERT_TRUE(palpatine.GetHp() > 0);
+
+    std::string lukeFile = "luke.json";
+    Unit luke = Unit::ParseUnit(lukeFile);
+
+    ASSERT_TRUE(luke.GetDmg() > 0);
+    ASSERT_TRUE(luke.GetAtkCoolDown() > 0);
+    ASSERT_TRUE(luke.GetHp() > 0);
+
+    std::string playerFile = "player.json";
+    Unit player = Unit::ParseUnit(playerFile);
+
+    ASSERT_TRUE(player.GetDmg() > 0);
+    ASSERT_TRUE(player.GetAtkCoolDown() > 0);
+    ASSERT_TRUE(player.GetHp() > 0);
+}
+
+TEST(ParserTest, IndifferentToSpaces)
+{
+    std::ifstream vaderFile("units/vader.json");
+    std::map<std::string, std::string> vaderMap = JsonParser::Parse(vaderFile);
+    std::ifstream vaderFileLookalike("units/vader_lookalike.json");
+    std::map<std::string, std::string> vaderMapLookalike = JsonParser::Parse(vaderFileLookalike);
+    ASSERT_TRUE(vaderMap == vaderMapLookalike);
+
+    std::ifstream lukeFile("units/luke.json");
+    std::map<std::string, std::string> lukeMap = JsonParser::Parse(lukeFile);
+    std::ifstream lukeFileLookalike("units/luke_lookalike.json");
+    std::map<std::string, std::string> lukeMapLookalike = JsonParser::Parse(lukeFileLookalike);
+    ASSERT_TRUE(lukeMap == lukeMapLookalike);
+
+    std::ifstream palpatineFile("units/palpatine.json");
+    std::map<std::string, std::string> palpatineMap = JsonParser::Parse(palpatineFile);
+    std::ifstream palpatineFileLookalike("units/palpatine_lookalike.json");
+    std::map<std::string, std::string> palpatineMapLookalike = JsonParser::Parse(palpatineFileLookalike);
+    ASSERT_TRUE(palpatineMap == palpatineMapLookalike);
+}
+/*
+TEST(ParserTest, IndifferentToKeyOrder)
+{
+}*/
 
 int main(int argc, char **argv)
 {
