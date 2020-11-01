@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2dhello_5fthere',['SZE-MOSZE-2020-Hello_there',['../autotoc_md0.html',1,'']]]
+  ['monster',['Monster',['../class_monster.html',1,'Monster'],['../class_monster.html#a0fcdf2ceada355c064b584cc1e100afd',1,'Monster::Monster()']]]
 ];
