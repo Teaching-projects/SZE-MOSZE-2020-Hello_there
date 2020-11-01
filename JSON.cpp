@@ -1,24 +1,24 @@
-#include "JsonParser.h"
+#include "JSON.h"
 #include <iostream>
 #include <streambuf>
 
-std::map<std::string, std::string> JsonParser::Parse(const char *fileName)
+std::map<std::string, std::string> JSON::parseFromFile(const char *fileName)
 {
     std::string fName = "units/" + std::string(fileName);
     std::ifstream fstream(fName);
     if (!fstream.good())
         throw "problem with file stream";
 
-    return JsonParser::Parse(fstream);
+    return JSON::parseFromFile(fstream);
 }
 
-std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
+std::map<std::string, std::string> JSON::parseFromFile(std::ifstream &fileStream)
 {
     if (!fileStream.good())
         throw "problem with file stream";
 
     std::string s((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
-    JsonParser::CheckJsonIntegrity(s);
+    JSON::CheckJsonIntegrity(s);
 
     fileStream.clear();
     fileStream.seekg(0);
@@ -46,7 +46,7 @@ std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
     return myMap;
 }
 
-std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
+std::map<std::string, std::string> JSON::parseFromFile(std::string fileName)
 {
     std::ifstream fstream("units/" + fileName);
     if (!fstream.good())
@@ -54,7 +54,7 @@ std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
 
     std::string s((std::istreambuf_iterator<char>(fstream)),
                   std::istreambuf_iterator<char>());
-    JsonParser::CheckJsonIntegrity(s);
+    JSON::CheckJsonIntegrity(s);
 
     fstream.clear();
     fstream.seekg(0);
@@ -82,7 +82,7 @@ std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
     return myMap;
 }
 
-void JsonParser::CheckJsonIntegrity(std::string jsonStr)
+void JSON::CheckJsonIntegrity(std::string jsonStr)
 {
     char symbols[5] = {'{', '}', '\"', ':', ','};
 

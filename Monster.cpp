@@ -1,30 +1,30 @@
-#include "Unit.h"
+#include "Monster.h"
 #include <algorithm>
 #include <iostream>
 
-Unit::Unit(std::string name, int hp, int dmg, float atkCooldown)
+Monster::Monster(std::string name, int hp, int dmg, float atkCooldown)
 	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
 {
 }
 
-bool Unit::IsDead() const
+bool Monster::isAlive() const
 {
-	return !hp;
+	return hp;
 }
 
-int Unit::GetDmg() const
+int Monster::getDamage() const
 {
 	return dmg;
 }
 
-float Unit::GetAtkCoolDown() const
+float Monster::getAttackCoolDown() const
 {
 	return atkCooldown;
 }
 
-int Unit::TakeDamage(const Unit &atkUnit)
+int Monster::TakeDamage(const Monster &atkMonster)
 {
-	int dmgInflected = atkUnit.GetDmg();
+	int dmgInflected = atkMonster.getDamage();
 	if (dmgInflected > hp)
 	{
 		hp -= dmgInflected;
@@ -37,89 +37,89 @@ int Unit::TakeDamage(const Unit &atkUnit)
 	return dmgInflected;
 }
 
-std::string Unit::GetName() const
+std::string Monster::getName() const
 {
 	return name;
 }
 
-int Unit::GetHp() const
+int Monster::getHealthPoints() const
 {
 	return hp;
 }
 
-std::string Unit::ToString() const
+std::string Monster::ToString() const
 {
 	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
 	return s;
 }
 
-Unit Unit::ParseUnit(std::string &fileName)
+Monster Monster::ParseMonster(std::string &fileName)
 {
-	std::ifstream inputFile("units/" + fileName);
+	std::ifstream inputFile("Monsters/" + fileName);
 	if (inputFile.is_open())
 	{
-		std::map<std::string, std::string> unitValues;
-		unitValues = JsonParser::Parse(inputFile);
+		std::map<std::string, std::string> MonsterValues;
+		MonsterValues = JSON::Parse(inputFile);
 
-		std::string name = unitValues["name"];
-		int hp = std::stoi(unitValues["hp"]);
-		int dmg = std::stoi(unitValues["dmg"]);
-		float atkCooldown = std::stof(unitValues["attackcooldown"]);
-		return Unit(name, hp, dmg, atkCooldown);
+		std::string name = MonsterValues["name"];
+		int hp = std::stoi(MonsterValues["hp"]);
+		int dmg = std::stoi(MonsterValues["dmg"]);
+		float atkCooldown = std::stof(MonsterValues["attackcooldown"]);
+		return Monster(name, hp, dmg, atkCooldown);
 	}
 	else
 		throw fileName;
 }
 
-void Unit::Attack(Unit &targetUnit)
+void Monster::Attack(Monster &targetMonster)
 {
-	targetUnit.TakeDamage(*this);
+	targetMonster.TakeDamage(*this);
 }
 
-void Unit::Fight(Unit &first, Unit &second)
+void Monster::fightTilDeath(Monster& m)
 {
-	Unit *slowerUnit;
-	Unit *fasterUnit;
+	Monster *slowerMonster;
+	Monster *fasterMonster;
 
-	if (first.GetAtkCoolDown() < second.GetAtkCoolDown())
+	if (this->getAttackCoolDown() < m.getAttackCoolDown())
 	{
-		fasterUnit = &first;
-		slowerUnit = &second;
+		fasterMonster = this;
+		slowerMonster = &m;
 	}
 	else
 	{
-		fasterUnit = &second;
-		slowerUnit = &first;
+		fasterMonster = &m;
+		slowerMonster = this;
 	}
 
-	first.Attack(second);
-	second.Attack(first);
-	float slowerUnitTimer = 0.0;
+	this->Attack(m);
+	m.Attack(*this);
+	float slowerMonsterTimer = 0.0;
 
-	for (slowerUnitTimer += fasterUnit->GetAtkCoolDown(); !fasterUnit->IsDead() && !slowerUnit->IsDead(); slowerUnitTimer += fasterUnit->GetAtkCoolDown())
+	for (slowerMonsterTimer += fasterMonster->getAttackCoolDown(); !fasterMonster->isAlive() && !slowerMonster->isAlive(); slowerMonsterTimer += fasterMonster->getAttackCoolDown())
 	{
-		if (slowerUnitTimer > slowerUnit->GetAtkCoolDown())
+		if (slowerMonsterTimer > slowerMonster->getAttackCoolDown())
 		{
-			fasterUnit->Attack(*slowerUnit);
-			if (!fasterUnit->IsDead())
-				slowerUnit->Attack(*fasterUnit);
-			slowerUnitTimer -= slowerUnit->GetAtkCoolDown();
+			fasterMonster->Attack(*slowerMonster);
+			if (!fasterMonster->isAlive())
+				slowerMonster->Attack(*fasterMonster);
+			slowerMonsterTimer -= slowerMonster->getAttackCoolDown();
 		}
-		else if (slowerUnitTimer == slowerUnit->GetAtkCoolDown())
+		else if (slowerMonsterTimer == slowerMonster->getAttackCoolDown())
 		{
-			slowerUnit->Attack(*fasterUnit);
-			if (!slowerUnit->IsDead())
-				fasterUnit->Attack(*slowerUnit);
-			slowerUnitTimer = 0.0;
+			slowerMonster->Attack(*fasterMonster);
+			if (!slowerMonster->isAlive())
+				fasterMonster->Attack(*slowerMonster);
+			slowerMonsterTimer = 0.0;
 		}
 		else
 		{
-			slowerUnit->Attack(*fasterUnit);
+			slowerMonster->Attack(*fasterMonster);
 		}
 	}
 
-	if (fasterUnit->IsDead())
-		std::cout << slowerUnit->GetName() << " wins. Remaining HP: " << slowerUnit->GetHp() << std::endl;
+	if (fasterMonster->isAlive())
+		std::cout << slowerMonster->getName() << " wins. Remaining HP: " << slowerMonster->getHealthPoints() << std::endl;
 	else
-		std::cout << fasterUnit->GetName() << " wins. Remaining HP: " << fasterUnit->GetHp() << std::endl;
+		std::cout << fasterMonster->getName() << " wins. Remaining HP: " << fasterMonster->getHealthPoints() << std::endl;
 }

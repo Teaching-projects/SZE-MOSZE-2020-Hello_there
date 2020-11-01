@@ -1,22 +1,28 @@
-#include "Player.h"
+#include "Hero.h"
 #include <cmath>
 
-Player::Player(const Unit &u)
-	: Unit(u.GetName(), u.GetHp(), u.GetDmg(), u.GetAtkCoolDown()), maxHP(u.GetHp())
+Hero::Hero(const Monster &u)
+	: Monster(u.getName(), u.getHealthPoints(), u.getDamage(), u.getAttackCoolDown
+	()), maxHP(u.getHealthPoints())
 {
 }
 
-std::string Player::ToString() const
+std::string Hero::ToString() const
 {
-	return Unit::ToString() + "LVL: " + std::to_string(lvl) + " Xp: " + std::to_string(xp) + "\n";
+	return Monster::ToString() + "LVL: " + std::to_string(lvl) + " Xp: " + std::to_string(xp) + "\n";
 }
 
-int Player::getXp() const
+int Hero::getXp() const
 {
 	return xp;
 }
 
-void Player::LvlUp()
+int Hero::getMaxHealthPoints() const
+{
+	return maxHP;
+}
+
+void Hero::LvlUp()
 {
 	if (xp >= 100)
 	{
@@ -28,17 +34,17 @@ void Player::LvlUp()
 		LvlUp();
 	}
 }
-void Player::addXp(int number)
+void Hero::addXp(int number)
 {
 	xp += number;
 }
-void Player::Attack(Unit &attackedUnit)
+void Hero::Attack(Monster &attackedMonster)
 {
-	addXp(attackedUnit.TakeDamage(*this));
+	addXp(attackedMonster.TakeDamage(*this));
 	LvlUp();
 }
 
-int Player::getLvl() const
+int Hero::getLevel() const
 {
 	return lvl;
 }

@@ -1,7 +1,7 @@
 #pragma once
-#include "Unit.h"
+#include "Monster.h"
 #include <string>
-class Player : public Unit
+class Hero : public Monster
 {
 private:
 	int maxHP;
@@ -11,9 +11,10 @@ private:
 	void addXp(int number);
 
 public:
-	Player(const Unit &u);
+	Hero(const Monster &u);
 	std::string ToString() const override;
 	int getXp() const;
-	void Attack(Unit &) override;
-	int getLvl() const;
+	int getMaxHealthPoints() const;
+	void Attack(Monster &) override;
+	int getLevel() const;
 };

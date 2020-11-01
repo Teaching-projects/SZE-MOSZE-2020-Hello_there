@@ -1,7 +1,7 @@
 /**
-* \class Unit
+* \class Monster
 *
-* This class is responsible for creating units and managing fights between them.
+* This class is responsible for creating Monsters and managing fights between them.
 *
 * \author Holdmedve
 * \date 2020_10_09
@@ -9,60 +9,60 @@
 
 #pragma once
 
-#include "JsonParser.h"
+#include "JSON.h"
 
-class Unit
+class Monster
 {
 private:
     const std::string name;
-    const float atkCooldown; ///< time it takes for the unit to be able to hit again
+    const float atkCooldown; ///< time it takes for the Monster to be able to hit again
 
-    friend class Player;
+    friend class Hero;
 
 protected:
     int hp;
-    int dmg;
-
-    /// suffer the damage
-    int TakeDamage(const Unit &atkUnit /** [in] attacking Unit that causes this Unit some damage*/);
-
+	int dmg;
+	/// attack the other Monster and fight until one of them is dead
+	virtual void Attack(Monster& targetMonster /** [in]*/);
 public:
     /**
-     * \brief Unit constructor
-     * \param name the name of the unit
+     * \brief Monster constructor
+     * \param name the name of the Monster
      * \param hp health points
      * \param dmg damage
      * \param atkCooldown attack cooldown
     */
-    Unit(std::string name, int hp, int dmg, float atkCooldown);
-    virtual ~Unit() {}
+    Monster(std::string name, int hp, int dmg, float atkCooldown);
+    virtual ~Monster() {}
 
     /// \return boolean
-    bool IsDead() const;
+    bool isAlive() const;
 
     /// \return int
-    int GetDmg() const;
+    int getDamage() const;
 
     /// \return std::string
-    std::string GetName() const;
+    std::string getName() const;
 
     /// \return int
-    int GetHp() const;
+    int getHealthPoints() const;
 
     /// \return float
-    float GetAtkCoolDown() const;
+    float getAttackCoolDown() const;
 
-    /// returns an std::string that contains the unit's name, hp and dmg
+	/// suffer the damage
+	int TakeDamage(const Monster& atkMonster /** [in] attacking Monster that causes this Monster some damage*/);
+
+    /// returns an std::string that contains the Monster's name, hp and dmg
     virtual std::string ToString() const;
 
     /** 
-     * \brief given a json file, this static function creates a unit and returns it
-     * \return Unit
+     * \brief given a json file, this static function creates a Monster and returns it
+     * \return Monster
      * \throw std::string&
     */
-    static Unit ParseUnit(std::string &fileName /** [in] the json file name*/);
+    static Monster ParseMonster(std::string &fileName /** [in] the json file name*/);
 
-    /// attack the other unit and fight until one of them is dead
-    virtual void Attack(Unit &targetUnit /** [in]*/);
-	  static void Fight(Unit& first, Unit& second);
+    
+	void fightTilDeath(Monster& m);
 };
