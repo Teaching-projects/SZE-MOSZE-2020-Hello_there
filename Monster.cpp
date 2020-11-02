@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
-Monster::Monster(std::string name, int hp, int dmg, float atkCooldown)
+Monster::Monster(const std::string& name, int hp, int dmg, float atkCooldown)
 	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
 {
 }
@@ -53,18 +53,16 @@ std::string Monster::ToString() const
 	return s;
 }
 
-Monster Monster::ParseMonster(std::string &fileName)
+Monster Monster::parse(const std::string &fileName)
 {
-	std::ifstream inputFile("Monsters/" + fileName);
+	std::ifstream inputFile("units/" + fileName);
 	if (inputFile.is_open())
 	{
-		std::map<std::string, std::string> MonsterValues;
-		MonsterValues = JSON::Parse(inputFile);
-
-		std::string name = MonsterValues["name"];
-		int hp = std::stoi(MonsterValues["hp"]);
-		int dmg = std::stoi(MonsterValues["dmg"]);
-		float atkCooldown = std::stof(MonsterValues["attackcooldown"]);
+		JSON MonsterValues = JSON::parseFromStream(inputFile);
+		std::string name = MonsterValues.get<std::string>("name");
+		int hp = MonsterValues.get<int>("health_points");
+		int dmg = MonsterValues.get<int>("damage");
+		float atkCooldown = MonsterValues.get<float>("attack_cooldown");
 		return Monster(name, hp, dmg, atkCooldown);
 	}
 	else
@@ -96,7 +94,7 @@ void Monster::fightTilDeath(Monster& m)
 	m.Attack(*this);
 	float slowerMonsterTimer = 0.0;
 
-	for (slowerMonsterTimer += fasterMonster->getAttackCoolDown(); !fasterMonster->isAlive() && !slowerMonster->isAlive(); slowerMonsterTimer += fasterMonster->getAttackCoolDown())
+	for (slowerMonsterTimer += fasterMonster->getAttackCoolDown(); fasterMonster->isAlive() && slowerMonster->isAlive(); slowerMonsterTimer += fasterMonster->getAttackCoolDown())
 	{
 		if (slowerMonsterTimer > slowerMonster->getAttackCoolDown())
 		{
@@ -117,9 +115,4 @@ void Monster::fightTilDeath(Monster& m)
 			slowerMonster->Attack(*fasterMonster);
 		}
 	}
-
-	if (fasterMonster->isAlive())
-		std::cout << slowerMonster->getName() << " wins. Remaining HP: " << slowerMonster->getHealthPoints() << std::endl;
-	else
-		std::cout << fasterMonster->getName() << " wins. Remaining HP: " << fasterMonster->getHealthPoints() << std::endl;
 }

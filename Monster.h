@@ -15,7 +15,7 @@ class Monster
 {
 private:
     const std::string name;
-    const float atkCooldown; ///< time it takes for the Monster to be able to hit again
+    float atkCooldown; ///< time it takes for the Monster to be able to hit again
 
     friend class Hero;
 
@@ -32,7 +32,7 @@ public:
      * \param dmg damage
      * \param atkCooldown attack cooldown
     */
-    Monster(std::string name, int hp, int dmg, float atkCooldown);
+    Monster(const std::string& name, int hp, int dmg, float atkCooldown);
     virtual ~Monster() {}
 
     /// \return boolean
@@ -61,7 +61,7 @@ public:
      * \return Monster
      * \throw std::string&
     */
-    static Monster ParseMonster(std::string &fileName /** [in] the json file name*/);
+    static Monster parse(const std::string &fileName /** [in] the json file name*/);
 
     
 	void fightTilDeath(Monster& m);

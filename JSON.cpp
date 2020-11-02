@@ -1,86 +1,83 @@
 #include "JSON.h"
 #include <iostream>
 #include <streambuf>
+#include <regex>
 
-std::map<std::string, std::string> JSON::parseFromFile(const char *fileName)
+JSON::JSON(const std::map<std::string, std::any>& mymap) : data(mymap)
+{
+}
+
+int JSON::count(std::string s)
+{
+	return data.count(s);
+}
+
+JSON JSON::parseFromFile(const char *fileName)
 {
     std::string fName = "units/" + std::string(fileName);
     std::ifstream fstream(fName);
     if (!fstream.good())
-        throw "problem with file stream";
+        throw "Problem with file!";
 
-    return JSON::parseFromFile(fstream);
+	return parseFromStream(fstream);
 }
 
-std::map<std::string, std::string> JSON::parseFromFile(std::ifstream &fileStream)
+JSON JSON::parseFromStream(std::ifstream &fileStream)
 {
     if (!fileStream.good())
         throw "problem with file stream";
 
     std::string s((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
-    JSON::CheckJsonIntegrity(s);
-
-    fileStream.clear();
-    fileStream.seekg(0);
-    std::map<std::string, std::string> myMap;
-    char c;
-    while (fileStream.get(c))
-    {
-        if (c == '\"')
-        {
-            std::string key = "";
-            for (fileStream.get(c); c != '\"'; fileStream.get(c))
-                key += c;
-
-            for (fileStream.get(c); c == ':' || c == ' ' || c == '\"'; fileStream.get(c)) // skip until val starts
-                ;
-
-            std::string val = "";
-            for (; c != '\"' && c != '\n' && c != ','; fileStream.get(c))
-                val += c;
-
-            myMap[key] = val;
-        }
-    }
-
-    return myMap;
+	return parse(s);
 }
 
-std::map<std::string, std::string> JSON::parseFromFile(std::string fileName)
+JSON JSON::parseFromString(const std::string& string)
 {
-    std::ifstream fstream("units/" + fileName);
-    if (!fstream.good())
-        throw "problem with file stream";
-
-    std::string s((std::istreambuf_iterator<char>(fstream)),
-                  std::istreambuf_iterator<char>());
-    JSON::CheckJsonIntegrity(s);
-
-    fstream.clear();
-    fstream.seekg(0);
-
-    std::map<std::string, std::string> myMap;
-    for (std::string::size_type i = 0; i < s.size(); i++)
-    {
-        if (s[i] == '\"')
-        {
-            std::string key = "";
-            for (i++; s[i] != '\"'; i++)
-                key += s[i];
-
-            for (i++; s[i] == ':' || s[i] == ' ' || s[i] == '\"'; i++) // skip until val starts
-                ;
-
-            std::string val = "";
-            for (; s[i] != '\"' && s[i] != '\n' && s[i] != ','; i++)
-                val += s[i];
-
-            myMap[key] = val;
-        }
-    }
-
-    return myMap;
+	return parse(string);
 }
+
+JSON JSON::parse(const std::string& string)
+{
+	JSON::CheckJsonIntegrity(string);
+	static const std::regex Regex("\\s*\"([a-z_]*)\"\\s*:\\s*([0-9]*\\.?[0-9]+|\"[\\w\\s\\./]+\")\\s*([,}])\\s*");
+
+	std::string worker(string);
+	std::smatch matches;
+	std::map<std::string, std::any> myMap;
+
+	while (std::regex_search(worker, matches, Regex))
+	{
+
+		if (matches.size() == 4)
+		{
+
+			std::string value = matches[2].str();
+			if (value.at(0) == '"')
+			{
+				value.erase(value.begin());
+				value.erase(value.end() - 1);
+				myMap[matches[1]] = value;
+			}
+			else if (value.find_first_of('.') != std::string::npos)
+			{
+				myMap[matches[1]] = stof(value);
+			}
+			else
+			{
+				myMap[matches[1]] = stoi(value);
+			}
+		}
+		worker = matches.suffix();
+	}
+
+	if (worker.length())
+	{
+		throw JSON::ParseException("Key or value missing!");
+	}
+
+	return JSON(myMap);
+}
+
 
 void JSON::CheckJsonIntegrity(std::string jsonStr)
 {
@@ -113,10 +110,9 @@ void JSON::CheckJsonIntegrity(std::string jsonStr)
             if (count % 2 != 0)
                 throw "invalid json file";
             break;
-        case ':':
-            if (count != symbolCount[','] + 1)
-                throw "invalid json file";
-            break;
+		default:
+
+			break;
         }
     }
 }

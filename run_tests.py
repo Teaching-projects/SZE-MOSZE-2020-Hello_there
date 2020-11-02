@@ -5,22 +5,11 @@ import sys
 exe = './' + sys.argv[1]
 output = sys.argv[2]
 
-unitPairs = [['luke.json', 'palpatine.json'],
-             ['luke.json', 'vader.json'],
-             ['luke.json', 'player.json'],
-             ['palpatine.json', 'luke.json'],
-             ['palpatine.json', 'vader.json'],
-             ['palpatine.json', 'player.json'],
-             ['vader.json', 'luke.json'],
-             ['vader.json', 'palpatine.json'],
-             ['vader.json', 'player.json'],
-             ['player.json', 'luke.json'],
-             ['player.json', 'palpatine.json'],
-             ['player.json', 'vader.json']]
+Scenarios = [scenario1.json, scenario2.json]
 
 
 with open(output, 'w') as output_f:
-    for pair in unitPairs:
-        args = [exe, pair[0], pair[1]]
+    for scenario in Scenarios:
+        args = [exe, scenario]
         subprocess.call(args,
                         stdout=output_f, stderr=output_f)
