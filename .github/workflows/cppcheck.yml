@@ -9,6 +9,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Installing cppcheck
         run: sudo apt-get install cppcheck 
+      - name: Set permission
+        run: chmod a+x ./cppcheck.sh
       - name: Code analysis
         run: make cppcheck
       - name: Artifact performance
