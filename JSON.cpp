@@ -14,7 +14,7 @@ int JSON::count(std::string s)
 
 JSON JSON::parseFromFile(const char *fileName)
 {
-    std::string fName = "units/" + std::string(fileName);
+    std::string fName = std::string(fileName);
     std::ifstream fstream(fName);
     if (!fstream.good())
         throw "Problem with file!";
@@ -38,7 +38,7 @@ JSON JSON::parseFromString(const std::string& string)
 
 JSON JSON::parse(const std::string& string)
 {
-	JSON::CheckJsonIntegrity(string);
+	//JSON::CheckJsonIntegrity(string);
 	static const std::regex Regex("\\s*\"([a-z_]*)\"\\s*:\\s*([0-9]*\\.?[0-9]+|\"[\\w\\s\\./]+\")\\s*([,}])\\s*");
 
 	std::string worker(string);
