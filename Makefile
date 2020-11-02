@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = json.o player.o loop.o main.o
+OBJS = JsonParser.o Player.o Unit.o main.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++
