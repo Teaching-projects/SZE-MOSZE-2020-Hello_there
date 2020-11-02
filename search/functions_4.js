@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parsemonster',['ParseMonster',['../class_monster.html#a7820634c050a85b2eae66ea77625c0b5',1,'Monster']]]
+  ['parse',['parse',['../class_monster.html#a1f8af65cffe3a3310412a76d013b8b31',1,'Monster']]]
 ];
