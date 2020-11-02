@@ -10,7 +10,7 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2
 
-      - run: g++ -std=c++17 -Wall *.cpp -o main
+      - run: g++-8 -std=c++17 -Wall *.cpp -o main
 
       - name: setup python
         uses: actions/setup-python@v2
