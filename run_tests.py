@@ -5,7 +5,7 @@ import sys
 exe = './' + sys.argv[1]
 output = sys.argv[2]
 
-Scenarios = [scenario1.json, scenario2.json]
+Scenarios = ["scenario1.json", "scenario2.json"]
 
 
 with open(output, 'w') as output_f:
