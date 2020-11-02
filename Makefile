@@ -41,6 +41,7 @@ valgrind:
 	fi
 
 cppcheck:
+	bash -c "chmod a+x ./cppcheck.sh"
 	bash -c "./cppcheck.sh"
 
 documentation:
