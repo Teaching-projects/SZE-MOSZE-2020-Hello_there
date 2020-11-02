@@ -1,0 +1,32 @@
+name: Workflow
+
+on: push
+
+jobs:
+  memory_leak_test:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - name: Installing Valgrind
+          run: sudo apt-get install valgrind
+        - name: build
+          run: make build
+        - name: Checking memory leak
+          run: make valgrind
+
+  code_analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing cppcheck
+        run: sudo apt-get install cppcheck 
+      - name: Code analysis
+        run: make cppcheck
+      - name: Artifact performance
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./performance_warnings.txt
+      - name: Artifact style
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./style_warnings.txt
