@@ -1,9 +1,7 @@
 name: Basic Workflow
 
 on:
-  push:
-    branches:
-      - attackspeed
+  push
 
 jobs:
   build:
