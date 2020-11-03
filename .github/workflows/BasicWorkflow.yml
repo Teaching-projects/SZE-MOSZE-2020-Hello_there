@@ -19,7 +19,7 @@ jobs:
 
       - name: generate output
         run: |
-          python run_tests.py main output.txt
+          python run_tests.py main output.txt && output.txt
 
       - name: cat output
         run: cat output.txt
