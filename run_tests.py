@@ -16,5 +16,5 @@ with open(output, 'w') as output_f:
 '''
 
 with open(output, 'w') as output_f:
-    subprocess.call('./main scenario1.json',
+    subprocess.call(['./main', 'scenario1.json'],
                     stdout=output_f, stderr=output_f)
