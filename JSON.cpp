@@ -38,7 +38,7 @@ JSON JSON::parseFromString(const std::string& string)
 
 JSON JSON::parse(const std::string& string)
 {
-	//JSON::CheckJsonIntegrity(string);
+	JSON::CheckJsonIntegrity(string);
 	static const std::regex Regex("\\s*\"([a-z_]*)\"\\s*:\\s*([0-9]*\\.?[0-9]+|\"[\\w\\s\\./]+\")\\s*([,}])\\s*");
 
 	std::string worker(string);

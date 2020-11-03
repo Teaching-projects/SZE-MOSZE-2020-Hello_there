@@ -99,14 +99,14 @@ void Monster::fightTilDeath(Monster& m)
 		if (slowerMonsterTimer > slowerMonster->getAttackCoolDown())
 		{
 			fasterMonster->Attack(*slowerMonster);
-			if (!fasterMonster->isAlive())
+			if (slowerMonster->isAlive())
 				slowerMonster->Attack(*fasterMonster);
-			slowerMonsterTimer -= slowerMonster->getAttackCoolDown();
+			slowerMonsterTimer += slowerMonster->getAttackCoolDown();
 		}
 		else if (slowerMonsterTimer == slowerMonster->getAttackCoolDown())
 		{
 			slowerMonster->Attack(*fasterMonster);
-			if (!slowerMonster->isAlive())
+			if (fasterMonster->isAlive())
 				fasterMonster->Attack(*slowerMonster);
 			slowerMonsterTimer = 0.0;
 		}
