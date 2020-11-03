@@ -31,21 +31,29 @@ jobs:
         with:
           path: ./style_warnings.txt
 
-   doxygen:
+  documentation:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout repo content
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: Install gtest and cmake
+        run: sudo apt install libgtest-dev && sudo apt install cmake 
+      
+      - name: create test env
+        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
 
-    - run: sudo apt-get install doxygen
-    - run: sudo apt-get install graphviz
-    - run: make documentation
+      - name: create symbolic link 1
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+      - name: create symbolic link 2
+        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a 
 
-    - name: Push git subdir as branch
-      uses: s0/git-publish-subdir-action@v2.4.0
+      - name: compile
+        run: g++ -std=c++17 *.cpp
 
-    env:
-      REPO: self
-      BRANCH: gh-pages
-      FOLDER: DOCS/html
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      - name: cmake CMakeLists
+        run: cmake tests/CMakeLists.txt
+
+      - name: build test
+        run: cd tests && make
+        
+      - name: run test
+        run: tests/unit_tests
