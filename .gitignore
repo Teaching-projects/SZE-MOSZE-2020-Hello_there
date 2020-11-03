@@ -4,3 +4,6 @@ output.txt
 DOCS
 input.txt
 *.o
+*.obj
+*.pdb
+*.ilk

@@ -21,5 +21,11 @@ jobs:
         run: |
           python run_tests.py main output.txt
 
+      - name: cat output
+        run: cat output.txt
+
+      - name: cat good_output.txt
+        run: cat good_output.txt
+
       - name: check output
         run: diff output.txt good_output.txt
