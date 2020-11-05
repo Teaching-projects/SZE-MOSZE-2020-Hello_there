@@ -18,8 +18,7 @@ jobs:
           python-version: 3.6
 
       - name: generate output
-        run: |
-          python run_tests.py main output.txt && ls && cat output.txt
+        run: ./run_tests.sh
 
       - name: cat output
         run: cat output.txt
