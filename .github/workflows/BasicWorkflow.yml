@@ -30,4 +30,4 @@ jobs:
         run: cat good_output.txt
 
       - name: check output
-        run: diff output.txt good_output.txt
+        run: diff output1.txt good_output1.txt && diff output2.txt good_output2.txt
