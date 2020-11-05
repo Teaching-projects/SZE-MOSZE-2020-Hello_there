@@ -3,7 +3,7 @@
 #include <streambuf>
 #include <regex>
 
-JSON::JSON(const std::map<std::string, std::any>& mymap) : data(mymap)
+JSON::JSON(const std::map<std::string, std::any> &mymap) : data(mymap)
 {
 }
 
@@ -14,29 +14,29 @@ int JSON::count(std::string s)
 
 JSON JSON::parseFromFile(const char *fileName)
 {
-    std::string fName = std::string(fileName);
-    std::ifstream fstream(fName);
-    if (!fstream.good())
-        throw "Problem with file!";
+	std::string fName = std::string(fileName);
+	std::ifstream fstream(fName);
+	if (!fstream.good())
+		throw "Problem with file!";
 
 	return parseFromStream(fstream);
 }
 
 JSON JSON::parseFromStream(std::ifstream &fileStream)
 {
-    if (!fileStream.good())
-        throw "problem with file stream";
+	if (!fileStream.good())
+		throw "problem with file stream";
 
-    std::string s((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
+	std::string s((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
 	return parse(s);
 }
 
-JSON JSON::parseFromString(const std::string& string)
+JSON JSON::parseFromString(const std::string &string)
 {
 	return parse(string);
 }
 
-JSON JSON::parse(const std::string& string)
+JSON JSON::parse(const std::string &string)
 {
 	JSON::CheckJsonIntegrity(string);
 	static const std::regex Regex("\\s*\"([a-z_]*)\"\\s*:\\s*([0-9]*\\.?[0-9]+|\"[\\w\\s\\./]+\")\\s*([,}])\\s*");
@@ -56,15 +56,15 @@ JSON JSON::parse(const std::string& string)
 			{
 				value.erase(value.begin());
 				value.erase(value.end() - 1);
-				myMap[matches[1]] = value;
+				myMap.insert({matches[1], value});
 			}
 			else if (value.find_first_of('.') != std::string::npos)
 			{
-				myMap[matches[1]] = stof(value);
+				myMap.insert({matches[1], value});
 			}
 			else
 			{
-				myMap[matches[1]] = stoi(value);
+				myMap.insert({matches[1], value});
 			}
 		}
 		worker = matches.suffix();
@@ -78,41 +78,40 @@ JSON JSON::parse(const std::string& string)
 	return JSON(myMap);
 }
 
-
 void JSON::CheckJsonIntegrity(std::string jsonStr)
 {
-    char symbols[5] = {'{', '}', '\"', ':', ','};
+	char symbols[5] = {'{', '}', '\"', ':', ','};
 
-    std::map<char, int> symbolCount;
-    symbolCount['{'] = 0;
-    symbolCount['}'] = 0;
-    symbolCount['\"'] = 0;
-    symbolCount[':'] = 0;
-    symbolCount[','] = 0;
+	std::map<char, int> symbolCount;
+	symbolCount['{'] = 0;
+	symbolCount['}'] = 0;
+	symbolCount['\"'] = 0;
+	symbolCount[':'] = 0;
+	symbolCount[','] = 0;
 
-    for (std::string::size_type i = 0; i < jsonStr.size(); i++)
-    {
-        if (symbolCount.find(jsonStr[i]) != symbolCount.end())
-            symbolCount[jsonStr[i]]++;
-    }
+	for (std::string::size_type i = 0; i < jsonStr.size(); i++)
+	{
+		if (symbolCount.find(jsonStr[i]) != symbolCount.end())
+			symbolCount[jsonStr[i]]++;
+	}
 
-    for (int i = 0; i < sizeof(symbols) - 1; i++)
-    {
-        char count = symbolCount[symbols[i]];
-        switch (symbols[i])
-        {
-        case '{':
-        case '}':
-            if (count != 1)
-                throw "invalid json file";
-            break;
-        case '\"':
-            if (count % 2 != 0)
-                throw "invalid json file";
-            break;
+	for (int i = 0; i < sizeof(symbols) - 1; i++)
+	{
+		char count = symbolCount[symbols[i]];
+		switch (symbols[i])
+		{
+		case '{':
+		case '}':
+			if (count != 1)
+				throw "invalid json file";
+			break;
+		case '\"':
+			if (count % 2 != 0)
+				throw "invalid json file";
+			break;
 		default:
 
 			break;
-        }
-    }
+		}
+	}
 }

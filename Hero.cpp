@@ -2,10 +2,10 @@
 #include <iostream>
 #include <cmath>
 
-Hero::Hero(const std::string& name, int hp,int dmg,float atkCooldown,const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const float cdr_per_lvl)
+Hero::Hero(const std::string &name, int hp, int dmg, float atkCooldown, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const float cdr_per_lvl)
 	: Monster(name, hp, dmg, atkCooldown),
-	maxHP(hp),xp_per_lvl(xp_per_lvl),hp_per_lvl(hp_per_lvl),
-	dmg_per_lvl(dmg_per_lvl),cdr_per_lvl(cdr_per_lvl)
+	  maxHP(hp), xp_per_lvl(xp_per_lvl), hp_per_lvl(hp_per_lvl),
+	  dmg_per_lvl(dmg_per_lvl), cdr_per_lvl(cdr_per_lvl)
 {
 }
 
@@ -28,9 +28,9 @@ void Hero::LvlUp()
 {
 	if (xp >= xp_per_lvl)
 	{
-		maxHP +=hp_per_lvl;
+		maxHP += hp_per_lvl;
 		hp = maxHP;
-		dmg +=dmg_per_lvl;
+		dmg += dmg_per_lvl;
 		atkCooldown *= cdr_per_lvl;
 		lvl++;
 		xp -= xp_per_lvl;
@@ -51,7 +51,7 @@ int Hero::getLevel() const
 {
 	return lvl;
 }
-Hero Hero::parse(std::string& fileName)
+Hero Hero::parse(std::string &fileName)
 {
 	std::ifstream inputFile("units/" + fileName);
 	if (inputFile.is_open())
@@ -62,10 +62,12 @@ Hero Hero::parse(std::string& fileName)
 		int hp = HeroValues.get<int>("base_health_points");
 		int dmg = HeroValues.get<int>("base_damage");
 		float atkCooldown = HeroValues.get<float>("base_attack_cooldown");
+
 		int xp_per_lvl = HeroValues.get<int>("experience_per_level");
 		int hp_per_lvl = HeroValues.get<int>("health_point_bonus_per_level");
 		int dmg_per_lvl = HeroValues.get<int>("damage_bonus_per_level");
 		float cdr_per_lvl = HeroValues.get<float>("cooldown_multiplier_per_level");
+
 		return Hero(name, hp, dmg, atkCooldown, xp_per_lvl, hp_per_lvl, dmg_per_lvl, cdr_per_lvl);
 	}
 	else
