@@ -16,7 +16,7 @@ run: ./$(OUT)
 unit.o: Unit.cpp Unit.h JsonParser.h 
 	$(CC) $(CFLAGS) -c Unit.cpp
 	
-player.o: Player.cpp Player.h JsonParser.h 
+player.o: Player.cpp Player.h Unit.h JsonParser.h 
 	$(CC) $(CFLAGS) -c Player.cpp
 
 jsonParser.o: JsonParser.cpp JsonParser.h
