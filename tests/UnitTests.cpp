@@ -53,14 +53,11 @@ TEST(ParserTest, ExpectNoExceptions)
 
 TEST(UnitClassTest, SuccessfulConstruction)
 {
-    std::string vaderFile = "vader.json";
-    EXPECT_NO_THROW(Unit::ParseUnit(vaderFile));
+    EXPECT_NO_THROW(std::string("vader.json"));
 
-    std::string palpatineFile = "palpatine.json";
-    EXPECT_NO_THROW(Unit::ParseUnit(palpatineFile));
+    EXPECT_NO_THROW(std::string("palpatine.json"));
 
-    std::string lukeFile = "luke.json";
-    EXPECT_NO_THROW(Unit::ParseUnit(lukeFile));
+    EXPECT_NO_THROW(std::string("luke.json"));
 }
 
 TEST(PlayerClassTest, SuccessfulConstruction)
@@ -106,25 +103,25 @@ TEST(ParserTest, IndifferentToSpaces)
     std::map<std::string, std::string> vaderMap = JsonParser::Parse(vaderFile);
     std::ifstream vaderFileLookalike("units/vader_lookalike.json");
     std::map<std::string, std::string> vaderMapLookalike = JsonParser::Parse(vaderFileLookalike);
-    ASSERT_TRUE(vaderMap == vaderMapLookalike);
+    EXPECT_TRUE(vaderMap == vaderMapLookalike);
 
     std::ifstream lukeFile("units/luke.json");
     std::map<std::string, std::string> lukeMap = JsonParser::Parse(lukeFile);
     std::ifstream lukeFileLookalike("units/luke_lookalike.json");
     std::map<std::string, std::string> lukeMapLookalike = JsonParser::Parse(lukeFileLookalike);
-    ASSERT_TRUE(lukeMap == lukeMapLookalike);
+    EXPECT_TRUE(lukeMap == lukeMapLookalike);
 
     std::ifstream palpatineFile("units/palpatine.json");
     std::map<std::string, std::string> palpatineMap = JsonParser::Parse(palpatineFile);
     std::ifstream palpatineFileLookalike("units/palpatine_lookalike.json");
     std::map<std::string, std::string> palpatineMapLookalike = JsonParser::Parse(palpatineFileLookalike);
-    ASSERT_TRUE(palpatineMap == palpatineMapLookalike);
+    EXPECT_TRUE(palpatineMap == palpatineMapLookalike);
 
     std::ifstream playerFile("units/player.json");
     std::map<std::string, std::string> playerMap = JsonParser::Parse(playerFile);
     std::ifstream playerFileLookalike("units/player_lookalike.json");
     std::map<std::string, std::string> playerMapLookalike = JsonParser::Parse(playerFileLookalike);
-    ASSERT_TRUE(playerMap == playerMapLookalike);
+    EXPECT_TRUE(playerMap == playerMapLookalike);
 }
 
 TEST(ParserTest, IndifferentToKeyOrder)
@@ -133,25 +130,25 @@ TEST(ParserTest, IndifferentToKeyOrder)
     std::map<std::string, std::string> vaderMap = JsonParser::Parse(vaderFile);
     std::ifstream vaderFileLookalike("units/vader_lookalike2.json");
     std::map<std::string, std::string> vaderMapLookalike = JsonParser::Parse(vaderFileLookalike);
-    ASSERT_TRUE(JsonParser::CompareMaps(vaderMap, vaderMapLookalike));
+    EXPECT_TRUE(JsonParser::CompareMaps(vaderMap, vaderMapLookalike));
 
     std::ifstream lukeFile("units/luke.json");
     std::map<std::string, std::string> lukeMap = JsonParser::Parse(lukeFile);
     std::ifstream lukeFileLookalike("units/luke_lookalike2.json");
     std::map<std::string, std::string> lukeMapLookalike = JsonParser::Parse(lukeFileLookalike);
-    ASSERT_TRUE(JsonParser::CompareMaps(lukeMap, lukeMapLookalike));
+    EXPECT_TRUE(JsonParser::CompareMaps(lukeMap, lukeMapLookalike));
 
     std::ifstream palpatineFile("units/palpatine.json");
     std::map<std::string, std::string> palpatineMap = JsonParser::Parse(palpatineFile);
     std::ifstream palpatineFileLookalike("units/palpatine_lookalike2.json");
     std::map<std::string, std::string> palpatineMapLookalike = JsonParser::Parse(palpatineFileLookalike);
-    ASSERT_TRUE(JsonParser::CompareMaps(palpatineMap, palpatineMapLookalike));
+    EXPECT_TRUE(JsonParser::CompareMaps(palpatineMap, palpatineMapLookalike));
 
     std::ifstream playerFile("units/player.json");
     std::map<std::string, std::string> playerMap = JsonParser::Parse(playerFile);
     std::ifstream playerFileLookalike("units/player_lookalike2.json");
     std::map<std::string, std::string> playerMapLookalike = JsonParser::Parse(playerFileLookalike);
-    ASSERT_TRUE(JsonParser::CompareMaps(playerMap, playerMapLookalike));
+    EXPECT_TRUE(JsonParser::CompareMaps(playerMap, playerMapLookalike));
 }
 
 int main(int argc, char **argv)
