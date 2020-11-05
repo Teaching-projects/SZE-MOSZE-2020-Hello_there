@@ -17,6 +17,9 @@ jobs:
         with:
           python-version: 3.6
 
+      - name: Set permission
+        run: chmod a+x ./run_tests.sh
+
       - name: generate output
         run: ./run_tests.sh
 
