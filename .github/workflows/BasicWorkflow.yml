@@ -24,10 +24,7 @@ jobs:
         run: ./run_tests.sh
 
       - name: cat output
-        run: cat output.txt
-
-      - name: cat good_output.txt
-        run: cat good_output.txt
+        run: cat output1.txt && cat output2.txt
 
       - name: check output
         run: diff output1.txt good_output1.txt && diff output2.txt good_output2.txt
