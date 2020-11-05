@@ -7,3 +7,5 @@ input.txt
 *.obj
 *.pdb
 *.ilk
+output1.txt
+output2.txt
