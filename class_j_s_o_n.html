@@ -65,6 +65,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_j_s_o_n-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">JSON Class Reference</div>  </div>
@@ -84,10 +85,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a60a5d7532d5d1c06761c873034515640"><td class="memItemLeft" align="right" valign="top"><a id="a60a5d7532d5d1c06761c873034515640"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (std::string)</td></tr>
 <tr class="separator:a60a5d7532d5d1c06761c873034515640"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebfe4eae3134bdc249f9695c6406bdba"><td class="memTemplParams" colspan="2"><a id="aebfe4eae3134bdc249f9695c6406bdba"></a>
+<tr class="memitem:ae296ebf304c0c1894bf17a92fe5ffe2a"><td class="memTemplParams" colspan="2"><a id="ae296ebf304c0c1894bf17a92fe5ffe2a"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aebfe4eae3134bdc249f9695c6406bdba"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (const std::string &amp;key)</td></tr>
-<tr class="separator:aebfe4eae3134bdc249f9695c6406bdba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae296ebf304c0c1894bf17a92fe5ffe2a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (const std::string &amp;key) const</td></tr>
+<tr class="separator:ae296ebf304c0c1894bf17a92fe5ffe2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -103,6 +104,12 @@ static <a class="el" href="class_j_s_o_n.html">JSON</a>&#160;</td><td class="mem
 <tr class="memitem:a62fa7a31f06429b58f4e183415d224bc"><td class="memItemLeft" align="right" valign="top"><a id="a62fa7a31f06429b58f4e183415d224bc"></a>
 static <a class="el" href="class_j_s_o_n.html">JSON</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> (const std::string &amp;)</td></tr>
 <tr class="separator:a62fa7a31f06429b58f4e183415d224bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ab46673819cf095f62183d20d1d80ed4e"><td class="memItemLeft" align="right" valign="top"><a id="ab46673819cf095f62183d20d1d80ed4e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="class_j_s_o_n.html">JSON</a> &amp;lhs, const <a class="el" href="class_j_s_o_n.html">JSON</a> &amp;rhs)</td></tr>
+<tr class="separator:ab46673819cf095f62183d20d1d80ed4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_j_s_o_n_8h_source.html">JSON.h</a></li>
