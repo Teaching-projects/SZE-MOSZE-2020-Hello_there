@@ -65,22 +65,131 @@ $(function() {
 <div class="title">JsonParser Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_json_parser_8h_source.html">JsonParser.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a2127d09df562e6ebb057cc57beeb7220"><td class="memItemLeft" align="right" valign="top"><a id="a2127d09df562e6ebb057cc57beeb7220"></a>
-static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Parse</b> (const char *fileName)</td></tr>
+<tr class="memitem:a2127d09df562e6ebb057cc57beeb7220"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_parser.html#a2127d09df562e6ebb057cc57beeb7220">Parse</a> (const char *fileName)</td></tr>
+<tr class="memdesc:a2127d09df562e6ebb057cc57beeb7220"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads unit data from json file and returns it as map  <a href="#a2127d09df562e6ebb057cc57beeb7220">More...</a><br /></td></tr>
 <tr class="separator:a2127d09df562e6ebb057cc57beeb7220"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a5daf211c1d06702b02b494e80509d0"><td class="memItemLeft" align="right" valign="top"><a id="a5a5daf211c1d06702b02b494e80509d0"></a>
-static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Parse</b> (std::ifstream &amp;fileStream)</td></tr>
+<tr class="memitem:a5a5daf211c1d06702b02b494e80509d0"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_parser.html#a5a5daf211c1d06702b02b494e80509d0">Parse</a> (std::ifstream &amp;fileStream)</td></tr>
+<tr class="memdesc:a5a5daf211c1d06702b02b494e80509d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads unit data from json file and returns it as map  <a href="#a5a5daf211c1d06702b02b494e80509d0">More...</a><br /></td></tr>
 <tr class="separator:a5a5daf211c1d06702b02b494e80509d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a468b9ff019f90224df5f4c2d6ca08462"><td class="memItemLeft" align="right" valign="top"><a id="a468b9ff019f90224df5f4c2d6ca08462"></a>
-static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Parse</b> (std::string fileContent)</td></tr>
+<tr class="memitem:a468b9ff019f90224df5f4c2d6ca08462"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_parser.html#a468b9ff019f90224df5f4c2d6ca08462">Parse</a> (std::string fileContent)</td></tr>
+<tr class="memdesc:a468b9ff019f90224df5f4c2d6ca08462"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads unit data from json file and returns it as map  <a href="#a468b9ff019f90224df5f4c2d6ca08462">More...</a><br /></td></tr>
 <tr class="separator:a468b9ff019f90224df5f4c2d6ca08462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa71c78fea5598e7faa72df6cb8ebae3a"><td class="memItemLeft" align="right" valign="top"><a id="aa71c78fea5598e7faa72df6cb8ebae3a"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>CompareMaps</b> (std::map&lt; std::string, std::string &gt; m1, std::map&lt; std::string, std::string &gt; m2)</td></tr>
 <tr class="separator:aa71c78fea5598e7faa72df6cb8ebae3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>this class reads data from json files to create units</p>
+<dl class="section author"><dt>Author</dt><dd>gfellnerm </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020_10_31 </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2127d09df562e6ebb057cc57beeb7220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2127d09df562e6ebb057cc57beeb7220">&#9670;&nbsp;</a></span>Parse() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt; JsonParser::Parse </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>reads unit data from json file and returns it as map </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>the name of the json file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5a5daf211c1d06702b02b494e80509d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5daf211c1d06702b02b494e80509d0">&#9670;&nbsp;</a></span>Parse() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt; JsonParser::Parse </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream &amp;&#160;</td>
+          <td class="paramname"><em>fileStream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>reads unit data from json file and returns it as map </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileStream</td><td>stream of the json file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a468b9ff019f90224df5f4c2d6ca08462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a468b9ff019f90224df5f4c2d6ca08462">&#9670;&nbsp;</a></span>Parse() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt; JsonParser::Parse </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fileContent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>reads unit data from json file and returns it as map </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileContent</td><td>contents of the json file as one big string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_json_parser_8h_source.html">JsonParser.h</a></li>
 <li>JsonParser.cpp</li>
