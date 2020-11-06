@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
-Monster::Monster(const std::string& name, int hp, int dmg, float atkCooldown)
+Monster::Monster(const std::string &name, int hp, int dmg, float atkCooldown)
 	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
 {
 }
@@ -63,6 +63,7 @@ Monster Monster::parse(const std::string &fileName)
 		int hp = MonsterValues.get<int>("health_points");
 		int dmg = MonsterValues.get<int>("damage");
 		float atkCooldown = MonsterValues.get<float>("attack_cooldown");
+
 		return Monster(name, hp, dmg, atkCooldown);
 	}
 	else
@@ -74,7 +75,7 @@ void Monster::Attack(Monster &targetMonster)
 	targetMonster.TakeDamage(*this);
 }
 
-void Monster::fightTilDeath(Monster& m)
+void Monster::fightTilDeath(Monster &m)
 {
 	Monster *slowerMonster;
 	Monster *fasterMonster;

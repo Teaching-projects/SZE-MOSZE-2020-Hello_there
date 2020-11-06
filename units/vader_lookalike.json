@@ -2,9 +2,9 @@
     "name":                  "Vader",
     
 
-    "hp": 666,
+    "health_points": 666,
     
 
-	                       "dmg"          :          42,
-	"attackcooldown": 6.9
+	                       "damage"          :          42,
+	"attack_cooldown": 6.9
 }

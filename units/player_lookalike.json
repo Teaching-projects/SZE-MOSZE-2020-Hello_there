@@ -1,10 +1,10 @@
 {
 	 "name"  :    "Galen Marek",
-	"hp":                           200,
-                    "dmg"               : 15,
+	"health_points":                           200,
+                    "damage"               : 15,
     
 
 
 
-	"attackcooldown": 4.2
+	"attack_cooldown": 4.2
 }

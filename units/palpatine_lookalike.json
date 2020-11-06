@@ -1,9 +1,9 @@
 {
 	"name":         "Palpatine",
-	"hp": 111,
-	"dmg": 21,
+	"health_points": 111,
+	"damage": 21,
     
     
     
-    "attackcooldown": 2.5
+    "attack_cooldown": 2.5
 }

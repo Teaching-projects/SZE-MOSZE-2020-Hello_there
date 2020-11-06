@@ -12,12 +12,12 @@ int JSON::count(std::string s)
 	return data.count(s);
 }
 
-bool JSON::compareJSON(JSON& lhs, JSON& rhs)
+bool JSON::compareJSON(JSON &lhs, JSON &rhs)
 {
 	if (lhs.get<std::string>("name") == rhs.get<std::string>("name") &&
-		lhs.get<int>("hp") == rhs.get<int>("hp") &&
-		lhs.get<int>("dmg") == rhs.get<int>("dmg") &&
-		lhs.get<float>("attackcooldown") == rhs.get<float>("attackcooldown"))
+		lhs.get<int>("health_points") == rhs.get<int>("health_points") &&
+		lhs.get<int>("damage") == rhs.get<int>("damage") &&
+		lhs.get<float>("attack_cooldown") == rhs.get<float>("attack_cooldown"))
 	{
 		return true;
 	}
@@ -107,7 +107,7 @@ void JSON::CheckJsonIntegrity(std::string jsonStr)
 			symbolCount[jsonStr[i]]++;
 	}
 
-	for (int i = 0; i < sizeof(symbols)/sizeof(symbols[0]) - 1; i++)
+	for (int i = 0; i < sizeof(symbols) / sizeof(symbols[0]) - 1; i++)
 	{
 		char count = symbolCount[symbols[i]];
 		switch (symbols[i])

@@ -1,6 +1,6 @@
 {
-    "hp": 666,
-	"attackcooldown": 6.9,
-	"dmg": 42,
+    "health_points": 666,
+	"attack_cooldown": 6.9,
+	"damage": 42,
 	"name": "Vader"
 }

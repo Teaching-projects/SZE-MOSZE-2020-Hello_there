@@ -1,6 +1,6 @@
 {
-	"attackcooldown": 4.2,
-    "hp": 200,
-	"dmg": 15,
+	"attack_cooldown": 4.2,
+    "health_points": 200,
+	"damage": 15,
 	"name": "Galen Marek"
 }
