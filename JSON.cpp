@@ -115,3 +115,15 @@ void JSON::CheckJsonIntegrity(std::string jsonStr)
 		}
 	}
 }
+
+bool operator==(const JSON& lhs, const JSON& rhs)
+{
+	if (lhs.get<std::string>("name") == rhs.get<std::string>("name") &&
+		lhs.get<int>("hp") == rhs.get<int>("hp") &&
+		lhs.get<int>("dmg") == rhs.get<int>("dmg") &&
+		lhs.get<float>("attackcooldown") == rhs.get<float>("attackcooldown")) 
+	{
+		return true;
+	}
+	return false;
+}

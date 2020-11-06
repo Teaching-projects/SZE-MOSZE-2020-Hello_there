@@ -12,7 +12,7 @@ public:
 	JSON(const std::map<std::string, std::any> &);
 	int count(std::string);
 	template <typename T>
-	T get(const std::string &key)
+	 T get(const std::string &key) const
 	{
 		std::string value = std::any_cast<std::string>(data[key]);
 		std::any converted;
@@ -32,7 +32,7 @@ public:
 
 		return std::any_cast<T>(converted);
 	}
-
+	friend bool operator==(const JSON& lhs, const JSON& rhs);
 	static JSON parseFromFile(const char *fileName);
 	static JSON parseFromStream(std::ifstream &fileStream);
 	static JSON parseFromString(const std::string &fileContent);
