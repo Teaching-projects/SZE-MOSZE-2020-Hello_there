@@ -2,8 +2,8 @@ SHELL=/bin/bash
 
 OBJS = JSON.o Hero.o Monster.o main.o
 OUT = a.out
-CFLAGS = -Wall -std=c++17
-CC = g++-10
+CFLAGS =-10 -Wall -std=c++17
+CC = g++
 
 default: build
 
