@@ -95,7 +95,7 @@ void JSON::CheckJsonIntegrity(std::string jsonStr)
 			symbolCount[jsonStr[i]]++;
 	}
 
-	for (int i = 0; i < sizeof(symbols) - 1; i++)
+	for (int i = 0; i < sizeof(symbols)/sizeof(symbols[0]) - 1; i++)
 	{
 		char count = symbolCount[symbols[i]];
 		switch (symbols[i])

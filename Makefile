@@ -3,7 +3,7 @@ SHELL=/bin/bash
 OBJS = json.o hero.o monster.o main.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
-CC = g++
+CC = g++-8
 
 default: build
 
