@@ -69,28 +69,28 @@ TEST(PlayerClassTest, SuccessfulConstruction)
 TEST(UnitClassTest, NoCrazyValues)
 {
     std::string vaderFile = "vader.json";
-    Monster vader = Monster::parse(vaderFile);
+    Monster vader(Monster::parse(vaderFile));
 
     ASSERT_TRUE(vader.getDamage() > 0);
     ASSERT_TRUE(vader.getAttackCoolDown() > 0);
     ASSERT_TRUE(vader.getHealthPoints() > 0);
 
     std::string palpatineFile = "palpatine.json";
-    Monster palpatine = Monster::parse(palpatineFile);
+    Monster palpatine(Monster::parse(palpatineFile));
 
     ASSERT_TRUE(palpatine.getDamage() > 0);
     ASSERT_TRUE(palpatine.getAttackCoolDown() > 0);
     ASSERT_TRUE(palpatine.getHealthPoints() > 0);
 
     std::string lukeFile = "luke.json";
-    Monster luke = Monster::parse(lukeFile);
+    Monster luke(Monster::parse(lukeFile));
 
     ASSERT_TRUE(luke.getDamage() > 0);
     ASSERT_TRUE(luke.getAttackCoolDown() > 0);
     ASSERT_TRUE(luke.getHealthPoints() > 0);
 
     std::string playerFile = "player.json";
-    Monster player = Monster::parse(playerFile);
+    Monster player(Monster::parse(playerFile));
 
     ASSERT_TRUE(player.getDamage() > 0);
     ASSERT_TRUE(player.getAttackCoolDown() > 0);
