@@ -1,0 +1,9 @@
+{
+	"name":         "Palpatine",
+	"hp": 111,
+	"dmg": 21,
+    
+    
+    
+    "attackcooldown": 2.5
+}

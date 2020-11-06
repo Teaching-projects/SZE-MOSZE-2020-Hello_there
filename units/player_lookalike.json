@@ -1,0 +1,10 @@
+{
+	 "name"  :    "Galen Marek",
+	"hp":                           200,
+                    "dmg"               : 15,
+    
+
+
+
+	"attackcooldown": 4.2
+}
