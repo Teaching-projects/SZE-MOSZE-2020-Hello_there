@@ -12,7 +12,7 @@ public:
 	JSON(const std::map<std::string, std::any> &);
 	int count(std::string);
 	template <typename T>
-	 T get(const std::string &key) const
+	T get(const std::string &key)
 	{
 		std::string value = std::any_cast<std::string>(data[key]);
 		std::any converted;
