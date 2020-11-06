@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = JsonParser.o Player.o Unit.o main.o
+OBJS = json.o hero.o monster.o main.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++
@@ -14,13 +14,13 @@ run: ./$(OUT)
 	./$(OUT) $(UNIT1) $(UNIT2)
 	
 monster.o: Monster.cpp Monster.h JSON.h 
-	$(CC) $(CFLAGS) -c Unit.cpp
+	$(CC) $(CFLAGS) -c Monster.cpp
 	
 hero.o: Hero.cpp Hero.h Monster.h JSON.h 
-	$(CC) $(CFLAGS) -c Player.cpp
+	$(CC) $(CFLAGS) -c Hero.cpp
 
 json.o: JSON.cpp JSON.h
-	$(CC) $(CFLAGS) -c JsonParser.cpp
+	$(CC) $(CFLAGS) -c JSON.cpp
 
 main.o: main.cpp Monster.h Hero.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
