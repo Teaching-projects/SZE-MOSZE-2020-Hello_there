@@ -13,16 +13,16 @@ build: $(OBJS)
 run: ./$(OUT)
 	./$(OUT) $(UNIT1) $(UNIT2)
 	
-unit.o: Unit.cpp Unit.h JsonParser.h 
+monster.o: Monster.cpp Monster.h JSON.h 
 	$(CC) $(CFLAGS) -c Unit.cpp
 	
-player.o: Player.cpp Player.h Unit.h JsonParser.h 
+hero.o: Hero.cpp Hero.h Monster.h JSON.h 
 	$(CC) $(CFLAGS) -c Player.cpp
 
-jsonParser.o: JsonParser.cpp JsonParser.h
+json.o: JSON.cpp JSON.h
 	$(CC) $(CFLAGS) -c JsonParser.cpp
 
-main.o: main.cpp Unit.h Player.h JsonParser.h
+main.o: main.cpp Monster.h Hero.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 valgrind:
