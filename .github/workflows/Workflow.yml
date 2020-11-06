@@ -35,13 +35,13 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
-          
+
       - run: sudo apt install doxygen && sudo apt install graphviz
       - run: make documentation
       
       - name: Push git subdir as branch
         uses: s0/git-publish-subdir-action@v2.4.0
-      
+
       env:
         REPO: self
         BRANCH: gh-pages
