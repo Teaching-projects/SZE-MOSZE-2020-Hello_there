@@ -12,6 +12,18 @@ int JSON::count(std::string s)
 	return data.count(s);
 }
 
+bool JSON::compareJSON(JSON& lhs, JSON& rhs)
+{
+	if (lhs.get<std::string>("name") == rhs.get<std::string>("name") &&
+		lhs.get<int>("hp") == rhs.get<int>("hp") &&
+		lhs.get<int>("dmg") == rhs.get<int>("dmg") &&
+		lhs.get<float>("attackcooldown") == rhs.get<float>("attackcooldown"))
+	{
+		return true;
+	}
+	return false;
+}
+
 JSON JSON::parseFromFile(const char *fileName)
 {
 	std::string fName = std::string(fileName);
@@ -114,16 +126,4 @@ void JSON::CheckJsonIntegrity(std::string jsonStr)
 			break;
 		}
 	}
-}
-
-bool operator==(const JSON& lhs, const JSON& rhs)
-{
-	if (lhs.get<std::string>("name") == rhs.get<std::string>("name") &&
-		lhs.get<int>("hp") == rhs.get<int>("hp") &&
-		lhs.get<int>("dmg") == rhs.get<int>("dmg") &&
-		lhs.get<float>("attackcooldown") == rhs.get<float>("attackcooldown")) 
-	{
-		return true;
-	}
-	return false;
 }

@@ -103,25 +103,25 @@ TEST(ParserTest, IndifferentToSpaces)
     JSON vaderJSON = JSON::parseFromStream(vaderFile);
     std::ifstream vaderFileLookalike("units/vader_lookalike.json");
     JSON vaderJSONLookalike = JSON::parseFromStream(vaderFileLookalike);
-    EXPECT_TRUE(vaderJSON == vaderJSONLookalike);
+    EXPECT_TRUE(JSON::compareJSON(vaderJSON,vaderJSONLookalike));
 
     std::ifstream lukeFile("units/luke.json");
     JSON lukeJSON = JSON::parseFromStream(lukeFile);
     std::ifstream lukeFileLookalike("units/luke_lookalike.json");
     JSON lukeJSONLookalike = JSON::parseFromStream(lukeFileLookalike);
-    EXPECT_TRUE(lukeJSON == lukeJSONLookalike);
+    EXPECT_TRUE(JSON::compareJSON(lukeJSON, lukeJSONLookalike));
 
     std::ifstream palpatineFile("units/palpatine.json");
     JSON palpatineJSON = JSON::parseFromStream(palpatineFile);
     std::ifstream palpatineFileLookalike("units/palpatine_lookalike.json");
     JSON palpatineJSONLookalike = JSON::parseFromStream(palpatineFileLookalike);
-    EXPECT_TRUE(palpatineJSON == palpatineJSONLookalike);
+    EXPECT_TRUE(JSON::compareJSON(palpatineJSON, palpatineJSONLookalike));
 
     std::ifstream playerFile("units/player.json");
     JSON playerJSON = JSON::parseFromStream(playerFile);
     std::ifstream playerFileLookalike("units/player_lookalike.json");
     JSON playerJSONLookalike = JSON::parseFromStream(playerFileLookalike);
-    EXPECT_TRUE(playerJSON == playerJSONLookalike);
+    EXPECT_TRUE(JSON::compareJSON(playerJSON, playerJSONLookalike));
 }
 
 TEST(ParserTest, IndifferentToKeyOrder)
@@ -130,25 +130,25 @@ TEST(ParserTest, IndifferentToKeyOrder)
    JSON vaderJSON = JSON::parseFromStream(vaderFile);
     std::ifstream vaderFileLookalike("units/vader_lookalike2.json");
     JSON vaderJSONLookalike = JSON::parseFromStream(vaderFileLookalike);
-	EXPECT_TRUE(vaderJSON == vaderJSONLookalike);
+	EXPECT_TRUE(JSON::compareJSON(vaderJSON, vaderJSONLookalike));
 
     std::ifstream lukeFile("units/luke.json");
     JSON lukeJSON = JSON::parseFromStream(lukeFile);
     std::ifstream lukeFileLookalike("units/luke_lookalike2.json");
     JSON lukeJSONLookalike = JSON::parseFromStream(lukeFileLookalike);
-	EXPECT_TRUE(lukeJSON == lukeJSONLookalike);
+	EXPECT_TRUE(JSON::compareJSON(lukeJSON, lukeJSONLookalike));
 
     std::ifstream palpatineFile("units/palpatine.json");
     JSON palpatineJSON = JSON::parseFromStream(palpatineFile);
     std::ifstream palpatineFileLookalike("units/palpatine_lookalike2.json");
     JSON palpatineJSONLookalike = JSON::parseFromStream(palpatineFileLookalike);
-	EXPECT_TRUE(palpatineJSON == palpatineJSONLookalike);
+	EXPECT_TRUE(JSON::compareJSON(palpatineJSON, palpatineJSONLookalike));
 
     std::ifstream playerFile("units/player.json");
     JSON playerJSON = JSON::parseFromStream(playerFile);
     std::ifstream playerFileLookalike("units/player_lookalike2.json");
     JSON playerJSONLookalike = JSON::parseFromStream(playerFileLookalike);
-	EXPECT_TRUE(playerJSON == playerJSONLookalike);
+	EXPECT_TRUE(JSON::compareJSON(playerJSON, playerJSONLookalike));
 }
 
 int main(int argc, char **argv)

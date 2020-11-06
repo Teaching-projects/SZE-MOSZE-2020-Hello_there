@@ -32,7 +32,17 @@ public:
 
 		return std::any_cast<T>(converted);
 	}
-	friend bool operator==(const JSON& lhs, const JSON& rhs);
+	bool operator==(const JSON& lhs, const JSON& rhs) const
+	{
+		if (lhs.data["name"] == rhs.get<std::string>("name") &&
+			lhs.get<int>("hp") == rhs.get<int>("hp") &&
+			lhs.get<int>("dmg") == rhs.get<int>("dmg") &&
+			lhs.get<float>("attackcooldown") == rhs.get<float>("attackcooldown"))
+		{
+			return true;
+		}
+		return false;
+	}
 	static JSON parseFromFile(const char *fileName);
 	static JSON parseFromStream(std::ifstream &fileStream);
 	static JSON parseFromString(const std::string &fileContent);
@@ -45,7 +55,6 @@ public:
 	};
 
 private:
-	static bool isFloat(const char &, const char &);
 	std::map<std::string, std::any> data;
 	static void CheckJsonIntegrity(std::string jsonStr);
 };
