@@ -10,21 +10,21 @@ TEST(ParserTest, CheckMapContent)
     EXPECT_EQ("Vader", vaderJSON.get<std::string>("name"));
     EXPECT_EQ(666, vaderJSON.get<int>("hp"));
     EXPECT_EQ(42, vaderJSON.get<int>("dmg"));
-    EXPECT_EQ(6.9, vaderJSON.get<float>("attackcooldown"));
+    EXPECT_EQ(6.9f, vaderJSON.get<float>("attackcooldown"));
 
     std::ifstream lukeFile("units/luke.json");
     JSON lukeJSON = JSON::parseFromStream(lukeFile);
     EXPECT_EQ("Luke", lukeJSON.get<std::string>("name"));
     EXPECT_EQ(100, lukeJSON.get<int>("hp"));
     EXPECT_EQ(25, lukeJSON.get<int>("dmg"));
-    EXPECT_EQ(3.0, lukeJSON.get<float>("attackcooldown"));
+    EXPECT_EQ(3.0f, lukeJSON.get<float>("attackcooldown"));
 
     std::ifstream palpatineFile("units/palpatine.json");
     JSON palpatineJSON = JSON::parseFromStream(palpatineFile);
     EXPECT_EQ("Palpatine", palpatineJSON.get<std::string>("name"));
     EXPECT_EQ(111, palpatineJSON.get<int>("hp"));
     EXPECT_EQ(21, palpatineJSON.get<int>("dmg"));
-    EXPECT_EQ(2.5, palpatineJSON.get<float>("attackcooldown"));
+    EXPECT_EQ(2.5f, palpatineJSON.get<float>("attackcooldown"));
 }
 
 TEST(ParserTest, ExpectExceptions)
@@ -63,7 +63,7 @@ TEST(UnitClassTest, SuccessfulConstruction)
 TEST(PlayerClassTest, SuccessfulConstruction)
 {
     std::string playerFile = "player.json";
-    EXPECT_NO_THROW(Hero(Hero::parse(playerFile)));
+    EXPECT_NO_THROW(Hero::parse(playerFile));
 }
 
 TEST(UnitClassTest, NoCrazyValues)
