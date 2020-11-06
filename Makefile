@@ -2,8 +2,8 @@ SHELL=/bin/bash
 
 OBJS = JSON.o Hero.o Monster.o main.o
 OUT = a.out
-CFLAGS =-10 -Wall -std=c++17
-CC = g++
+CFLAGS = -Wall -std=c++17
+CC = g++-10
 
 default: build
 
@@ -11,15 +11,15 @@ build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
 
 run: ./$(OUT)
-	./$(OUT) $(UNIT1) $(UNIT2)
+	./$(OUT) $(SCENARIO)
 	
-monster.o: Monster.cpp Monster.h JSON.h 
+Monster.o: Monster.cpp Monster.h JSON.h 
 	$(CC) $(CFLAGS) -c Monster.cpp
 	
-hero.o: Hero.cpp Hero.h Monster.h JSON.h 
+Hero.o: Hero.cpp Hero.h Monster.h JSON.h 
 	$(CC) $(CFLAGS) -c Hero.cpp
 
-json.o: JSON.cpp JSON.h
+JSON.o: JSON.cpp JSON.h
 	$(CC) $(CFLAGS) -c JSON.cpp
 
 main.o: main.cpp Monster.h Hero.h JSON.h
