@@ -1,9 +1,7 @@
 name: Basic Workflow
 
 on:
-  push:
-    branches:
-      - attackspeed
+  push
 
 jobs:
   build:
@@ -12,16 +10,21 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2
 
-      - run: g++ -std=c++17 -Wall *.cpp -o main
+      - run: g++-10 -std=c++17 -Wall *.cpp -o main
 
       - name: setup python
         uses: actions/setup-python@v2
         with:
           python-version: 3.6
 
+      - name: Set permission
+        run: chmod +x ./run_tests.sh
+
       - name: generate output
-        run: |
-          python run_tests.py main output.txt
+        run: ./run_tests.sh
+
+      - name: cat output
+        run: cat output1.txt && cat output2.txt
 
       - name: check output
-        run: diff output.txt good_output.txt
+        run: diff output1.txt good_output1.txt && diff output2.txt good_output2.txt
