@@ -2,6 +2,18 @@
 #include <iostream>
 #include <streambuf>
 
+bool JsonParser::CompareMaps(std::map<std::string, std::string> m1, std::map<std::string, std::string> m2)
+{
+    std::string keys[4] = {"name", "hp", "dmg", "attackcooldown"};
+
+    for (int i = 0; i < sizeof(keys) / sizeof(keys[0]); i++)
+    {
+        if (m1[keys[i]] != m2[keys[i]])
+            return false;
+    }
+    return true;
+}
+
 std::map<std::string, std::string> JsonParser::Parse(const char *fileName)
 {
     std::string fName = "units/" + std::string(fileName);
@@ -32,12 +44,20 @@ std::map<std::string, std::string> JsonParser::Parse(std::ifstream &fileStream)
             for (fileStream.get(c); c != '\"'; fileStream.get(c))
                 key += c;
 
-            for (fileStream.get(c); c == ':' || c == ' ' || c == '\"'; fileStream.get(c)) // skip until val starts
+            for (fileStream.get(c); c == ':' || c == ' '; fileStream.get(c)) // skip until val starts
                 ;
 
             std::string val = "";
-            for (; c != '\"' && c != '\n' && c != ','; fileStream.get(c))
-                val += c;
+            if (c == '\"')
+            {
+                for (fileStream.get(c); c != '\"'; fileStream.get(c))
+                    val += c;
+            }
+            else
+            {
+                for (; c != '\n' && c != ',' && c != ' '; fileStream.get(c))
+                    val += c;
+            }
 
             myMap[key] = val;
         }
@@ -72,8 +92,19 @@ std::map<std::string, std::string> JsonParser::Parse(std::string fileName)
                 ;
 
             std::string val = "";
-            for (; s[i] != '\"' && s[i] != '\n' && s[i] != ','; i++)
+            for (; s[i] != '\"' && s[i] != '\n' && s[i] != ',' && s[i] != ' '; i++)
                 val += s[i];
+
+            if (s[i] == '\"')
+            {
+                for (i++; s[i] != '\"'; i++)
+                    val += s[i];
+            }
+            else
+            {
+                for (; s[i] != '\n' && s[i] != ',' && s[i] != ' '; i++)
+                    val += s[i];
+            }
 
             myMap[key] = val;
         }
@@ -99,7 +130,7 @@ void JsonParser::CheckJsonIntegrity(std::string jsonStr)
             symbolCount[jsonStr[i]]++;
     }
 
-    for (int i = 0; i < sizeof(symbols) - 1; i++)
+    for (int i = 0; i < sizeof(symbols) / sizeof(symbols[0]) - 1; i++)
     {
         char count = symbolCount[symbols[i]];
         switch (symbols[i])
