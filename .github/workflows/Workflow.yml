@@ -32,10 +32,8 @@ jobs:
           path: ./style_warnings.txt
 
   documentation:
-    deploy:
-        name: Deploy to github pages
-        runs-on: ubuntu-20.04
-        steps:
+    runs-on: ubuntu-20.04
+    steps:
       - uses: actions/checkout@master
           
       - run: sudo apt install doxygen && sudo apt install graphviz
