@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['getatkcooldown',['GetAtkCoolDown',['../class_unit.html#a4e73f1b75e707472179a222754af016a',1,'Unit']]],
-  ['getdmg',['GetDmg',['../class_unit.html#a17ebec030fc63b246c6e3f96326eb49f',1,'Unit']]],
-  ['gethp',['GetHp',['../class_unit.html#a33da6752c748ad80309f17ac07287a61',1,'Unit']]],
-  ['getlvl',['getLvl',['../class_player.html#a7850b4992760d7a2cdc82fb464745c76',1,'Player']]],
-  ['getname',['GetName',['../class_unit.html#a9ddebd39e011bae985c78ba777374fb2',1,'Unit']]],
-  ['getxp',['getXp',['../class_player.html#af02d884e296840e3ba36e8844ae4c20c',1,'Player']]]
+  ['getattackcooldown_1',['getAttackCoolDown',['../class_monster.html#abcb5bbbf0cd0ff5c599438511a63a6ae',1,'Monster']]],
+  ['getdamage_2',['getDamage',['../class_monster.html#a5872e19f684e0a81ead15da3e82992ad',1,'Monster']]],
+  ['gethealthpoints_3',['getHealthPoints',['../class_monster.html#acbfb552014439fe02d10f2492e60fe34',1,'Monster']]],
+  ['getname_4',['getName',['../class_monster.html#a28ae1112e37262ce150e3c02465b3dd5',1,'Monster']]]
 ];

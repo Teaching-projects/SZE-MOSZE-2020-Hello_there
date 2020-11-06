@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['attack',['Attack',['../class_player.html#aa01db86b1f961d67403bae044d136f63',1,'Player::Attack()'],['../class_unit.html#af8d1a6d9273049907222baf8260d9bc2',1,'Unit::Attack()']]]
+  ['attack_18',['Attack',['../class_hero.html#a87cc54e332acadfd21b4336903558708',1,'Hero::Attack()'],['../class_monster.html#a31fc41336f3593ac13b60c450274f166',1,'Monster::Attack()']]]
 ];
