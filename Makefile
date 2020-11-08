@@ -1,9 +1,9 @@
 SHELL=/bin/bash
 
-OBJS = JsonParser.o Player.o Unit.o main.o
+OBJS = JSON.o Hero.o Monster.o main.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
-CC = g++
+CC = g++-10
 
 default: build
 
@@ -11,18 +11,18 @@ build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
 
 run: ./$(OUT)
-	./$(OUT) $(UNIT1) $(UNIT2)
+	./$(OUT) $(SCENARIO)
 	
-unit.o: Unit.cpp Unit.h JsonParser.h 
-	$(CC) $(CFLAGS) -c Unit.cpp
+Monster.o: Monster.cpp Monster.h JSON.h 
+	$(CC) $(CFLAGS) -c Monster.cpp
 	
-player.o: Player.cpp Player.h Unit.h JsonParser.h 
-	$(CC) $(CFLAGS) -c Player.cpp
+Hero.o: Hero.cpp Hero.h Monster.h JSON.h 
+	$(CC) $(CFLAGS) -c Hero.cpp
 
-jsonParser.o: JsonParser.cpp JsonParser.h
-	$(CC) $(CFLAGS) -c JsonParser.cpp
+JSON.o: JSON.cpp JSON.h
+	$(CC) $(CFLAGS) -c JSON.cpp
 
-main.o: main.cpp Unit.h Player.h JsonParser.h
+main.o: main.cpp Monster.h Hero.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 valgrind:

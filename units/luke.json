@@ -1,6 +1,6 @@
 {
 	"name": "Luke",
-	"hp": 100,
-	"dmg": 25,
-	"attackcooldown": 3.0
+	"health_points": 100,
+	"damage": 25,
+	"attack_cooldown": 3.0
 }
