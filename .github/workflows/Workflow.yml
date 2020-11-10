@@ -56,7 +56,7 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2
 
-      - run: g++-10 -std=c++17 -Wall *.cpp -o main
+      - run: g++-9 -std=c++17 -Wall *.cpp -o main
 
       - name: Set permission
         run: chmod +x ./run_tests.sh
@@ -85,7 +85,7 @@ jobs:
         run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a 
 
       - name: compile
-        run: g++-10 -std=c++17 *.cpp
+        run: g++-9 -std=c++17 *.cpp
 
       - name: cmake CMakeLists
         run: cmake tests/CMakeLists.txt
