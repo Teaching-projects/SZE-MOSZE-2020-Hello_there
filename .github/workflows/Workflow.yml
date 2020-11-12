@@ -38,7 +38,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - run: make documentation
+      - name: Generate documentation
+        run: make documentation
       
       - name: Push git subdir as branch
         uses: s0/git-publish-subdir-action@v2.4.0
@@ -72,19 +73,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: create test env
-        run: cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+      - name: Create test env
+        run: make create_test_env
 
-      - name: create symbolic link 1
-        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
-      - name: create symbolic link 2
-        run: sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a 
+      - name: Create symbolic links
+        run: make symbolic_links
 
       - name: Build
         run: make build
 
       - name: Cmake
-        run: cmake tests/CMakeLists.txt
+        run: make cmake
 
       - name: Build unit tests
         run: make make_unittests
