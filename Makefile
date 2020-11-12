@@ -33,8 +33,23 @@ cppcheck:
 	bash -c "chmod a+x ./cppcheck.sh"
 	bash -c "./cppcheck.sh"
 
+in_out_tests:
+	chmod +x ./run_tests.sh
+	./run_tests.sh
+
 documentation:
 	doxygen doxconf
+
+
+cmake:
+	cmake tests/CMakeLists.txt
+
+
+make_unittests:
+	cd tests && make
+
+run_unittests:
+	tests/unit_tests
 	
 clean:
 	rm -rf $(OBJS) $(OUT)
