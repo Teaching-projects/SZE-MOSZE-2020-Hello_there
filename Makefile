@@ -37,26 +37,21 @@ in_out_tests:
 	chmod +x ./run_tests.sh
 	./run_tests.sh
 
+
 documentation:
 	doxygen doxconf
 
 
-cmake:
-	cmake tests/CMakeLists.txt
-
-
 make_unittests:
+	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a 
+	cmake tests/CMakeLists.txt
 	cd tests && make
+
 
 run_unittests:
 	tests/unit_tests
-
-create_test_env:
-	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
-
-symbolic_links:
-	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
-	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a 
 
 clean:
 	rm -rf $(OBJS) $(OUT)

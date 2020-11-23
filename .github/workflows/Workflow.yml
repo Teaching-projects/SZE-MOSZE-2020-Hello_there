@@ -72,18 +72,9 @@ jobs:
     container: holdmedve/mosze:latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Create test env
-        run: make create_test_env
-
-      - name: Create symbolic links
-        run: make symbolic_links
 
       - name: Build
         run: make build
-
-      - name: Cmake
-        run: make cmake
 
       - name: Build unit tests
         run: make make_unittests
