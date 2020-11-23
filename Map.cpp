@@ -4,7 +4,9 @@
 
 Map::Map(const std::string &filename)
 {
-    std::ifstream mapstream(filename);
+    std::string path = "maps/" + filename;
+    std::ifstream mapstream(path);
+
     std::string line;
     while (std::getline(mapstream, line))
     {
