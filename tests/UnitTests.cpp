@@ -2,6 +2,7 @@
 #include "../JSON.h"
 #include "../Monster.h"
 #include "../Hero.h"
+#include "../Map.h"
 
 TEST(ParserTest, CheckMapContent)
 {
@@ -149,6 +150,24 @@ TEST(ParserTest, IndifferentToKeyOrder)
     std::ifstream playerFileLookalike("units/player_lookalike2.json");
     JSON playerJSONLookalike = JSON::parseFromStream(playerFileLookalike);
     EXPECT_TRUE(JSON::compareJSON(playerJSON, playerJSONLookalike));
+}
+
+TEST(MapTest, SuccessfulConstruction)
+{
+    EXPECT_NO_THROW(Map("maps/map_1.txt"));
+}
+
+TEST(MapTest, HandleWrongIndex)
+{
+    Map m("maps/map_1.txt");
+    int bigX = 666;
+    int bigY = 666;
+
+    EXPECT_ANY_THROW(m.get(bigX, bigY));
+
+    int negX = -420;
+    int negY = -420;
+    EXPECT_ANY_THROW(m.get(negX, negY));
 }
 
 int main(int argc, char **argv)
