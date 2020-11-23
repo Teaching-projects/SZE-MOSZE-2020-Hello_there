@@ -3,7 +3,7 @@ SHELL=/bin/bash
 OBJS = JSON.o Hero.o Monster.o main.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
-CC = g++-10
+CC = g++-9
 
 default: build
 
@@ -33,8 +33,25 @@ cppcheck:
 	bash -c "chmod a+x ./cppcheck.sh"
 	bash -c "./cppcheck.sh"
 
+in_out_tests:
+	chmod +x ./run_tests.sh
+	./run_tests.sh
+
+
 documentation:
 	doxygen doxconf
-	
+
+
+make_unittests:
+	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a
+	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a 
+	cmake tests/CMakeLists.txt
+	cd tests && make
+
+
+run_unittests:
+	tests/unit_tests
+
 clean:
 	rm -rf $(OBJS) $(OUT)

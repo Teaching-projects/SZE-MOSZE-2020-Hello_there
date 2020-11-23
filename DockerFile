@@ -1,0 +1,22 @@
+FROM ubuntu:20.04
+
+ENV TZ=Europe/Budapest
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive --no-install-recommends apt-get install -y \
+  g++ \
+  gcc \
+
+  git \
+  sudo \
+  libgtest-dev \
+  
+  cmake \
+  make \
+  build-essential \
+  
+  cppcheck \
+  valgrind \
+  
+  doxygen \
+  graphviz \
+&& rm -rf /var/lib/apt/lists/*
