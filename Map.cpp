@@ -12,6 +12,7 @@ Map::Map(const std::string &filename)
     {
         map.push_back(line);
     }
+    mapstream.close();
 }
 
 Map::type Map::get(const int x, const int y) const

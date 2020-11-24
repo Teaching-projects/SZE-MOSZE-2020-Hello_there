@@ -154,12 +154,12 @@ TEST(ParserTest, IndifferentToKeyOrder)
 
 TEST(MapTest, SuccessfulConstruction)
 {
-    EXPECT_NO_THROW(Map("maps/map_1.txt"));
+    EXPECT_NO_THROW(Map("map_1.txt"));
 }
 
 TEST(MapTest, HandleWrongIndex)
 {
-    Map m("maps/map_1.txt");
+    Map m("map_1.txt");
     int bigX = 666;
     int bigY = 666;
 
@@ -168,6 +168,15 @@ TEST(MapTest, HandleWrongIndex)
     int negX = -420;
     int negY = -420;
     EXPECT_ANY_THROW(m.get(negX, negY));
+}
+
+TEST(MapTest, CorrectIndexNoThrow)
+{
+    Map m("map_1.txt");
+    int x = 4;
+    int y = 2;
+
+    EXPECT_NO_THROW(m.get(x, y));
 }
 
 int main(int argc, char **argv)
