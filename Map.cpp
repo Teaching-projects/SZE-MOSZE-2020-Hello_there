@@ -14,7 +14,7 @@ Map::Map(const std::string &filename)
     }
 }
 
-Map::type Map::get(int x, int y) const
+Map::type Map::get(const int x, const int y) const
 {
     if (x >= map.size() || x < 0)
     {
