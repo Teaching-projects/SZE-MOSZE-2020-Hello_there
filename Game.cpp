@@ -1,10 +1,12 @@
 #include "Game.h"
 
 Game::Game()
+    : hero(nullptr), map(nullptr)
 {
 }
 
 Game::Game(const std::string &mapFileName)
+    : hero(nullptr), map(nullptr)
 {
     Map m(mapFileName);
     SetMap(&m);
@@ -21,7 +23,7 @@ Game::~Game()
     monsters.clear();
 }
 
-void Game::SetMap(Map *m)
+void Game::SetMap(Map m)
 {
     map = m;
 }

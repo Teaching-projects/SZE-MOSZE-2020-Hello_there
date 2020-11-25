@@ -3,7 +3,7 @@
 #include <iostream>
 
 Monster::Monster(const std::string &name, int hp, int dmg, float atkCooldown)
-	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
+	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), x(-1), y(-1)
 {
 }
 

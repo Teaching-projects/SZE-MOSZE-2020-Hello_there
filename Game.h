@@ -15,7 +15,7 @@
 class Game
 {
 private:
-    Map *map;
+    Map map;
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
 
@@ -40,7 +40,7 @@ public:
     * @param map The map that will be set to this game.
     * @return void
     */
-    void SetMap(Map *map);
+    void SetMap(Map map);
 
     /**
     * @brief Places the hero on the given coordinates.
