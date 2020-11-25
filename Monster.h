@@ -15,7 +15,7 @@ class Monster
 {
 private:
     const std::string name;
-    float atkCooldown; ///< time it takes for the Monster to be able to hit again
+    double atkCooldown; ///< time it takes for the Monster to be able to hit again
 
     friend class Hero;
 
@@ -32,7 +32,7 @@ public:
      * \param dmg damage
      * \param atkCooldown attack cooldown
     */
-    Monster(const std::string& name, int hp, int dmg, float atkCooldown);
+    Monster(const std::string& name, int hp, int dmg, double atkCooldown);
     virtual ~Monster() {}
 
     /// \return boolean
@@ -47,8 +47,8 @@ public:
     /// \return int
     int getHealthPoints() const;
 
-    /// \return float
-    float getAttackCoolDown() const;
+    /// \return double
+    double getAttackCoolDown() const;
 
 	/// suffer the damage
 	int TakeDamage(const Monster& atkMonster /** [in] attacking Monster that causes this Monster some damage*/);
