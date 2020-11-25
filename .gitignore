@@ -12,3 +12,4 @@ output2.txt
 performance_warnings.txt
 style_warnings.txt
 warnings.txt
+gtest.sh

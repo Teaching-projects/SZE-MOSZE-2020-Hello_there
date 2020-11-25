@@ -196,6 +196,61 @@ TEST(GameTest, MethodTestExpectNoThrow)
     EXPECT_NO_THROW(g.putHero(h, 1, 1));
 }
 
+TEST(GameTest, MethodTestExpectThrow)
+{
+    EXPECT_THROW({
+        try
+        {
+            Game g;
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            g.putHero(h, 0, 0);
+        }
+        catch (const Map::WrongIndexException &e)
+        {
+            throw;
+        } }, Map::WrongIndexException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            g.putHero(h, 1, 1);
+            g.putHero(h, 1, 2);
+        }
+        catch (const Game::AlreadyHasHeroException &e)
+        {
+            throw;
+        } }, Game::AlreadyHasHeroException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            g.putHero(h, 0, 0);
+        }
+        catch (const Game::OccupiedException &e)
+        {
+            throw;
+        } }, Game::OccupiedException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            g.putHero(h, 1, 1);
+
+            Map *m = new Map("map_2.txt");
+            g.SetMap(m);
+        }
+        catch (const Game::AlreadyHasUnitsException &e)
+        {
+            throw;
+        } }, Game::AlreadyHasUnitsException);
+}
+
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);

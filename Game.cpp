@@ -35,6 +35,9 @@ void Game::SetMap(Map *m)
 
 void Game::putHero(Hero *h, int x, int y)
 {
+    if (map == nullptr)
+        throw Map::WrongIndexException();
+
     if (hero != nullptr)
         throw AlreadyHasHeroException();
 
