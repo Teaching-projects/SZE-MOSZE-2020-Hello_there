@@ -19,6 +19,8 @@ private:
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
 
+    bool TileIsFree(int x, int y) const;
+
 public:
     /**
     * @brief Returns an empty game, where the map isn't set.
@@ -49,5 +51,33 @@ public:
     * @param y col.
     * @return void
     */
-    void putHero(Hero hero, int x, int y);
+    void putHero(Hero *h, int x, int y);
+
+    class AlreadyHasUnitsException : std::exception
+    {
+    public:
+        /**
+        * @brief thrown when map already has Units and 
+        * SetMap for a new map is called
+        */
+        AlreadyHasUnitsException() {}
+    };
+
+    class AlreadyHasHeroException : std::exception
+    {
+    public:
+        /**
+        * @brief thrown when hero already exists in the game
+        */
+        AlreadyHasHeroException() {}
+    };
+
+    class OccupiedException : std::exception
+    {
+    public:
+        /**
+        * @brief thrown when trying to put unit on wall
+        */
+        OccupiedException() {}
+    };
 };
