@@ -9,7 +9,7 @@ Game::Game(const std::string &mapFileName)
     : hero(nullptr), map(nullptr)
 {
     Map m(mapFileName);
-    SetMap(&m);
+    SetMap(m);
 }
 
 Game::~Game()
