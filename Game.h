@@ -33,6 +33,8 @@ public:
     */
     Game(const std::string &mapFileName);
 
+    ~Game();
+
     /**
     * @brief Sets the given map to this game.
     * @param map The map that will be set to this game.
