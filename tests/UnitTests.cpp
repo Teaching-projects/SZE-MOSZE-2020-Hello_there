@@ -188,12 +188,12 @@ TEST(GameTest, SuccessfulConstruction)
 TEST(GameTest, MethodTestExpectNoThrow)
 {
     Game g("map_1.txt");
-    Map m("map_2.txt");
+    Map *m = new Map("map_2.txt");
 
-    EXPECT_NO_THROW(g.SetMap(&m));
+    EXPECT_NO_THROW(g.SetMap(m));
 
-    Hero h("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-    EXPECT_NO_THROW(g.putHero(&h, 1, 1));
+    Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+    EXPECT_NO_THROW(g.putHero(h, 1, 1));
 }
 
 int main(int argc, char **argv)
