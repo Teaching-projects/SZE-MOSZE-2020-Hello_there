@@ -3,6 +3,7 @@
 #include "../Monster.h"
 #include "../Hero.h"
 #include "../Map.h"
+#include "../Game.h"
 
 TEST(ParserTest, CheckMapContent)
 {
@@ -177,6 +178,22 @@ TEST(MapTest, CorrectIndexNoThrow)
     int y = 2;
 
     EXPECT_NO_THROW(m.get(x, y));
+}
+
+TEST(GameTest, SuccessfulConstruction)
+{
+    EXPECT_NO_THROW(Game("map_1.txt"));
+}
+
+TEST(GameTest, MethodTestExpectNoThrow)
+{
+    Game g("map_1.txt");
+    Map m("map_2.txt");
+
+    EXPECT_NO_THROW(g.SetMap(&m));
+
+    Hero h("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+    EXPECT_NO_THROW(g.putHero(&h, 1, 1));
 }
 
 int main(int argc, char **argv)
