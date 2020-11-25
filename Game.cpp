@@ -6,15 +6,17 @@ Game::Game()
 }
 
 Game::Game(const std::string &mapFileName)
-    : hero(nullptr), map(nullptr)
+    : hero(nullptr), map(new Map(mapFileName))
 {
-    Map m(mapFileName);
-    SetMap(m);
 }
 
 Game::~Game()
 {
-    delete hero;
+    if (hero != nullptr)
+        delete hero;
+
+    if (map != nullptr)
+        delete map;
 
     for (int i = 0; i < monsters.size(); i++)
     {
@@ -23,7 +25,7 @@ Game::~Game()
     monsters.clear();
 }
 
-void Game::SetMap(Map m)
+void Game::SetMap(Map *m)
 {
     if (monsters.size() > 0 || hero != nullptr)
         throw AlreadyHasUnitsException();
@@ -45,7 +47,7 @@ void Game::putHero(Hero *h, int x, int y)
 
 bool Game::TileIsFree(int x, int y) const
 {
-    if (map.get(x, y) == Map::Free)
+    if (map->get(x, y) == Map::Free)
         return true;
 
     return false;

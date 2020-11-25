@@ -1,10 +1,10 @@
 /**
- * @author Holdedve
- * @brief Game class
+ * \author Holdedve
+ * \brief Game class
  * 
  * The Game class is responsible for running the game loop.
  * 
- * @date 2020-11-25
+ * \date 2020-11-25
  */
 
 #pragma once
@@ -15,7 +15,7 @@
 class Game
 {
 private:
-    Map map;
+    Map *map;
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
 
@@ -42,7 +42,7 @@ public:
     * @param map The map that will be set to this game.
     * @return void
     */
-    void SetMap(Map map);
+    void SetMap(Map *map);
 
     /**
     * @brief Places the hero on the given coordinates.
