@@ -9,7 +9,6 @@
 
 #pragma once
 
-#include <string>
 #include "Map.h"
 #include "Hero.h"
 
