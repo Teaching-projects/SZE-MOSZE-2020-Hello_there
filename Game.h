@@ -37,6 +37,9 @@ public:
 
     ~Game();
 
+    Game(const Game &) = delete;
+    Game &operator=(const Game &) = delete;
+
     /**
     * @brief Sets the given map to this game.
     * @param map The map that will be set to this game.
