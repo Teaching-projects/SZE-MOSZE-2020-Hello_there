@@ -36,7 +36,7 @@ private:
 	std::map<std::string, listedValueVariant> data;
 	static void CheckJsonIntegrity(std::string jsonStr);
 	static valueVariant simpleTypeParse(const std::string& match);
-	static list JSON::arrayParse(const std::string& match);
+	static list arrayParse(const std::string& match);
 	template <class... Args>
 	struct variant_cast_proxy
 	{
