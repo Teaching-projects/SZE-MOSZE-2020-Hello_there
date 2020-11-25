@@ -12,7 +12,6 @@
 #include <string>
 #include "Map.h"
 #include "Hero.h"
-#include <vector>
 
 class Game
 {
