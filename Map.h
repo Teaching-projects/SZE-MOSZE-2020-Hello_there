@@ -37,6 +37,12 @@ public:
     */
     Map(const std::string &filename);
 
+    /**
+    * @brief Returns the type of the tile.
+    * @param x row
+    * @param y column
+    * @return Map::type
+    */
     Map::type get(const int x, const int y) const;
 
     /**
