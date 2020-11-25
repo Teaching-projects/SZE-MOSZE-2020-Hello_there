@@ -62,6 +62,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_game-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -74,6 +75,15 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="_game_8h_source.html">Game.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_already_has_hero_exception.html">AlreadyHasHeroException</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_already_has_units_exception.html">AlreadyHasUnitsException</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_occupied_exception.html">OccupiedException</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad59df6562a58a614fda24622d3715b65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a> ()</td></tr>
@@ -85,9 +95,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada4c85b749244d6e6d3ec85216a487b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#ada4c85b749244d6e6d3ec85216a487b2">SetMap</a> (<a class="el" href="class_map.html">Map</a> map)</td></tr>
 <tr class="memdesc:ada4c85b749244d6e6d3ec85216a487b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the given map to this game.  <a href="class_game.html#ada4c85b749244d6e6d3ec85216a487b2">More...</a><br /></td></tr>
 <tr class="separator:ada4c85b749244d6e6d3ec85216a487b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a2c9bbc80ff60480af1bbdf06cd3380a7">putHero</a> (<a class="el" href="class_hero.html">Hero</a> hero, int x, int y)</td></tr>
-<tr class="memdesc:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the hero on the given coordinates.  <a href="class_game.html#a2c9bbc80ff60480af1bbdf06cd3380a7">More...</a><br /></td></tr>
-<tr class="separator:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeba80794b908e417f354ca9f98bae5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#abeba80794b908e417f354ca9f98bae5c">putHero</a> (<a class="el" href="class_hero.html">Hero</a> *h, int x, int y)</td></tr>
+<tr class="memdesc:abeba80794b908e417f354ca9f98bae5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the hero on the given coordinates.  <a href="class_game.html#abeba80794b908e417f354ca9f98bae5c">More...</a><br /></td></tr>
+<tr class="separator:abeba80794b908e417f354ca9f98bae5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_game.html" title="Game class.">Game</a> class. </p>
@@ -142,8 +152,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2c9bbc80ff60480af1bbdf06cd3380a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c9bbc80ff60480af1bbdf06cd3380a7">&#9670;&nbsp;</a></span>putHero()</h2>
+<a id="abeba80794b908e417f354ca9f98bae5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeba80794b908e417f354ca9f98bae5c">&#9670;&nbsp;</a></span>putHero()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,8 +161,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Game::putHero </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_hero.html">Hero</a>&#160;</td>
-          <td class="paramname"><em>hero</em>, </td>
+          <td class="paramtype"><a class="el" href="class_hero.html">Hero</a> *&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
