@@ -76,17 +76,46 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ad59df6562a58a614fda24622d3715b65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a> ()</td></tr>
+<tr class="memdesc:ad59df6562a58a614fda24622d3715b65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an empty game, where the map isn't set.  <a href="class_game.html#ad59df6562a58a614fda24622d3715b65">More...</a><br /></td></tr>
+<tr class="separator:ad59df6562a58a614fda24622d3715b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a184c3be521c4ff92ff62f866c4a012a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a184c3be521c4ff92ff62f866c4a012a5">Game</a> (const std::string &amp;mapFileName)</td></tr>
-<tr class="memdesc:a184c3be521c4ff92ff62f866c4a012a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a txt it returns the created game.  <a href="class_game.html#a184c3be521c4ff92ff62f866c4a012a5">More...</a><br /></td></tr>
+<tr class="memdesc:a184c3be521c4ff92ff62f866c4a012a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a txt it returns the a game, with the map set.  <a href="class_game.html#a184c3be521c4ff92ff62f866c4a012a5">More...</a><br /></td></tr>
 <tr class="separator:a184c3be521c4ff92ff62f866c4a012a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f5025013ef6d89b519e7ce9104df832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a7f5025013ef6d89b519e7ce9104df832">SetMap</a> (<a class="el" href="class_map.html">Map</a> *map)</td></tr>
+<tr class="memdesc:a7f5025013ef6d89b519e7ce9104df832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the given map to this game.  <a href="class_game.html#a7f5025013ef6d89b519e7ce9104df832">More...</a><br /></td></tr>
+<tr class="separator:a7f5025013ef6d89b519e7ce9104df832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a2c9bbc80ff60480af1bbdf06cd3380a7">putHero</a> (<a class="el" href="class_hero.html">Hero</a> hero, int x, int y)</td></tr>
+<tr class="memdesc:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the hero on the given coordinates.  <a href="class_game.html#a2c9bbc80ff60480af1bbdf06cd3380a7">More...</a><br /></td></tr>
+<tr class="separator:a2c9bbc80ff60480af1bbdf06cd3380a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_game.html" title="Game class.">Game</a> class. </p>
 <dl class="section author"><dt>Author</dt><dd>Holdedve The <a class="el" href="class_game.html" title="Game class.">Game</a> class is responsible for running the game loop.</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-11-25 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad59df6562a58a614fda24622d3715b65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad59df6562a58a614fda24622d3715b65">&#9670;&nbsp;</a></span>Game() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game::Game </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns an empty game, where the map isn't set. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_game.html" title="Game class.">Game</a> </dd></dl>
+
+</div>
+</div>
 <a id="a184c3be521c4ff92ff62f866c4a012a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a184c3be521c4ff92ff62f866c4a012a5">&#9670;&nbsp;</a></span>Game()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a184c3be521c4ff92ff62f866c4a012a5">&#9670;&nbsp;</a></span>Game() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -101,7 +130,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Given a txt it returns the created game. </p>
+<p>Given a txt it returns the a game, with the map set. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mapFileName</td><td>Name of the txt, that contains the map. </td></tr>
@@ -109,6 +138,79 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_game.html" title="Game class.">Game</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2c9bbc80ff60480af1bbdf06cd3380a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c9bbc80ff60480af1bbdf06cd3380a7">&#9670;&nbsp;</a></span>putHero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::putHero </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_hero.html">Hero</a>&#160;</td>
+          <td class="paramname"><em>hero</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Places the hero on the given coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hero</td><td>the hero to be placed. </td></tr>
+    <tr><td class="paramname">x</td><td>row. </td></tr>
+    <tr><td class="paramname">y</td><td>col. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a7f5025013ef6d89b519e7ce9104df832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f5025013ef6d89b519e7ce9104df832">&#9670;&nbsp;</a></span>SetMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::SetMap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_map.html">Map</a> *&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the given map to this game. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>The map that will be set to this game. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

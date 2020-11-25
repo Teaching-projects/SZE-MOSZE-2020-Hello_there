@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['game_1',['Game',['../class_game.html',1,'Game'],['../class_game.html#a184c3be521c4ff92ff62f866c4a012a5',1,'Game::Game()']]],
+  ['game_1',['Game',['../class_game.html',1,'Game'],['../class_game.html#ad59df6562a58a614fda24622d3715b65',1,'Game::Game()'],['../class_game.html#a184c3be521c4ff92ff62f866c4a012a5',1,'Game::Game(const std::string &amp;mapFileName)']]],
   ['get_2',['get',['../class_map.html#a7f8fcdae37aa3637b4aa679555a2a001',1,'Map']]],
   ['getattackcooldown_3',['getAttackCoolDown',['../class_monster.html#abcb5bbbf0cd0ff5c599438511a63a6ae',1,'Monster']]],
   ['getdamage_4',['getDamage',['../class_monster.html#a5872e19f684e0a81ead15da3e82992ad',1,'Monster']]],

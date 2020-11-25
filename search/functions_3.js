@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['map_34',['Map',['../class_map.html#a871049c7b391e75039ccba5a4d757dae',1,'Map']]],
-  ['monster_35',['Monster',['../class_monster.html#ac364d4308c788b2898803e12ab97b5a2',1,'Monster']]]
+  ['map_36',['Map',['../class_map.html#a871049c7b391e75039ccba5a4d757dae',1,'Map']]],
+  ['monster_37',['Monster',['../class_monster.html#ac364d4308c788b2898803e12ab97b5a2',1,'Monster']]]
 ];
