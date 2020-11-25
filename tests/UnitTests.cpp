@@ -10,21 +10,21 @@ TEST(ParserTest, CheckMapContent)
     EXPECT_EQ("Vader", vaderJSON.get<std::string>("name"));
     EXPECT_EQ(666, vaderJSON.get<int>("health_points"));
     EXPECT_EQ(42, vaderJSON.get<int>("damage"));
-    EXPECT_EQ(6.9f, vaderJSON.get<double>("attack_cooldown"));
+    EXPECT_EQ(6.9, vaderJSON.get<double>("attack_cooldown"));
 
     std::ifstream lukeFile("units/luke.json");
     JSON lukeJSON = JSON::parseFromStream(lukeFile);
     EXPECT_EQ("Luke", lukeJSON.get<std::string>("name"));
     EXPECT_EQ(100, lukeJSON.get<int>("health_points"));
     EXPECT_EQ(25, lukeJSON.get<int>("damage"));
-    EXPECT_EQ(3.0f, lukeJSON.get<double>("attack_cooldown"));
+    EXPECT_EQ(3.0, lukeJSON.get<double>("attack_cooldown"));
 
     std::ifstream palpatineFile("units/palpatine.json");
     JSON palpatineJSON = JSON::parseFromStream(palpatineFile);
     EXPECT_EQ("Palpatine", palpatineJSON.get<std::string>("name"));
     EXPECT_EQ(111, palpatineJSON.get<int>("health_points"));
     EXPECT_EQ(21, palpatineJSON.get<int>("damage"));
-    EXPECT_EQ(2.5f, palpatineJSON.get<double>("attack_cooldown"));
+    EXPECT_EQ(2.5, palpatineJSON.get<double>("attack_cooldown"));
 }
 
 TEST(ParserTest, ExpectExceptions)
