@@ -37,6 +37,12 @@ int Monster::TakeDamage(const Monster &atkMonster)
 	return dmgInflected;
 }
 
+void Monster::SetCoordinates(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}
+
 std::string Monster::getName() const
 {
 	return name;

@@ -16,7 +16,7 @@ class Map
 {
 private:
     /**
-    * @brief Contains the map, each line is a string.
+    * @brief Contains the map, each row is a string.
     */
     std::vector<std::string> map;
 
