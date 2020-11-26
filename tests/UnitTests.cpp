@@ -78,7 +78,7 @@ TEST(UnitClassTest, NoCrazyValues)
     ASSERT_TRUE(vader.getDamage() > 0);
     ASSERT_TRUE(vader.getAttackCoolDown() > 0);
     ASSERT_TRUE(vader.getHealthPoints() > 0);
-	ASSERT_TRUE(vader.getDefense >= 0);
+	ASSERT_TRUE(vader.getDefense() >= 0);
 
     std::string palpatineFile = "palpatine.json";
     Monster palpatine(Monster::parse(palpatineFile));
@@ -86,7 +86,7 @@ TEST(UnitClassTest, NoCrazyValues)
     ASSERT_TRUE(palpatine.getDamage() > 0);
     ASSERT_TRUE(palpatine.getAttackCoolDown() > 0);
     ASSERT_TRUE(palpatine.getHealthPoints() > 0);
-	ASSERT_TRUE(palpatine.getDefense >= 0);
+	ASSERT_TRUE(palpatine.getDefense() >= 0);
 
     std::string lukeFile = "luke.json";
     Monster luke(Monster::parse(lukeFile));
@@ -94,7 +94,7 @@ TEST(UnitClassTest, NoCrazyValues)
     ASSERT_TRUE(luke.getDamage() > 0);
     ASSERT_TRUE(luke.getAttackCoolDown() > 0);
     ASSERT_TRUE(luke.getHealthPoints() > 0);
-	ASSERT_TRUE(luke.getDefense >= 0);
+	ASSERT_TRUE(luke.getDefense() >= 0);
 
     std::string playerFile = "player.json";
     Monster player(Monster::parse(playerFile));
@@ -102,7 +102,7 @@ TEST(UnitClassTest, NoCrazyValues)
     ASSERT_TRUE(player.getDamage() > 0);
     ASSERT_TRUE(player.getAttackCoolDown() > 0);
     ASSERT_TRUE(player.getHealthPoints() > 0);
-	ASSERT_TRUE(player.getDefense >= 0);
+	ASSERT_TRUE(player.getDefense() >= 0);
 }
 
 TEST(ParserTest, IndifferentToSpaces)
