@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2dhello_5fthere_18',['SZE-MOSZE-2020-Hello_there',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['setmap_19',['SetMap',['../class_game.html#a7f5025013ef6d89b519e7ce9104df832',1,'Game']]]
+  ['parse_17',['parse',['../class_monster.html#a1f8af65cffe3a3310412a76d013b8b31',1,'Monster']]],
+  ['parseexception_18',['ParseException',['../class_j_s_o_n_1_1_parse_exception.html',1,'JSON']]],
+  ['puthero_19',['PutHero',['../class_game.html#a5a021f14061ecc664336a3d29f76d1e5',1,'Game']]]
 ];
