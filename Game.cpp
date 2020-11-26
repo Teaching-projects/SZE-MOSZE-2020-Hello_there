@@ -67,8 +67,8 @@ void Game::Run()
     if (map == nullptr || hero == nullptr)
         throw NotInitializedException{};
 
-    return;
     hasStarted = true;
+    return;
 
     while (monsters.size() != 0 || hero->isAlive())
     {
