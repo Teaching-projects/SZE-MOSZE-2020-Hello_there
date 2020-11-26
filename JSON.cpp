@@ -17,7 +17,8 @@ bool JSON::compareJSON(JSON &lhs, JSON &rhs)
 	if (lhs.get<std::string>("name") == rhs.get<std::string>("name") &&
 		lhs.get<int>("health_points") == rhs.get<int>("health_points") &&
 		lhs.get<int>("damage") == rhs.get<int>("damage") &&
-		lhs.get<float>("attack_cooldown") == rhs.get<float>("attack_cooldown"))
+		lhs.get<float>("attack_cooldown") == rhs.get<float>("attack_cooldown") &&
+		lhs.get<int>("defense") == rhs.get<int>("defense"))
 	{
 		return true;
 	}

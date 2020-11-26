@@ -3,6 +3,6 @@
     "health_points": 200,
 	"damage": 15,
 	"defense" : 3,
-	"name": "Galen Marek"
-	"defense": 0,
+	"name": "Galen Marek",
+	"defense": 0
 }
