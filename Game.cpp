@@ -1,12 +1,12 @@
 #include "Game.h"
 
 Game::Game()
-    : hero(nullptr), map(nullptr)
+    : hero(nullptr), map(nullptr), hasStarted(false)
 {
 }
 
 Game::Game(const std::string &mapFileName)
-    : hero(nullptr), map(new Map(mapFileName))
+    : hero(nullptr), map(new Map(mapFileName)), hasStarted(false)
 {
 }
 
@@ -27,14 +27,20 @@ Game::~Game()
 
 void Game::SetMap(Map *m)
 {
+    if (hasStarted)
+        throw GameAlreadyStartedException();
+
     if (monsters.size() > 0 || hero != nullptr)
         throw AlreadyHasUnitsException();
 
     map = m;
 }
 
-void Game::putHero(Hero *h, int x, int y)
+void Game::PutHero(Hero *h, int x, int y)
 {
+    if (hasStarted)
+        throw GameAlreadyStartedException();
+
     if (map == nullptr)
         throw Map::WrongIndexException();
 
@@ -54,4 +60,12 @@ bool Game::TileIsFree(int x, int y) const
         return true;
 
     return false;
+}
+
+void Game::Run()
+{
+    if (map == nullptr || hero == nullptr)
+        throw NotInitializedException{};
+
+    hasStarted = true;
 }

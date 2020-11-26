@@ -18,6 +18,7 @@ private:
     Map *map;
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
+    bool hasStarted;
 
     bool TileIsFree(int x, int y) const;
 
@@ -54,7 +55,9 @@ public:
     * @param y col.
     * @return void
     */
-    void putHero(Hero *h, int x, int y);
+    void PutHero(Hero *h, int x, int y);
+
+    void Run();
 
     class AlreadyHasUnitsException : std::exception
     {
@@ -82,5 +85,23 @@ public:
         * @brief thrown when trying to put unit on wall
         */
         OccupiedException() {}
+    };
+
+    class NotInitializedException : std::exception
+    {
+    public:
+        /**
+        * @brief thrown when either hero or map isn't set when trying run the game
+        */
+        NotInitializedException() {}
+    };
+
+    class GameAlreadyStartedException : std::exception
+    {
+    public:
+        /**
+        * @brief thrown when trying to put hero or set map when the game has already started
+        */
+        GameAlreadyStartedException() {}
     };
 };

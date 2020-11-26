@@ -193,7 +193,7 @@ TEST(GameTest, MethodTestExpectNoThrow)
     EXPECT_NO_THROW(g.SetMap(m));
 
     Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-    EXPECT_NO_THROW(g.putHero(h, 1, 1));
+    EXPECT_NO_THROW(g.PutHero(h, 1, 1));
 }
 
 TEST(GameTest, MethodTestExpectThrow)
@@ -203,7 +203,7 @@ TEST(GameTest, MethodTestExpectThrow)
         {
             Game g;
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-            g.putHero(h, 0, 0);
+            g.PutHero(h, 0, 0);
         }
         catch (const Map::WrongIndexException &e)
         {
@@ -215,8 +215,8 @@ TEST(GameTest, MethodTestExpectThrow)
         {
             Game g("map_1.txt");
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-            g.putHero(h, 1, 1);
-            g.putHero(h, 1, 2);
+            g.PutHero(h, 1, 1);
+            g.PutHero(h, 1, 2);
         }
         catch (const Game::AlreadyHasHeroException &e)
         {
@@ -228,7 +228,7 @@ TEST(GameTest, MethodTestExpectThrow)
         {
             Game g("map_1.txt");
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-            g.putHero(h, 0, 0);
+            g.PutHero(h, 0, 0);
         }
         catch (const Game::OccupiedException &e)
         {
@@ -240,7 +240,7 @@ TEST(GameTest, MethodTestExpectThrow)
         {
             Game g("map_1.txt");
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-            g.putHero(h, 1, 1);
+            g.PutHero(h, 1, 1);
 
             Map *m = new Map("map_2.txt");
             g.SetMap(m);
@@ -249,6 +249,33 @@ TEST(GameTest, MethodTestExpectThrow)
         {
             throw;
         } }, Game::AlreadyHasUnitsException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            g.Run();
+        }
+        catch (const Game::NotInitializedException &e)
+        {
+            throw;
+        } }, Game::NotInitializedException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            g.PutHero(h, 1, 1);
+            g.Run();
+
+            Map *m = new Map("map_2.txt");
+            g.SetMap(m);
+        }
+        catch (const Game::GameAlreadyStartedException &e)
+        {
+            throw;
+        } }, Game::GameAlreadyStartedException);
 }
 
 int main(int argc, char **argv)
