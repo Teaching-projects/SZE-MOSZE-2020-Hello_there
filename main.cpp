@@ -49,8 +49,8 @@ int main(int argc, char** argv){
     try { 
         Hero hero{Hero::parse(hero_file)};
         std::list<Monster> monsters;
-        for (const auto& monster_file : monster_files)
-            monsters.push_back(Monster::parse(monster_file));        
+		for (const auto& monster_file : monster_files)
+			monsters.push_back(Monster::parse(monster_file));
 
         while (hero.isAlive() && !monsters.empty()) {
             std::cout 

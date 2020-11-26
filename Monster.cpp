@@ -2,8 +2,8 @@
 #include <algorithm>
 #include <iostream>
 
-Monster::Monster(const std::string &name, int hp, int dmg, float atkCooldown)
-	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
+Monster::Monster(const std::string& name, int hp, int dmg, float atkCooldown, int defense)
+	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), defense(defense)
 {
 }
 
@@ -17,6 +17,11 @@ int Monster::getDamage() const
 	return dmg;
 }
 
+int Monster::getDefense() const
+{
+	return defense;
+}
+
 float Monster::getAttackCoolDown() const
 {
 	return atkCooldown;
@@ -24,7 +29,8 @@ float Monster::getAttackCoolDown() const
 
 int Monster::TakeDamage(const Monster &atkMonster)
 {
-	int dmgInflected = atkMonster.getDamage();
+	int dmgInflected = atkMonster.getDamage()-defense;
+	if (dmgInflected < 0) dmgInflected = 0;
 	if (dmgInflected > hp)
 	{
 		hp -= dmgInflected;
@@ -49,7 +55,7 @@ int Monster::getHealthPoints() const
 
 std::string Monster::ToString() const
 {
-	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
+	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) +"AtkCD: "+std::to_string(atkCooldown)+"Defense: "+std::to_string(defense)+"\n";
 	return s;
 }
 
@@ -63,8 +69,9 @@ Monster Monster::parse(const std::string &fileName)
 		int hp = MonsterValues.get<int>("health_points");
 		int dmg = MonsterValues.get<int>("damage");
 		float atkCooldown = MonsterValues.get<float>("attack_cooldown");
+		int def = MonsterValues.get<int>("defense");
 
-		return Monster(name, hp, dmg, atkCooldown);
+		return Monster(name, hp, dmg, atkCooldown,def);
 	}
 	else
 		throw fileName;

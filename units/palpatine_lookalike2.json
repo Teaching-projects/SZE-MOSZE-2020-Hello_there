@@ -2,5 +2,6 @@
 	"health_points": 111,
 	"name": "Palpatine",
 	"attack_cooldown": 2.5,
-	"damage": 21
+	"damage": 21,
+	"defense" : 5
 }

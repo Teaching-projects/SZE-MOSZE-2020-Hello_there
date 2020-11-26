@@ -2,10 +2,10 @@
 #include <iostream>
 #include <cmath>
 
-Hero::Hero(const std::string &name, int hp, int dmg, float atkCooldown, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const float cdr_per_lvl)
-	: Monster(name, hp, dmg, atkCooldown),
+Hero::Hero(const std::string &name, int hp, int dmg, float atkCooldown,int defense, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const float cdr_per_lvl,const int def_per_lvl)
+	: Monster(name, hp, dmg, atkCooldown,defense),
 	  maxHP(hp), xp_per_lvl(xp_per_lvl), hp_per_lvl(hp_per_lvl),
-	  dmg_per_lvl(dmg_per_lvl), cdr_per_lvl(cdr_per_lvl)
+	  dmg_per_lvl(dmg_per_lvl), cdr_per_lvl(cdr_per_lvl),def_per_lvl(def_per_lvl)
 {
 }
 
@@ -32,6 +32,7 @@ void Hero::LvlUp()
 		hp = maxHP;
 		dmg += dmg_per_lvl;
 		atkCooldown *= cdr_per_lvl;
+		defense += def_per_lvl;
 		lvl++;
 		xp -= xp_per_lvl;
 		LvlUp();
@@ -62,13 +63,15 @@ Hero Hero::parse(std::string &fileName)
 		int hp = HeroValues.get<int>("base_health_points");
 		int dmg = HeroValues.get<int>("base_damage");
 		float atkCooldown = HeroValues.get<float>("base_attack_cooldown");
+		int defense = HeroValues.get<int>("base_defense");
 
 		int xp_per_lvl = HeroValues.get<int>("experience_per_level");
 		int hp_per_lvl = HeroValues.get<int>("health_point_bonus_per_level");
 		int dmg_per_lvl = HeroValues.get<int>("damage_bonus_per_level");
 		float cdr_per_lvl = HeroValues.get<float>("cooldown_multiplier_per_level");
+		int def_per_lvl = HeroValues.get<int>("defense_bonus_per_level");
 
-		return Hero(name, hp, dmg, atkCooldown, xp_per_lvl, hp_per_lvl, dmg_per_lvl, cdr_per_lvl);
+		return Hero(name, hp, dmg, atkCooldown,defense, xp_per_lvl, hp_per_lvl, dmg_per_lvl, cdr_per_lvl,def_per_lvl);
 	}
 	else
 		throw fileName;
