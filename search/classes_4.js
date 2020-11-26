@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wrongindexexception_22',['WrongIndexException',['../class_map_1_1_wrong_index_exception.html',1,'Map']]]
+  ['map_32',['Map',['../class_map.html',1,'']]],
+  ['monster_33',['Monster',['../class_monster.html',1,'']]]
 ];
