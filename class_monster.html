@@ -86,13 +86,15 @@ Inheritance diagram for Monster:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac364d4308c788b2898803e12ab97b5a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#ac364d4308c788b2898803e12ab97b5a2">Monster</a> (const std::string &amp;name, int hp, int dmg, float atkCooldown)</td></tr>
-<tr class="memdesc:ac364d4308c788b2898803e12ab97b5a2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_monster.html">Monster</a> constructor.  <a href="class_monster.html#ac364d4308c788b2898803e12ab97b5a2">More...</a><br /></td></tr>
-<tr class="separator:ac364d4308c788b2898803e12ab97b5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab66fad8bb4d30d1028e4b822cf12cb4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#ab66fad8bb4d30d1028e4b822cf12cb4a">Monster</a> (const std::string &amp;name, int hp, int dmg, float atkCooldown, int defense)</td></tr>
+<tr class="memdesc:ab66fad8bb4d30d1028e4b822cf12cb4a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_monster.html">Monster</a> constructor.  <a href="class_monster.html#ab66fad8bb4d30d1028e4b822cf12cb4a">More...</a><br /></td></tr>
+<tr class="separator:ab66fad8bb4d30d1028e4b822cf12cb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77ad18c44b3fb2df92b30ece4dc7847b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a77ad18c44b3fb2df92b30ece4dc7847b">isAlive</a> () const</td></tr>
 <tr class="separator:a77ad18c44b3fb2df92b30ece4dc7847b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5872e19f684e0a81ead15da3e82992ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a5872e19f684e0a81ead15da3e82992ad">getDamage</a> () const</td></tr>
 <tr class="separator:a5872e19f684e0a81ead15da3e82992ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafce7d1ded2630ea0d1d1089858b8fc0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#aafce7d1ded2630ea0d1d1089858b8fc0">getDefense</a> () const</td></tr>
+<tr class="separator:aafce7d1ded2630ea0d1d1089858b8fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28ae1112e37262ce150e3c02465b3dd5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a28ae1112e37262ce150e3c02465b3dd5">getName</a> () const</td></tr>
 <tr class="separator:a28ae1112e37262ce150e3c02465b3dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbfb552014439fe02d10f2492e60fe34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#acbfb552014439fe02d10f2492e60fe34">getHealthPoints</a> () const</td></tr>
@@ -130,6 +132,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hp</b></td></tr>
 <tr class="memitem:a23d6a9678d6df28b540c3be9f102daea"><td class="memItemLeft" align="right" valign="top"><a id="a23d6a9678d6df28b540c3be9f102daea"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>dmg</b></td></tr>
 <tr class="separator:a23d6a9678d6df28b540c3be9f102daea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad867513550d7fde7e4b79806fe90ae2f"><td class="memItemLeft" align="right" valign="top"><a id="ad867513550d7fde7e4b79806fe90ae2f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>defense</b></td></tr>
+<tr class="separator:ad867513550d7fde7e4b79806fe90ae2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -142,8 +147,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Hero</b></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Holdmedve </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020_10_09 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac364d4308c788b2898803e12ab97b5a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac364d4308c788b2898803e12ab97b5a2">&#9670;&nbsp;</a></span>Monster()</h2>
+<a id="ab66fad8bb4d30d1028e4b822cf12cb4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab66fad8bb4d30d1028e4b822cf12cb4a">&#9670;&nbsp;</a></span>Monster()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +175,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Hero</b></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>atkCooldown</em>&#160;</td>
+          <td class="paramname"><em>atkCooldown</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>defense</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -256,6 +267,24 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Hero</b></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int Monster::getDamage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="aafce7d1ded2630ea0d1d1089858b8fc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafce7d1ded2630ea0d1d1089858b8fc0">&#9670;&nbsp;</a></span>getDefense()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Monster::getDefense </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
