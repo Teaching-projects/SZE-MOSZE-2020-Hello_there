@@ -1,8 +1,9 @@
 #include "Monster.h"
 #include <algorithm>
 #include <iostream>
+#include <vector>
 
-Monster::Monster(const std::string &name, int hp, int dmg, float atkCooldown)
+Monster::Monster(const std::string &name, int hp, int dmg, double atkCooldown)
 	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
 {
 }
@@ -17,7 +18,7 @@ int Monster::getDamage() const
 	return dmg;
 }
 
-float Monster::getAttackCoolDown() const
+double Monster::getAttackCoolDown() const
 {
 	return atkCooldown;
 }
@@ -55,20 +56,24 @@ std::string Monster::ToString() const
 
 Monster Monster::parse(const std::string &fileName)
 {
-	std::ifstream inputFile("units/" + fileName);
-	if (inputFile.is_open())
-	{
-		JSON MonsterValues = JSON::parseFromStream(inputFile);
-		std::string name = MonsterValues.get<std::string>("name");
-		int hp = MonsterValues.get<int>("health_points");
-		int dmg = MonsterValues.get<int>("damage");
-		float atkCooldown = MonsterValues.get<float>("attack_cooldown");
+	JSON properties = JSON::parseFromFile("units/"+fileName);
 
-		return Monster(name, hp, dmg, atkCooldown);
+	const std::vector<std::string> expectedProps{ "name", "health_points", "damage", "attack_cooldown" };
+	for (unsigned int i = 0; i < expectedProps.size(); i++)
+	{
+		if (!properties.count(expectedProps[i]))
+		{
+			throw std::invalid_argument("Missing monster properties in file: " + fileName + " " + expectedProps[i]);
+		}
 	}
-	else
-		throw fileName;
+
+	return Monster(
+		properties.get<std::string>("name"),
+		properties.get<int>("health_points"),
+		properties.get<int>("damage"),
+		properties.get<double>("attack_cooldown"));
 }
+
 
 void Monster::Attack(Monster &targetMonster)
 {
@@ -93,7 +98,7 @@ void Monster::fightTilDeath(Monster &m)
 
 	this->Attack(m);
 	m.Attack(*this);
-	float slowerMonsterTimer = 0.0;
+	double slowerMonsterTimer = 0.0;
 
 	for (slowerMonsterTimer += fasterMonster->getAttackCoolDown(); fasterMonster->isAlive() && slowerMonster->isAlive(); slowerMonsterTimer += fasterMonster->getAttackCoolDown())
 	{

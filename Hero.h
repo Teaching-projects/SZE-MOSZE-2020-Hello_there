@@ -10,13 +10,13 @@ private:
 	const int xp_per_lvl;
 	const int hp_per_lvl;
 	const int dmg_per_lvl;
-	const float cdr_per_lvl;
+	const double cdr_per_lvl;
 	void LvlUp();
 	void addXp(int number);
 
 
 public:
-	Hero(const std::string& name, int hp, int dmg, float atkCooldown, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const float cdr_per_lvl);
+	Hero(const std::string& name, int hp, int dmg, double atkCooldown, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const double cdr_per_lvl);
 	std::string ToString() const override;
 	int getXp() const;
 	int getMaxHealthPoints() const;

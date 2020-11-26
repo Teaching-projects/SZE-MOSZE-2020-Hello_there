@@ -3,39 +3,26 @@
 #include <string>
 #include <map>
 #include <fstream>
-#include <iterator>
-#include <any>
+#include <variant>
+#include <list>
 
 class JSON
 {
 public:
-	JSON(const std::map<std::string, std::any> &);
+	typedef std::variant<int, double, std::string> valueVariant;
+	typedef std::list<valueVariant> list;
+	typedef std::variant<int, double, std::string, list> listedValueVariant;
+	JSON(std::map<std::string, listedValueVariant> data);
 	int count(std::string);
 	template <typename T>
-	T get(std::string key)
-	{
-		std::string value = std::any_cast<std::string>(data[key]);
-		std::any converted;
-
-		if (std::is_same<T, int>::value)
-		{
-			converted = (std::stoi(value));
-		}
-		else if (std::is_same<T, float>::value)
-		{
-			converted = (std::stof(value));
-		}
-		else if (std::is_same<T, std::string>::value)
-		{
-			converted = value;
-		}
-
-		return std::any_cast<T>(converted);
-	};
+	T get(const std::string &key)
+    {
+        return std::get<T>(data[key]);
+    }
 	static bool compareJSON(JSON &j1, JSON &j2);
 
-	static JSON parseFromFile(const char *fileName);
-	static JSON parseFromStream(std::ifstream &fileStream);
+	static JSON parseFromFile(const std::string& fileName);
+	static JSON parseFromStream(std::istream& fileStream);
 	static JSON parseFromString(const std::string &fileContent);
 	static JSON parse(const std::string &);
 
@@ -46,6 +33,28 @@ public:
 	};
 
 private:
-	std::map<std::string, std::any> data;
+	std::map<std::string, listedValueVariant> data;
 	static void CheckJsonIntegrity(std::string jsonStr);
+	static valueVariant simpleTypeParse(const std::string& match);
+	static list arrayParse(const std::string& match);
+	template <class... Args>
+	struct variant_cast_proxy
+	{
+		std::variant<Args...> v;
+
+		template <class... ToArgs>
+		operator std::variant<ToArgs...>() const
+		{
+			return std::visit(
+				[](auto&& arg) -> std::variant<ToArgs...> { return arg; },
+				v);
+		}
+	};
+
+	template <class... Args>
+	static auto variant_cast(const std::variant<Args...>& v) -> variant_cast_proxy<Args...>
+	{
+		return { v };
+	
+	}
 };
