@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2dhello_5fthere_20',['SZE-MOSZE-2020-Hello_there',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['setmap_21',['SetMap',['../class_game.html#a7f5025013ef6d89b519e7ce9104df832',1,'Game']]]
+  ['wrongindexexception_16',['WrongIndexException',['../class_map_1_1_wrong_index_exception.html',1,'Map::WrongIndexException'],['../class_map_1_1_wrong_index_exception.html#aeebaf6a2269de443f9ed95dba18a0410',1,'Map::WrongIndexException::WrongIndexException()']]]
 ];

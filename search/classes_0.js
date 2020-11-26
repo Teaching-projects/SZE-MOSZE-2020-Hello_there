@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['alreadyhasheroexception_26',['AlreadyHasHeroException',['../class_game_1_1_already_has_hero_exception.html',1,'Game']]],
-  ['alreadyhasunitsexception_27',['AlreadyHasUnitsException',['../class_game_1_1_already_has_units_exception.html',1,'Game']]]
+  ['hero_17',['Hero',['../class_hero.html',1,'']]]
 ];
