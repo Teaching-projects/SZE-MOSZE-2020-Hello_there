@@ -28,10 +28,10 @@ void bad_exit(int exitcode)
 
 int main(int argc, char **argv)
 {
-    Game g("map_1.txt");
-    Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-    g.PutHero(h, 1, 1);
-    g.Run();
+    //Game g("map_1.txt");
+    //Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+    //g.PutHero(h, 1, 1);
+    //g.Run();
 
     if (argc != 2)
         bad_exit(1);
