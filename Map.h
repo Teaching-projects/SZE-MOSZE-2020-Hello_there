@@ -45,6 +45,9 @@ public:
     */
     Map::type get(const int x, const int y) const;
 
+    int GetRowCount() const;
+    int GetColCount() const;
+
     /**
     * @brief Custom exception class.
     */

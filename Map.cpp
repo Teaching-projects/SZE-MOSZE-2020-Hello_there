@@ -29,3 +29,13 @@ Map::type Map::get(const int x, const int y) const
     std::string types = " #";
     return type(types.find(map[x][y]));
 }
+
+int Map::GetRowCount() const
+{
+    return map.size();
+}
+
+int Map::GetColCount() const
+{
+    return map[0].length();
+}

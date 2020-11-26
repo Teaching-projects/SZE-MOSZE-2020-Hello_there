@@ -68,4 +68,73 @@ void Game::Run()
         throw NotInitializedException{};
 
     hasStarted = true;
+
+    while (monsters.size() != 0 || hero->isAlive())
+    {
+        ShowMap();
+    }
+
+    if (hero->isAlive())
+    {
+        std::cout << hero->getName() + " cleared the map." << std::endl;
+        // bemenet: folytatni akarod-e? ha igen újra Run
+    }
+
+    ResetGame();
+
+    // loop here
+
+    // hasStarted = false;
+}
+
+void Game::ShowMap() const
+{
+    int rowCount = map->GetRowCount();
+    int colCount = map->GetColCount();
+
+    std::cout << char(201);
+    for (int i = 0; i < colCount; i++)
+        std::cout << char(205) << char(205);
+    std::cout << char(187) << std::endl;
+
+    for (int i = 0; i < rowCount; i++)
+    {
+        std::cout << char(186);
+        for (int j = 0; j < colCount; j++)
+        {
+            if (map->get(i, j) == Map::Free)
+                std::cout << char(177) << char(177);
+            else
+                std::cout << char(219) << char(219);
+        }
+        std::cout << char(186) << std::endl;
+    }
+
+    std::cout << char(200);
+    for (int i = 0; i < colCount; i++)
+        std::cout << char(205) << char(205);
+    std::cout << char(188) << std::endl;
+}
+
+void Game::ResetGame()
+{
+    if (hero != nullptr)
+    {
+        delete hero;
+        hero = nullptr;
+    }
+
+    if (map != nullptr)
+    {
+        delete map;
+        map = nullptr;
+    }
+
+    for (int i = 0; i < monsters.size(); i++)
+    {
+        delete monsters[i];
+    }
+    monsters.clear();
+
+    hasStarted = false;
 }

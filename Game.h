@@ -21,6 +21,8 @@ private:
     bool hasStarted;
 
     bool TileIsFree(int x, int y) const;
+    void ShowMap() const;
+    void ResetGame();
 
 public:
     /**
