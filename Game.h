@@ -26,6 +26,9 @@ private:
     void ReadUserInput();
     void SetCoordinateDifs(char way, int &difX, int &difY) const;
 
+    void LookForFights();
+    std::vector<std::pair<int, int>> GetMonsterCoordinates() const;
+
 public:
     /**
     * @brief Returns an empty game, where the map isn't set.

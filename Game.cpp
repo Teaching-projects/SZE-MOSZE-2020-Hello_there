@@ -83,6 +83,7 @@ void Game::Run()
 
     while (monsters.size() != 0 || hero->isAlive())
     {
+        LookForFights();
         ShowMap();
         ReadUserInput();
     }
@@ -92,12 +93,61 @@ void Game::Run()
         std::cout << hero->getName() + " cleared the map." << std::endl;
         // bemenet: folytatni akarod-e? ha igen újra Run
     }
+    else
+    {
+        std::cout << hero->getName() + " died." << std::endl;
+    }
 
     ResetGame();
 
     // loop here
 
     // hasStarted = false;
+}
+
+void Game::LookForFights()
+{
+    // if the hero and a monster/monsters are on same tile they fight
+
+    int heroX = hero->GetXCoo();
+    int heroY = hero->GetYCoo();
+
+    std::vector<std::pair<int, int>> monsterCoordinates = GetMonsterCoordinates();
+    std::vector<int> deadMonsters;
+
+    // look for monsters on hero's tile
+    for (int i = 0; i < monsterCoordinates.size(); i++)
+    {
+        if (heroX == monsterCoordinates[i].first && heroY == monsterCoordinates[i].second)
+        {
+
+            hero->fightTilDeath(*monsters[i]);
+
+            if (hero->isAlive() == false)
+                break;
+            else
+                deadMonsters.push_back(i);
+        }
+    }
+
+    // this is unreasonably complicated
+    std::vector<Monster *> aliveMonsters;
+    for (int i = 0; i < monsters.size(); i++)
+    {
+        bool dead = false;
+        for (int j = 0; j < deadMonsters.size(); j++)
+        {
+            if (i == deadMonsters[j])
+                dead = true;
+        }
+
+        if (!dead)
+            aliveMonsters.push_back(monsters[i]);
+    }
+
+    // update monsters
+    monsters = aliveMonsters;
+    deadMonsters.clear();
 }
 
 void Game::ReadUserInput()
@@ -127,6 +177,8 @@ void Game::ReadUserInput()
             for (int i = 0; i < 4; i++)
                 if (way == ways[i])
                     correctInput = true;
+            if (!correctInput)
+                std::cout << "Did you type it correctly? I don't think so, pleays try again." << std::endl;
         }
 
         SetCoordinateDifs(way, difX, difY);
@@ -134,7 +186,10 @@ void Game::ReadUserInput()
         if (map->get(heroX + difX, heroY + difY) == Map::Free)
             feasibleInput = true;
         else
+        {
             correctInput = false;
+            std::cout << "That move is not feasible. There's an obstacle." << std::endl;
+        }
     }
 
     // move hero
@@ -162,6 +217,21 @@ void Game::SetCoordinateDifs(char way, int &difX, int &difY) const
     }
 }
 
+std::vector<std::pair<int, int>> Game::GetMonsterCoordinates() const
+{
+    std::vector<std::pair<int, int>> monsterCoordinates;
+
+    for (int i = 0; i < monsters.size(); i++)
+    {
+        int x = monsters[i]->GetXCoo();
+        int y = monsters[i]->GetYCoo();
+
+        monsterCoordinates.push_back(std::pair(x, y));
+    }
+
+    return monsterCoordinates;
+}
+
 void Game::ShowMap() const
 {
     int rowCount = map->GetRowCount();
@@ -181,15 +251,7 @@ void Game::ShowMap() const
         }
     }
 
-    std::vector<std::pair<int, int>> monsterCoordinates;
-
-    for (int i = 0; i < monsters.size(); i++)
-    {
-        int x = monsters[i]->GetXCoo();
-        int y = monsters[i]->GetYCoo();
-
-        monsterCoordinates.push_back(std::pair(x, y));
-    }
+    std::vector<std::pair<int, int>> monsterCoordinates = GetMonsterCoordinates();
 
     // place hero
     int x = hero->GetXCoo();
