@@ -261,21 +261,6 @@ TEST(GameTest, MethodTestExpectThrow)
             throw;
         } }, Game::NotInitializedException);
 
-    EXPECT_THROW({
-        try
-        {
-            Game g("map_1.txt");
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
-            g.PutHero(h, 1, 1);
-            g.Run();
-
-            Map *m = new Map("map_2.txt");
-            g.SetMap(m);
-        }
-        catch (const Game::GameAlreadyStartedException &e)
-        {
-            throw;
-        } }, Game::GameAlreadyStartedException);
 }
 
 int main(int argc, char **argv)

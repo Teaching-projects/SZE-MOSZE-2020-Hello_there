@@ -53,6 +53,12 @@ public:
     /// \return float
     float getAttackCoolDown() const;
 
+    /// \return int
+    int GetXCoo() const;
+
+    /// \return int
+    int GetYCoo() const;
+
     /// suffer the damage
     int TakeDamage(const Monster &atkMonster /** [in] attacking Monster that causes this Monster some damage*/);
 

@@ -23,6 +23,8 @@ private:
     bool TileIsFree(int x, int y) const;
     void ShowMap() const;
     void ResetGame();
+    void ReadUserInput();
+    void SetCoordinateDifs(char way, int &difX, int &difY) const;
 
 public:
     /**
@@ -52,12 +54,21 @@ public:
 
     /**
     * @brief Places the hero on the given coordinates.
-    * @param hero the hero to be placed.
+    * @param h the hero to be placed.
     * @param x row.
     * @param y col.
     * @return void
     */
     void PutHero(Hero *h, int x, int y);
+
+    /**
+    * @brief Places the monster on the given coordinates.
+    * @param m the monster to be placed.
+    * @param x row.
+    * @param y col.
+    * @return void
+    */
+    void PutMonster(Monster *m, int x, int y);
 
     void Run();
 

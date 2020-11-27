@@ -17,6 +17,16 @@ int Monster::getDamage() const
 	return dmg;
 }
 
+int Monster::GetXCoo() const
+{
+	return x;
+}
+
+int Monster::GetYCoo() const
+{
+	return y;
+}
+
 float Monster::getAttackCoolDown() const
 {
 	return atkCooldown;
