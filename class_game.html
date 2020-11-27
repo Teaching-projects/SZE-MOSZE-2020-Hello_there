@@ -108,6 +108,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5a021f14061ecc664336a3d29f76d1e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a5a021f14061ecc664336a3d29f76d1e5">PutHero</a> (<a class="el" href="class_hero.html">Hero</a> *h, int x, int y)</td></tr>
 <tr class="memdesc:a5a021f14061ecc664336a3d29f76d1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the hero on the given coordinates.  <a href="class_game.html#a5a021f14061ecc664336a3d29f76d1e5">More...</a><br /></td></tr>
 <tr class="separator:a5a021f14061ecc664336a3d29f76d1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d979fb9bc8e06a88d210d7eb04a555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">PutMonster</a> (<a class="el" href="class_monster.html">Monster</a> *m, int x, int y)</td></tr>
+<tr class="memdesc:a06d979fb9bc8e06a88d210d7eb04a555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the monster on the given coordinates.  <a href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">More...</a><br /></td></tr>
+<tr class="separator:a06d979fb9bc8e06a88d210d7eb04a555"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="memItemLeft" align="right" valign="top"><a id="a96341ca5b54d90adc3ecb3bf0bcd2312"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Run</b> ()</td></tr>
 <tr class="separator:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,7 +203,52 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Run</b> ()</td></tr>
 <p>Places the hero on the given coordinates. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hero</td><td>the hero to be placed. </td></tr>
+    <tr><td class="paramname">h</td><td>the hero to be placed. </td></tr>
+    <tr><td class="paramname">x</td><td>row. </td></tr>
+    <tr><td class="paramname">y</td><td>col. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a06d979fb9bc8e06a88d210d7eb04a555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d979fb9bc8e06a88d210d7eb04a555">&#9670;&nbsp;</a></span>PutMonster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::PutMonster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_monster.html">Monster</a> *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Places the monster on the given coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>the monster to be placed. </td></tr>
     <tr><td class="paramname">x</td><td>row. </td></tr>
     <tr><td class="paramname">y</td><td>col. </td></tr>
   </table>
