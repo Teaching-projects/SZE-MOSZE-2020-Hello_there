@@ -2,5 +2,6 @@
     "health_points": 100,
 	"name": "Luke",
 	"attack_cooldown": 3.0,
-	"damage": 25
+	"damage": 25,
+	"defense" : 10
 }

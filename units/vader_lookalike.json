@@ -6,5 +6,6 @@
     
 
 	                       "damage"          :          42,
-	"attack_cooldown": 6.9
+	"attack_cooldown": 6.9,
+	"defense": 15
 }

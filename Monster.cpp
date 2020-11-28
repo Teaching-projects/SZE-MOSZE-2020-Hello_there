@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 
-Monster::Monster(const std::string &name, int hp, int dmg, double atkCooldown)
-	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown)
+Monster::Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense)
+	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), defense(defense)
 {
 }
 
@@ -18,6 +18,13 @@ int Monster::getDamage() const
 	return dmg;
 }
 
+
+int Monster::getDefense() const
+{
+	return defense;
+}
+
+
 double Monster::getAttackCoolDown() const
 {
 	return atkCooldown;
@@ -25,7 +32,8 @@ double Monster::getAttackCoolDown() const
 
 int Monster::TakeDamage(const Monster &atkMonster)
 {
-	int dmgInflected = atkMonster.getDamage();
+	int dmgInflected = atkMonster.getDamage()-defense;
+	if (dmgInflected < 0) dmgInflected = 0;
 	if (dmgInflected > hp)
 	{
 		hp -= dmgInflected;
@@ -50,7 +58,7 @@ int Monster::getHealthPoints() const
 
 std::string Monster::ToString() const
 {
-	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) + "\n";
+	std::string s = name + ": HP: " + std::to_string(hp) + ", DMG: " + std::to_string(dmg) +"AtkCD: "+std::to_string(atkCooldown)+"Defense: "+std::to_string(defense)+"\n";
 	return s;
 }
 
@@ -58,7 +66,7 @@ Monster Monster::parse(const std::string &fileName)
 {
 	JSON properties = JSON::parseFromFile("units/"+fileName);
 
-	const std::vector<std::string> expectedProps{ "name", "health_points", "damage", "attack_cooldown" };
+	const std::vector<std::string> expectedProps{ "name", "health_points", "damage", "attack_cooldown", "defense" };
 	for (unsigned int i = 0; i < expectedProps.size(); i++)
 	{
 		if (!properties.count(expectedProps[i]))
@@ -71,7 +79,8 @@ Monster Monster::parse(const std::string &fileName)
 		properties.get<std::string>("name"),
 		properties.get<int>("health_points"),
 		properties.get<int>("damage"),
-		properties.get<double>("attack_cooldown"));
+		properties.get<double>("attack_cooldown"),
+    properties.get<int>("defense"));
 }
 
 
