@@ -111,8 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a06d979fb9bc8e06a88d210d7eb04a555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">PutMonster</a> (<a class="el" href="class_monster.html">Monster</a> *m, int x, int y)</td></tr>
 <tr class="memdesc:a06d979fb9bc8e06a88d210d7eb04a555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the monster on the given coordinates.  <a href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">More...</a><br /></td></tr>
 <tr class="separator:a06d979fb9bc8e06a88d210d7eb04a555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="memItemLeft" align="right" valign="top"><a id="a96341ca5b54d90adc3ecb3bf0bcd2312"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Run</b> ()</td></tr>
+<tr class="memitem:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312">Run</a> ()</td></tr>
+<tr class="memdesc:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the gameplay loop. Handles fighting, user input, moving.  <a href="class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312">More...</a><br /></td></tr>
 <tr class="separator:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -209,6 +209,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Run</b> ()</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_game_1_1_game_already_started_exception.html">GameAlreadyStartedException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_map_1_1_wrong_index_exception.html" title="Custom exception class.">Map::WrongIndexException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_game_1_1_already_has_hero_exception.html">AlreadyHasHeroException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_game_1_1_occupied_exception.html">OccupiedException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -254,6 +263,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Run</b> ()</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_game_1_1_occupied_exception.html">OccupiedException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a96341ca5b54d90adc3ecb3bf0bcd2312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96341ca5b54d90adc3ecb3bf0bcd2312">&#9670;&nbsp;</a></span>Run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::Run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the gameplay loop. Handles fighting, user input, moving. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_game_1_1_not_initialized_exception.html">NotInitializedException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -278,6 +319,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Run</b> ()</td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">map</td><td>The map that will be set to this game. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_game_1_1_game_already_started_exception.html">GameAlreadyStartedException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_game_1_1_already_has_units_exception.html">AlreadyHasUnitsException</a></td><td></td></tr>
   </table>
   </dd>
 </dl>

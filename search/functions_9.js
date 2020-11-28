@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wrongindexexception_64',['WrongIndexException',['../class_map_1_1_wrong_index_exception.html#aeebaf6a2269de443f9ed95dba18a0410',1,'Map::WrongIndexException']]]
+  ['takedamage_64',['TakeDamage',['../class_monster.html#a26d1ad87989f22e013b2b445a22556bb',1,'Monster']]],
+  ['tostring_65',['ToString',['../class_hero.html#aa42b6746c72701c32badd31ceaa90d1a',1,'Hero::ToString()'],['../class_monster.html#ac7937149375729c21b4d05f73dcff910',1,'Monster::ToString()']]]
 ];
