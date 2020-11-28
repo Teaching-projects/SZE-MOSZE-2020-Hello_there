@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2dhello_5fthere_13',['SZE-MOSZE-2020-Hello_there',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['occupiedexception_18',['OccupiedException',['../class_game_1_1_occupied_exception.html',1,'Game::OccupiedException'],['../class_game_1_1_occupied_exception.html#a2d06f1e94c0d870fa9297d690495c455',1,'Game::OccupiedException::OccupiedException()']]]
 ];

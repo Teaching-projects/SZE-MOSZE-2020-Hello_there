@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wrongindexexception_17',['WrongIndexException',['../class_map_1_1_wrong_index_exception.html',1,'Map::WrongIndexException'],['../class_map_1_1_wrong_index_exception.html#aeebaf6a2269de443f9ed95dba18a0410',1,'Map::WrongIndexException::WrongIndexException()']]]
+  ['run_23',['Run',['../class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312',1,'Game']]]
 ];

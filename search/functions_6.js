@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['wrongindexexception_36',['WrongIndexException',['../class_map_1_1_wrong_index_exception.html#aeebaf6a2269de443f9ed95dba18a0410',1,'Map::WrongIndexException']]]
+  ['parse_59',['parse',['../class_monster.html#a1f8af65cffe3a3310412a76d013b8b31',1,'Monster']]],
+  ['puthero_60',['PutHero',['../class_game.html#a5a021f14061ecc664336a3d29f76d1e5',1,'Game']]],
+  ['putmonster_61',['PutMonster',['../class_game.html#a06d979fb9bc8e06a88d210d7eb04a555',1,'Game']]]
 ];
