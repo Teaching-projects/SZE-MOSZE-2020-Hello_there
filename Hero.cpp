@@ -4,10 +4,10 @@
 #include <cmath>
 #include <vector>
 
-Hero::Hero(const std::string &name, int hp, int dmg, float atkCooldown,int defense, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const float cdr_per_lvl,const int def_per_lvl)
-	: Monster(name, hp, dmg, atkCooldown,defense),
+Hero::Hero(const std::string &name, int hp, int dmg, double atkCooldown, int defense, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const double cdr_per_lvl, const int def_per_lvl)
+	: Monster(name, hp, dmg, atkCooldown, defense),
 	  maxHP(hp), xp_per_lvl(xp_per_lvl), hp_per_lvl(hp_per_lvl),
-	  dmg_per_lvl(dmg_per_lvl), cdr_per_lvl(cdr_per_lvl),def_per_lvl(def_per_lvl)
+	  dmg_per_lvl(dmg_per_lvl), cdr_per_lvl(cdr_per_lvl), def_per_lvl(def_per_lvl)
 {
 }
 
@@ -56,9 +56,9 @@ int Hero::getLevel() const
 }
 Hero Hero::parse(std::string &fileName)
 {
-	JSON properties = JSON::parseFromFile("units/"+fileName);
-	
-	const std::vector<std::string> expectedProps{ "name", "base_health_points", "base_damage", "base_attack_cooldown", "base_defense", "experience_per_level", "health_point_bonus_per_level", "damage_bonus_per_level", "cooldown_multiplier_per_level", "defense_bonus_per_level" };
+	JSON properties = JSON::parseFromFile("units/" + fileName);
+
+	const std::vector<std::string> expectedProps{"name", "base_health_points", "base_damage", "base_attack_cooldown", "base_defense", "experience_per_level", "health_point_bonus_per_level", "damage_bonus_per_level", "cooldown_multiplier_per_level", "defense_bonus_per_level"};
 	for (unsigned int i = 0; i < expectedProps.size(); i++)
 	{
 
@@ -66,9 +66,8 @@ Hero Hero::parse(std::string &fileName)
 		{
 			throw std::invalid_argument("Missing monster properties in file: " + fileName + " " + expectedProps[i]);
 		}
-
 	}
-	
+
 	return Hero(
 		properties.get<std::string>("name"),
 		properties.get<int>("base_health_points"),
@@ -78,7 +77,6 @@ Hero Hero::parse(std::string &fileName)
 		properties.get<int>("experience_per_level"),
 		properties.get<int>("health_point_bonus_per_level"),
 		properties.get<int>("damage_bonus_per_level"),
-		properties.get<double>("cooldown_multiplier_per_level"));
+		properties.get<double>("cooldown_multiplier_per_level"),
 		properties.get<int>("defense_bonus_per_level"));
-	}
-
+}
