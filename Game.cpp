@@ -81,28 +81,27 @@ void Game::Run()
 
     hasStarted = true;
 
-    while (monsters.size() != 0 || hero->isAlive())
+    while (42)
     {
         LookForFights();
         ShowMap();
-        ReadUserInput();
+
+        if (monsters.size() != 0 && hero->isAlive())
+            ReadUserInput();
+        else
+            break;
     }
 
     if (hero->isAlive())
     {
         std::cout << hero->getName() + " cleared the map." << std::endl;
-        // bemenet: folytatni akarod-e? ha igen újra Run
     }
     else
     {
         std::cout << hero->getName() + " died." << std::endl;
     }
 
-    ResetGame();
-
-    // loop here
-
-    // hasStarted = false;
+    //ResetGame();
 }
 
 void Game::LookForFights()
@@ -178,7 +177,7 @@ void Game::ReadUserInput()
                 if (way == ways[i])
                     correctInput = true;
             if (!correctInput)
-                std::cout << "Did you type it correctly? I don't think so, pleays try again." << std::endl;
+                std::cout << "\nDid you type it correctly? I don't think so, please try again." << std::endl;
         }
 
         SetCoordinateDifs(way, difX, difY);
@@ -237,7 +236,7 @@ void Game::ShowMap() const
     int rowCount = map->GetRowCount();
     int colCount = map->GetColCount();
 
-    std::vector<std::vector<char>> tiles(rowCount); // itt kéne méretet adni neki az lemaradt
+    std::vector<std::vector<char>> tiles(rowCount);
 
     for (int i = 0; i < rowCount; i++)
     {

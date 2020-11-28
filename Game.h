@@ -51,6 +51,8 @@ public:
     /**
     * @brief Sets the given map to this game.
     * @param map The map that will be set to this game.
+    * \throw GameAlreadyStartedException
+    * \throw AlreadyHasUnitsException
     * @return void
     */
     void SetMap(Map *map);
@@ -60,6 +62,10 @@ public:
     * @param h the hero to be placed.
     * @param x row.
     * @param y col.
+    * \throw GameAlreadyStartedException
+    * \throw Map::WrongIndexException
+    * \throw AlreadyHasHeroException
+    * \throw OccupiedException
     * @return void
     */
     void PutHero(Hero *h, int x, int y);
@@ -69,10 +75,16 @@ public:
     * @param m the monster to be placed.
     * @param x row.
     * @param y col.
+    * \throw OccupiedException
     * @return void
     */
     void PutMonster(Monster *m, int x, int y);
 
+    /**
+    * @brief Starts the gameplay loop. Handles fighting, user input, moving.
+    * \throw NotInitializedException
+    * @return void
+    */
     void Run();
 
     class AlreadyHasUnitsException : std::exception
