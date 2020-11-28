@@ -1,8 +1,9 @@
 #include "Monster.h"
 #include <algorithm>
 #include <iostream>
+#include <vector>
 
-Monster::Monster(const std::string& name, int hp, int dmg, float atkCooldown, int defense)
+Monster::Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense)
 	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), defense(defense)
 {
 }
@@ -17,12 +18,14 @@ int Monster::getDamage() const
 	return dmg;
 }
 
+
 int Monster::getDefense() const
 {
 	return defense;
 }
 
-float Monster::getAttackCoolDown() const
+
+double Monster::getAttackCoolDown() const
 {
 	return atkCooldown;
 }
@@ -61,21 +64,25 @@ std::string Monster::ToString() const
 
 Monster Monster::parse(const std::string &fileName)
 {
-	std::ifstream inputFile("units/" + fileName);
-	if (inputFile.is_open())
-	{
-		JSON MonsterValues = JSON::parseFromStream(inputFile);
-		std::string name = MonsterValues.get<std::string>("name");
-		int hp = MonsterValues.get<int>("health_points");
-		int dmg = MonsterValues.get<int>("damage");
-		float atkCooldown = MonsterValues.get<float>("attack_cooldown");
-		int def = MonsterValues.get<int>("defense");
+	JSON properties = JSON::parseFromFile("units/"+fileName);
 
-		return Monster(name, hp, dmg, atkCooldown,def);
+	const std::vector<std::string> expectedProps{ "name", "health_points", "damage", "attack_cooldown", "defense" };
+	for (unsigned int i = 0; i < expectedProps.size(); i++)
+	{
+		if (!properties.count(expectedProps[i]))
+		{
+			throw std::invalid_argument("Missing monster properties in file: " + fileName + " " + expectedProps[i]);
+		}
 	}
-	else
-		throw fileName;
+
+	return Monster(
+		properties.get<std::string>("name"),
+		properties.get<int>("health_points"),
+		properties.get<int>("damage"),
+		properties.get<double>("attack_cooldown"),
+    properties.get<int>("defense"));
 }
+
 
 void Monster::Attack(Monster &targetMonster)
 {
@@ -100,7 +107,7 @@ void Monster::fightTilDeath(Monster &m)
 
 	this->Attack(m);
 	m.Attack(*this);
-	float slowerMonsterTimer = 0.0;
+	double slowerMonsterTimer = 0.0;
 
 	for (slowerMonsterTimer += fasterMonster->getAttackCoolDown(); fasterMonster->isAlive() && slowerMonster->isAlive(); slowerMonsterTimer += fasterMonster->getAttackCoolDown())
 	{

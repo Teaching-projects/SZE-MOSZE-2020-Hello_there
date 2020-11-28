@@ -1,6 +1,8 @@
 #include "Hero.h"
 #include <iostream>
+#include <fstream>
 #include <cmath>
+#include <vector>
 
 Hero::Hero(const std::string &name, int hp, int dmg, float atkCooldown,int defense, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const float cdr_per_lvl,const int def_per_lvl)
 	: Monster(name, hp, dmg, atkCooldown,defense),
@@ -54,25 +56,29 @@ int Hero::getLevel() const
 }
 Hero Hero::parse(std::string &fileName)
 {
-	std::ifstream inputFile("units/" + fileName);
-	if (inputFile.is_open())
+	JSON properties = JSON::parseFromFile("units/"+fileName);
+	
+	const std::vector<std::string> expectedProps{ "name", "base_health_points", "base_damage", "base_attack_cooldown", "base_defense", "experience_per_level", "health_point_bonus_per_level", "damage_bonus_per_level", "cooldown_multiplier_per_level", "defense_bonus_per_level" };
+	for (unsigned int i = 0; i < expectedProps.size(); i++)
 	{
-		JSON HeroValues = JSON::parseFromStream(inputFile);
 
-		std::string name = HeroValues.get<std::string>("name");
-		int hp = HeroValues.get<int>("base_health_points");
-		int dmg = HeroValues.get<int>("base_damage");
-		float atkCooldown = HeroValues.get<float>("base_attack_cooldown");
-		int defense = HeroValues.get<int>("base_defense");
+		if (!properties.count(expectedProps[i]))
+		{
+			throw std::invalid_argument("Missing monster properties in file: " + fileName + " " + expectedProps[i]);
+		}
 
-		int xp_per_lvl = HeroValues.get<int>("experience_per_level");
-		int hp_per_lvl = HeroValues.get<int>("health_point_bonus_per_level");
-		int dmg_per_lvl = HeroValues.get<int>("damage_bonus_per_level");
-		float cdr_per_lvl = HeroValues.get<float>("cooldown_multiplier_per_level");
-		int def_per_lvl = HeroValues.get<int>("defense_bonus_per_level");
-
-		return Hero(name, hp, dmg, atkCooldown,defense, xp_per_lvl, hp_per_lvl, dmg_per_lvl, cdr_per_lvl,def_per_lvl);
 	}
-	else
-		throw fileName;
-}
+	
+	return Hero(
+		properties.get<std::string>("name"),
+		properties.get<int>("base_health_points"),
+		properties.get<int>("base_damage"),
+		properties.get<double>("base_attack_cooldown"),
+		properties.get<int>("base_defense"),
+		properties.get<int>("experience_per_level"),
+		properties.get<int>("health_point_bonus_per_level"),
+		properties.get<int>("damage_bonus_per_level"),
+		properties.get<double>("cooldown_multiplier_per_level"));
+		properties.get<int>("defense_bonus_per_level"));
+	}
+
