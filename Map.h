@@ -16,7 +16,7 @@ class Map
 {
 private:
     /**
-    * @brief Contains the map, each line is a string.
+    * @brief Contains the map, each row is a string.
     */
     std::vector<std::string> map;
 
@@ -37,7 +37,16 @@ public:
     */
     Map(const std::string &filename);
 
+    /**
+    * @brief Returns the type of the tile.
+    * @param x row
+    * @param y column
+    * @return Map::type
+    */
     Map::type get(const int x, const int y) const;
+
+    int GetRowCount() const;
+    int GetColCount() const;
 
     /**
     * @brief Custom exception class.

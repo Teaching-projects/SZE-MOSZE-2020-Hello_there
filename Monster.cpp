@@ -3,8 +3,9 @@
 #include <iostream>
 #include <vector>
 
+
 Monster::Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense)
-	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), defense(defense)
+	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), defense(defense), x(-1), y(-1)
 {
 }
 
@@ -18,7 +19,15 @@ int Monster::getDamage() const
 	return dmg;
 }
 
+int Monster::GetXCoo() const
+{
+	return x;
+}
 
+int Monster::GetYCoo() const
+{
+	return y;
+}
 int Monster::getDefense() const
 {
 	return defense;
@@ -44,6 +53,12 @@ int Monster::TakeDamage(const Monster &atkMonster)
 		hp -= dmgInflected;
 
 	return dmgInflected;
+}
+
+void Monster::SetCoordinates(int x, int y)
+{
+	this->x = x;
+	this->y = y;
 }
 
 std::string Monster::getName() const

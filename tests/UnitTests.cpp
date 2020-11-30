@@ -3,6 +3,7 @@
 #include "../Monster.h"
 #include "../Hero.h"
 #include "../Map.h"
+#include "../Game.h"
 
 TEST(ParserTest, CheckMapContent)
 {
@@ -186,6 +187,89 @@ TEST(MapTest, CorrectIndexNoThrow)
     int y = 2;
 
     EXPECT_NO_THROW(m.get(x, y));
+}
+
+TEST(GameTest, SuccessfulConstruction)
+{
+    EXPECT_NO_THROW(Game("map_1.txt"));
+}
+
+TEST(GameTest, MethodTestExpectNoThrow)
+{
+    Game g("map_1.txt");
+    Map *m = new Map("map_2.txt");
+
+    EXPECT_NO_THROW(g.SetMap(m));
+
+	Hero* h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1);
+    EXPECT_NO_THROW(g.PutHero(h, 1, 1));
+}
+
+TEST(GameTest, MethodTestExpectThrow)
+{
+    EXPECT_THROW({
+        try
+        {
+            Game g;
+			Hero* h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
+            g.PutHero(h, 0, 0);
+        }
+        catch (const Map::WrongIndexException &e)
+        {
+            throw;
+        } }, Map::WrongIndexException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
+            g.PutHero(h, 1, 1);
+            g.PutHero(h, 1, 2);
+        }
+        catch (const Game::AlreadyHasHeroException &e)
+        {
+            throw;
+        } }, Game::AlreadyHasHeroException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
+            g.PutHero(h, 0, 0);
+        }
+        catch (const Game::OccupiedException &e)
+        {
+            throw;
+        } }, Game::OccupiedException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
+            g.PutHero(h, 1, 1);
+
+            Map *m = new Map("map_2.txt");
+            g.SetMap(m);
+        }
+        catch (const Game::AlreadyHasUnitsException &e)
+        {
+            throw;
+        } }, Game::AlreadyHasUnitsException);
+
+    EXPECT_THROW({
+        try
+        {
+            Game g("map_1.txt");
+            g.Run();
+        }
+        catch (const Game::NotInitializedException &e)
+        {
+            throw;
+        } }, Game::NotInitializedException);
+
 }
 
 int main(int argc, char **argv)

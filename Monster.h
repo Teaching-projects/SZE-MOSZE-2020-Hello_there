@@ -15,17 +15,19 @@ class Monster
 {
 private:
     const std::string name;
-
     double atkCooldown; ///< time it takes for the Monster to be able to hit again
-
+    int x;             // row coordinate
+    int y;             // column coordinate
     friend class Hero;
 
+  
 protected:
     int hp;
-	int dmg;
-	int defense;
-	/// attack the other Monster and fight until one of them is dead
-	virtual void Attack(Monster& targetMonster /** [in]*/);
+	  int dmg;
+	  int defense;
+	  /// attack the other Monster and fight until one of them is dead
+	  virtual void Attack(Monster& targetMonster /** [in]*/);
+
 public:
     /**
      * \brief Monster constructor
@@ -34,7 +36,9 @@ public:
      * \param dmg damage
      * \param atkCooldown attack cooldown
     */
+
     Monster(const std::string& name, int hp, int dmg, double atkCooldown, int defense);
+  
     virtual ~Monster() {}
 
     /// \return boolean
@@ -55,8 +59,14 @@ public:
     /// \return double
     double getAttackCoolDown() const;
 
-	/// suffer the damage
-	int TakeDamage(const Monster& atkMonster /** [in] attacking Monster that causes this Monster some damage*/);
+    /// \return int
+    int GetXCoo() const;
+
+    /// \return int
+    int GetYCoo() const;
+
+    /// suffer the damage
+    int TakeDamage(const Monster &atkMonster /** [in] attacking Monster that causes this Monster some damage*/);
 
     /// returns an std::string that contains the Monster's name, hp and dmg
     virtual std::string ToString() const;
@@ -68,6 +78,7 @@ public:
     */
     static Monster parse(const std::string &fileName /** [in] the json file name*/);
 
-    
-	void fightTilDeath(Monster& m);
+    void SetCoordinates(int x, int y);
+
+    void fightTilDeath(Monster &m);
 };

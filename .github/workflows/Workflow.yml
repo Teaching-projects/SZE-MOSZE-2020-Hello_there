@@ -50,22 +50,6 @@ jobs:
             FOLDER: DOCS/html
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  in-out_test:
-    runs-on: ubuntu-latest
-    container: holdmedve/mosze:latest
-    steps:
-      - name: checkout repo content
-        uses: actions/checkout@v2
-
-      - name: Build
-        run: make build
-      
-      - name: Make in-out tests  
-        run: make in_out_tests 
-
-      - name: check output
-        run: diff output1.txt good_output1.txt && diff output2.txt good_output2.txt
-
 
   google_unit_test:
     runs-on: ubuntu-latest
