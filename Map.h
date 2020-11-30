@@ -14,7 +14,7 @@
 
 class Map
 {
-private:
+protected:
     /**
     * @brief Contains the map, each row is a string.
     */

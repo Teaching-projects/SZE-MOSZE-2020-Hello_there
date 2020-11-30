@@ -5,15 +5,19 @@ Game::Game()
 {
 }
 
-Game::Game(const std::string &mapFileName)
-    : hero(nullptr), map(new Map(mapFileName)), hasStarted(false)
+Game::Game(Map* m)
+    : hero(nullptr), map(m), hasStarted(false)
+{
+}
+Game::Game(MarkedMap* m)
+	: hero(nullptr), map(m), hasStarted(false)
 {
 }
 
 Game::~Game()
 {
     if (hero != nullptr)
-        delete hero;
+        delete hero; 
 
     if (map != nullptr)
         delete map;

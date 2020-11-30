@@ -4,6 +4,7 @@
 #include "../Hero.h"
 #include "../Map.h"
 #include "../Game.h"
+#include "../MarkedMap.h"
 
 TEST(ParserTest, CheckMapContent)
 {
@@ -269,6 +270,52 @@ TEST(GameTest, MethodTestExpectThrow)
         {
             throw;
         } }, Game::NotInitializedException);
+}
+TEST(MarkedMapTest, ConstructionExceptionThrown)
+{
+	EXPECT_THROW({
+		try
+		{
+			MarkedMap m("map_1.txt");
+			m.getHeroPosition();
+		}
+		catch (const MarkedMap::WrongMapTypeException& e)
+		{
+			throw;
+		} }, MarkedMap::WrongMapTypeException);
+	EXPECT_THROW({
+		try
+		{
+		MarkedMap m("map_1.txt");
+		m.getMonsterPositions(1);
+		}
+		catch (const MarkedMap::WrongMapTypeException& e)
+		{
+		throw;
+		} }, MarkedMap::WrongMapTypeException);
+}
+TEST(MarkedMapTest, ConstructionNoExceptionThrown)
+{
+	EXPECT_THROW({
+		try
+		{
+			MarkedMap m("marked_map.txt");
+			m.getHeroPosition();
+		}
+		catch (const MarkedMap::WrongMapTypeException& e)
+		{
+			throw;
+		} }, MarkedMap::WrongMapTypeException);
+	EXPECT_THROW({
+		try
+		{
+		MarkedMap m("marked_map.txt");
+		m.getMonsterPositions(1);
+		}
+		catch (const MarkedMap::WrongMapTypeException& e)
+		{
+		throw;
+		} }, MarkedMap::WrongMapTypeException);
 
 }
 
