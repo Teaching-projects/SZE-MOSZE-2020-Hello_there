@@ -303,26 +303,12 @@ TEST(MarkedMapTest, ConstructionExceptionThrown)
 }
 TEST(MarkedMapTest, ConstructionNoExceptionThrown)
 {
-	EXPECT_THROW({
-		try
-		{
-			MarkedMap m("marked_map.txt");
-			m.getHeroPosition();
-		}
-		catch (const MarkedMap::WrongMapTypeException& e)
-		{
-			throw;
-		} }, MarkedMap::WrongMapTypeException);
-	EXPECT_THROW({
-		try
-		{
-		MarkedMap m("marked_map.txt");
-		m.getMonsterPositions(1);
-		}
-		catch (const MarkedMap::WrongMapTypeException& e)
-		{
-		throw;
-		} }, MarkedMap::WrongMapTypeException);
+	MarkedMap m("marked_map.txt");
+	EXPECT_NO_THROW(m.getHeroPosition());
+	
+	EXPECT_NO_THROW(m.getMonsterPositions(1));
+
+		
 
 }
 
