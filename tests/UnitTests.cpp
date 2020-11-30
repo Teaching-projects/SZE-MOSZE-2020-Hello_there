@@ -258,8 +258,8 @@ TEST(GameTest, MethodTestExpectThrow)
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 1, 1);
 
-            Map *m = new Map("map_2.txt");
-            g.SetMap(m);
+            Map *m2 = new Map("map_2.txt");
+            g.SetMap(m2);
         }
         catch (const Game::AlreadyHasUnitsException &e)
         {
