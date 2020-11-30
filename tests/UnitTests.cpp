@@ -201,7 +201,7 @@ TEST(GameTest, MethodTestExpectNoThrow)
 
     EXPECT_NO_THROW(g.SetMap(m));
 
-    Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+	Hero* h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1);
     EXPECT_NO_THROW(g.PutHero(h, 1, 1));
 }
 
@@ -211,7 +211,7 @@ TEST(GameTest, MethodTestExpectThrow)
         try
         {
             Game g;
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+			Hero* h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 0, 0);
         }
         catch (const Map::WrongIndexException &e)
@@ -223,7 +223,7 @@ TEST(GameTest, MethodTestExpectThrow)
         try
         {
             Game g("map_1.txt");
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 1, 1);
             g.PutHero(h, 1, 2);
         }
@@ -236,7 +236,7 @@ TEST(GameTest, MethodTestExpectThrow)
         try
         {
             Game g("map_1.txt");
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 0, 0);
         }
         catch (const Game::OccupiedException &e)
@@ -248,7 +248,7 @@ TEST(GameTest, MethodTestExpectThrow)
         try
         {
             Game g("map_1.txt");
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5.0);
+            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 1, 1);
 
             Map *m = new Map("map_2.txt");
