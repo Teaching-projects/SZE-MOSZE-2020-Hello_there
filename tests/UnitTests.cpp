@@ -192,15 +192,18 @@ TEST(MapTest, CorrectIndexNoThrow)
 
 TEST(GameTest, SuccessfulConstruction)
 {
-    EXPECT_NO_THROW(Game("map_1.txt"));
+	Map* m = new Map("map_1.txt");
+    EXPECT_NO_THROW(Game(m));
 }
 
 TEST(GameTest, MethodTestExpectNoThrow)
 {
-    Game g("map_1.txt");
-    Map *m = new Map("map_2.txt");
+	Map* m = new Map("map_1.txt");
+    Game g(m);
+    Map *m2 = new Map("map_2.txt");
+	delete m;
 
-    EXPECT_NO_THROW(g.SetMap(m));
+    EXPECT_NO_THROW(g.SetMap(m2));
 
 	Hero* h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1);
     EXPECT_NO_THROW(g.PutHero(h, 1, 1));
