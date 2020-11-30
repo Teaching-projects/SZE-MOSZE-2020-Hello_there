@@ -25,6 +25,5 @@ int main(int argc, char **argv)
     g.PutMonster(m2, 1, 2);
     g.PutMonster(m3, 1, 5);
     g.Run();
-
     return 0;
 }
