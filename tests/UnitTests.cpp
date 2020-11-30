@@ -226,7 +226,8 @@ TEST(GameTest, MethodTestExpectThrow)
     EXPECT_THROW({
         try
         {
-            Game g("map_1.txt");
+			Map* m = new Map("map_1.txt");
+            Game g(m);
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 1, 1);
             g.PutHero(h, 1, 2);
@@ -239,7 +240,8 @@ TEST(GameTest, MethodTestExpectThrow)
     EXPECT_THROW({
         try
         {
-            Game g("map_1.txt");
+			Map* m = new Map("map_1.txt");
+            Game g(m);
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 0, 0);
         }
@@ -251,7 +253,8 @@ TEST(GameTest, MethodTestExpectThrow)
     EXPECT_THROW({
         try
         {
-            Game g("map_1.txt");
+			Map* m = new Map("map_1.txt");
+            Game g(m);
             Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5);
             g.PutHero(h, 1, 1);
 
@@ -266,7 +269,8 @@ TEST(GameTest, MethodTestExpectThrow)
     EXPECT_THROW({
         try
         {
-            Game g("map_1.txt");
+			Map* m = new Map("map_1.txt");
+            Game g(m);
             g.Run();
         }
         catch (const Game::NotInitializedException &e)
