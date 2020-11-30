@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['occupiedexception_60',['OccupiedException',['../class_game_1_1_occupied_exception.html#a2d06f1e94c0d870fa9297d690495c455',1,'Game::OccupiedException']]]
+  ['occupiedexception_64',['OccupiedException',['../class_game_1_1_occupied_exception.html#a2d06f1e94c0d870fa9297d690495c455',1,'Game::OccupiedException']]]
 ];
