@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "Map.h"
+#include "MarkedMap.h"
 #include "Hero.h"
 
 class Game
@@ -41,7 +41,8 @@ public:
     * @param mapFileName Name of the txt, that contains the map.
     * @return Game
     */
-    Game(const std::string &mapFileName);
+    Game(Map* m);
+	Game(MarkedMap* m);
 
     ~Game();
 

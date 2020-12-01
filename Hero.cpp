@@ -54,7 +54,7 @@ int Hero::getLevel() const
 {
 	return lvl;
 }
-Hero Hero::parse(std::string &fileName)
+Hero* Hero::parse(std::string &fileName)
 {
 	JSON properties = JSON::parseFromFile("units/" + fileName);
 
@@ -68,7 +68,7 @@ Hero Hero::parse(std::string &fileName)
 		}
 	}
 
-	return Hero(
+	return new Hero(
 		properties.get<std::string>("name"),
 		properties.get<int>("base_health_points"),
 		properties.get<int>("base_damage"),
