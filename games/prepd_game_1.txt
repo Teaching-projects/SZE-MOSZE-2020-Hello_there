@@ -1,0 +1,7 @@
+{
+  "map"  : "markedmap.txt",
+  "hero" : "hero.json",
+  "monster-1" : "fallen.json",
+  "monster-2" : "zombie.json",
+  "monster-3" : "BloodRaven.json"
+}
