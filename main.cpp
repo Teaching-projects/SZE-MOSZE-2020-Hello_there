@@ -12,8 +12,11 @@
 #include "Monster.h"
 #include "Game.h"
 #include "MarkedMap.h"
+#include "PreparedGame.h"
+
 int main(int argc, char **argv)
 {
+	/*
 	Map* m = new Map("map_1.txt");
 	Game g(m);
 	Hero* h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1);
@@ -25,6 +28,9 @@ int main(int argc, char **argv)
 	g.PutMonster(m1, 1, 2);
 	g.PutMonster(m2, 1, 2);
 	g.PutMonster(m3, 1, 5);
+	*/
+	PreparedGame g("prepd_game_1.txt");
+
 	g.Run();
 	return 0;
 }

@@ -5,19 +5,19 @@ Game::Game()
 {
 }
 
-Game::Game(Map* m)
+Game::Game(Map *m)
     : hero(nullptr), map(m), hasStarted(false)
 {
 }
-Game::Game(MarkedMap* m)
-	: hero(nullptr), map(m), hasStarted(false)
+Game::Game(MarkedMap *m)
+    : hero(nullptr), map(m), hasStarted(false)
 {
 }
 
 Game::~Game()
 {
     if (hero != nullptr)
-        delete hero; 
+        delete hero;
 
     if (map != nullptr)
         delete map;
@@ -45,6 +45,7 @@ void Game::PutMonster(Monster *m, int x, int y)
     if (!TileIsFree(x, y))
         throw OccupiedException();
 
+    std::cout << "tile is free" << std::endl;
     monsters.push_back(m);
     m->SetCoordinates(x, y);
 }
@@ -69,10 +70,10 @@ void Game::PutHero(Hero *h, int x, int y)
 
 bool Game::TileIsFree(int x, int y) const
 {
-    if (map->get(x, y) == Map::Free)
-        return true;
+    if (map->get(x, y) == Map::Wall)
+        return false;
 
-    return false;
+    return true;
 }
 
 void Game::Run()

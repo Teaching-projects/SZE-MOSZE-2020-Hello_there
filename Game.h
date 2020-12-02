@@ -41,8 +41,8 @@ public:
     * @param mapFileName Name of the txt, that contains the map.
     * @return Game
     */
-    Game(Map* m);
-	Game(MarkedMap* m);
+    Game(Map *m);
+    Game(MarkedMap *m);
 
     ~Game();
 
@@ -86,7 +86,7 @@ public:
     * \throw NotInitializedException
     * @return void
     */
-    void Run();
+    virtual void Run();
 
     class AlreadyHasUnitsException : std::exception
     {

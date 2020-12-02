@@ -3,8 +3,7 @@
 #include <streambuf>
 #include <regex>
 
-
-JSON::JSON(std::map<std::string, listedValueVariant> data) : data(data) {};
+JSON::JSON(std::map<std::string, listedValueVariant> data) : data(data){};
 
 int JSON::count(std::string s)
 {
@@ -50,7 +49,7 @@ JSON JSON::parseFromString(const std::string &string)
 JSON JSON::parse(const std::string &string)
 {
 	JSON::CheckJsonIntegrity(string);
-	static const std::regex Regex("\\s*\"([a-z_]*)\"\\s*:\\s*([0-9]*\\.?[0-9]+|\"[\\w\\s\\.\\/]+\")?(\\[([\\S\\s]*)\\])?\\s*([,}])\\s*");
+	static const std::regex Regex("\\s*\"([a-z\\_\\-0-9]*)\"\\s*:\\s*([0-9]*\\.?[0-9]+|\"[\\w\\s\\.\\/]+\")?(\\[([\\S\\s]*)\\])?\\s*([,}])\\s*");
 
 	bool last = false;
 	std::string worker(string);
@@ -64,7 +63,7 @@ JSON JSON::parse(const std::string &string)
 			throw JSON::ParseException("Data after closing tag");
 		}
 
-		if(matches.size() == 6)
+		if (matches.size() == 6)
 		{
 			if (matches[5].str() == "}")
 			{
@@ -73,7 +72,7 @@ JSON JSON::parse(const std::string &string)
 
 			if (matches[2].str().size() > 0)
 			{
-			myMap[matches[1]] = variant_cast(simpleTypeParse(matches[2]));
+				myMap[matches[1]] = variant_cast(simpleTypeParse(matches[2]));
 			}
 			else
 			{
@@ -128,7 +127,7 @@ void JSON::CheckJsonIntegrity(std::string jsonStr)
 		}
 	}
 }
-JSON::valueVariant JSON::simpleTypeParse(const std::string& match)
+JSON::valueVariant JSON::simpleTypeParse(const std::string &match)
 {
 	if (match.at(0) == '"')
 	{
@@ -144,7 +143,7 @@ JSON::valueVariant JSON::simpleTypeParse(const std::string& match)
 	}
 	return stoi(match);
 }
-JSON::list JSON::arrayParse(const std::string& match)
+JSON::list JSON::arrayParse(const std::string &match)
 {
 	static const std::regex Regex("\\s*([0-9]*\\.?[0-9]+|\"[\\w\\s\\.\\/]+\")\\s*(,)?\\s*");
 
@@ -171,4 +170,9 @@ JSON::list JSON::arrayParse(const std::string& match)
 	}
 
 	return l;
+}
+
+int JSON::GetDataCount() const
+{
+	return data.size();
 }
