@@ -41,9 +41,9 @@ PreparedGame::PreparedGame(std::string prepdGameName)
 
             for (int j = 0; j < monsterPositions.size(); j++)
             {
-                std::cout << "monster coordinates: " << monsterPositions[i].first << " " << monsterPositions[i].second << std::endl;
+                std::cout << "monster coordinates: " << monsterPositions[j].first << " " << monsterPositions[j].second << std::endl;
                 Monster *m = Monster::parse(monsterFile);
-                PutMonster(m, monsterPositions[i].first, monsterPositions[i].second);
+                PutMonster(m, monsterPositions[j].first, monsterPositions[j].second);
                 std::cout << "put monster done" << std::endl;
             }
         }
