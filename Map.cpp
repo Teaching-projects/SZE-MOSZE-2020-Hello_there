@@ -35,7 +35,7 @@ int Map::GetRowCount() const
     return map.size();
 }
 
-int Map::GetColCount() const
+int Map::GetColCount(int row) const
 {
-    return map[0].length();
+    return map[row].length();
 }

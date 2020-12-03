@@ -86,7 +86,7 @@ public:
     * \throw NotInitializedException
     * @return void
     */
-    virtual void Run();
+    void Run();
 
     class AlreadyHasUnitsException : std::exception
     {

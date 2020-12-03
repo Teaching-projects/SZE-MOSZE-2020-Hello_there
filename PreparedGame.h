@@ -6,5 +6,5 @@ class PreparedGame : private Game
 private:
 public:
     PreparedGame(std::string prepdGamePath);
-    void Run() override;
+    using Game::Run;
 };
