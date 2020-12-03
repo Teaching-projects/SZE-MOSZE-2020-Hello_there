@@ -5,6 +5,7 @@
 #include "../Map.h"
 #include "../Game.h"
 #include "../MarkedMap.h"
+#include "../PreparedGame.h"
 
 TEST(ParserTest, CheckMapContent)
 {
@@ -299,12 +300,18 @@ TEST(MarkedMapTest, ConstructionExceptionThrown)
 		throw;
 		} }, MarkedMap::WrongMapTypeException);
 }
+
 TEST(MarkedMapTest, ConstructionNoExceptionThrown)
 {
     MarkedMap m("marked_map.txt");
     EXPECT_NO_THROW(m.getHeroPosition());
 
     EXPECT_NO_THROW(m.getMonsterPositions('1'));
+}
+
+TEST(PreparedGameTest, ConstructionNoExceptionThrown)
+{
+    EXPECT_NO_THROW(PreparedGame g("prepd_game_1.txt"));
 }
 
 int main(int argc, char **argv)

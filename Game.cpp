@@ -45,7 +45,6 @@ void Game::PutMonster(Monster *m, int x, int y)
     if (!TileIsFree(x, y))
         throw OccupiedException();
 
-    std::cout << "tile is free" << std::endl;
     monsters.push_back(m);
     m->SetCoordinates(x, y);
 }
@@ -70,7 +69,6 @@ void Game::PutHero(Hero *h, int x, int y)
 
 bool Game::TileIsFree(int x, int y) const
 {
-    std::cout << map->get(x, y) << std::endl;
     if (map->get(x, y) == Map::Wall)
         return false;
 
