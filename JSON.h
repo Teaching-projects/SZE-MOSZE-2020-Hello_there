@@ -5,6 +5,7 @@
 #include <fstream>
 #include <variant>
 #include <list>
+#include <vector>
 
 class JSON
 {
@@ -16,15 +17,17 @@ public:
 	int count(std::string);
 	template <typename T>
 	T get(const std::string &key)
-    {
-        return std::get<T>(data[key]);
-    }
+	{
+		return std::get<T>(data[key]);
+	}
 	static bool compareJSON(JSON &j1, JSON &j2);
 
-	static JSON parseFromFile(const std::string& fileName);
-	static JSON parseFromStream(std::istream& fileStream);
+	static JSON parseFromFile(const std::string &fileName);
+	static JSON parseFromStream(std::istream &fileStream);
 	static JSON parseFromString(const std::string &fileContent);
 	static JSON parse(const std::string &);
+
+	int GetDataCount() const;
 
 	class ParseException : virtual public std::runtime_error
 	{
@@ -35,8 +38,8 @@ public:
 private:
 	std::map<std::string, listedValueVariant> data;
 	static void CheckJsonIntegrity(std::string jsonStr);
-	static valueVariant simpleTypeParse(const std::string& match);
-	static list arrayParse(const std::string& match);
+	static valueVariant simpleTypeParse(const std::string &match);
+	static list arrayParse(const std::string &match);
 	template <class... Args>
 	struct variant_cast_proxy
 	{
@@ -46,15 +49,14 @@ private:
 		operator std::variant<ToArgs...>() const
 		{
 			return std::visit(
-				[](auto&& arg) -> std::variant<ToArgs...> { return arg; },
+				[](auto &&arg) -> std::variant<ToArgs...> { return arg; },
 				v);
 		}
 	};
 
 	template <class... Args>
-	static auto variant_cast(const std::variant<Args...>& v) -> variant_cast_proxy<Args...>
+	static auto variant_cast(const std::variant<Args...> &v) -> variant_cast_proxy<Args...>
 	{
-		return { v };
-	
+		return {v};
 	}
 };

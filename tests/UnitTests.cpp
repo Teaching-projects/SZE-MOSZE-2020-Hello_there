@@ -5,6 +5,7 @@
 #include "../Map.h"
 #include "../Game.h"
 #include "../MarkedMap.h"
+#include "../PreparedGame.h"
 
 TEST(ParserTest, CheckMapContent)
 {
@@ -16,22 +17,20 @@ TEST(ParserTest, CheckMapContent)
     EXPECT_EQ(15, vaderJSON.get<int>("defense"));
     EXPECT_EQ(6.9, vaderJSON.get<double>("attack_cooldown"));
 
-
     std::ifstream lukeFile("units/luke.json");
     JSON lukeJSON = JSON::parseFromStream(lukeFile);
     EXPECT_EQ("Luke", lukeJSON.get<std::string>("name"));
     EXPECT_EQ(100, lukeJSON.get<int>("health_points"));
     EXPECT_EQ(25, lukeJSON.get<int>("damage"));
-	  EXPECT_EQ(10, lukeJSON.get<int>("defense"));
+    EXPECT_EQ(10, lukeJSON.get<int>("defense"));
     EXPECT_EQ(3.0, lukeJSON.get<double>("attack_cooldown"));
-
 
     std::ifstream palpatineFile("units/palpatine.json");
     JSON palpatineJSON = JSON::parseFromStream(palpatineFile);
     EXPECT_EQ("Palpatine", palpatineJSON.get<std::string>("name"));
     EXPECT_EQ(111, palpatineJSON.get<int>("health_points"));
     EXPECT_EQ(21, palpatineJSON.get<int>("damage"));
-	  EXPECT_EQ(5, palpatineJSON.get<int>("defense"));
+    EXPECT_EQ(5, palpatineJSON.get<int>("defense"));
     EXPECT_EQ(2.5, palpatineJSON.get<double>("attack_cooldown"));
 }
 
@@ -77,36 +76,36 @@ TEST(PlayerClassTest, SuccessfulConstruction)
 TEST(UnitClassTest, NoCrazyValues)
 {
     std::string vaderFile = "vader.json";
-    Monster vader(Monster::parse(vaderFile));
+    Monster *vader(Monster::parse(vaderFile));
 
-    ASSERT_TRUE(vader.getDamage() > 0);
-    ASSERT_TRUE(vader.getAttackCoolDown() > 0);
-    ASSERT_TRUE(vader.getHealthPoints() > 0);
-	ASSERT_TRUE(vader.getDefense() >= 0);
+    ASSERT_TRUE(vader->getDamage() > 0);
+    ASSERT_TRUE(vader->getAttackCoolDown() > 0);
+    ASSERT_TRUE(vader->getHealthPoints() > 0);
+    ASSERT_TRUE(vader->getDefense() >= 0);
 
     std::string palpatineFile = "palpatine.json";
-    Monster palpatine(Monster::parse(palpatineFile));
+    Monster *palpatine(Monster::parse(palpatineFile));
 
-    ASSERT_TRUE(palpatine.getDamage() > 0);
-    ASSERT_TRUE(palpatine.getAttackCoolDown() > 0);
-    ASSERT_TRUE(palpatine.getHealthPoints() > 0);
-	ASSERT_TRUE(palpatine.getDefense() >= 0);
+    ASSERT_TRUE(palpatine->getDamage() > 0);
+    ASSERT_TRUE(palpatine->getAttackCoolDown() > 0);
+    ASSERT_TRUE(palpatine->getHealthPoints() > 0);
+    ASSERT_TRUE(palpatine->getDefense() >= 0);
 
     std::string lukeFile = "luke.json";
-    Monster luke(Monster::parse(lukeFile));
+    Monster *luke(Monster::parse(lukeFile));
 
-    ASSERT_TRUE(luke.getDamage() > 0);
-    ASSERT_TRUE(luke.getAttackCoolDown() > 0);
-    ASSERT_TRUE(luke.getHealthPoints() > 0);
-	ASSERT_TRUE(luke.getDefense() >= 0);
+    ASSERT_TRUE(luke->getDamage() > 0);
+    ASSERT_TRUE(luke->getAttackCoolDown() > 0);
+    ASSERT_TRUE(luke->getHealthPoints() > 0);
+    ASSERT_TRUE(luke->getDefense() >= 0);
 
     std::string playerFile = "player.json";
-    Monster player(Monster::parse(playerFile));
+    Monster *player(Monster::parse(playerFile));
 
-    ASSERT_TRUE(player.getDamage() > 0);
-    ASSERT_TRUE(player.getAttackCoolDown() > 0);
-    ASSERT_TRUE(player.getHealthPoints() > 0);
-	ASSERT_TRUE(player.getDefense() >= 0);
+    ASSERT_TRUE(player->getDamage() > 0);
+    ASSERT_TRUE(player->getAttackCoolDown() > 0);
+    ASSERT_TRUE(player->getHealthPoints() > 0);
+    ASSERT_TRUE(player->getDefense() >= 0);
 }
 
 TEST(ParserTest, IndifferentToSpaces)
@@ -192,20 +191,20 @@ TEST(MapTest, CorrectIndexNoThrow)
 
 TEST(GameTest, SuccessfulConstruction)
 {
-	Map* m = new Map("map_1.txt");
+    Map *m = new Map("map_1.txt");
     EXPECT_NO_THROW(Game(m));
 }
 
 TEST(GameTest, MethodTestExpectNoThrow)
 {
-	Map* m = new Map("map_1.txt");
+    Map *m = new Map("map_1.txt");
     Game g(m);
     Map *m2 = new Map("map_2.txt");
-	delete m;
+    delete m;
 
     EXPECT_NO_THROW(g.SetMap(m2));
 
-	Hero* h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1);
+    Hero *h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1);
     EXPECT_NO_THROW(g.PutHero(h, 1, 1));
 }
 
@@ -280,7 +279,7 @@ TEST(GameTest, MethodTestExpectThrow)
 }
 TEST(MarkedMapTest, ConstructionExceptionThrown)
 {
-	EXPECT_THROW({
+    EXPECT_THROW({
 		try
 		{
 			MarkedMap m("map_1.txt");
@@ -290,7 +289,7 @@ TEST(MarkedMapTest, ConstructionExceptionThrown)
 		{
 			throw;
 		} }, MarkedMap::WrongMapTypeException);
-	EXPECT_THROW({
+    EXPECT_THROW({
 		try
 		{
 		MarkedMap m("map_1.txt");
@@ -301,15 +300,18 @@ TEST(MarkedMapTest, ConstructionExceptionThrown)
 		throw;
 		} }, MarkedMap::WrongMapTypeException);
 }
+
 TEST(MarkedMapTest, ConstructionNoExceptionThrown)
 {
-	MarkedMap m("marked_map.txt");
-	EXPECT_NO_THROW(m.getHeroPosition());
-	
-	EXPECT_NO_THROW(m.getMonsterPositions('1'));
+    MarkedMap m("marked_map.txt");
+    EXPECT_NO_THROW(m.getHeroPosition());
 
-		
+    EXPECT_NO_THROW(m.getMonsterPositions('1'));
+}
 
+TEST(PreparedGameTest, ConstructionNoExceptionThrown)
+{
+    EXPECT_NO_THROW(PreparedGame g("prepd_game_1.txt"));
 }
 
 int main(int argc, char **argv)

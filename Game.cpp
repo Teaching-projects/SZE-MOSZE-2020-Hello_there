@@ -5,19 +5,19 @@ Game::Game()
 {
 }
 
-Game::Game(Map* m)
+Game::Game(Map *m)
     : hero(nullptr), map(m), hasStarted(false)
 {
 }
-Game::Game(MarkedMap* m)
-	: hero(nullptr), map(m), hasStarted(false)
+Game::Game(MarkedMap *m)
+    : hero(nullptr), map(m), hasStarted(false)
 {
 }
 
 Game::~Game()
 {
     if (hero != nullptr)
-        delete hero; 
+        delete hero;
 
     if (map != nullptr)
         delete map;
@@ -69,10 +69,10 @@ void Game::PutHero(Hero *h, int x, int y)
 
 bool Game::TileIsFree(int x, int y) const
 {
-    if (map->get(x, y) == Map::Free)
-        return true;
+    if (map->get(x, y) == Map::Wall)
+        return false;
 
-    return false;
+    return true;
 }
 
 void Game::Run()
@@ -123,7 +123,6 @@ void Game::LookForFights()
     {
         if (heroX == monsterCoordinates[i].first && heroY == monsterCoordinates[i].second)
         {
-
             hero->fightTilDeath(*monsters[i]);
 
             if (hero->isAlive() == false)
@@ -186,7 +185,7 @@ void Game::ReadUserInput()
 
         SetCoordinateDifs(way, difX, difY);
 
-        if (map->get(heroX + difX, heroY + difY) == Map::Free)
+        if (map->get(heroX + difX, heroY + difY) != Map::Wall)
             feasibleInput = true;
         else
         {
@@ -238,19 +237,21 @@ std::vector<std::pair<int, int>> Game::GetMonsterCoordinates() const
 void Game::ShowMap() const
 {
     int rowCount = map->GetRowCount();
-    int colCount = map->GetColCount();
+    int colCount;
 
     std::vector<std::vector<char>> tiles(rowCount);
 
     for (int i = 0; i < rowCount; i++)
     {
+        colCount = map->GetColCount(i);
         tiles[i] = std::vector<char>(colCount);
+
         for (int j = 0; j < colCount; j++)
         {
-            if (map->get(i, j) == Map::Free)
-                tiles[i][j] = (char)(177);
-            else
+            if (map->get(i, j) == Map::Wall)
                 tiles[i][j] = (char)(219);
+            else
+                tiles[i][j] = (char)(177);
         }
     }
 
@@ -262,6 +263,7 @@ void Game::ShowMap() const
     tiles[x][y] = 'H';
 
     // print top border of map
+    colCount = map->GetColCount(0);
     std::cout << char(201);
     for (int i = 0; i < colCount; i++)
         std::cout << char(205) << char(205);
@@ -270,6 +272,7 @@ void Game::ShowMap() const
     // print middle part
     for (int i = 0; i < rowCount; i++)
     {
+        colCount = map->GetColCount(i);
         std::cout << char(186);
         for (int j = 0; j < colCount; j++)
         {
@@ -295,6 +298,7 @@ void Game::ShowMap() const
     }
 
     // print bottom part of the map
+    colCount = map->GetColCount(rowCount - 1);
     std::cout << char(200);
     for (int i = 0; i < colCount; i++)
         std::cout << char(205) << char(205);
