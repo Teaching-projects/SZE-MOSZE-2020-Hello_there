@@ -15,7 +15,7 @@
 class Game
 {
 private:
-    MarkedMap *map;
+    Map *map;
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
     bool hasStarted;

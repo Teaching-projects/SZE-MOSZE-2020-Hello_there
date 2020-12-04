@@ -4,7 +4,11 @@ Game::Game()
     : hero(nullptr), map(nullptr), hasStarted(false)
 {
 }
-
+Game::Game(Map* m)
+	: hero(nullptr), map(m), hasStarted(false)
+{
+	std::cout << "ASD" << std::endl;
+}
 Game::Game(MarkedMap *m)
     : hero(nullptr), map(m), hasStarted(false)
 {
@@ -25,6 +29,7 @@ Game::~Game()
     }
     monsters.clear();
 }
+
 
 void Game::SetMap(MarkedMap *m)
 {
