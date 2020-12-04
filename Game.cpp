@@ -31,7 +31,7 @@ Game::~Game()
 }
 
 
-void Game::SetMap(MarkedMap *m)
+void Game::SetMap(Map *m)
 {
     if (hasStarted)
         throw GameAlreadyStartedException();

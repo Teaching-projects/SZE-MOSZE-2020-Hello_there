@@ -57,7 +57,7 @@ public:
     * \throw AlreadyHasUnitsException
     * @return void
     */
-    void SetMap(MarkedMap *map);
+    void SetMap(Map *map);
 
     /**
     * @brief Places the hero on the given coordinates.
