@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.h"
+#include <iostream>
 
 class MarkedMap : public Map
 {

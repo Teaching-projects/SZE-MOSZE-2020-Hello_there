@@ -17,9 +17,9 @@
 int main(int argc, char **argv)
 {
 
-	Map *m = new Map("map_1.txt");
+	/*MarkedMap *m = new MarkedMap("marked_map.txt");
 	Game g(m);
-	Hero *h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1);
+	Hero *h = Hero::parse(std::string("Dark_Wanderer.json"));
 	g.PutHero(h, 1, 1);
 
 	Monster *m1 = new Monster("Cookie Monster", 10, 10, 10.0, 5);
@@ -29,9 +29,9 @@ int main(int argc, char **argv)
 	g.PutMonster(m2, 1, 2);
 	g.PutMonster(m3, 1, 5);
 
-	g.Run();
+	g.Run();*/
 
-	//PreparedGame g("prepd_game_1.txt");
-	//g.Run();
+	PreparedGame g("prepd_game_1.txt");
+	g.Run();
 	return 0;
 }

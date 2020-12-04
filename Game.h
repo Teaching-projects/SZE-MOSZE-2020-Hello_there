@@ -15,13 +15,14 @@
 class Game
 {
 private:
-    Map *map;
+    MarkedMap *map;
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
     bool hasStarted;
 
     bool TileIsFree(int x, int y) const;
     void ShowMap() const;
+	void HeroPerspective() const;
     void ResetGame();
     void ReadUserInput();
     void SetCoordinateDifs(char way, int &difX, int &difY) const;
@@ -56,7 +57,7 @@ public:
     * \throw AlreadyHasUnitsException
     * @return void
     */
-    void SetMap(Map *map);
+    void SetMap(MarkedMap *map);
 
     /**
     * @brief Places the hero on the given coordinates.
