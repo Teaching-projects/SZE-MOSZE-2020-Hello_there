@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['parse_67',['parse',['../class_monster.html#a7f8d09d046f6ea2e79492c251119217d',1,'Monster']]],
-  ['puthero_68',['PutHero',['../class_game.html#a5a021f14061ecc664336a3d29f76d1e5',1,'Game']]],
-  ['putmonster_69',['PutMonster',['../class_game.html#a06d979fb9bc8e06a88d210d7eb04a555',1,'Game']]]
+  ['parse_71',['parse',['../class_monster.html#a7f8d09d046f6ea2e79492c251119217d',1,'Monster']]],
+  ['puthero_72',['PutHero',['../class_game.html#a5a021f14061ecc664336a3d29f76d1e5',1,'Game']]],
+  ['putmonster_73',['PutMonster',['../class_game.html#a06d979fb9bc8e06a88d210d7eb04a555',1,'Game']]]
 ];
