@@ -15,6 +15,16 @@ Map::Map(const std::string &filename)
     mapstream.close();
 }
 
+std::vector<std::string>::iterator Map::getBegin()
+{
+	return map.begin();
+}
+
+std::vector<std::string>::iterator Map::getEnd()
+{
+	return map.end();
+}
+
 Map::type Map::get(const int x, const int y) const
 {
     if (x >= map.size() || x < 0)
@@ -39,3 +49,5 @@ int Map::GetColCount(int row) const
 {
     return map[row].length();
 }
+
+

@@ -22,6 +22,7 @@ private:
 
     bool TileIsFree(int x, int y) const;
     void ShowMap() const;
+	void HeroPerspective() const;
     void ResetGame();
     void ReadUserInput();
     void SetCoordinateDifs(char way, int &difX, int &difY) const;
