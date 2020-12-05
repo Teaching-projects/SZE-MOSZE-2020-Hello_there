@@ -7,4 +7,5 @@ private:
 public:
     PreparedGame(std::string prepdGamePath);
     using Game::Run;
+	using Game::registerRenderer;
 };

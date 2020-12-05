@@ -13,6 +13,7 @@
 #include "Game.h"
 #include "MarkedMap.h"
 #include "PreparedGame.h"
+#include "ObserverTextRenderer.h"
 
 int main(int argc, char **argv)
 {
@@ -32,6 +33,7 @@ int main(int argc, char **argv)
 	g.Run();*/
 
 	PreparedGame g("prepd_game_1.txt");
+	g.registerRenderer(new ObserverTextRenderer());
 	g.Run();
 	return 0;
 }

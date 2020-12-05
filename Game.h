@@ -11,7 +11,8 @@
 
 #include "MarkedMap.h"
 #include "Hero.h"
-
+#include "Renderer.h"
+class Renderer;
 class Game
 {
 private:
@@ -19,7 +20,7 @@ private:
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
     bool hasStarted;
-
+	std::list<Renderer*> renderers;
     bool TileIsFree(int x, int y) const;
     void ShowMap() const;
 	void HeroPerspective() const;
@@ -28,9 +29,13 @@ private:
     void SetCoordinateDifs(char way, int &difX, int &difY) const;
 
     void LookForFights();
-    std::vector<std::pair<int, int>> GetMonsterCoordinates() const;
+    
 
 public:
+	std::vector<std::pair<int, int>> GetMonsterCoordinates() const;
+	Hero* getHero() const;
+	int getMonsterCount() const;
+	void registerRenderer(Renderer*);
     /**
     * @brief Returns an empty game, where the map isn't set.
     * @return Game
@@ -81,7 +86,7 @@ public:
     * @return void
     */
     void PutMonster(Monster *m, int x, int y);
-
+	Map* getMap() const;
     /**
     * @brief Starts the gameplay loop. Handles fighting, user input, moving.
     * \throw NotInitializedException

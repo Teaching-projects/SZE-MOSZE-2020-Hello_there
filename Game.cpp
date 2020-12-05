@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game()
-    : hero(nullptr), map(nullptr), hasStarted(false)
+    : hero(nullptr), map(nullptr), hasStarted(false),renderers(NULL)
 {
 }
 Game::Game(Map* m)
@@ -51,6 +51,11 @@ void Game::PutMonster(Monster *m, int x, int y)
     m->SetCoordinates(x, y);
 }
 
+Map* Game::getMap() const
+{
+	return map;
+}
+
 void Game::PutHero(Hero *h, int x, int y)
 {
     if (hasStarted)
@@ -91,7 +96,9 @@ void Game::Run()
     {
         LookForFights();
       // ShowMap();
-		HeroPerspective();
+		for (std::list<Renderer*>::iterator it = renderers.begin(); it != renderers.end(); it++) {
+			(*it)->render(*this);
+		}
 
         if (monsters.size() != 0 && hero->isAlive())
             ReadUserInput();
@@ -235,6 +242,21 @@ std::vector<std::pair<int, int>> Game::GetMonsterCoordinates() const
     }
 
     return monsterCoordinates;
+}
+
+Hero* Game::getHero() const
+{
+	return hero;
+}
+
+int Game::getMonsterCount() const
+{
+	return monsters.size();
+}
+
+void Game::registerRenderer(Renderer* r)
+{
+	renderers.push_back(r);
 }
 
 void Game::ShowMap() const
