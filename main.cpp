@@ -14,6 +14,7 @@
 #include "MarkedMap.h"
 #include "PreparedGame.h"
 #include "ObserverTextRenderer.h"
+#include "HeroTextRenderer.h"
 
 int main(int argc, char **argv)
 {
@@ -34,6 +35,7 @@ int main(int argc, char **argv)
 
 	PreparedGame g("prepd_game_1.txt");
 	g.registerRenderer(new ObserverTextRenderer());
+	g.registerRenderer(new HeroTextRenderer());
 	g.Run();
 	return 0;
 }
