@@ -4,7 +4,7 @@ HeroTextRenderer::HeroTextRenderer() :TextRenderer()
 {
 }
 
-HeroTextRenderer::HeroTextRenderer(std::ofstream* ofs) : TextRenderer(ofs)
+HeroTextRenderer::HeroTextRenderer(std::string s) : TextRenderer(s)
 {
 
 }

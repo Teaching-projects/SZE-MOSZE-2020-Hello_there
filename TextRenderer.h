@@ -3,17 +3,15 @@
 #include <sstream>
 class TextRenderer : public Renderer {
 
-private:
-	friend std::ostream;
-	std::ostream* outputStream;
+protected:
+	friend std::ofstream;
+	std::ofstream* outputStream;
 	
 
 public:
-	//~TextRenderer();
-	//virtual void render(const Game&) const = 0;
+	~TextRenderer();
 	TextRenderer();
-	TextRenderer(std::ofstream*);
-	void setOutputStream(std::ofstream*);
-	
+	TextRenderer(std::string);
+	void setOutputStream(std::string);
 
 };

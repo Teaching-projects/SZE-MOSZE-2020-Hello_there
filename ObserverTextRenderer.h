@@ -3,6 +3,6 @@
 class ObserverTextRenderer :public TextRenderer {
 public:
 	ObserverTextRenderer();
-	ObserverTextRenderer(std::ofstream* ofs);
+	ObserverTextRenderer(std::string);
 	void render(const Game&) const override;
 };

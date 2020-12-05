@@ -1,14 +1,23 @@
 #include "TextRenderer.h"
 
-
-TextRenderer::TextRenderer(): Renderer(), outputStream(&std::cout){
+TextRenderer::~TextRenderer()
+{
+	delete outputStream;
 }
 
-TextRenderer::TextRenderer(std::ofstream *ofs): Renderer(), outputStream(ofs)
-{
+TextRenderer::TextRenderer(): Renderer(){
+	outputStream = new std::ofstream;
+	outputStream->basic_ios<char>::rdbuf(std::cout.rdbuf());
 }
 
-void TextRenderer::setOutputStream(std::ofstream *ost)
+TextRenderer::TextRenderer(std::string s)
 {
-	outputStream = ost;
+	outputStream = new std::ofstream;
+	outputStream->open(s);
+
+}
+
+void TextRenderer::setOutputStream(std::string s)
+{
+	outputStream->open(s);
 }
