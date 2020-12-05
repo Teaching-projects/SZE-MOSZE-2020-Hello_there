@@ -69,11 +69,6 @@ $(function() {
 <div class="title">Game Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><a class="el" href="class_game.html" title="Game class.">Game</a> class.  
- <a href="class_game.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="_game_8h_source.html">Game.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Game:</div>
 <div class="dyncontent">
@@ -99,6 +94,18 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:af61f2e2a9130ce0e2e4651450d6c730e"><td class="memItemLeft" align="right" valign="top"><a id="af61f2e2a9130ce0e2e4651450d6c730e"></a>
+std::vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetMonsterCoordinates</b> () const</td></tr>
+<tr class="separator:af61f2e2a9130ce0e2e4651450d6c730e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3fec2c174d49c8e59a912cbaac98444"><td class="memItemLeft" align="right" valign="top"><a id="ad3fec2c174d49c8e59a912cbaac98444"></a>
+<a class="el" href="class_hero.html">Hero</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getHero</b> () const</td></tr>
+<tr class="separator:ad3fec2c174d49c8e59a912cbaac98444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00a5f2d0cf952d38887b4224a489004f"><td class="memItemLeft" align="right" valign="top"><a id="a00a5f2d0cf952d38887b4224a489004f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getMonsterCount</b> () const</td></tr>
+<tr class="separator:a00a5f2d0cf952d38887b4224a489004f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab234db2839bf8776c31998fee8d02038"><td class="memItemLeft" align="right" valign="top"><a id="ab234db2839bf8776c31998fee8d02038"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>registerRenderer</b> (<a class="el" href="class_renderer.html">Renderer</a> *)</td></tr>
+<tr class="separator:ab234db2839bf8776c31998fee8d02038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad59df6562a58a614fda24622d3715b65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a> ()</td></tr>
 <tr class="memdesc:ad59df6562a58a614fda24622d3715b65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an empty game, where the map isn't set.  <a href="class_game.html#ad59df6562a58a614fda24622d3715b65">More...</a><br /></td></tr>
 <tr class="separator:ad59df6562a58a614fda24622d3715b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,15 +130,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a06d979fb9bc8e06a88d210d7eb04a555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">PutMonster</a> (<a class="el" href="class_monster.html">Monster</a> *m, int x, int y)</td></tr>
 <tr class="memdesc:a06d979fb9bc8e06a88d210d7eb04a555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Places the monster on the given coordinates.  <a href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">More...</a><br /></td></tr>
 <tr class="separator:a06d979fb9bc8e06a88d210d7eb04a555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a283f93aebae690dadc95c2ce0468c5f1"><td class="memItemLeft" align="right" valign="top"><a id="a283f93aebae690dadc95c2ce0468c5f1"></a>
+<a class="el" href="class_map.html">Map</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getMap</b> () const</td></tr>
+<tr class="separator:a283f93aebae690dadc95c2ce0468c5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312">Run</a> ()</td></tr>
 <tr class="memdesc:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the gameplay loop. Handles fighting, user input, moving.  <a href="class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312">More...</a><br /></td></tr>
 <tr class="separator:a96341ca5b54d90adc3ecb3bf0bcd2312"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_game.html" title="Game class.">Game</a> class. </p>
-<dl class="section author"><dt>Author</dt><dd>Holdedve The <a class="el" href="class_game.html" title="Game class.">Game</a> class is responsible for running the game loop.</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2020-11-25 </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad59df6562a58a614fda24622d3715b65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad59df6562a58a614fda24622d3715b65">&#9670;&nbsp;</a></span>Game() <span class="overload">[1/2]</span></h2>
 
@@ -148,7 +154,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns an empty game, where the map isn't set. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_game.html" title="Game class.">Game</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_game.html">Game</a> </dd></dl>
 
 </div>
 </div>
@@ -175,7 +181,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_game.html" title="Game class.">Game</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_game.html">Game</a> </dd></dl>
 
 </div>
 </div>

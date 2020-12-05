@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['alreadyhasheroexception_36',['AlreadyHasHeroException',['../class_game_1_1_already_has_hero_exception.html',1,'Game']]],
-  ['alreadyhasunitsexception_37',['AlreadyHasUnitsException',['../class_game_1_1_already_has_units_exception.html',1,'Game']]]
+  ['alreadyhasheroexception_39',['AlreadyHasHeroException',['../class_game_1_1_already_has_hero_exception.html',1,'Game']]],
+  ['alreadyhasunitsexception_40',['AlreadyHasUnitsException',['../class_game_1_1_already_has_units_exception.html',1,'Game']]]
 ];
