@@ -40,7 +40,7 @@ TextRenderer.o: Game.h Renderer.h TextRenderer.h TextRenderer.cpp
 ObserverTextRenderer.o: Game.h Renderer.h TextRenderer.h ObserverTextRenderer.h ObserverTextRenderer.cpp
 	$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
 
-main.o: main.cpp Monster.h Hero.h JSON.h
+main.o: main.cpp Monster.h Hero.h JSON.h Game.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 valgrind:
