@@ -1,17 +1,19 @@
 #pragma once
 #include "Renderer.h"
 #include <sstream>
-class TextRenderer : public Renderer {
+class TextRenderer : public Renderer
+{
 
 protected:
 	friend std::ofstream;
-	std::ofstream* outputStream;
-	
+	std::ofstream *outputStream;
 
 public:
 	~TextRenderer();
 	TextRenderer();
 	TextRenderer(std::string);
-	void setOutputStream(std::string);
+	TextRenderer(const TextRenderer &) = delete;
+	TextRenderer &operator=(const TextRenderer &) = delete;
 
+	void setOutputStream(std::string);
 };
