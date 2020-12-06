@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['observertextrenderer_52',['ObserverTextRenderer',['../class_observer_text_renderer.html',1,'']]],
-  ['occupiedexception_53',['OccupiedException',['../class_game_1_1_occupied_exception.html',1,'Game']]]
+  ['observersvgrenderer_53',['ObserverSVGRenderer',['../class_observer_s_v_g_renderer.html',1,'']]],
+  ['observertextrenderer_54',['ObserverTextRenderer',['../class_observer_text_renderer.html',1,'']]],
+  ['occupiedexception_55',['OccupiedException',['../class_game_1_1_occupied_exception.html',1,'Game']]]
 ];

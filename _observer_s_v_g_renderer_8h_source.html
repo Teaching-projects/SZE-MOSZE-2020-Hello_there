@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Member List</title>
+<title>My Project: ObserverSVGRenderer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -45,6 +45,7 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,24 +60,22 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">SVGRenderer Member List</div>  </div>
+<div class="title">ObserverSVGRenderer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>, including all inherited members.</p>
-<table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator=</b>(const SVGRenderer &amp;)=delete (defined in <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>)</td><td class="entry"><a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>outputStream</b> (defined in <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>)</td><td class="entry"><a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>render</b>(const Game &amp;) const =0 (defined in <a class="el" href="class_renderer.html">Renderer</a>)</td><td class="entry"><a class="el" href="class_renderer.html">Renderer</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setOutputStream</b>(std::string) (defined in <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>)</td><td class="entry"><a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>SVGRenderer</b>() (defined in <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>)</td><td class="entry"><a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>SVGRenderer</b>(std::string) (defined in <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>)</td><td class="entry"><a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>SVGRenderer</b>(const SVGRenderer &amp;)=delete (defined in <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>)</td><td class="entry"><a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~SVGRenderer</b>() (defined in <a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a>)</td><td class="entry"><a class="el" href="class_s_v_g_renderer.html">SVGRenderer</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;SVGRenderer.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="class_observer_s_v_g_renderer.html">    3</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_observer_s_v_g_renderer.html">ObserverSVGRenderer</a> : <span class="keyword">public</span> <a class="code" href="class_s_v_g_renderer.html">SVGRenderer</a> {</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <a class="code" href="class_observer_s_v_g_renderer.html">ObserverSVGRenderer</a>(std::string);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">void</span> render(<span class="keyword">const</span> <a class="code" href="class_game.html">Game</a>&amp;) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;};</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_observer_s_v_g_renderer_html"><div class="ttname"><a href="class_observer_s_v_g_renderer.html">ObserverSVGRenderer</a></div><div class="ttdef"><b>Definition:</b> ObserverSVGRenderer.h:3</div></div>
+<div class="ttc" id="aclass_s_v_g_renderer_html"><div class="ttname"><a href="class_s_v_g_renderer.html">SVGRenderer</a></div><div class="ttdef"><b>Definition:</b> SVGRenderer.h:5</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> Game.h:16</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
