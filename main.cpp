@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 
 	PreparedGame g("prepd_game_1.txt");
 	g.registerRenderer(new ObserverTextRenderer());
-	//g.registerRenderer(new HeroTextRenderer());
+	g.registerRenderer(new HeroTextRenderer());
 	g.registerRenderer(new ObserverTextRenderer("Game.txt"));
 	g.Run();
 	return 0;

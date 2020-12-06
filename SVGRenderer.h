@@ -4,15 +4,19 @@
 #include <sstream>
 class SVGRenderer : public Renderer {
 
-private:
-	friend std::ostream;
-	std::ostream* outputStream;
+protected:
+	friend std::ofstream;
+	std::ofstream* outputStream;
 
 
 public:
+	~SVGRenderer();
 	SVGRenderer();
-	SVGRenderer(std::ofstream*);
-	void setOutputStream(std::ofstream*);
+	SVGRenderer(std::string);
+	SVGRenderer(const SVGRenderer&) = delete;
+	SVGRenderer& operator=(const SVGRenderer&) = delete;
+	void setOutputStream(std::string);
+	
 
 
 };

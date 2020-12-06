@@ -51,14 +51,14 @@ void HeroTextRenderer::render(const Game& g) const
 	int magic = (colCount - startCol);
 
 	// print top border of map
-	std::cout << char(201);
+	(*outputStream) << char(201);
 	for (int i = 0; i < maxSteps && i < magic; i++)
-		std::cout << char(205) << char(205);
-	std::cout << char(187) << std::endl;
+		(*outputStream) << char(205) << char(205);
+	(*outputStream) << char(187) << std::endl;
 	// print middle part
 	for (int i = 0, row = startRow; i < maxSteps && row < rowCount; i++)
 	{
-		std::cout << char(186);
+		(*outputStream) << char(186);
 		for (int j = 0, col = startCol; j < maxSteps && col < colCount; j++)
 		{
 			char tile = tiles[row][col];
@@ -71,22 +71,22 @@ void HeroTextRenderer::render(const Game& g) const
 			}
 
 			if (tileMonsterCount > 1)
-				std::cout << 'M' << 'M';
+				(*outputStream) << 'M' << 'M';
 			else if (tileMonsterCount == 1)
-				std::cout << 'M' << ' ';
+				(*outputStream) << 'M' << ' ';
 			else if (tile == 'H')
-				std::cout << tile << ' ';
+				(*outputStream) << tile << ' ';
 			else
-				std::cout << tile << tile;
+				(*outputStream) << tile << tile;
 			col++;
 		}
-		std::cout << char(186) << std::endl;
+		(*outputStream) << char(186) << std::endl;
 		row++;
 	}
 
 	// print bottom part of the map
-	std::cout << char(200);
+	(*outputStream) << char(200);
 	for (int i = 0; i < maxSteps && i < magic; i++)
-		std::cout << char(205) << char(205);
-	std::cout << char(188) << std::endl;
+		(*outputStream) << char(205) << char(205);
+	(*outputStream) << char(188) << std::endl;
 }

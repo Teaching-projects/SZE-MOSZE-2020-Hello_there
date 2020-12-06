@@ -1,13 +1,13 @@
 #include "SVGRenderer.h"
 
-SVGRenderer::SVGRenderer() : Renderer(), outputStream(&std::cout) {
+
+SVGRenderer::SVGRenderer(std::string s) : Renderer()
+{
+	outputStream = new std::ofstream;
+	outputStream->open(s);
 }
 
-SVGRenderer::SVGRenderer(std::ofstream* ofs) : Renderer(), outputStream(ofs)
+void SVGRenderer::setOutputStream(std::string s)
 {
-}
-
-void SVGRenderer::setOutputStream(std::ofstream* ost)
-{
-	outputStream = ost;
+	outputStream->open(s);
 }
