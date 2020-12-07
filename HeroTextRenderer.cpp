@@ -49,7 +49,6 @@ void HeroTextRenderer::render(const Game& g) const
 		startCol--;
 	}
 	int magic = (colCount - startCol);
-
 	// print top border of map
 	(*outputStream) << char(201);
 	for (int i = 0; i < maxSteps && i < magic; i++)

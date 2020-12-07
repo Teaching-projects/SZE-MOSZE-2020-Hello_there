@@ -16,6 +16,7 @@
 #include "ObserverTextRenderer.h"
 #include "HeroTextRenderer.h"
 #include "ObserverSVGRenderer.h"
+#include "HeroSVGRenderer.h"
 
 int main(int argc, char **argv)
 {
@@ -37,7 +38,8 @@ int main(int argc, char **argv)
 	PreparedGame g("prepd_game_1.json");
 	g.registerRenderer(new HeroTextRenderer());
 	g.registerRenderer(new ObserverTextRenderer("Game.txt"));
-	g.registerRenderer(new ObserverSVGRenderer("valami.svg"));
+	g.registerRenderer(new ObserverSVGRenderer("observeer.svg"));
+	g.registerRenderer(new HeroSVGRenderer("player.svg"));
 	g.Run();
 	return 0;
 }

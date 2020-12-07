@@ -1,27 +1,38 @@
-#include "ObserverSVGRenderer.h"
+#include "HeroSVGRenderer.h"
 
-ObserverSVGRenderer::ObserverSVGRenderer(std::string s): SVGRenderer(s)
-{
+HeroSVGRenderer::HeroSVGRenderer(std::string s) : SVGRenderer(s) {
+
 }
-void ObserverSVGRenderer::render(const Game& g) const
+
+void HeroSVGRenderer::render(const Game& g) const
 {
 	Map* m = g.getMap();
 	Hero* h = g.getHero();
-	int height = m->GetRowCount() * 10;
-	int width = m->GetColCount(0) * 10;
 	int rowCount = m->GetRowCount();
 	int colCount = m->GetColCount(0);
 	std::vector<std::pair<int, int>> monsterCoordinates = g.GetMonsterCoordinates();
 	// place hero
 	int x = h->GetXCoo();
 	int y = h->GetYCoo();
+	int maxSteps = h->getLightRadius() * 2 + 1;
+	if (maxSteps >= colCount) maxSteps = colCount;
+	int startRow = x;
+	int startCol = y;
+	for (int i = 0; i < h->getLightRadius() && startRow > 0 && startRow < rowCount; i++) {
+		startRow--;
+	}
+	for (int i = 0; i < h->getLightRadius() && startCol > 0 && startCol < colCount; i++) {
+		startCol--;
+	}
+	int width = (colCount - startCol)*10;
+	int height = (rowCount - startRow) * 10;
 	std::ofstream stream(outputStreamName);
 	stream << "<svg viewBox=\"0 0 " << width << ' ' << height << "\" xmlns=\"http://www.w3.org/2000/svg\" width=\"" << width << "\" height=\"" << height << "\">\n";
-	for (int x = 0; x < rowCount; x++)
+	for (int x = 0, row = startRow; x < rowCount && row < rowCount; x++)
 	{
-		for (int y = 0; y < colCount; y++)
+		for (int y = 0,col = startCol; y < maxSteps && col<colCount; y++)
 		{
-			
+
 			const int topx = x * 10;
 			const int topy = y * 10;
 
@@ -30,20 +41,20 @@ void ObserverSVGRenderer::render(const Game& g) const
 			int tileMonsterCount = 0;
 			for (int k = 0; k < g.getMonsterCount(); k++)
 			{
-				if (monsterCoordinates[k].first == x && monsterCoordinates[k].second == y)
+				if (monsterCoordinates[k].first == row && monsterCoordinates[k].second == col)
 					tileMonsterCount++;
 			}
-			if (h != nullptr && h->isAlive() && h->GetXCoo() == x && h->GetYCoo() == y)
+			if (h != nullptr && h->isAlive() && h->GetXCoo() == row && h->GetYCoo() == col)
 			{
 				img = h->GetTexture();
 			}
 			else if (tileMonsterCount != 0)
 			{
-				img = g.getMonsterTextureInField(x, y);
+				img = g.getMonsterTextureInField(row, col);
 			}
 			else
 			{
-				img = m->get(x, y) == Map::Wall ? g.getWallTexture()
+				img = m->get(row, col) == Map::Wall ? g.getWallTexture()
 					: g.getFreeTexture();
 			}
 
@@ -58,7 +69,9 @@ void ObserverSVGRenderer::render(const Game& g) const
 				stream << "<rect fill=\"black\" x=\"" << topy << "\" y=\"" << topx << "\" width=\"10\" height=\"10\" />\n";
 			}
 			stream << std::flush;
+			col++;
 		}
+		row++;
 	}
 
 	stream << "</svg>";

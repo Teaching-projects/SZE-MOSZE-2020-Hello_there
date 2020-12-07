@@ -36,6 +36,7 @@ void ObserverTextRenderer::render(const Game& g) const
 	int x = h->GetXCoo();
 	int y = h->GetYCoo();
 	tiles[x][y] = 'H';
+	
 	// print top border of map
 	colCount = m->GetColCount(0);
 	(*outputStream) << char(201);
