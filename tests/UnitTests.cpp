@@ -311,7 +311,12 @@ TEST(MarkedMapTest, ConstructionNoExceptionThrown)
 
 TEST(PreparedGameTest, ConstructionNoExceptionThrown)
 {
-    EXPECT_NO_THROW(PreparedGame g("prepd_game_1.txt"));
+    EXPECT_NO_THROW(PreparedGame g("prepd_game_1.json"));
+}
+
+TEST(PreparedGameTest, ExpectExceptionThrow)
+{
+    EXPECT_ANY_THROW(PreparedGame g("missing_map.txt"));
 }
 
 int main(int argc, char **argv)

@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 
-Monster::Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense, std::string texture="")
-	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), defense(defense), x(-1), y(-1), texture("svgs/"+texture)
+Monster::Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense, std::string texture = "")
+	: name(name), hp(hp), dmg(dmg), atkCooldown(atkCooldown), defense(defense), x(-1), y(-1), texture("svgs/" + texture)
 {
 }
 
@@ -84,7 +84,7 @@ Monster *Monster::parse(const std::string &fileName)
 {
 	JSON properties = JSON::parseFromFile("units/" + fileName);
 
-	const std::vector<std::string> expectedProps{"name", "health_points", "damage", "attack_cooldown", "defense",};
+	const std::vector<std::string> expectedProps{"name", "health_points", "damage", "attack_cooldown", "defense", "texture"};
 	for (unsigned int i = 0; i < expectedProps.size(); i++)
 	{
 		if (!properties.count(expectedProps[i]))
