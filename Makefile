@@ -1,7 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = JSON.o Hero.o Monster.o  Map.o Game.o  MarkedMap.o PreparedGame.o main.o 
-TextRenderer.o ObserverTextRenderer.o HeroTextRenderer.o HeroSVGRenderer.o ObserverSVGRenderer.o
+OBJS = JSON.o Hero.o Monster.o  Map.o Game.o  MarkedMap.o PreparedGame.o main.o TextRenderer.o ObserverTextRenderer.o HeroTextRenderer.o HeroSVGRenderer.o ObserverSVGRenderer.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++-9
@@ -34,7 +33,9 @@ MarkedMap.o: MarkedMap.h MarkedMap.cpp Map.h
 
 PreparedGame.o: PreparedGame.h PreparedGame.cpp Game.h
 	$(CC) $(CFLAGS) -c PreparedGame.cpp
-	
+
+
+
 TextRenderer.o: Game.h Renderer.h TextRenderer.h TextRenderer.cpp
 	$(CC) $(CFLAGS) -c TextRenderer.cpp
 
@@ -44,14 +45,17 @@ ObserverTextRenderer.o: Game.h Renderer.h TextRenderer.h ObserverTextRenderer.h 
 HeroTextRenderer.o: Game.h Renderer.h TextRenderer.h HeroTextRenderer.h HeroTextRenderer.cpp
 	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
 
-HeroSVGRenderer.o: HeroSVGRenderer.h 
+ObserverSVGRenderer.o: Game.h Renderer.h SVGRenderer.h ObserverSVGRenderer.h ObserverSVGRenderer.cpp
+	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
+
+HeroSVGRenderer.o: Game.h Renderer.h SVGRenderer.h HeroSVGRenderer.h HeroSVGRenderer.cpp
 	$(CC) $(CFLAGS) -c HeroSVGRenderer.cpp
 
-ObserverSVGRenderer.o: ObserverSVGRenderer.h 
-	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
 
 main.o: main.cpp Monster.h Hero.h JSON.h Game.h HeroTextRenderer.h ObserverTextRenderer.h
 	$(CC) $(CFLAGS) -c main.cpp
+
+
 
 valgrind:
 	bash -c "chmod a+x ./valgrind.sh"
