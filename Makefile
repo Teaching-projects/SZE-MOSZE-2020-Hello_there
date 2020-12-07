@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = JSON.o Hero.o Monster.o  Map.o Game.o  MarkedMap.o PreparedGame.o main.o TextRenderer.o ObserverTextRenderer.o HeroTextRenderer.o HeroSVGRenderer.o ObserverSVGRenderer.o
+OBJS = JSON.o Hero.o Monster.o  Map.o Game.o  MarkedMap.o PreparedGame.o main.o TextRenderer.o ObserverTextRenderer.o HeroTextRenderer.o SVGRenderer.o HeroSVGRenderer.o ObserverSVGRenderer.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++-9
@@ -44,6 +44,10 @@ ObserverTextRenderer.o: Game.h Renderer.h TextRenderer.h ObserverTextRenderer.h 
 
 HeroTextRenderer.o: Game.h Renderer.h TextRenderer.h HeroTextRenderer.h HeroTextRenderer.cpp
 	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
+
+
+SVGRenderer.o: Game.h Renderer.h SVGRenderer.h SVGRenderer.cpp
+	$(CC) $(CFLAGS) -c SVGRenderer.cpp
 
 ObserverSVGRenderer.o: Game.h Renderer.h SVGRenderer.h ObserverSVGRenderer.h ObserverSVGRenderer.cpp
 	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
