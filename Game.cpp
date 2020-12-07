@@ -1,18 +1,16 @@
 #include "Game.h"
 
 Game::Game()
-    : hero(nullptr), map(nullptr), hasStarted(false),renderers(NULL)
+	: hero(nullptr), map(nullptr), hasStarted(false), renderers(NULL), freeTexture(""),wallTexture("")
 {
 }
 Game::Game(Map* m)
-	: hero(nullptr), map(m), hasStarted(false)
+	: hero(nullptr), map(m), hasStarted(false), freeTexture(""), wallTexture("")
 {
-	std::cout << "ASD" << std::endl;
 }
 Game::Game(MarkedMap *m)
-    : hero(nullptr), map(m), hasStarted(false)
+    : hero(nullptr), map(m), hasStarted(false),freeTexture(""), wallTexture("")
 {
-	std::cout << "ASD" << std::endl;
 }
 
 Game::~Game()
@@ -28,6 +26,16 @@ Game::~Game()
         delete monsters[i];
     }
     monsters.clear();
+}
+
+void Game::setWallTexture(std::string s)
+{
+	wallTexture = s;
+}
+
+void Game::setFreeTexture(std::string s)
+{
+	freeTexture = s;
 }
 
 
@@ -259,6 +267,16 @@ void Game::registerRenderer(Renderer* r)
 	renderers.push_back(r);
 }
 
+std::string Game::getFreeTexture() const
+{
+	return freeTexture;
+}
+
+std::string Game::getWallTexture() const
+{
+	return wallTexture;
+}
+
 void Game::ShowMap() const
 {
     int rowCount = map->GetRowCount();
@@ -428,4 +446,12 @@ void Game::ResetGame()
     monsters.clear();
 
     hasStarted = false;
+}
+std::string Game::getMonsterTextureInField(int x, int y) const {
+	for (std::vector<Monster*>::const_iterator it = monsters.begin(); it != monsters.end(); it++) {
+		if ((*it)->GetXCoo() == x && (*it)->GetYCoo() == y) {
+			return (*it)->GetTexture();
+		}
+	}
+	return "";
 }

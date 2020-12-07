@@ -4,16 +4,16 @@
 #include <cmath>
 #include <vector>
 
-Hero::Hero(const std::string& name, int hp, int dmg, double atkCooldown, int defense, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const double cdr_per_lvl, const int def_per_lvl, const int light_radius)
-	: Monster(name, hp, dmg, atkCooldown, defense),
+Hero::Hero(const std::string& name, int hp, int dmg, double atkCooldown, int defense,std::string texture, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const double cdr_per_lvl, const int def_per_lvl, const int light_radius)
+	: Monster(name, hp, dmg, atkCooldown, defense,texture),
 	maxHP(hp), xp_per_lvl(xp_per_lvl), hp_per_lvl(hp_per_lvl),
 	dmg_per_lvl(dmg_per_lvl), cdr_per_lvl(cdr_per_lvl), def_per_lvl(def_per_lvl),
 	light_radius(light_radius), light_radius_bonus_per_level(1)
 {
 }
 
-Hero::Hero(const std::string& name, int hp, int dmg, double atkCooldown, int defense, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const double cdr_per_lvl, const int def_per_lvl, const int light_radius, const int light_radius_bonus_per_level)
-	: Monster(name, hp, dmg, atkCooldown, defense),
+Hero::Hero(const std::string& name, int hp, int dmg, double atkCooldown, int defense, std::string texture, const int xp_per_lvl, const int hp_per_lvl, const int dmg_per_lvl, const double cdr_per_lvl, const int def_per_lvl, const int light_radius, const int light_radius_bonus_per_level)
+	: Monster(name, hp, dmg, atkCooldown, defense, texture),
 	maxHP(hp), xp_per_lvl(xp_per_lvl), hp_per_lvl(hp_per_lvl),
 	dmg_per_lvl(dmg_per_lvl), cdr_per_lvl(cdr_per_lvl), def_per_lvl(def_per_lvl),
 	light_radius(light_radius), light_radius_bonus_per_level(light_radius_bonus_per_level)
@@ -84,6 +84,7 @@ Hero* Hero::parse(std::string &fileName)
 			properties.get<int>("base_damage"),
 			properties.get<double>("base_attack_cooldown"),
 			properties.get<int>("base_defense"),
+			properties.get<std::string>("texture"),
 			properties.get<int>("experience_per_level"),
 			properties.get<int>("health_point_bonus_per_level"),
 			properties.get<int>("damage_bonus_per_level"),
@@ -98,6 +99,7 @@ Hero* Hero::parse(std::string &fileName)
 			properties.get<int>("base_damage"),
 			properties.get<double>("base_attack_cooldown"),
 			properties.get<int>("base_defense"),
+			properties.get<std::string>("texture"),
 			properties.get<int>("experience_per_level"),
 			properties.get<int>("health_point_bonus_per_level"),
 			properties.get<int>("damage_bonus_per_level"),

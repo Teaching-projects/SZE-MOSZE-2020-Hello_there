@@ -18,6 +18,7 @@ private:
     double atkCooldown; ///< time it takes for the Monster to be able to hit again
     int x;              // row coordinate
     int y;              // column coordinate
+	std::string texture; // name of the texture file
     friend class Hero;
 
 protected:
@@ -36,7 +37,7 @@ public:
      * \param atkCooldown attack cooldown
     */
 
-    Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense);
+    Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense,std::string texture);
 
     virtual ~Monster() {}
 
@@ -61,8 +62,10 @@ public:
     /// \return int
     int GetXCoo() const;
 
-    /// \return int
-    int GetYCoo() const;
+	/// \return int
+	int GetYCoo() const;
+	/// \return string
+	std::string GetTexture() const;
 
     /// suffer the damage
     int TakeDamage(const Monster &atkMonster /** [in] attacking Monster that causes this Monster some damage*/);

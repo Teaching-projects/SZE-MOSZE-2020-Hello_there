@@ -27,15 +27,17 @@ private:
     void ResetGame();
     void ReadUserInput();
     void SetCoordinateDifs(char way, int &difX, int &difY) const;
-
     void LookForFights();
-    
+	std::string wallTexture;
+	std::string freeTexture;
 
 public:
 	std::vector<std::pair<int, int>> GetMonsterCoordinates() const;
 	Hero* getHero() const;
 	int getMonsterCount() const;
 	void registerRenderer(Renderer*);
+	std::string getFreeTexture() const;
+	std::string getWallTexture() const;
     /**
     * @brief Returns an empty game, where the map isn't set.
     * @return Game
@@ -54,6 +56,19 @@ public:
 
     Game(const Game &) = delete;
     Game &operator=(const Game &) = delete;
+	/**
+	* @brief Sets the given svg file as the wall texture for this game.
+	* @param std::string the name of the file to use as wall texture.
+	* @return void
+	*/
+	void setWallTexture(std::string);
+
+	/**
+	* @brief Sets the given svg file as the wall texture for this game.
+	* @param std::string the name of the file to use as wall texture.
+	* @return void
+	*/
+	void setFreeTexture(std::string);
 
     /**
     * @brief Sets the given map to this game.
@@ -139,4 +154,5 @@ public:
         */
         GameAlreadyStartedException() {}
     };
+	std::string getMonsterTextureInField(int x, int y)const;
 };

@@ -12,6 +12,8 @@ PreparedGame::PreparedGame(std::string prepdGameName)
     Hero *h = Hero::parse(heroFile);
     std::pair<int, int> heroPos = map->getHeroPosition();
     PutHero(h, heroPos.first, heroPos.second);
+	setFreeTexture("svgs/" + parser.get<std::string>("free_texture"));
+	setWallTexture("svgs/" + parser.get<std::string>("wall_texture"));
 
     for (int i = 1; i < parser.GetDataCount(); i++)
     {
