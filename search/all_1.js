@@ -10,6 +10,7 @@ var searchData=
   ['getend_10',['getEnd',['../class_map.html#ae802d19bd6f18bcff57a717442ddf291',1,'Map']]],
   ['gethealthpoints_11',['getHealthPoints',['../class_monster.html#acbfb552014439fe02d10f2492e60fe34',1,'Monster']]],
   ['getname_12',['getName',['../class_monster.html#a28ae1112e37262ce150e3c02465b3dd5',1,'Monster']]],
-  ['getxcoo_13',['GetXCoo',['../class_monster.html#ab1315177e0b7ee1e6a7fa92d5493282a',1,'Monster']]],
-  ['getycoo_14',['GetYCoo',['../class_monster.html#a9404662a524b29e612016e13bf3e450c',1,'Monster']]]
+  ['gettexture_13',['GetTexture',['../class_monster.html#a4619ea9632df72da78425d95d58d6351',1,'Monster']]],
+  ['getxcoo_14',['GetXCoo',['../class_monster.html#ab1315177e0b7ee1e6a7fa92d5493282a',1,'Monster']]],
+  ['getycoo_15',['GetYCoo',['../class_monster.html#a9404662a524b29e612016e13bf3e450c',1,'Monster']]]
 ];
