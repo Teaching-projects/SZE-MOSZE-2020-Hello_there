@@ -1,5 +1,6 @@
 *.exe
 *.out
+*.svg
 *.o
 *.obj
 *.pdb
@@ -10,6 +11,12 @@ DOCS
 input.txt
 output1.txt
 output2.txt
+HeroOut.txt
+HeroSVGOut.txt
+HeroTextOut.txt
+ObserverOut.txt
+ObserverSvgOut.txt
+ObserverTextOut.txt
 performance_warnings.txt
 style_warnings.txt
 warnings.txt
