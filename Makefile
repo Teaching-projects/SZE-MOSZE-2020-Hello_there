@@ -61,6 +61,7 @@ main.o: main.cpp Monster.h Hero.h JSON.h Game.h HeroTextRenderer.h ObserverTextR
 
 
 
+
 valgrind:
 	bash -c "chmod a+x ./valgrind.sh"
 	bash -c "./valgrind.sh"
@@ -85,6 +86,10 @@ make_unittests:
 	cmake tests/CMakeLists.txt
 	cd tests && make
 
+
+run_in_out_tests:
+	chmod +x ./in_out_tests.sh
+	./in_out_tests.sh
 
 run_unittests:
 	tests/unit_tests

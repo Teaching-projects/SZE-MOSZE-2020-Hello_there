@@ -1,18 +1,17 @@
 #include "HeroTextRenderer.h"
 
-HeroTextRenderer::HeroTextRenderer() :TextRenderer()
+HeroTextRenderer::HeroTextRenderer() : TextRenderer()
 {
 }
 
 HeroTextRenderer::HeroTextRenderer(std::string s) : TextRenderer(s)
 {
-
 }
 
-void HeroTextRenderer::render(const Game& g) const
+void HeroTextRenderer::render(const Game &g) const
 {
-	Map* m = g.getMap();
-	Hero* h = g.getHero();
+	Map *m = g.getMap();
+	Hero *h = g.getHero();
 	int rowCount = m->GetRowCount();
 	int colCount;
 
@@ -38,22 +37,30 @@ void HeroTextRenderer::render(const Game& g) const
 	int x = h->GetXCoo();
 	int y = h->GetYCoo();
 	tiles[x][y] = 'H';
+
 	int maxSteps = h->getLightRadius() * 2 + 1;
-	if (maxSteps >= colCount) maxSteps = colCount;
+	if (maxSteps >= colCount)
+		maxSteps = colCount;
 	int startRow = x;
 	int startCol = y;
-	for (int i = 0; i < h->getLightRadius() && startRow > 0 && startRow < rowCount; i++) {
+
+	for (int i = 0; i < h->getLightRadius() && startRow > 0 && startRow < rowCount; i++)
+	{
 		startRow--;
 	}
-	for (int i = 0; i < h->getLightRadius() && startCol > 0 && startCol < colCount; i++) {
+	for (int i = 0; i < h->getLightRadius() && startCol > 0 && startCol < colCount; i++)
+	{
 		startCol--;
 	}
+
 	int magic = (colCount - startCol);
+
 	// print top border of map
 	(*outputStream) << char(201);
 	for (int i = 0; i < maxSteps && i < magic; i++)
 		(*outputStream) << char(205) << char(205);
 	(*outputStream) << char(187) << std::endl;
+
 	// print middle part
 	for (int i = 0, row = startRow; i < maxSteps && row < rowCount; i++)
 	{

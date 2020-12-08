@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
 	PreparedGame g("prepd_game_1.json");
 	g.registerRenderer(new HeroTextRenderer());
-	g.registerRenderer(new ObserverTextRenderer("Game.txt"));
+	g.registerRenderer(new ObserverTextRenderer("ObserverOut.txt"));
 	g.registerRenderer(new ObserverSVGRenderer("observeer.svg"));
 	g.registerRenderer(new HeroSVGRenderer("player.svg"));
 	g.Run();

@@ -1,12 +1,13 @@
 *.exe
-.vscode
-output.txt
-DOCS
-input.txt
+*.out
 *.o
 *.obj
 *.pdb
 *.ilk
+.vscode
+output.txt
+DOCS
+input.txt
 output1.txt
 output2.txt
 performance_warnings.txt
