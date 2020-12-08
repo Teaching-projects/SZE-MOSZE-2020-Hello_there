@@ -7,6 +7,14 @@
 #include "../MarkedMap.h"
 #include "../PreparedGame.h"
 
+#include "../SVGRenderer.h"
+#include "../TextRenderer.h"
+#include "../HeroTextRenderer.h"
+#include "../HeroSVGRenderer.h"
+#include "../ObserverTextRenderer.h"
+#include "../ObserverSVGRenderer.h"
+#include <fstream>
+
 TEST(ParserTest, CheckMapContent)
 {
     std::ifstream vaderFile("units/vader.json");
@@ -317,6 +325,30 @@ TEST(PreparedGameTest, ConstructionNoExceptionThrown)
 TEST(PreparedGameTest, ExpectExceptionThrow)
 {
     EXPECT_ANY_THROW(PreparedGame g("missing_map.txt"));
+}
+
+TEST(PreparedGameTest, MethodTests)
+{
+    MarkedMap *m = new MarkedMap("marked_map.txt");
+    Game g(m);
+    Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
+    g.PutHero(h, 1, 1);
+
+    HeroTextRenderer *hTxtRenderer = new HeroTextRenderer("HeroTextOut.txt");
+    hTxtRenderer->render(g);
+    EXPECT_TRUE(std::ifstream("HeroTextOut.txt").good());
+
+    HeroSVGRenderer *hSvgRenderer = new HeroSVGRenderer("HeroSVGOut.txt");
+    hSvgRenderer->render(g);
+    EXPECT_TRUE(std::ifstream("HeroSVGOut.txt").good());
+
+    ObserverTextRenderer *oTxtRenderer = new ObserverTextRenderer("ObserverTextOut.txt");
+    oTxtRenderer->render(g);
+    EXPECT_TRUE(std::ifstream("ObserverTextOut.txt").good());
+
+    ObserverSVGRenderer *oSvgRenderer = new ObserverSVGRenderer("ObserverSVGOut.txt");
+    oSvgRenderer->render(g);
+    EXPECT_TRUE(std::ifstream("ObserverSVGOut.txt").good());
 }
 
 int main(int argc, char **argv)
