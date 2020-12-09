@@ -5,7 +5,6 @@
 #include <fstream>
 #include <variant>
 #include <list>
-#include <vector>
 
 class JSON
 {

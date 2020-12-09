@@ -22,14 +22,13 @@ private:
     bool hasStarted;
 	std::list<Renderer*> renderers;
     bool TileIsFree(int x, int y) const;
-    void ShowMap() const;
-	void HeroPerspective() const;
     void ResetGame();
     void ReadUserInput();
     void SetCoordinateDifs(char way, int &difX, int &difY) const;
     void LookForFights();
 	std::string wallTexture;
 	std::string freeTexture;
+	void HeroStatus();
 
 public:
 	std::vector<std::pair<int, int>> GetMonsterCoordinates() const;

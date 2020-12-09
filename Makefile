@@ -25,11 +25,12 @@ JSON.o: JSON.cpp JSON.h
 Map.o: Map.cpp Map.h
 	$(CC) $(CFLAGS) -c Map.cpp
 
-Game.o: Game.cpp Game.h Monster.h Hero.h
-	$(CC) $(CFLAGS) -c Game.cpp
-
 MarkedMap.o: MarkedMap.h MarkedMap.cpp Map.h
 	$(CC) $(CFLAGS) -c MarkedMap.cpp
+
+
+Game.o: Game.cpp Game.h Hero.h MarkedMap.h Renderer.h
+	$(CC) $(CFLAGS) -c Game.cpp
 
 PreparedGame.o: PreparedGame.h PreparedGame.cpp Game.h
 	$(CC) $(CFLAGS) -c PreparedGame.cpp
