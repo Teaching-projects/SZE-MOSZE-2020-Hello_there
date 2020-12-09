@@ -64,7 +64,7 @@ TEST(ParserTest, ExpectNoExceptions)
     EXPECT_NO_THROW(JSON::parseFromFile(palpatineFile));
 }
 
-TEST(UnitClassTest, SuccessfulConstruction)
+TEST(MonsterClassTest, SuccessfulConstruction)
 {
     EXPECT_NO_THROW(std::string("units/vader.json"));
 
@@ -73,13 +73,13 @@ TEST(UnitClassTest, SuccessfulConstruction)
     EXPECT_NO_THROW(std::string("units/luke.json"));
 }
 
-TEST(PlayerClassTest, SuccessfulConstruction)
+TEST(HeroClassTest, SuccessfulConstruction)
 {
     std::string playerFile = "Dark_Wanderer.json";
     EXPECT_NO_THROW(Hero::parse(playerFile));
 }
 
-TEST(UnitClassTest, NoCrazyValues)
+TEST(MonsterClassTest, NoCrazyValues)
 {
     std::string vaderFile = "vader.json";
     Monster *vader(Monster::parse(vaderFile));
