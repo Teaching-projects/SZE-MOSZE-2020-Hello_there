@@ -5,7 +5,7 @@ var indexSectionsWithContent =
   2: "afghimnoprstw",
   3: "m",
   4: "t",
-  5: "s"
+  5: "st"
 };
 
 var indexSectionNames =
