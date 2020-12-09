@@ -28,6 +28,6 @@ public:
 	int getMaxHealthPoints() const;
 	void Attack(Monster &) override;
 	int getLevel() const;
-	static Hero* parse(std::string &fileName);
+	static Hero* parse(const std::string &fileName);
 	int getLightRadius() const;
 };

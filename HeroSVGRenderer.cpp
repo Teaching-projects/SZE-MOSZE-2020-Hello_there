@@ -12,13 +12,13 @@ void HeroSVGRenderer::render(const Game &g) const
 	int colCount = m->GetColCount(0);
 	std::vector<std::pair<int, int>> monsterCoordinates = g.GetMonsterCoordinates();
 	// place hero
-	int x = h->GetXCoo();
-	int y = h->GetYCoo();
+	int r = h->GetXCoo();
+	int c = h->GetYCoo();
 	int maxSteps = h->getLightRadius() * 2 + 1;
 	if (maxSteps >= colCount)
 		maxSteps = colCount;
-	int startRow = x;
-	int startCol = y;
+	int startRow = r;
+	int startCol = c;
 	for (int i = 0; i < h->getLightRadius() && startRow > 0 && startRow < rowCount; i++)
 	{
 		startRow--;

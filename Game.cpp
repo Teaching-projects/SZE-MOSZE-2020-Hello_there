@@ -94,8 +94,7 @@ void Game::Run()
     if (map == nullptr || hero == nullptr)
     {
         throw NotInitializedException{};
-        return;
-    }
+	}
 
     hasStarted = true;
 

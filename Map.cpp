@@ -29,11 +29,11 @@ Map::type Map::get(const int x, const int y) const
 {
 	size_t x_ = x;
 	size_t y_ = y;
-    if (x_ >= map.size() || x < 0)
+    if (x_ >= map.size())
     {
         throw WrongIndexException();
     }
-    else if (y_ >= map[x_].length() || y_ < 0)
+    else if (y_ >= map[x_].length())
     {
         throw WrongIndexException();
     }
