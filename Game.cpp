@@ -21,7 +21,7 @@ Game::~Game()
     if (map != nullptr)
         delete map;
 
-    for (int i = 0; i < monsters.size(); i++)
+    for (size_t i = 0; i < monsters.size(); i++)
     {
         delete monsters[i];
     }
@@ -139,7 +139,7 @@ void Game::LookForFights()
     std::vector<int> deadMonsters;
 
     // look for monsters on hero's tile
-    for (int i = 0; i < monsterCoordinates.size(); i++)
+    for (size_t i = 0; i < monsterCoordinates.size(); i++)
     {
         if (heroX == monsterCoordinates[i].first && heroY == monsterCoordinates[i].second)
         {
@@ -154,10 +154,10 @@ void Game::LookForFights()
 
     // this is unreasonably complicated
     std::vector<Monster *> aliveMonsters;
-    for (int i = 0; i < monsters.size(); i++)
+    for (size_t i = 0; i < monsters.size(); i++)
     {
         bool dead = false;
-        for (int j = 0; j < deadMonsters.size(); j++)
+        for (size_t j = 0; j < deadMonsters.size(); j++)
         {
             if (i == deadMonsters[j])
                 dead = true;
@@ -248,7 +248,7 @@ std::vector<std::pair<int, int>> Game::GetMonsterCoordinates() const
 {
     std::vector<std::pair<int, int>> monsterCoordinates;
 
-    for (int i = 0; i < monsters.size(); i++)
+    for (size_t i = 0; i < monsters.size(); i++)
     {
         int x = monsters[i]->GetXCoo();
         int y = monsters[i]->GetYCoo();
@@ -298,7 +298,7 @@ void Game::ResetGame()
         map = nullptr;
     }
 
-    for (int i = 0; i < monsters.size(); i++)
+    for (size_t i = 0; i < monsters.size(); i++)
     {
         delete monsters[i];
     }

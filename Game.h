@@ -49,6 +49,11 @@ public:
     * @return Game
     */
     Game(Map *m);
+	/**
+	* @brief Given a txt it returns the a game, with the map set.
+	* @param mapFileName Name of the txt, that contains the map.
+	* @return Game
+	*/
     Game(MarkedMap *m);
 
     ~Game();
@@ -100,6 +105,10 @@ public:
     * @return void
     */
     void PutMonster(Monster *m, int x, int y);
+	/**
+	* @brief Returns with the current map of the game.
+	* @return Map*
+	*/
 	Map* getMap() const;
     /**
     * @brief Starts the gameplay loop. Handles fighting, user input, moving.

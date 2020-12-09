@@ -28,7 +28,7 @@ PreparedGame::PreparedGame(std::string prepdGameName)
 
             monsterPositions = map->getMonsterPositions(cIdx);
 
-            for (int j = 0; j < monsterPositions.size(); j++)
+            for (size_t j = 0; j < monsterPositions.size(); j++)
             {
                 Monster *m = Monster::parse(monsterFile);
                 PutMonster(m, monsterPositions[j].first, monsterPositions[j].second);

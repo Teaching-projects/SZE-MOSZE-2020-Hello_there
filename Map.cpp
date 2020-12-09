@@ -27,17 +27,19 @@ std::vector<std::string>::iterator Map::getEnd()
 
 Map::type Map::get(const int x, const int y) const
 {
-    if (x >= map.size() || x < 0)
+	size_t x_ = x;
+	size_t y_ = y;
+    if (x_ >= map.size() || x < 0)
     {
         throw WrongIndexException();
     }
-    else if (y >= map[x].length() || y < 0)
+    else if (y_ >= map[x_].length() || y_ < 0)
     {
         throw WrongIndexException();
     }
 
     std::string types = " #";
-    return type(types.find(map[x][y]));
+    return type(types.find(map[x_][y_]));
 }
 
 int Map::GetRowCount() const

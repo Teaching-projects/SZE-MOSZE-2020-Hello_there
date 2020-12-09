@@ -41,22 +41,40 @@ public:
 
     virtual ~Monster() {}
 
-    /// \return boolean
+	/**
+	* @brief Returns true if the monster is alive
+	* @return bool
+	*/
     bool isAlive() const;
 
-    /// \return int
+	/**
+	* @brief Returns the damage value of monster.
+	* @return int
+	*/
     int getDamage() const;
 
-    /// \return int
+	/**
+	* @brief Returns the defense value of monster.
+	* @return int
+	*/
     int getDefense() const;
 
-    /// \return std::string
+	/**
+	* @brief Returns the name of the monster.
+	* @return std::string
+	*/
     std::string getName() const;
 
-    /// \return int
+	/**
+	* @brief Returns remaining hp of the mosnter.
+	* @return int
+	*/
     int getHealthPoints() const;
 
-    /// \return double
+	/**
+	* @brief Returns attack cooldown of monster.
+	* @return double
+	*/
     double getAttackCoolDown() const;
 
     /// \return int
@@ -67,7 +85,11 @@ public:
 	/// \return string
 	std::string GetTexture() const;
 
-    /// suffer the damage
+	/**
+	* @brief Returns the damage inflicted by atkMonster.
+	* @param const Monster attacking monster to take damage from.
+	* @return int 
+	*/
     int TakeDamage(const Monster &atkMonster /** [in] attacking Monster that causes this Monster some damage*/);
 
     /// returns an std::string that contains the Monster's name, hp and dmg
