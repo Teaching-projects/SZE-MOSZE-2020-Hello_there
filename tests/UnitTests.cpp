@@ -342,13 +342,25 @@ TEST(PreparedGameTest, MethodTests)
     hTxtRenderer.render(g);
     EXPECT_TRUE(std::ifstream("HeroTextOut.txt").good());
 
+    hTxtRenderer.setOutputStream("HeroTextOut_2.txt");
+    hTxtRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("HeroTextOut_2.txt").good());
+
     HeroSVGRenderer hSvgRenderer("HeroSVGOut.txt");
     hSvgRenderer.render(g);
     EXPECT_TRUE(std::ifstream("HeroSVGOut.txt").good());
 
+    hSvgRenderer.setOutputStream("HeroSVGOut_2.txt");
+    hSvgRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("HeroSVGOut_2.txt").good());
+
     ObserverTextRenderer oTxtRenderer("ObserverTextOut.txt");
     oTxtRenderer.render(g);
     EXPECT_TRUE(std::ifstream("ObserverTextOut.txt").good());
+
+    oTxtRenderer.setOutputStream("ObserverTextOut_2.txt");
+    oTxtRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("ObserverTextOut_2.txt").good());
 
     ObserverSVGRenderer oSvgRenderer("ObserverSVGOut.txt");
     oSvgRenderer.render(g);
