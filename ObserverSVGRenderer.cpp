@@ -12,9 +12,6 @@ void ObserverSVGRenderer::render(const Game& g) const
 	int rowCount = m->GetRowCount();
 	int colCount = m->GetColCount(0);
 	std::vector<std::pair<int, int>> monsterCoordinates = g.GetMonsterCoordinates();
-	// place hero
-	int x = h->GetXCoo();
-	int y = h->GetYCoo();
 	std::ofstream stream(outputStreamName);
 	stream << "<svg viewBox=\"0 0 " << width << ' ' << height << "\" xmlns=\"http://www.w3.org/2000/svg\" width=\"" << width << "\" height=\"" << height << "\">\n";
 	for (int x = 0; x < rowCount; x++)
