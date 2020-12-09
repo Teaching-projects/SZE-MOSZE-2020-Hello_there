@@ -3,6 +3,6 @@
 class HeroTextRenderer :public TextRenderer {
 public:
 	HeroTextRenderer();
-	HeroTextRenderer(std::string);
+	HeroTextRenderer(const std::string&);
 	void render(const Game&) const override;
 };

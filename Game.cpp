@@ -28,12 +28,12 @@ Game::~Game()
     monsters.clear();
 }
 
-void Game::setWallTexture(std::string s)
+void Game::setWallTexture(const std::string& s)
 {
     wallTexture = s;
 }
 
-void Game::setFreeTexture(std::string s)
+void Game::setFreeTexture(const std::string& s)
 {
     freeTexture = s;
 }

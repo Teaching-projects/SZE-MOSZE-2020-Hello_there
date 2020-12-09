@@ -2,6 +2,6 @@
 #include "SVGRenderer.h"
 class ObserverSVGRenderer : public SVGRenderer {
 public:
-	ObserverSVGRenderer(std::string);
+	ObserverSVGRenderer(const std::string&);
 	void render(const Game&) const override;
 };

@@ -4,7 +4,7 @@ ObserverTextRenderer::ObserverTextRenderer() : TextRenderer()
 {
 }
 
-ObserverTextRenderer::ObserverTextRenderer(std::string s) : TextRenderer(s)
+ObserverTextRenderer::ObserverTextRenderer(const std::string& s) : TextRenderer(s)
 {
 }
 

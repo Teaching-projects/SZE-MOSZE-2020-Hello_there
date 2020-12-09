@@ -4,7 +4,7 @@ HeroTextRenderer::HeroTextRenderer() : TextRenderer()
 {
 }
 
-HeroTextRenderer::HeroTextRenderer(std::string s) : TextRenderer(s)
+HeroTextRenderer::HeroTextRenderer(const std::string& s) : TextRenderer(s)
 {
 }
 

@@ -1,11 +1,10 @@
 #include "SVGRenderer.h"
 
-SVGRenderer::SVGRenderer(std::string s) : Renderer()
+SVGRenderer::SVGRenderer(const std::string& s) : Renderer(), outputStreamName(s)
 {
-	outputStreamName = s;
 }
 
-void SVGRenderer::setOutputStream(std::string s)
+void SVGRenderer::setOutputStream(const std::string& s)
 {
 	outputStreamName = s;
 }

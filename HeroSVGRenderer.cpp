@@ -1,6 +1,6 @@
 #include "HeroSVGRenderer.h"
 
-HeroSVGRenderer::HeroSVGRenderer(std::string s) : SVGRenderer(s)
+HeroSVGRenderer::HeroSVGRenderer(const std::string& s) : SVGRenderer(s)
 {
 }
 

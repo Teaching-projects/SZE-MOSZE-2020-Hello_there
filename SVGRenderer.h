@@ -10,10 +10,10 @@ protected:
 
 
 public:
-	SVGRenderer(std::string);
+	SVGRenderer(const std::string&);
 	SVGRenderer(const SVGRenderer&) = delete;
 	SVGRenderer& operator=(const SVGRenderer&) = delete;
-	void setOutputStream(std::string);
+	void setOutputStream(const std::string&);
 	
 
 

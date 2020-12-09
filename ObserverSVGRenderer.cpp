@@ -1,6 +1,6 @@
 #include "ObserverSVGRenderer.h"
 
-ObserverSVGRenderer::ObserverSVGRenderer(std::string s): SVGRenderer(s)
+ObserverSVGRenderer::ObserverSVGRenderer(const std::string& s): SVGRenderer(s)
 {
 }
 void ObserverSVGRenderer::render(const Game& g) const

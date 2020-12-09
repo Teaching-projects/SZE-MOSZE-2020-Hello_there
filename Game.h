@@ -65,14 +65,14 @@ public:
 	* @param std::string the name of the file to use as wall texture.
 	* @return void
 	*/
-	void setWallTexture(std::string);
+	void setWallTexture(const std::string&);
 
 	/**
 	* @brief Sets the given svg file as the wall texture for this game.
 	* @param std::string the name of the file to use as wall texture.
 	* @return void
 	*/
-	void setFreeTexture(std::string);
+	void setFreeTexture(const std::string&);
 
     /**
     * @brief Sets the given map to this game.
