@@ -17,18 +17,18 @@ Map::Map(const std::string &filename)
 
 std::vector<std::string>::iterator Map::getBegin()
 {
-	return map.begin();
+    return map.begin();
 }
 
 std::vector<std::string>::iterator Map::getEnd()
 {
-	return map.end();
+    return map.end();
 }
 
 Map::type Map::get(const int x, const int y) const
 {
-	size_t x_ = x;
-	size_t y_ = y;
+    size_t x_ = x;
+    size_t y_ = y;
     if (x_ >= map.size())
     {
         throw WrongIndexException();
@@ -51,5 +51,3 @@ int Map::GetColCount(int row) const
 {
     return map[row].length();
 }
-
-

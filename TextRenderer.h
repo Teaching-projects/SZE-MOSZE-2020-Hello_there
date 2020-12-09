@@ -11,7 +11,7 @@ protected:
 public:
 	~TextRenderer();
 	TextRenderer();
-	TextRenderer(std::string);
+	explicit TextRenderer(std::string);
 	TextRenderer(const TextRenderer &) = delete;
 	TextRenderer &operator=(const TextRenderer &) = delete;
 

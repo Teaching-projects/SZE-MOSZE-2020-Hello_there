@@ -1,6 +1,6 @@
 #include "HeroSVGRenderer.h"
 
-HeroSVGRenderer::HeroSVGRenderer(const std::string& s) : SVGRenderer(s)
+HeroSVGRenderer::HeroSVGRenderer(const std::string &s) : SVGRenderer(s)
 {
 }
 
@@ -11,14 +11,17 @@ void HeroSVGRenderer::render(const Game &g) const
 	int rowCount = m->GetRowCount();
 	int colCount = m->GetColCount(0);
 	std::vector<std::pair<int, int>> monsterCoordinates = g.GetMonsterCoordinates();
-	// place hero
-	int r = h->GetXCoo();
-	int c = h->GetYCoo();
+
+	if (h == nullptr)
+		throw Game::HeroIsNullptrException();
+
+	int startRow = h->GetXCoo();
+	int startCol = h->GetYCoo();
+
 	int maxSteps = h->getLightRadius() * 2 + 1;
 	if (maxSteps >= colCount)
 		maxSteps = colCount;
-	int startRow = r;
-	int startCol = c;
+
 	for (int i = 0; i < h->getLightRadius() && startRow > 0 && startRow < rowCount; i++)
 	{
 		startRow--;
@@ -27,10 +30,12 @@ void HeroSVGRenderer::render(const Game &g) const
 	{
 		startCol--;
 	}
+
 	int width = (colCount - startCol) * 10;
 	int height = (rowCount - startRow) * 10;
 	std::ofstream stream(outputStreamName);
 	stream << "<svg viewBox=\"0 0 " << width << ' ' << height << "\" xmlns=\"http://www.w3.org/2000/svg\" width=\"" << width << "\" height=\"" << height << "\">\n";
+
 	for (int x = 0, row = startRow; x < maxSteps && row < rowCount; x++)
 	{
 		for (int y = 0, col = startCol; y < maxSteps && col < colCount; y++)
@@ -47,7 +52,7 @@ void HeroSVGRenderer::render(const Game &g) const
 				if (monsterCoordinates[k].first == row && monsterCoordinates[k].second == col)
 					tileMonsterCount++;
 			}
-			if (h != nullptr && h->isAlive() && h->GetXCoo() == row && h->GetYCoo() == col)
+			if (h->isAlive() && h->GetXCoo() == row && h->GetYCoo() == col)
 			{
 				img = h->GetTexture();
 			}

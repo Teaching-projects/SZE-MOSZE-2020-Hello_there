@@ -5,6 +5,7 @@
 *.obj
 *.pdb
 *.ilk
+*.gch
 .vscode
 output.txt
 DOCS

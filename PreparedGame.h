@@ -5,7 +5,7 @@ class PreparedGame : private Game
 {
 private:
 public:
-    PreparedGame(const std::string&);
+    explicit PreparedGame(const std::string &);
+    using Game::registerRenderer;
     using Game::Run;
-	using Game::registerRenderer;
 };

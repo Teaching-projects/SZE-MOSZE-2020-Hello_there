@@ -35,17 +35,17 @@ public:
     * @param filename Name of the txt file
     * @return Map
     */
-    Map(const std::string &filename);
-	/**
+    explicit Map(const std::string &filename);
+    /**
 	* @brief Returns the first element of the map.
 	* @return iterator
 	*/
-	std::vector<std::string>::iterator getBegin();
-	/**
+    std::vector<std::string>::iterator getBegin();
+    /**
 	* @brief Returns the last element of the map.
 	* @return iterator
 	*/
-	std::vector<std::string>::iterator getEnd();
+    std::vector<std::string>::iterator getEnd();
 
     /**
     * @brief Returns the type of the tile.

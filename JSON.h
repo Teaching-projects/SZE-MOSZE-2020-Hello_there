@@ -12,7 +12,7 @@ public:
 	typedef std::variant<int, double, std::string> valueVariant;
 	typedef std::list<valueVariant> list;
 	typedef std::variant<int, double, std::string, list> listedValueVariant;
-	JSON(std::map<std::string, listedValueVariant> data);
+	explicit JSON(std::map<std::string, listedValueVariant> data);
 	int count(std::string);
 	template <typename T>
 	T get(const std::string &key)

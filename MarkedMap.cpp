@@ -14,12 +14,10 @@ std::pair<int, int> MarkedMap::getHeroPosition() const
 			{
 				return std::pair<int, int>(i, j);
 			}
-			
 		}
 	}
 	throw WrongMapTypeException();
 }
-
 
 std::vector<std::pair<int, int>> MarkedMap::getMonsterPositions(char c) const
 {
@@ -38,4 +36,3 @@ std::vector<std::pair<int, int>> MarkedMap::getMonsterPositions(char c) const
 		throw WrongMapTypeException();
 	return positions;
 }
-
