@@ -195,5 +195,11 @@ public:
         */
         HeroIsNullptrException() {}
     };
+	/**
+	* @brief Retruns the name of the texture of a monster ona  given tile.
+	* @param x First coordinate
+	* @param y Second coordinate
+	* @return std::string
+	*/
     std::string getMonsterTextureInField(int x, int y) const;
 };

@@ -1,3 +1,11 @@
+/**
+ * \author BakiHUN
+ * \brief Hero class
+ *
+ * The Hero class is responsible for managing the palayer character.
+ *
+ * \date 2020-12-09
+ */
 #pragma once
 #include "Monster.h"
 #include <string>

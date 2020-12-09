@@ -1,3 +1,11 @@
+/**
+ * \author BakiHUN
+ * \brief Hero class
+ *
+ * The HeroSVGRenderer is responsible for rendering the map from the hero's perspective in Text format.
+ *
+ * \date 2020-12-09
+ */
 #pragma once
 #include "TextRenderer.h"
 class HeroTextRenderer : public TextRenderer

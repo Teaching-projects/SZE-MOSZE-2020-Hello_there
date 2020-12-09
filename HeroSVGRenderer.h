@@ -1,3 +1,11 @@
+/**
+ * \author BakiHUN
+ * \brief Hero class
+ *
+ * The HeroSVGRenderer is responsible for rendering the map from the hero's perspective in SVG format.
+ *
+ * \date 2020-12-09
+ */
 #pragma once
 #include "SVGRenderer.h"
 class HeroSVGRenderer : public SVGRenderer

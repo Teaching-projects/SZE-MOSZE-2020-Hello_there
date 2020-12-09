@@ -1,3 +1,11 @@
+/**
+ * \author BakiHUN
+ * \brief Hero class
+ *
+ * The MarkedMap class is responsible for managing MarkedMaps.
+ *
+ * \date 2020-12-09
+ */
 #pragma once
 #include "Map.h"
 #include <iostream>

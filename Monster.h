@@ -80,12 +80,21 @@ public:
 	*/
     double getAttackCoolDown() const;
 
-    /// \return int
+	/**
+	* @brief Returns the x coordinate of a monster.
+	* @return int
+	*/
     int GetXCoo() const;
 
-	/// \return int
+	/**
+	* @brief Returns the y coordinate of a monster.
+	* @return int
+	*/
 	int GetYCoo() const;
-	/// \return string
+	/**
+	* @brief Retruns the texture of a monster.
+	* @return std::string
+	*/
 	std::string GetTexture() const;
 
 	/**
@@ -108,7 +117,17 @@ public:
     */
     static Monster *parse(const std::string &fileName /** [in] the json file name*/);
 
+	/**
+	* @brief Sets the coordinates of a monster.
+	* @param x First coordinate.
+	* @param y Second coordinate.
+	* @return void
+	*/
     void SetCoordinates(int x, int y);
-
+	/**
+	* @brief Fights another monster until one of them dies.
+	* @param m The other Monster.
+	* @return void
+	*/
     void fightTilDeath(Monster &m);
 };

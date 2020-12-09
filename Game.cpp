@@ -101,7 +101,6 @@ void Game::Run()
     while (42)
     {
         LookForFights();
-        // ShowMap();
         for (std::list<Renderer *>::iterator it = renderers.begin(); it != renderers.end(); it = std::next(it))
         {
             (*it)->render(*this);
