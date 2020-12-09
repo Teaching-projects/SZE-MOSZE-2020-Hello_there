@@ -7,8 +7,6 @@
 #include "../MarkedMap.h"
 #include "../PreparedGame.h"
 
-#include "../SVGRenderer.h"
-#include "../TextRenderer.h"
 #include "../HeroTextRenderer.h"
 #include "../HeroSVGRenderer.h"
 #include "../ObserverTextRenderer.h"
