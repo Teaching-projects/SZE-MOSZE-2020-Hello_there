@@ -11,13 +11,14 @@ add_library(mapSrc ../Map.cpp)
 add_library(gameSrc ../Game.cpp)
 add_library(markedmapSrc ../MarkedMap.cpp)
 add_library(prepdGameSrc ../PreparedGame.cpp)
+add_library(RendererSrc ../Renderer.cpp)
 
 
-
+add_library(SVGRendererSrc ../SVGRenderer.cpp)
 add_library(HeroSVGRendererSrc ../HeroSVGRenderer.cpp)
 add_library(ObserverSVGRendererSrc ../ObserverSVGRenderer.cpp)
 
-
+add_library(TextRendererSrc ../TextRenderer.cpp)
 add_library(HeroTextRendererSrc ../HeroTextRenderer.cpp)
 add_library(ObserverTextRendererSrc ../ObserverTextRenderer.cpp)
 
