@@ -65,28 +65,29 @@ $(function() {
 <div class="title">MarkedMap.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;Map.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_marked_map.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_marked_map.html">MarkedMap</a> : <span class="keyword">public</span> <a class="code" href="class_map.html">Map</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_marked_map.html#a8c1bf67987fdcf0e89f7e6ecc5a6a7a2">MarkedMap</a>(<span class="keyword">const</span> std::string &amp;filename);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::pair&lt;int, int&gt; <a class="code" href="class_marked_map.html#aaa25768bfdd3ea4b21e847882a3f9ccd">getHeroPosition</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::vector&lt;std::pair&lt;int, int&gt;&gt; getMonsterPositions(<span class="keywordtype">char</span> c) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_marked_map_1_1_wrong_map_type_exception.html">   21</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_marked_map_1_1_wrong_map_type_exception.html">WrongMapTypeException</a> : std::exception</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_marked_map_1_1_wrong_map_type_exception.html#a2a97186900bac9e0e08c721db4c8d707">   27</a></span>&#160;        <a class="code" href="class_marked_map_1_1_wrong_map_type_exception.html#a2a97186900bac9e0e08c721db4c8d707">WrongMapTypeException</a>() {}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Map.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_marked_map.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_marked_map.html">MarkedMap</a> : <span class="keyword">public</span> <a class="code" href="class_map.html">Map</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_marked_map.html#a8c1bf67987fdcf0e89f7e6ecc5a6a7a2">MarkedMap</a>(<span class="keyword">const</span> std::string &amp;filename);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::pair&lt;int, int&gt; <a class="code" href="class_marked_map.html#aaa25768bfdd3ea4b21e847882a3f9ccd">getHeroPosition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::vector&lt;std::pair&lt;int, int&gt;&gt; getMonsterPositions(<span class="keywordtype">char</span> c) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_marked_map_1_1_wrong_map_type_exception.html">   29</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_marked_map_1_1_wrong_map_type_exception.html">WrongMapTypeException</a> : std::exception</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_marked_map_1_1_wrong_map_type_exception.html#a2a97186900bac9e0e08c721db4c8d707">   35</a></span>&#160;        <a class="code" href="class_marked_map_1_1_wrong_map_type_exception.html#a2a97186900bac9e0e08c721db4c8d707">WrongMapTypeException</a>() {}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    };</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_marked_map_1_1_wrong_map_type_exception_html_a2a97186900bac9e0e08c721db4c8d707"><div class="ttname"><a href="class_marked_map_1_1_wrong_map_type_exception.html#a2a97186900bac9e0e08c721db4c8d707">MarkedMap::WrongMapTypeException::WrongMapTypeException</a></div><div class="ttdeci">WrongMapTypeException()</div><div class="ttdoc">thrown when there is no hero or monsters on the map</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:27</div></div>
-<div class="ttc" id="aclass_marked_map_html"><div class="ttname"><a href="class_marked_map.html">MarkedMap</a></div><div class="ttdef"><b>Definition:</b> MarkedMap.h:5</div></div>
+<div class="ttc" id="aclass_marked_map_1_1_wrong_map_type_exception_html_a2a97186900bac9e0e08c721db4c8d707"><div class="ttname"><a href="class_marked_map_1_1_wrong_map_type_exception.html#a2a97186900bac9e0e08c721db4c8d707">MarkedMap::WrongMapTypeException::WrongMapTypeException</a></div><div class="ttdeci">WrongMapTypeException()</div><div class="ttdoc">thrown when there is no hero or monsters on the map</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:35</div></div>
+<div class="ttc" id="aclass_marked_map_html"><div class="ttname"><a href="class_marked_map.html">MarkedMap</a></div><div class="ttdoc">Hero class.</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:13</div></div>
 <div class="ttc" id="aclass_marked_map_html_a8c1bf67987fdcf0e89f7e6ecc5a6a7a2"><div class="ttname"><a href="class_marked_map.html#a8c1bf67987fdcf0e89f7e6ecc5a6a7a2">MarkedMap::MarkedMap</a></div><div class="ttdeci">MarkedMap(const std::string &amp;filename)</div><div class="ttdoc">Retruns a MarkedMap from a file.</div><div class="ttdef"><b>Definition:</b> MarkedMap.cpp:3</div></div>
-<div class="ttc" id="aclass_marked_map_1_1_wrong_map_type_exception_html"><div class="ttname"><a href="class_marked_map_1_1_wrong_map_type_exception.html">MarkedMap::WrongMapTypeException</a></div><div class="ttdef"><b>Definition:</b> MarkedMap.h:21</div></div>
+<div class="ttc" id="aclass_marked_map_1_1_wrong_map_type_exception_html"><div class="ttname"><a href="class_marked_map_1_1_wrong_map_type_exception.html">MarkedMap::WrongMapTypeException</a></div><div class="ttdef"><b>Definition:</b> MarkedMap.h:29</div></div>
 <div class="ttc" id="aclass_marked_map_html_aaa25768bfdd3ea4b21e847882a3f9ccd"><div class="ttname"><a href="class_marked_map.html#aaa25768bfdd3ea4b21e847882a3f9ccd">MarkedMap::getHeroPosition</a></div><div class="ttdeci">std::pair&lt; int, int &gt; getHeroPosition() const</div><div class="ttdoc">Retruns the position of the hero on the map.</div><div class="ttdef"><b>Definition:</b> MarkedMap.cpp:7</div></div>
 <div class="ttc" id="aclass_map_html"><div class="ttname"><a href="class_map.html">Map</a></div><div class="ttdoc">Map class.</div><div class="ttdef"><b>Definition:</b> Map.h:15</div></div>
 <!-- start footer part -->

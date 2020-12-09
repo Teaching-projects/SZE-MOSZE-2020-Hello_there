@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['registerrenderer_119',['registerRenderer',['../class_game.html#ab234db2839bf8776c31998fee8d02038',1,'Game']]],
-  ['render_120',['render',['../class_hero_s_v_g_renderer.html#a13e0bf532c4296f97a369fd66eb00c15',1,'HeroSVGRenderer::render()'],['../class_hero_text_renderer.html#a01601c260102970550c3903ce39bdfaf',1,'HeroTextRenderer::render()']]],
-  ['run_121',['Run',['../class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312',1,'Game']]]
+  ['parse_123',['parse',['../class_hero.html#ae009b709bb3b9b1ac0802a4d87d8e28d',1,'Hero::parse()'],['../class_monster.html#a7f8d09d046f6ea2e79492c251119217d',1,'Monster::parse()']]],
+  ['preparedgame_124',['PreparedGame',['../class_prepared_game.html#a0eb93aa7db2ed23f8855a6c716bdcef6',1,'PreparedGame']]],
+  ['puthero_125',['PutHero',['../class_game.html#a5a021f14061ecc664336a3d29f76d1e5',1,'Game']]],
+  ['putmonster_126',['PutMonster',['../class_game.html#a06d979fb9bc8e06a88d210d7eb04a555',1,'Game']]]
 ];

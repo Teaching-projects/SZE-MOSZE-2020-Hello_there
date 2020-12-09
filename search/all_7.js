@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['observersvgrenderer_35',['ObserverSVGRenderer',['../class_observer_s_v_g_renderer.html',1,'']]],
-  ['observertextrenderer_36',['ObserverTextRenderer',['../class_observer_text_renderer.html',1,'']]],
-  ['occupiedexception_37',['OccupiedException',['../class_game_1_1_occupied_exception.html',1,'Game::OccupiedException'],['../class_game_1_1_occupied_exception.html#a2d06f1e94c0d870fa9297d690495c455',1,'Game::OccupiedException::OccupiedException()']]]
+  ['notinitializedexception_36',['NotInitializedException',['../class_game_1_1_not_initialized_exception.html',1,'Game::NotInitializedException'],['../class_game_1_1_not_initialized_exception.html#a940350c425f5d08a07fdeabc3814e552',1,'Game::NotInitializedException::NotInitializedException()']]]
 ];

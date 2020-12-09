@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['setfreetexture_122',['setFreeTexture',['../class_game.html#a3696fe73695107dc9dca845ce1623e0f',1,'Game']]],
-  ['setmap_123',['SetMap',['../class_game.html#a7f5025013ef6d89b519e7ce9104df832',1,'Game']]],
-  ['setwalltexture_124',['setWallTexture',['../class_game.html#a00be98176666840cdfcfb9e95ca0ecf1',1,'Game']]]
+  ['registerrenderer_127',['registerRenderer',['../class_game.html#ab234db2839bf8776c31998fee8d02038',1,'Game']]],
+  ['render_128',['render',['../class_hero_s_v_g_renderer.html#a13e0bf532c4296f97a369fd66eb00c15',1,'HeroSVGRenderer::render()'],['../class_hero_text_renderer.html#a01601c260102970550c3903ce39bdfaf',1,'HeroTextRenderer::render()'],['../class_observer_s_v_g_renderer.html#a053bc102f86bea94789b45253585000e',1,'ObserverSVGRenderer::render()'],['../class_observer_text_renderer.html#af0901f1e787e31e9f256a0c0134e4595',1,'ObserverTextRenderer::render()']]],
+  ['run_129',['Run',['../class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312',1,'Game']]]
 ];
