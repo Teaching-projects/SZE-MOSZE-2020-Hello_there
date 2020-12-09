@@ -332,21 +332,21 @@ TEST(PreparedGameTest, MethodTests)
     Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
     g.PutHero(h, 1, 1);
 
-    /*HeroTextRenderer *hTxtRenderer = new HeroTextRenderer("HeroTextOut.txt");
-    hTxtRenderer->render(g);
+	HeroTextRenderer hTxtRenderer("HeroTextOut.txt");
+    hTxtRenderer.render(g);
     EXPECT_TRUE(std::ifstream("HeroTextOut.txt").good());
 
-    HeroSVGRenderer *hSvgRenderer = new HeroSVGRenderer("HeroSVGOut.txt");
-    hSvgRenderer->render(g);
+    HeroSVGRenderer hSvgRenderer("HeroSVGOut.txt");
+    hSvgRenderer.render(g);
     EXPECT_TRUE(std::ifstream("HeroSVGOut.txt").good());
 
-    ObserverTextRenderer *oTxtRenderer = new ObserverTextRenderer("ObserverTextOut.txt");
-    oTxtRenderer->render(g);
+    ObserverTextRenderer oTxtRenderer("ObserverTextOut.txt");
+    oTxtRenderer.render(g);
     EXPECT_TRUE(std::ifstream("ObserverTextOut.txt").good());
 
-    ObserverSVGRenderer *oSvgRenderer = new ObserverSVGRenderer("ObserverSVGOut.txt");
-    oSvgRenderer->render(g);
-    EXPECT_TRUE(std::ifstream("ObserverSVGOut.txt").good());*/
+    ObserverSVGRenderer oSvgRenderer("ObserverSVGOut.txt");
+    oSvgRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("ObserverSVGOut.txt").good());
 }
 
 int main(int argc, char **argv)
