@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['takedamage_98',['TakeDamage',['../class_monster.html#a26d1ad87989f22e013b2b445a22556bb',1,'Monster']]],
-  ['tostring_99',['ToString',['../class_hero.html#aa42b6746c72701c32badd31ceaa90d1a',1,'Hero::ToString()'],['../class_monster.html#ac7937149375729c21b4d05f73dcff910',1,'Monster::ToString()']]]
+  ['setfreetexture_98',['setFreeTexture',['../class_game.html#a3696fe73695107dc9dca845ce1623e0f',1,'Game']]],
+  ['setmap_99',['SetMap',['../class_game.html#a7f5025013ef6d89b519e7ce9104df832',1,'Game']]],
+  ['setwalltexture_100',['setWallTexture',['../class_game.html#a00be98176666840cdfcfb9e95ca0ecf1',1,'Game']]]
 ];

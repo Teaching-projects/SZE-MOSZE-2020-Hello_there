@@ -79,7 +79,7 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::vector&lt;Monster *&gt; monsters; <span class="comment">// monsters placed on the map</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_hero.html">Hero</a> *hero;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span> hasStarted;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::list&lt;Renderer*&gt; renderers;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::list&lt;Renderer *&gt; renderers;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> TileIsFree(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> ResetGame();</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> ReadUserInput();</div>
@@ -91,30 +91,30 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::vector&lt;std::pair&lt;int, int&gt;&gt; GetMonsterCoordinates() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_hero.html">Hero</a>* getHero() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_hero.html">Hero</a> *getHero() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> getMonsterCount() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> registerRenderer(<a class="code" href="class_renderer.html">Renderer</a>*);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> registerRenderer(<a class="code" href="class_renderer.html">Renderer</a> *);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::string getFreeTexture() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::string getWallTexture() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>(<a class="code" href="class_map.html">Map</a> *m);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>(<a class="code" href="class_marked_map.html">MarkedMap</a> *m);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>(<a class="code" href="class_map.html">Map</a> *m);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>(<a class="code" href="class_marked_map.html">MarkedMap</a> *m);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    ~<a class="code" href="class_game.html">Game</a>();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>(<span class="keyword">const</span> <a class="code" href="class_game.html">Game</a> &amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_game.html">Game</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="class_game.html">Game</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a00be98176666840cdfcfb9e95ca0ecf1">setWallTexture</a>(<span class="keyword">const</span> std::string&amp;);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a00be98176666840cdfcfb9e95ca0ecf1">setWallTexture</a>(<span class="keyword">const</span> std::string &amp;);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a3696fe73695107dc9dca845ce1623e0f">setFreeTexture</a>(<span class="keyword">const</span> std::string&amp;);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a3696fe73695107dc9dca845ce1623e0f">setFreeTexture</a>(<span class="keyword">const</span> std::string &amp;);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a7f5025013ef6d89b519e7ce9104df832">SetMap</a>(<a class="code" href="class_map.html">Map</a> *map);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a5a021f14061ecc664336a3d29f76d1e5">PutHero</a>(<a class="code" href="class_hero.html">Hero</a> *h, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">PutMonster</a>(<a class="code" href="class_monster.html">Monster</a> *m, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="class_map.html">Map</a>* <a class="code" href="class_game.html#a283f93aebae690dadc95c2ce0468c5f1">getMap</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="class_map.html">Map</a> *<a class="code" href="class_game.html#a283f93aebae690dadc95c2ce0468c5f1">getMap</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game.html#a96341ca5b54d90adc3ecb3bf0bcd2312">Run</a>();</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
 <div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_game_1_1_already_has_units_exception.html">  120</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_game_1_1_already_has_units_exception.html">AlreadyHasUnitsException</a> : std::exception</div>
@@ -146,10 +146,17 @@ $(function() {
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="class_game_1_1_game_already_started_exception.html#a173b886c1b6d0adf4586974b896859bd">  163</a></span>&#160;        <a class="code" href="class_game_1_1_game_already_started_exception.html#a173b886c1b6d0adf4586974b896859bd">GameAlreadyStartedException</a>() {}</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    };</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    std::string getMonsterTextureInField(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)<span class="keyword">const</span>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;};</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_game_1_1_hero_is_nullptr_exception.html">  166</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_game_1_1_hero_is_nullptr_exception.html">HeroIsNullptrException</a> : std::exception</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="class_game_1_1_hero_is_nullptr_exception.html#a9eda3fe2bf9cd67bc5b59d94c2e2ff7f">  172</a></span>&#160;        <a class="code" href="class_game_1_1_hero_is_nullptr_exception.html#a9eda3fe2bf9cd67bc5b59d94c2e2ff7f">HeroIsNullptrException</a>() {}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    };</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    std::string getMonsterTextureInField(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_renderer_html"><div class="ttname"><a href="class_renderer.html">Renderer</a></div><div class="ttdef"><b>Definition:</b> Renderer.h:4</div></div>
+<div class="ttc" id="aclass_game_1_1_hero_is_nullptr_exception_html_a9eda3fe2bf9cd67bc5b59d94c2e2ff7f"><div class="ttname"><a href="class_game_1_1_hero_is_nullptr_exception.html#a9eda3fe2bf9cd67bc5b59d94c2e2ff7f">Game::HeroIsNullptrException::HeroIsNullptrException</a></div><div class="ttdeci">HeroIsNullptrException()</div><div class="ttdoc">thrown when hero is nullptr when it shouldn't be</div><div class="ttdef"><b>Definition:</b> Game.h:172</div></div>
 <div class="ttc" id="aclass_game_html_a06d979fb9bc8e06a88d210d7eb04a555"><div class="ttname"><a href="class_game.html#a06d979fb9bc8e06a88d210d7eb04a555">Game::PutMonster</a></div><div class="ttdeci">void PutMonster(Monster *m, int x, int y)</div><div class="ttdoc">Places the monster on the given coordinates.</div><div class="ttdef"><b>Definition:</b> Game.cpp:52</div></div>
 <div class="ttc" id="aclass_marked_map_html"><div class="ttname"><a href="class_marked_map.html">MarkedMap</a></div><div class="ttdef"><b>Definition:</b> MarkedMap.h:5</div></div>
 <div class="ttc" id="aclass_game_1_1_occupied_exception_html_a2d06f1e94c0d870fa9297d690495c455"><div class="ttname"><a href="class_game_1_1_occupied_exception.html#a2d06f1e94c0d870fa9297d690495c455">Game::OccupiedException::OccupiedException</a></div><div class="ttdeci">OccupiedException()</div><div class="ttdoc">thrown when trying to put unit on wall</div><div class="ttdef"><b>Definition:</b> Game.h:145</div></div>
@@ -166,6 +173,7 @@ $(function() {
 <div class="ttc" id="aclass_game_1_1_occupied_exception_html"><div class="ttname"><a href="class_game_1_1_occupied_exception.html">Game::OccupiedException</a></div><div class="ttdef"><b>Definition:</b> Game.h:139</div></div>
 <div class="ttc" id="aclass_game_1_1_already_has_units_exception_html"><div class="ttname"><a href="class_game_1_1_already_has_units_exception.html">Game::AlreadyHasUnitsException</a></div><div class="ttdef"><b>Definition:</b> Game.h:120</div></div>
 <div class="ttc" id="aclass_game_html_a7f5025013ef6d89b519e7ce9104df832"><div class="ttname"><a href="class_game.html#a7f5025013ef6d89b519e7ce9104df832">Game::SetMap</a></div><div class="ttdeci">void SetMap(Map *map)</div><div class="ttdoc">Sets the given map to this game.</div><div class="ttdef"><b>Definition:</b> Game.cpp:41</div></div>
+<div class="ttc" id="aclass_game_1_1_hero_is_nullptr_exception_html"><div class="ttname"><a href="class_game_1_1_hero_is_nullptr_exception.html">Game::HeroIsNullptrException</a></div><div class="ttdef"><b>Definition:</b> Game.h:166</div></div>
 <div class="ttc" id="aclass_game_1_1_already_has_hero_exception_html_a661fe174e6ed027c3ebe5a5c13bf5c55"><div class="ttname"><a href="class_game_1_1_already_has_hero_exception.html#a661fe174e6ed027c3ebe5a5c13bf5c55">Game::AlreadyHasHeroException::AlreadyHasHeroException</a></div><div class="ttdeci">AlreadyHasHeroException()</div><div class="ttdoc">thrown when hero already exists in the game</div><div class="ttdef"><b>Definition:</b> Game.h:136</div></div>
 <div class="ttc" id="aclass_game_html_a00be98176666840cdfcfb9e95ca0ecf1"><div class="ttname"><a href="class_game.html#a00be98176666840cdfcfb9e95ca0ecf1">Game::setWallTexture</a></div><div class="ttdeci">void setWallTexture(const std::string &amp;)</div><div class="ttdoc">Sets the given svg file as the wall texture for this game.</div><div class="ttdef"><b>Definition:</b> Game.cpp:31</div></div>
 <div class="ttc" id="aclass_game_html_a5a021f14061ecc664336a3d29f76d1e5"><div class="ttname"><a href="class_game.html#a5a021f14061ecc664336a3d29f76d1e5">Game::PutHero</a></div><div class="ttdeci">void PutHero(Hero *h, int x, int y)</div><div class="ttdoc">Places the hero on the given coordinates.</div><div class="ttdef"><b>Definition:</b> Game.cpp:66</div></div>
