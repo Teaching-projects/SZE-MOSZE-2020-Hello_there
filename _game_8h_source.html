@@ -81,21 +81,21 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span> hasStarted;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::list&lt;Renderer *&gt; renderers;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> TileIsFree(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> ResetGame();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> ReadUserInput();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> SetCoordinateDifs(<span class="keywordtype">char</span> way, <span class="keywordtype">int</span> &amp;difX, <span class="keywordtype">int</span> &amp;difY) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> LookForFights();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string wallTexture;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::string freeTexture;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> HeroStatus();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::vector&lt;std::pair&lt;int, int&gt;&gt; GetMonsterCoordinates() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_hero.html">Hero</a> *getHero() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> getMonsterCount() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> registerRenderer(<a class="code" href="class_renderer.html">Renderer</a> *);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::string getFreeTexture() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::string getWallTexture() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> ReadUserInput();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> SetCoordinateDifs(<span class="keywordtype">char</span> way, <span class="keywordtype">int</span> &amp;difX, <span class="keywordtype">int</span> &amp;difY) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> LookForFights();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::string wallTexture;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string freeTexture;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> HeroStatus();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::vector&lt;std::pair&lt;int, int&gt;&gt; GetMonsterCoordinates() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_hero.html">Hero</a> *getHero() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> getMonsterCount() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> registerRenderer(<a class="code" href="class_renderer.html">Renderer</a> *);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::string getFreeTexture() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::string getWallTexture() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>(<a class="code" href="class_map.html">Map</a> *m);</div>
