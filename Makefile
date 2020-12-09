@@ -16,7 +16,7 @@ run: ./$(OUT)
 Monster.o: Monster.cpp Monster.h JSON.h 
 	$(CC) $(CFLAGS) -c Monster.cpp
 	
-Hero.o: Hero.cpp Hero.h Monster.h JSON.h 
+Hero.o: Hero.cpp Hero.h Monster.h
 	$(CC) $(CFLAGS) -c Hero.cpp
 
 JSON.o: JSON.cpp JSON.h
@@ -37,27 +37,27 @@ PreparedGame.o: PreparedGame.h PreparedGame.cpp Game.h
 
 
 
-TextRenderer.o: Game.h Renderer.h TextRenderer.h TextRenderer.cpp
+TextRenderer.o: TextRenderer.h TextRenderer.cpp Renderer.h 
 	$(CC) $(CFLAGS) -c TextRenderer.cpp
 
-ObserverTextRenderer.o: Game.h Renderer.h TextRenderer.h ObserverTextRenderer.h ObserverTextRenderer.cpp
+ObserverTextRenderer.o: TextRenderer.h ObserverTextRenderer.h ObserverTextRenderer.cpp
 	$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
 
-HeroTextRenderer.o: Game.h Renderer.h TextRenderer.h HeroTextRenderer.h HeroTextRenderer.cpp
+HeroTextRenderer.o: TextRenderer.h HeroTextRenderer.h HeroTextRenderer.cpp
 	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
 
 
-SVGRenderer.o: Game.h Renderer.h SVGRenderer.h SVGRenderer.cpp
+SVGRenderer.o: Renderer.h SVGRenderer.h SVGRenderer.cpp
 	$(CC) $(CFLAGS) -c SVGRenderer.cpp
 
-ObserverSVGRenderer.o: Game.h Renderer.h SVGRenderer.h ObserverSVGRenderer.h ObserverSVGRenderer.cpp
+ObserverSVGRenderer.o: SVGRenderer.h ObserverSVGRenderer.h ObserverSVGRenderer.cpp
 	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
 
-HeroSVGRenderer.o: Game.h Renderer.h SVGRenderer.h HeroSVGRenderer.h HeroSVGRenderer.cpp
+HeroSVGRenderer.o: SVGRenderer.h HeroSVGRenderer.h HeroSVGRenderer.cpp
 	$(CC) $(CFLAGS) -c HeroSVGRenderer.cpp
 
 
-main.o: main.cpp Monster.h Hero.h JSON.h Game.h HeroTextRenderer.h ObserverTextRenderer.h
+main.o: main.cpp PreparedGame.h HeroTextRenderer.h ObserverTextRenderer.h ObserverSVGRenderer.h HeroSVGRenderer.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 
