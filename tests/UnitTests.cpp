@@ -332,7 +332,7 @@ TEST(PreparedGameTest, MethodTests)
     Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
     g.PutHero(h, 1, 1);
 
-    HeroTextRenderer *hTxtRenderer = new HeroTextRenderer("HeroTextOut.txt");
+    /*HeroTextRenderer *hTxtRenderer = new HeroTextRenderer("HeroTextOut.txt");
     hTxtRenderer->render(g);
     EXPECT_TRUE(std::ifstream("HeroTextOut.txt").good());
 
@@ -346,7 +346,7 @@ TEST(PreparedGameTest, MethodTests)
 
     ObserverSVGRenderer *oSvgRenderer = new ObserverSVGRenderer("ObserverSVGOut.txt");
     oSvgRenderer->render(g);
-    EXPECT_TRUE(std::ifstream("ObserverSVGOut.txt").good());
+    EXPECT_TRUE(std::ifstream("ObserverSVGOut.txt").good());*/
 }
 
 int main(int argc, char **argv)
