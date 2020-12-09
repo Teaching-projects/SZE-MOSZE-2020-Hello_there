@@ -28,12 +28,12 @@ Game::~Game()
     monsters.clear();
 }
 
-void Game::setWallTexture(const std::string& s)
+void Game::setWallTexture(const std::string &s)
 {
     wallTexture = s;
 }
 
-void Game::setFreeTexture(const std::string& s)
+void Game::setFreeTexture(const std::string &s)
 {
     freeTexture = s;
 }
@@ -94,7 +94,7 @@ void Game::Run()
     if (map == nullptr || hero == nullptr)
     {
         throw NotInitializedException{};
-	}
+    }
 
     hasStarted = true;
 
@@ -102,15 +102,16 @@ void Game::Run()
     {
         LookForFights();
         // ShowMap();
-        for (std::list<Renderer *>::iterator it = renderers.begin(); it != renderers.end(); it=std::next(it))
+        for (std::list<Renderer *>::iterator it = renderers.begin(); it != renderers.end(); it = std::next(it))
         {
             (*it)->render(*this);
         }
 
-		if (monsters.size() != 0 && hero->isAlive()) {
-			HeroStatus();
-			ReadUserInput();
-		}
+        if (monsters.size() != 0 && hero->isAlive())
+        {
+            HeroStatus();
+            ReadUserInput();
+        }
         else
             break;
     }
@@ -123,8 +124,6 @@ void Game::Run()
     {
         std::cout << hero->getName() + " died." << std::endl;
     }
-
-    //ResetGame();
 }
 
 void Game::LookForFights()
@@ -173,7 +172,7 @@ void Game::LookForFights()
 
 void Game::HeroStatus()
 {
-	std::cout << "HP:"<<hero->getHealthPoints()<<" LVL:"<<hero->getLevel() << std::endl;
+    std::cout << "HP:" << hero->getHealthPoints() << " LVL:" << hero->getLevel() << std::endl;
 }
 
 void Game::ReadUserInput()
@@ -283,31 +282,9 @@ std::string Game::getWallTexture() const
     return wallTexture;
 }
 
-void Game::ResetGame()
-{
-    if (hero != nullptr)
-    {
-        delete hero;
-        hero = nullptr;
-    }
-
-    if (map != nullptr)
-    {
-        delete map;
-        map = nullptr;
-    }
-
-    for (size_t i = 0; i < monsters.size(); i++)
-    {
-        delete monsters[i];
-    }
-    monsters.clear();
-
-    hasStarted = false;
-}
 std::string Game::getMonsterTextureInField(int x, int y) const
 {
-    for (std::vector<Monster *>::const_iterator it = monsters.begin(); it != monsters.end(); it=std::next(it))
+    for (std::vector<Monster *>::const_iterator it = monsters.begin(); it != monsters.end(); it = std::next(it))
     {
         if ((*it)->GetXCoo() == x && (*it)->GetYCoo() == y)
         {

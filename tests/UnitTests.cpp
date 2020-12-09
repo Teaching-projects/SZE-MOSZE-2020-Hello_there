@@ -141,6 +141,12 @@ TEST(ParserTest, IndifferentToSpaces)
     EXPECT_TRUE(JSON::compareJSON(playerJSON, playerJSONLookalike));
 }
 
+TEST(ParserTest, ExpectException)
+{
+    std::string content = "this is a very bad json content";
+    EXPECT_ANY_THROW(JSON::parseFromString(content));
+}
+
 TEST(ParserTest, IndifferentToKeyOrder)
 {
     std::ifstream vaderFile("units/vader.json");
@@ -332,7 +338,7 @@ TEST(PreparedGameTest, MethodTests)
     Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
     g.PutHero(h, 1, 1);
 
-	HeroTextRenderer hTxtRenderer("HeroTextOut.txt");
+    HeroTextRenderer hTxtRenderer("HeroTextOut.txt");
     hTxtRenderer.render(g);
     EXPECT_TRUE(std::ifstream("HeroTextOut.txt").good());
 
@@ -347,6 +353,10 @@ TEST(PreparedGameTest, MethodTests)
     ObserverSVGRenderer oSvgRenderer("ObserverSVGOut.txt");
     oSvgRenderer.render(g);
     EXPECT_TRUE(std::ifstream("ObserverSVGOut.txt").good());
+
+    oSvgRenderer.setOutputStream("ObserverSVGOut_2.txt");
+    oSvgRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("ObserverSVGOut_2.txt").good());
 }
 
 int main(int argc, char **argv)
