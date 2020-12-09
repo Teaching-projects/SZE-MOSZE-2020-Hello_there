@@ -18,24 +18,24 @@
 #include "ObserverSVGRenderer.h"
 #include "HeroSVGRenderer.h"
 
+
+const std::map<int, std::string> error_messages = {
+	{ 1 , "Bad number of arguments. Only a single scenario file should be provided." },
+	{ 2 , "The provided scenario file is not accessible." },
+};
+
+void bad_exit(int exitcode) {
+	std::cerr
+		<< (error_messages.count(exitcode) ? error_messages.at(exitcode) : "Unknown error")
+		<< std::endl;
+	exit(exitcode);
+}
 int main(int argc, char **argv)
 {
+	if (argc != 2) bad_exit(1);
+	if (!std::filesystem::exists("games/"+(std::string)argv[1])) bad_exit(2);
 
-	/*MarkedMap *m = new MarkedMap("marked_map.txt");
-	Game g(m);
-	Hero *h = Hero::parse(std::string("Dark_Wanderer.json"));
-	g.PutHero(h, 1, 1);
-
-	Monster *m1 = new Monster("Cookie Monster", 10, 10, 10.0, 5);
-	Monster *m2 = new Monster("Octopus Poppus", 10, 10, 10.0, 6);
-	Monster *m3 = new Monster("Lucky Bucky", 10, 10, 10.0, 7);
-	g.PutMonster(m1, 1, 2);
-	g.PutMonster(m2, 1, 2);
-	g.PutMonster(m3, 1, 5);
-
-	g.Run();*/
-
-	PreparedGame g("prepd_game_1.json");
+	PreparedGame g(argv[1]);
 	g.registerRenderer(new HeroTextRenderer());
 	g.registerRenderer(new HeroTextRenderer("HeroTXT.txt"));
 	g.registerRenderer(new ObserverTextRenderer("ObserverTxtOut.txt"));
