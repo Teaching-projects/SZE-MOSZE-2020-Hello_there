@@ -103,7 +103,7 @@ void Game::Run()
     {
         LookForFights();
         // ShowMap();
-        for (std::list<Renderer *>::iterator it = renderers.begin(); it != renderers.end(); it++)
+        for (std::list<Renderer *>::iterator it = renderers.begin(); it != renderers.end(); it=std::next(it))
         {
             (*it)->render(*this);
         }
@@ -308,7 +308,7 @@ void Game::ResetGame()
 }
 std::string Game::getMonsterTextureInField(int x, int y) const
 {
-    for (std::vector<Monster *>::const_iterator it = monsters.begin(); it != monsters.end(); it++)
+    for (std::vector<Monster *>::const_iterator it = monsters.begin(); it != monsters.end(); it=std::next(it))
     {
         if ((*it)->GetXCoo() == x && (*it)->GetYCoo() == y)
         {
