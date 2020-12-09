@@ -14,6 +14,5 @@ public:
 	explicit TextRenderer(std::string);
 	TextRenderer(const TextRenderer &) = delete;
 	TextRenderer &operator=(const TextRenderer &) = delete;
-
 	void setOutputStream(std::string);
 };

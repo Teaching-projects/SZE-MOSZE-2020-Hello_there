@@ -19,5 +19,7 @@ TextRenderer::TextRenderer(std::string s)
 
 void TextRenderer::setOutputStream(std::string s)
 {
+	if (outputStream->is_open())
+		outputStream->close();
 	outputStream->open(s);
 }

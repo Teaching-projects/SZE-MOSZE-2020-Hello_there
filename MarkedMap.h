@@ -5,7 +5,16 @@
 class MarkedMap : public Map
 {
 public:
+	/**
+	* @brief Retruns a MarkedMap from a file.
+	* @param filename The name of the file which proved the map.
+	* @return MarkedMap
+	*/
 	explicit MarkedMap(const std::string &filename);
+	/**
+	* @brief Retruns the position of the hero on the map.
+	* @return void
+	*/
 	std::pair<int, int> getHeroPosition() const;
 	std::vector<std::pair<int, int>> getMonsterPositions(char c) const;
 

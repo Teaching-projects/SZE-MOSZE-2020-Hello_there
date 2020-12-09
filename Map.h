@@ -44,8 +44,16 @@ public:
     * @return Map::type
     */
     Map::type get(const int x, const int y) const;
-
+	/**
+	* @brief Returns the count of the row in the map.
+	* @return int
+	*/
     int GetRowCount() const;
+	/**
+	* @brief Returns the count of the columns in given row.
+	* @param row The row if witch we want to know the number of columns.
+	* @return int
+	*/
     int GetColCount(int row) const;
 
     /**

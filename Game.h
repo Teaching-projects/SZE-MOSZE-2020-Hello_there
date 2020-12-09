@@ -30,11 +30,35 @@ private:
     void HeroStatus();
 
 public:
+	/**
+	* @brief Returns the coordinates of every monster on the map.
+	* @return std::vector<std::pair<int, int>>
+	*/
     std::vector<std::pair<int, int>> GetMonsterCoordinates() const;
+	/**
+   * @brief Returns the pointer of the hero.It can be nullptr.
+   * @return Hero*
+   */
     Hero *getHero() const;
+	/**
+   * @brief Returns the number of monsters on the map.
+   * @return int
+   */
     int getMonsterCount() const;
+	/**
+   * @brief Adds a renderer to the game.
+   * @return void
+   */
     void registerRenderer(Renderer *);
+	/**
+	* @brief Returns the texture of the free tiles.
+	* @return std::string
+	*/
     std::string getFreeTexture() const;
+	/**
+	* @brief Returns the texture of the wall tiles.
+	* @return std::string
+	*/
     std::string getWallTexture() const;
 
     /**

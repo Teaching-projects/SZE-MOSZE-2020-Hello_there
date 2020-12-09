@@ -25,7 +25,11 @@ protected:
     int hp;
     int dmg;
     int defense;
-    /// attack the other Monster and fight until one of them is dead
+	/**
+	* @brief Attack the other Monster.
+	* @param targerMonster Monster that gets hit.
+	* @return void
+	*/
     virtual void Attack(Monster &targetMonster /** [in]*/);
 
 public:
@@ -36,7 +40,6 @@ public:
      * \param dmg damage
      * \param atkCooldown attack cooldown
     */
-
     Monster(const std::string &name, int hp, int dmg, double atkCooldown, int defense,std::string texture);
 
     virtual ~Monster() {}
@@ -92,7 +95,10 @@ public:
 	*/
     int TakeDamage(const Monster &atkMonster /** [in] attacking Monster that causes this Monster some damage*/);
 
-    /// returns an std::string that contains the Monster's name, hp and dmg
+	/**
+	* @brief Returns the Monster's name, hp, dmg.
+	* @return std::string
+	*/
     virtual std::string ToString() const;
 
     /** 
