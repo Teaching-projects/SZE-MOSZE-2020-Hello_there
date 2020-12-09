@@ -116,9 +116,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a26d1ad87989f22e013b2b445a22556bb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a26d1ad87989f22e013b2b445a22556bb">TakeDamage</a> (const <a class="el" href="class_monster.html">Monster</a> &amp;atkMonster)</td></tr>
 <tr class="memdesc:a26d1ad87989f22e013b2b445a22556bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the damage inflicted by atkMonster.  <a href="class_monster.html#a26d1ad87989f22e013b2b445a22556bb">More...</a><br /></td></tr>
 <tr class="separator:a26d1ad87989f22e013b2b445a22556bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7937149375729c21b4d05f73dcff910"><td class="memItemLeft" align="right" valign="top"><a id="ac7937149375729c21b4d05f73dcff910"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#ac7937149375729c21b4d05f73dcff910">ToString</a> () const</td></tr>
-<tr class="memdesc:ac7937149375729c21b4d05f73dcff910"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns an std::string that contains the <a class="el" href="class_monster.html">Monster</a>'s name, hp and dmg <br /></td></tr>
+<tr class="memitem:ac7937149375729c21b4d05f73dcff910"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#ac7937149375729c21b4d05f73dcff910">ToString</a> () const</td></tr>
+<tr class="memdesc:ac7937149375729c21b4d05f73dcff910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_monster.html">Monster</a>'s name, hp, dmg.  <a href="class_monster.html#ac7937149375729c21b4d05f73dcff910">More...</a><br /></td></tr>
 <tr class="separator:ac7937149375729c21b4d05f73dcff910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add87c4acf1baecd57bb81aec81813394"><td class="memItemLeft" align="right" valign="top"><a id="add87c4acf1baecd57bb81aec81813394"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCoordinates</b> (int x, int y)</td></tr>
@@ -136,7 +135,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a31fc41336f3593ac13b60c450274f166"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a31fc41336f3593ac13b60c450274f166">Attack</a> (<a class="el" href="class_monster.html">Monster</a> &amp;targetMonster)</td></tr>
-<tr class="memdesc:a31fc41336f3593ac13b60c450274f166"><td class="mdescLeft">&#160;</td><td class="mdescRight">attack the other <a class="el" href="class_monster.html">Monster</a> and fight until one of them is dead  <a href="class_monster.html#a31fc41336f3593ac13b60c450274f166">More...</a><br /></td></tr>
+<tr class="memdesc:a31fc41336f3593ac13b60c450274f166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attack the other <a class="el" href="class_monster.html">Monster</a>.  <a href="class_monster.html#a31fc41336f3593ac13b60c450274f166">More...</a><br /></td></tr>
 <tr class="separator:a31fc41336f3593ac13b60c450274f166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -250,7 +249,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Hero</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>attack the other <a class="el" href="class_monster.html">Monster</a> and fight until one of them is dead </p>
+<p>Attack the other <a class="el" href="class_monster.html">Monster</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targerMonster</td><td><a class="el" href="class_monster.html">Monster</a> that gets hit. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">targetMonster</td><td>[in] </td></tr>
@@ -507,6 +513,36 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Hero</b></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ac7937149375729c21b4d05f73dcff910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7937149375729c21b4d05f73dcff910">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Monster::ToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the <a class="el" href="class_monster.html">Monster</a>'s name, hp, dmg. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_hero.html#aa42b6746c72701c32badd31ceaa90d1a">Hero</a>.</p>
 
 </div>
 </div>
