@@ -5,15 +5,10 @@
 #include <fstream>
 #include <variant>
 #include <list>
-#include <vector>
 
 class JSON
 {
 public:
-	typedef std::variant<int, double, std::string> valueVariant;
-	typedef std::list<valueVariant> list;
-	typedef std::variant<int, double, std::string, list> listedValueVariant;
-	JSON(std::map<std::string, listedValueVariant> data);
 	int count(std::string);
 	template <typename T>
 	T get(const std::string &key)
@@ -36,6 +31,10 @@ public:
 	};
 
 private:
+	typedef std::variant<int, double, std::string> valueVariant;
+	typedef std::list<valueVariant> list;
+	typedef std::variant<int, double, std::string, list> listedValueVariant;
+	explicit JSON(std::map<std::string, listedValueVariant> data);
 	std::map<std::string, listedValueVariant> data;
 	static void CheckJsonIntegrity(std::string jsonStr);
 	static valueVariant simpleTypeParse(const std::string &match);

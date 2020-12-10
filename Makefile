@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = JSON.o Hero.o Monster.o  Map.o Game.o  MarkedMap.o PreparedGame.o main.o
+OBJS = JSON.o Hero.o Monster.o  Map.o Game.o  MarkedMap.o PreparedGame.o main.o TextRenderer.o ObserverTextRenderer.o HeroTextRenderer.o SVGRenderer.o HeroSVGRenderer.o ObserverSVGRenderer.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++-9
@@ -16,7 +16,7 @@ run: ./$(OUT)
 Monster.o: Monster.cpp Monster.h JSON.h 
 	$(CC) $(CFLAGS) -c Monster.cpp
 	
-Hero.o: Hero.cpp Hero.h Monster.h JSON.h 
+Hero.o: Hero.cpp Hero.h Monster.h
 	$(CC) $(CFLAGS) -c Hero.cpp
 
 JSON.o: JSON.cpp JSON.h
@@ -25,17 +25,43 @@ JSON.o: JSON.cpp JSON.h
 Map.o: Map.cpp Map.h
 	$(CC) $(CFLAGS) -c Map.cpp
 
-Game.o: Game.cpp Game.h Monster.h Hero.h
-	$(CC) $(CFLAGS) -c Game.cpp
-
 MarkedMap.o: MarkedMap.h MarkedMap.cpp Map.h
 	$(CC) $(CFLAGS) -c MarkedMap.cpp
+
+
+Game.o: Game.cpp Game.h Hero.h MarkedMap.h Renderer.h
+	$(CC) $(CFLAGS) -c Game.cpp
 
 PreparedGame.o: PreparedGame.h PreparedGame.cpp Game.h
 	$(CC) $(CFLAGS) -c PreparedGame.cpp
 
-main.o: main.cpp Monster.h Hero.h JSON.h
+
+
+TextRenderer.o: TextRenderer.h TextRenderer.cpp Renderer.h 
+	$(CC) $(CFLAGS) -c TextRenderer.cpp
+
+ObserverTextRenderer.o: TextRenderer.h ObserverTextRenderer.h ObserverTextRenderer.cpp
+	$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
+
+HeroTextRenderer.o: TextRenderer.h HeroTextRenderer.h HeroTextRenderer.cpp
+	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
+
+
+SVGRenderer.o: Renderer.h SVGRenderer.h SVGRenderer.cpp
+	$(CC) $(CFLAGS) -c SVGRenderer.cpp
+
+ObserverSVGRenderer.o: SVGRenderer.h ObserverSVGRenderer.h ObserverSVGRenderer.cpp
+	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
+
+HeroSVGRenderer.o: SVGRenderer.h HeroSVGRenderer.h HeroSVGRenderer.cpp
+	$(CC) $(CFLAGS) -c HeroSVGRenderer.cpp
+
+
+main.o: main.cpp PreparedGame.h HeroTextRenderer.h ObserverTextRenderer.h ObserverSVGRenderer.h HeroSVGRenderer.h
 	$(CC) $(CFLAGS) -c main.cpp
+
+
+
 
 valgrind:
 	bash -c "chmod a+x ./valgrind.sh"
@@ -61,6 +87,10 @@ make_unittests:
 	cmake tests/CMakeLists.txt
 	cd tests && make
 
+
+run_in_out_tests:
+	chmod +x ./in_out_tests.sh
+	./in_out_tests.sh
 
 run_unittests:
 	tests/unit_tests

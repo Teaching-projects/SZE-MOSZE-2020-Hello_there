@@ -11,7 +11,8 @@
 
 #include "MarkedMap.h"
 #include "Hero.h"
-
+#include "Renderer.h"
+class Renderer;
 class Game
 {
 private:
@@ -19,18 +20,47 @@ private:
     std::vector<Monster *> monsters; // monsters placed on the map
     Hero *hero;
     bool hasStarted;
-
+    std::list<Renderer *> renderers;
     bool TileIsFree(int x, int y) const;
-    void ShowMap() const;
-	void HeroPerspective() const;
-    void ResetGame();
     void ReadUserInput();
     void SetCoordinateDifs(char way, int &difX, int &difY) const;
-
     void LookForFights();
-    std::vector<std::pair<int, int>> GetMonsterCoordinates() const;
+    std::string wallTexture;
+    std::string freeTexture;
+    void HeroStatus();
 
 public:
+	/**
+	* @brief Returns the coordinates of every monster on the map.
+	* @return std::vector<std::pair<int, int>>
+	*/
+    std::vector<std::pair<int, int>> GetMonsterCoordinates() const;
+	/**
+   * @brief Returns the pointer of the hero.It can be nullptr.
+   * @return Hero*
+   */
+    Hero *getHero() const;
+	/**
+   * @brief Returns the number of monsters on the map.
+   * @return int
+   */
+    int getMonsterCount() const;
+	/**
+   * @brief Adds a renderer to the game.
+   * @return void
+   */
+    void registerRenderer(Renderer *);
+	/**
+	* @brief Returns the texture of the free tiles.
+	* @return std::string
+	*/
+    std::string getFreeTexture() const;
+	/**
+	* @brief Returns the texture of the wall tiles.
+	* @return std::string
+	*/
+    std::string getWallTexture() const;
+
     /**
     * @brief Returns an empty game, where the map isn't set.
     * @return Game
@@ -42,13 +72,31 @@ public:
     * @param mapFileName Name of the txt, that contains the map.
     * @return Game
     */
-    Game(Map *m);
-    Game(MarkedMap *m);
+    explicit Game(Map *m);
+    /**
+	* @brief Given a txt it returns the a game, with the map set.
+	* @param mapFileName Name of the txt, that contains the map.
+	* @return Game
+	*/
+    explicit Game(MarkedMap *m);
 
     ~Game();
 
     Game(const Game &) = delete;
     Game &operator=(const Game &) = delete;
+    /**
+	* @brief Sets the given svg file as the wall texture for this game.
+	* @param std::string the name of the file to use as wall texture.
+	* @return void
+	*/
+    void setWallTexture(const std::string &);
+
+    /**
+	* @brief Sets the given svg file as the wall texture for this game.
+	* @param std::string the name of the file to use as wall texture.
+	* @return void
+	*/
+    void setFreeTexture(const std::string &);
 
     /**
     * @brief Sets the given map to this game.
@@ -81,7 +129,11 @@ public:
     * @return void
     */
     void PutMonster(Monster *m, int x, int y);
-
+    /**
+	* @brief Returns with the current map of the game.
+	* @return Map*
+	*/
+    Map *getMap() const;
     /**
     * @brief Starts the gameplay loop. Handles fighting, user input, moving.
     * \throw NotInitializedException
@@ -134,4 +186,20 @@ public:
         */
         GameAlreadyStartedException() {}
     };
+
+    class HeroIsNullptrException : std::exception
+    {
+    public:
+        /**
+        * @brief thrown when hero is nullptr when it shouldn't be
+        */
+        HeroIsNullptrException() {}
+    };
+	/**
+	* @brief Retruns the name of the texture of a monster ona  given tile.
+	* @param x First coordinate
+	* @param y Second coordinate
+	* @return std::string
+	*/
+    std::string getMonsterTextureInField(int x, int y) const;
 };

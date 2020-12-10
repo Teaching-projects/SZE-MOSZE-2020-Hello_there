@@ -1,18 +1,16 @@
 #include "Game.h"
 
 Game::Game()
-    : hero(nullptr), map(nullptr), hasStarted(false)
+    : hero(nullptr), map(nullptr), hasStarted(false), freeTexture(""), wallTexture("")
 {
 }
-Game::Game(Map* m)
-	: hero(nullptr), map(m), hasStarted(false)
+Game::Game(Map *m)
+    : hero(nullptr), map(m), hasStarted(false), freeTexture(""), wallTexture("")
 {
-	std::cout << "ASD" << std::endl;
 }
 Game::Game(MarkedMap *m)
-    : hero(nullptr), map(m), hasStarted(false)
+    : hero(nullptr), map(m), hasStarted(false), freeTexture(""), wallTexture("")
 {
-	std::cout << "ASD" << std::endl;
 }
 
 Game::~Game()
@@ -23,13 +21,22 @@ Game::~Game()
     if (map != nullptr)
         delete map;
 
-    for (int i = 0; i < monsters.size(); i++)
+    for (size_t i = 0; i < monsters.size(); i++)
     {
         delete monsters[i];
     }
     monsters.clear();
 }
 
+void Game::setWallTexture(const std::string &s)
+{
+    wallTexture = s;
+}
+
+void Game::setFreeTexture(const std::string &s)
+{
+    freeTexture = s;
+}
 
 void Game::SetMap(Map *m)
 {
@@ -49,6 +56,11 @@ void Game::PutMonster(Monster *m, int x, int y)
 
     monsters.push_back(m);
     m->SetCoordinates(x, y);
+}
+
+Map *Game::getMap() const
+{
+    return map;
 }
 
 void Game::PutHero(Hero *h, int x, int y)
@@ -82,7 +94,6 @@ void Game::Run()
     if (map == nullptr || hero == nullptr)
     {
         throw NotInitializedException{};
-        return;
     }
 
     hasStarted = true;
@@ -90,11 +101,16 @@ void Game::Run()
     while (42)
     {
         LookForFights();
-      // ShowMap();
-		HeroPerspective();
+        for (std::list<Renderer *>::iterator it = renderers.begin(); it != renderers.end(); it = std::next(it))
+        {
+            (*it)->render(*this);
+        }
 
         if (monsters.size() != 0 && hero->isAlive())
+        {
+            HeroStatus();
             ReadUserInput();
+        }
         else
             break;
     }
@@ -107,8 +123,6 @@ void Game::Run()
     {
         std::cout << hero->getName() + " died." << std::endl;
     }
-
-    //ResetGame();
 }
 
 void Game::LookForFights()
@@ -122,7 +136,7 @@ void Game::LookForFights()
     std::vector<int> deadMonsters;
 
     // look for monsters on hero's tile
-    for (int i = 0; i < monsterCoordinates.size(); i++)
+    for (size_t i = 0; i < monsterCoordinates.size(); i++)
     {
         if (heroX == monsterCoordinates[i].first && heroY == monsterCoordinates[i].second)
         {
@@ -137,10 +151,10 @@ void Game::LookForFights()
 
     // this is unreasonably complicated
     std::vector<Monster *> aliveMonsters;
-    for (int i = 0; i < monsters.size(); i++)
+    for (size_t i = 0; i < monsters.size(); i++)
     {
         bool dead = false;
-        for (int j = 0; j < deadMonsters.size(); j++)
+        for (size_t j = 0; j < deadMonsters.size(); j++)
         {
             if (i == deadMonsters[j])
                 dead = true;
@@ -153,6 +167,11 @@ void Game::LookForFights()
     // update monsters
     monsters = aliveMonsters;
     deadMonsters.clear();
+}
+
+void Game::HeroStatus()
+{
+    std::cout << "HP:" << hero->getHealthPoints() << " LVL:" << hero->getLevel() << std::endl;
 }
 
 void Game::ReadUserInput()
@@ -226,7 +245,7 @@ std::vector<std::pair<int, int>> Game::GetMonsterCoordinates() const
 {
     std::vector<std::pair<int, int>> monsterCoordinates;
 
-    for (int i = 0; i < monsters.size(); i++)
+    for (size_t i = 0; i < monsters.size(); i++)
     {
         int x = monsters[i]->GetXCoo();
         int y = monsters[i]->GetYCoo();
@@ -237,173 +256,39 @@ std::vector<std::pair<int, int>> Game::GetMonsterCoordinates() const
     return monsterCoordinates;
 }
 
-void Game::ShowMap() const
+Hero *Game::getHero() const
 {
-    int rowCount = map->GetRowCount();
-    int colCount;
+    return hero;
+}
 
-    std::vector<std::vector<char>> tiles(rowCount);
+int Game::getMonsterCount() const
+{
+    return monsters.size();
+}
 
-    for (int i = 0; i < rowCount; i++)
+void Game::registerRenderer(Renderer *r)
+{
+    renderers.push_back(r);
+}
+
+std::string Game::getFreeTexture() const
+{
+    return freeTexture;
+}
+
+std::string Game::getWallTexture() const
+{
+    return wallTexture;
+}
+
+std::string Game::getMonsterTextureInField(int x, int y) const
+{
+    for (std::vector<Monster *>::const_iterator it = monsters.begin(); it != monsters.end(); it = std::next(it))
     {
-        colCount = map->GetColCount(i);
-        tiles[i] = std::vector<char>(colCount);
-
-        for (int j = 0; j < colCount; j++)
+        if ((*it)->GetXCoo() == x && (*it)->GetYCoo() == y)
         {
-            if (map->get(i, j) == Map::Wall)
-                tiles[i][j] = (char)(219);
-            else
-                tiles[i][j] = (char)(177);
+            return (*it)->GetTexture();
         }
     }
-
-    std::vector<std::pair<int, int>> monsterCoordinates = GetMonsterCoordinates();
-
-    // place hero
-    int x = hero->GetXCoo();
-    int y = hero->GetYCoo();
-    tiles[x][y] = 'H';
-
-    // print top border of map
-    colCount = map->GetColCount(0);
-    std::cout << char(201);
-    for (int i = 0; i < colCount; i++)
-        std::cout << char(205) << char(205);
-    std::cout << char(187) << std::endl;
-
-    // print middle part
-    for (int i = 0; i < rowCount; i++)
-    {
-        colCount = map->GetColCount(i);
-        std::cout << char(186);
-        for (int j = 0; j < colCount; j++)
-        {
-            char tile = tiles[i][j];
-
-            int tileMonsterCount = 0;
-            for (int k = 0; k < monsters.size(); k++)
-            {
-                if (monsterCoordinates[k].first == i && monsterCoordinates[k].second == j)
-                    tileMonsterCount++;
-            }
-
-            if (tileMonsterCount > 1)
-                std::cout << 'M' << 'M';
-            else if (tileMonsterCount == 1)
-                std::cout << 'M' << ' ';
-            else if (tile == 'H')
-                std::cout << tile << ' ';
-            else
-                std::cout << tile << tile;
-        }
-        std::cout << char(186) << std::endl;
-    }
-
-    // print bottom part of the map
-    colCount = map->GetColCount(rowCount - 1);
-    std::cout << char(200);
-    for (int i = 0; i < colCount; i++)
-        std::cout << char(205) << char(205);
-    std::cout << char(188) << std::endl;
-}
-void Game::HeroPerspective() const {
-	int rowCount = map->GetRowCount();
-	int colCount;
-
-	std::vector<std::vector<char>> tiles(rowCount);
-
-	for (int i = 0; i < rowCount; i++)
-	{
-		colCount = map->GetColCount(i);
-		tiles[i] = std::vector<char>(colCount);
-
-		for (int j = 0; j < colCount; j++)
-		{
-			if (map->get(i, j) == Map::Wall)
-				tiles[i][j] = (char)(219);
-			else
-				tiles[i][j] = (char)(177);
-		}
-	}
-
-	std::vector<std::pair<int, int>> monsterCoordinates = GetMonsterCoordinates();
-
-	// place hero
-	int x = hero->GetXCoo();
-	int y = hero->GetYCoo();
-	tiles[x][y] = 'H';
-	int maxSteps = hero->getLightRadius() * 2 + 1;
-	if (maxSteps >= colCount) maxSteps = colCount;
-	int startRow=x;
-	int startCol=y;
-	for (int i = 0; i < hero->getLightRadius() && startRow > 0 && startRow < rowCount; i++) {
-		startRow--;
-	}
-	for (int i = 0; i < hero->getLightRadius() && startCol > 0 && startCol < colCount; i++) {
-		startCol--;
-	}
-	int magic = (colCount - startCol);
-	
-	// print top border of map
-	std::cout << char(201);
-	for (int i = 0; i < maxSteps && i< magic; i++)
-		std::cout << char(205) << char(205);
-	std::cout << char(187) << std::endl;
-	// print middle part
-	for (int i = 0, row = startRow; i < maxSteps && row < rowCount; i++)
-	{
-		std::cout << char(186);
-		for (int j = 0,col=startCol; j < maxSteps && col<colCount; j++)
-		{
-			char tile = tiles[row][col];
-
-			int tileMonsterCount = 0;
-			for (int k = 0; k < monsters.size(); k++)
-			{
-				if (monsterCoordinates[k].first == row && monsterCoordinates[k].second == col)
-					tileMonsterCount++;
-			}
-
-			if (tileMonsterCount > 1)
-				std::cout << 'M' << 'M';
-			else if (tileMonsterCount == 1)
-				std::cout << 'M' << ' ';
-			else if (tile == 'H')
-				std::cout << tile << ' ';
-			else
-				std::cout << tile << tile;
-			col++;
-		}
-		std::cout << char(186) << std::endl;
-		row++;
-	}
-
-	// print bottom part of the map
-	std::cout << char(200);
-	for (int i = 0; i < maxSteps && i<magic; i++)
-		std::cout << char(205) << char(205);
-	std::cout << char(188) << std::endl;
-}
-void Game::ResetGame()
-{
-    if (hero != nullptr)
-    {
-        delete hero;
-        hero = nullptr;
-    }
-
-    if (map != nullptr)
-    {
-        delete map;
-        map = nullptr;
-    }
-
-    for (int i = 0; i < monsters.size(); i++)
-    {
-        delete monsters[i];
-    }
-    monsters.clear();
-
-    hasStarted = false;
+    return "";
 }

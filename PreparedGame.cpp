@@ -1,6 +1,6 @@
 #include "PreparedGame.h"
 
-PreparedGame::PreparedGame(std::string prepdGameName)
+PreparedGame::PreparedGame(const std::string& prepdGameName)
     : Game()
 {
     JSON parser = JSON::parseFromFile("games/" + prepdGameName);
@@ -12,6 +12,8 @@ PreparedGame::PreparedGame(std::string prepdGameName)
     Hero *h = Hero::parse(heroFile);
     std::pair<int, int> heroPos = map->getHeroPosition();
     PutHero(h, heroPos.first, heroPos.second);
+	setFreeTexture("svgs/" + parser.get<std::string>("free_texture"));
+	setWallTexture("svgs/" + parser.get<std::string>("wall_texture"));
 
     for (int i = 1; i < parser.GetDataCount(); i++)
     {
@@ -26,7 +28,7 @@ PreparedGame::PreparedGame(std::string prepdGameName)
 
             monsterPositions = map->getMonsterPositions(cIdx);
 
-            for (int j = 0; j < monsterPositions.size(); j++)
+            for (size_t j = 0; j < monsterPositions.size(); j++)
             {
                 Monster *m = Monster::parse(monsterFile);
                 PutMonster(m, monsterPositions[j].first, monsterPositions[j].second);

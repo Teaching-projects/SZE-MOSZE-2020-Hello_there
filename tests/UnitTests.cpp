@@ -7,6 +7,12 @@
 #include "../MarkedMap.h"
 #include "../PreparedGame.h"
 
+#include "../HeroTextRenderer.h"
+#include "../HeroSVGRenderer.h"
+#include "../ObserverTextRenderer.h"
+#include "../ObserverSVGRenderer.h"
+#include <fstream>
+
 TEST(ParserTest, CheckMapContent)
 {
     std::ifstream vaderFile("units/vader.json");
@@ -58,7 +64,7 @@ TEST(ParserTest, ExpectNoExceptions)
     EXPECT_NO_THROW(JSON::parseFromFile(palpatineFile));
 }
 
-TEST(UnitClassTest, SuccessfulConstruction)
+TEST(MonsterClassTest, SuccessfulConstruction)
 {
     EXPECT_NO_THROW(std::string("units/vader.json"));
 
@@ -67,13 +73,13 @@ TEST(UnitClassTest, SuccessfulConstruction)
     EXPECT_NO_THROW(std::string("units/luke.json"));
 }
 
-TEST(PlayerClassTest, SuccessfulConstruction)
+TEST(HeroClassTest, SuccessfulConstruction)
 {
     std::string playerFile = "Dark_Wanderer.json";
     EXPECT_NO_THROW(Hero::parse(playerFile));
 }
 
-TEST(UnitClassTest, NoCrazyValues)
+TEST(MonsterClassTest, NoCrazyValues)
 {
     std::string vaderFile = "vader.json";
     Monster *vader(Monster::parse(vaderFile));
@@ -133,6 +139,12 @@ TEST(ParserTest, IndifferentToSpaces)
     std::ifstream playerFileLookalike("units/player_lookalike.json");
     JSON playerJSONLookalike = JSON::parseFromStream(playerFileLookalike);
     EXPECT_TRUE(JSON::compareJSON(playerJSON, playerJSONLookalike));
+}
+
+TEST(ParserTest, ExpectException)
+{
+    std::string content = "this is a very bad json content";
+    EXPECT_ANY_THROW(JSON::parseFromString(content));
 }
 
 TEST(ParserTest, IndifferentToKeyOrder)
@@ -204,7 +216,7 @@ TEST(GameTest, MethodTestExpectNoThrow)
 
     EXPECT_NO_THROW(g.SetMap(m2));
 
-    Hero *h = new Hero("Joe", 500, 10, 12.0, 2, 30, 10, 2, 1.2, 1, 2);
+    Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
     EXPECT_NO_THROW(g.PutHero(h, 1, 1));
 }
 
@@ -214,7 +226,7 @@ TEST(GameTest, MethodTestExpectThrow)
         try
         {
             Game g;
-			Hero* h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5, 5);
+            Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
             g.PutHero(h, 0, 0);
         }
         catch (const Map::WrongIndexException &e)
@@ -227,7 +239,7 @@ TEST(GameTest, MethodTestExpectThrow)
         {
 			Map* m = new Map("map_1.txt");
             Game g(m);
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5, 5);
+            Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
             g.PutHero(h, 1, 1);
             g.PutHero(h, 1, 2);
         }
@@ -241,7 +253,7 @@ TEST(GameTest, MethodTestExpectThrow)
         {
 			Map* m = new Map("map_1.txt");
             Game g(m);
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5, 5);
+            Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
             g.PutHero(h, 0, 0);
         }
         catch (const Game::OccupiedException &e)
@@ -254,7 +266,7 @@ TEST(GameTest, MethodTestExpectThrow)
         {
 			Map* m = new Map("map_1.txt");
             Game g(m);
-            Hero *h = new Hero("Joe", 5, 5, 5.0, 5, 5, 5, 5, 5, 5, 5);
+            Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
             g.PutHero(h, 1, 1);
 
             Map *m2 = new Map("map_2.txt");
@@ -311,7 +323,52 @@ TEST(MarkedMapTest, ConstructionNoExceptionThrown)
 
 TEST(PreparedGameTest, ConstructionNoExceptionThrown)
 {
-    EXPECT_NO_THROW(PreparedGame g("prepd_game_1.txt"));
+    EXPECT_NO_THROW(PreparedGame g("prepd_game_1.json"));
+}
+
+TEST(PreparedGameTest, ExpectExceptionThrow)
+{
+    EXPECT_ANY_THROW(PreparedGame g("missing_map.txt"));
+}
+
+TEST(PreparedGameTest, MethodTests)
+{
+    MarkedMap *m = new MarkedMap("marked_map.txt");
+    Game g(m);
+    Hero *h = new Hero("Joe", 500, 10, 12.0, 2, "Hero.svg", 30, 10, 2, 1.2, 1, 2, 5);
+    g.PutHero(h, 1, 1);
+
+    HeroTextRenderer hTxtRenderer("HeroTextOut.txt");
+    hTxtRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("HeroTextOut.txt").good());
+
+    hTxtRenderer.setOutputStream("HeroTextOut_2.txt");
+    hTxtRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("HeroTextOut_2.txt").good());
+
+    HeroSVGRenderer hSvgRenderer("HeroSVGOut.txt");
+    hSvgRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("HeroSVGOut.txt").good());
+
+    hSvgRenderer.setOutputStream("HeroSVGOut_2.txt");
+    hSvgRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("HeroSVGOut_2.txt").good());
+
+    ObserverTextRenderer oTxtRenderer("ObserverTextOut.txt");
+    oTxtRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("ObserverTextOut.txt").good());
+
+    oTxtRenderer.setOutputStream("ObserverTextOut_2.txt");
+    oTxtRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("ObserverTextOut_2.txt").good());
+
+    ObserverSVGRenderer oSvgRenderer("ObserverSVGOut.txt");
+    oSvgRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("ObserverSVGOut.txt").good());
+
+    oSvgRenderer.setOutputStream("ObserverSVGOut_2.txt");
+    oSvgRenderer.render(g);
+    EXPECT_TRUE(std::ifstream("ObserverSVGOut_2.txt").good());
 }
 
 int main(int argc, char **argv)

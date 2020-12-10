@@ -35,17 +35,7 @@ public:
     * @param filename Name of the txt file
     * @return Map
     */
-    Map(const std::string &filename);
-	/**
-	* @brief Returns the first element of the map.
-	* @return iterator
-	*/
-	std::vector<std::string>::iterator getBegin();
-	/**
-	* @brief Returns the last element of the map.
-	* @return iterator
-	*/
-	std::vector<std::string>::iterator getEnd();
+    explicit Map(const std::string &filename);
 
     /**
     * @brief Returns the type of the tile.
@@ -54,8 +44,16 @@ public:
     * @return Map::type
     */
     Map::type get(const int x, const int y) const;
-
+	/**
+	* @brief Returns the count of the row in the map.
+	* @return int
+	*/
     int GetRowCount() const;
+	/**
+	* @brief Returns the count of the columns in given row.
+	* @param row The row if witch we want to know the number of columns.
+	* @return int
+	*/
     int GetColCount(int row) const;
 
     /**

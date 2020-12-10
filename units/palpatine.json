@@ -3,5 +3,6 @@
 	"health_points": 111,
 	"damage": 21,
 	"attack_cooldown": 2.5,
-	"defense" : 5
+	"defense" : 5,
+	"texture": "Zombie.svg"
 }
