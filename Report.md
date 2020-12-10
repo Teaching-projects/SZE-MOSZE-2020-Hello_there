@@ -34,7 +34,7 @@
 | markedmap | Merge: 12.01 | 0 | @Bukottak_busszuja / @HabanAndras |
 | preparedgame | Merge: 12.04 | 0 | @Bukottak_busszuja / @HabanAndras |
 | light radius | Merge: 12.05 | 0 | @Bukottak_busszuja / @HabanAndras |
-| rendering | Merge: mm.dd | ... | @Bukottak_busszuja / @tothi517 |
+| rendering | Merge: 12.10 | 0 | @Bukottak_busszuja / @tothi517 |
 
 # Unit tesztek
 
