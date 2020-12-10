@@ -212,7 +212,6 @@ TEST(GameTest, MethodTestExpectNoThrow)
     Map *m = new Map("map_1.txt");
     Game g(m);
     Map *m2 = new Map("map_2.txt");
-    delete m;
 
     EXPECT_NO_THROW(g.SetMap(m2));
 
