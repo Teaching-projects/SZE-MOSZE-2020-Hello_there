@@ -1,11 +1,21 @@
 # SZE-MOSZE-2020-Hello_there
 
-A program egy RPG játékot valósít meg. Az indításnál két bemenetet vár. 
+A program egy RPG játékot valósít meg. Az indításnál egy bemenetet vár. 
 
 Példa futásra:
 ```
-./main.exe palpatine.json vader.json
-Palpatine wins. Remaining HP: 10
+$./a.out prepd_game_1.json
+╔══════════╗
+║██████████║
+║██▒▒H ▒▒██║
+║██▒▒██████║
+║██▒▒M M ██║
+║██████M ██║
+╚══════════╝
+HP:30 LVL:1
+Which way do you wish to go?
+Type the first character: (N)orth (E)ast (S)outh (W)est
+Input:
 ```
 
 A dokumentáció az alábbi linken érhető el:
